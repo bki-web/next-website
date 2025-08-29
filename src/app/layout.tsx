@@ -6,6 +6,7 @@ import SiteNavbar from "@/components/SiteNavbar";
 import { Montserrat, Jost } from 'next/font/google';
 import './globals.css'; // your global styles
 import FooterSection from "@/components/FooterSection";
+import { TRPCProvider } from "@/trpc/react";
 
 // Load Montserrat with chosen weights
 const montserrat = Montserrat({
@@ -35,11 +36,13 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${jost.variable} antialiased`}
       >
-        <TransitionProvider>
-          <SiteNavbar />
-          {children}
-          <FooterSection/>
-        </TransitionProvider>
+        <TRPCProvider>
+          <TransitionProvider>
+            <SiteNavbar />
+            {children}
+            <FooterSection/>
+          </TransitionProvider>
+        </TRPCProvider>
       </body>
     </html>
   );
