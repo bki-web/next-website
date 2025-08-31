@@ -122,47 +122,51 @@ export default function ShipRegisterPage() {
                 <p className="lg:text-6xl text-3xl text-[#0A436A] font-bold">Result</p>
                 <div className="w-full flex flex-col lg:gap-y-8 gap-y-4">
                     {new Array(10).fill(0).map((_, index) => (
-                        <article
-                            key={index}
-                            className="rounded-xl border border-slate-200 bg-white shadow-sm"
-                        >
-                            <div
-                                className="flex flex-col gap-4 p-4 md:p-5 lg:flex-row lg:items-start lg:justify-between">
-                                {/* Left */}
-                                <div className="min-w-0 flex-1">
-                                    {/* Title + Register No + IMO No. + GT */}
-                                    <div className="flex justify-between items-center">
-                                        <div className="flex items-center gap-3 lg:flex-row flex-col">
-                                            <h2 className="text-lg md:text-xl font-bold text-slate-900">Speed Boat
-                                                GT11X</h2>
-                                            <Badge>Register No: <span className="ml-1">31873193</span></Badge>
+                        <Link key={'item-' + index} href={'/our-services/classification/ship-register/ship-particular'}>
+                            <article
+                                key={index}
+                                className="rounded-xl border border-slate-200 bg-white shadow-sm"
+                            >
+                                <div
+                                    className="flex flex-col gap-4 p-4 md:p-5 lg:flex-row lg:items-start lg:justify-between">
+                                    {/* Left */}
+                                    <div className="min-w-0 flex-1">
+                                        {/* Title + Register No + IMO No. + GT */}
+                                        <div className="flex justify-between items-center">
+                                            <div className="flex items-center gap-3 lg:flex-row flex-col">
+                                                <h2 className="text-lg md:text-xl font-bold text-slate-900">Speed Boat
+                                                    GT11X</h2>
+                                                <Badge>Register No: <span className="ml-1">31873193</span></Badge>
+                                            </div>
+                                            <div className="flex lg:flex-row flex-col gap-2 shrink-0 self-start">
+                                                <Pill><span className="mr-1 opacity-70">IMO:</span> 69753922</Pill>
+                                                <Pill>GT1212</Pill>
+                                            </div>
                                         </div>
-                                        <div className="flex lg:flex-row flex-col gap-2 shrink-0 self-start">
-                                            <Pill><span className="mr-1 opacity-70">IMO:</span> 69753922</Pill>
-                                            <Pill>GT1212</Pill>
+
+                                        {/* Meta rows (FLEX) */}
+                                        <div
+                                            className="mt-3 flex flex-wrap gap-y-3 border-t border-b border-[#C8C8C8] py-4">
+                                            <MetaItem label="Flag" value="Indonesia"/>
+                                            <MetaItem label="Type of Ship" value="Speed Boat"/>
+                                            <MetaItem label="Status Compliance"
+                                                      value={<span className="text-emerald-600">Active</span>}/>
+                                            <MetaItem label="Status Class"
+                                                      value={<span className="text-emerald-600">Active</span>}/>
                                         </div>
-                                    </div>
 
-                                    {/* Meta rows (FLEX) */}
-                                    <div
-                                        className="mt-3 flex flex-wrap gap-y-3 border-t border-b border-[#C8C8C8] py-4">
-                                        <MetaItem label="Flag" value="Indonesia"/>
-                                        <MetaItem label="Type of Ship" value="Speed Boat"/>
-                                        <MetaItem label="Status Compliance"
-                                                  value={<span className="text-emerald-600">Active</span>}/>
-                                        <MetaItem label="Status Class"
-                                                  value={<span className="text-emerald-600">Active</span>}/>
-                                    </div>
-
-                                    {/* Details */}
-                                    <div className="mt-3 text-sm text-slate-700 leading-relaxed">
-                                        <span className="font-semibold">Details: </span>
-                                        We provide independent and reliable ship classification services to ensure your
-                                        vessels comply with international safety, environmental, and quality standards.
+                                        {/* Details */}
+                                        <div className="mt-3 text-sm text-slate-700 leading-relaxed">
+                                            <span className="font-semibold">Details: </span>
+                                            We provide independent and reliable ship classification services to ensure
+                                            your
+                                            vessels comply with international safety, environmental, and quality
+                                            standards.
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </article>
+                            </article>
+                        </Link>
                     ))}
                 </div>
                 <div className="flex items-center justify-end gap-2 lg:gap-4">
