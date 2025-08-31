@@ -1,3 +1,7 @@
+import { match, P } from "ts-pattern";
+import NoResultsCard from "./NoResultsCard";
+import Pagination from "./Pagination";
+
 function Pill({ children }: { children: React.ReactNode }) {
   return (
     <span className="inline-flex items-center rounded-md border border-slate-300/70 px-3 py-1 text-sm font-semibold shadow-sm bg-white text-slate-800">
@@ -23,91 +27,82 @@ function MetaItem({ label, value }: { label: string; value: React.ReactNode }) {
   );
 }
 
-export default function ListShipRegister() {
+export default function ListShipRegister({
+  data,
+}: {
+  data: any[] | undefined;
+}) {
+  if (data === undefined) {
+    // search not yet initiated
+    return <div className="hidden" />;
+  }
   return (
-    <section className="w-full flex flex-col lg:py-20 py-10 lg:px-24 px-4 lg:gap-y-8 gap-y-4 bg-[#E2E7F0]">
+    <section
+      className="w-full flex flex-col lg:py-20 py-10 lg:px-24 px-4 lg:gap-y-8 gap-y-4 bg-[#E2E7F0]"
+    >
       <p className="lg:text-6xl text-3xl text-[#0A436A] font-bold">Result</p>
       <div className="w-full flex flex-col lg:gap-y-8 gap-y-4">
-        {new Array(10).fill(0).map((_, index) => (
-          <article
-            key={index}
-            className="rounded-xl border border-slate-200 bg-white shadow-sm"
-          >
-            <div className="flex flex-col gap-4 p-4 md:p-5 lg:flex-row lg:items-start lg:justify-between">
-              {/* Left */}
-              <div className="min-w-0 flex-1">
-                {/* Title + Register No + IMO No. + GT */}
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-3 lg:flex-row flex-col">
-                    <h2 className="text-lg md:text-xl font-bold text-slate-900">
-                      Speed Boat GT11X
-                    </h2>
-                    <Badge>
-                      Register No: <span className="ml-1">31873193</span>
-                    </Badge>
-                  </div>
-                  <div className="flex lg:flex-row flex-col gap-2 shrink-0 self-start">
-                    <Pill>
-                      <span className="mr-1 opacity-70">IMO:</span> 69753922
-                    </Pill>
-                    <Pill>GT1212</Pill>
-                  </div>
-                </div>
+        {match(data)
+          .with([], () => (
+            <NoResultsCard
+              title="Ship not found"
+              subtitle="Try to enter different keywords and search again."
+            />
+          ))
+          .with(P.array(P.any), (list) => (
+            <>
+              <article className="rounded-xl border border-slate-200 bg-white shadow-sm">
+                <div className="flex flex-col gap-4 p-4 md:p-5 lg:flex-row lg:items-start lg:justify-between">
+                  {/* Left */}
+                  <div className="min-w-0 flex-1">
+                    {/* Title + Register No + IMO No. + GT */}
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-3 lg:flex-row flex-col">
+                        <h2 className="text-lg md:text-xl font-bold text-slate-900">
+                          Speed Boat GT11X
+                        </h2>
+                        <Badge>
+                          Register No: <span className="ml-1">31873193</span>
+                        </Badge>
+                      </div>
+                      <div className="flex lg:flex-row flex-col gap-2 shrink-0 self-start">
+                        <Pill>
+                          <span className="mr-1 opacity-70">IMO:</span> 69753922
+                        </Pill>
+                        <Pill>GT1212</Pill>
+                      </div>
+                    </div>
 
-                {/* Meta rows (FLEX) */}
-                <div className="mt-3 flex flex-wrap gap-y-3 border-t border-b border-[#C8C8C8] py-4">
-                  <MetaItem label="Flag" value="Indonesia" />
-                  <MetaItem label="Type of Ship" value="Speed Boat" />
-                  <MetaItem
-                    label="Status Compliance"
-                    value={<span className="text-emerald-600">Active</span>}
-                  />
-                  <MetaItem
-                    label="Status Class"
-                    value={<span className="text-emerald-600">Active</span>}
-                  />
-                </div>
+                    {/* Meta rows (FLEX) */}
+                    <div className="mt-3 flex flex-wrap gap-y-3 border-t border-b border-[#C8C8C8] py-4">
+                      <MetaItem label="Flag" value="Indonesia" />
+                      <MetaItem label="Type of Ship" value="Speed Boat" />
+                      <MetaItem
+                        label="Status Compliance"
+                        value={<span className="text-emerald-600">Active</span>}
+                      />
+                      <MetaItem
+                        label="Status Class"
+                        value={<span className="text-emerald-600">Active</span>}
+                      />
+                    </div>
 
-                {/* Details */}
-                <div className="mt-3 text-sm text-slate-700 leading-relaxed">
-                  <span className="font-semibold">Details: </span>
-                  We provide independent and reliable ship classification
-                  services to ensure your vessels comply with international
-                  safety, environmental, and quality standards.
+                    {/* Details */}
+                    <div className="mt-3 text-sm text-slate-700 leading-relaxed">
+                      <span className="font-semibold">Details: </span>
+                      We provide independent and reliable ship classification
+                      services to ensure your vessels comply with international
+                      safety, environmental, and quality standards.
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-      <div className="flex items-center justify-end gap-2 lg:gap-4">
-        <div className="flex items-center gap-1 text-slate-700">
-          <button className="px-2 py-1 rounded-md hover:bg-slate-100">
-            &lt;
-          </button>
-          {[1, 2, 3, 4, 5].map((n) => (
-            <button
-              key={n}
-              className={`h-8 w-8 rounded-md text-sm font-medium ${
-                n === 1
-                  ? "bg-slate-900 text-white"
-                  : "hover:bg-slate-100 text-slate-800"
-              }`}
-            >
-              {n}
-            </button>
+              </article>
+              <Pagination />
+            </>
+          ))
+          .otherwise(() => (
+            <div />
           ))}
-          <button className="px-2 py-1 rounded-md hover:bg-slate-100">
-            &gt;
-          </button>
-        </div>
-        <div className="flex items-center gap-2">
-          <select className="rounded-md border border-slate-300 bg-white px-2 py-1 text-sm text-black">
-            <option>10 / page</option>
-            <option>20 / page</option>
-            <option>50 / page</option>
-          </select>
-        </div>
       </div>
     </section>
   );

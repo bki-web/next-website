@@ -1,0 +1,845 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model mf_beban {
+  kode      Int     @id(map: "PK_mf_beban")
+  nama_kode String? @db.NVarChar(50)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model mf_invoice_kode_header_bak {
+  kode_format    Decimal @db.Decimal(18, 0)
+  header_format1 String? @db.NVarChar(200)
+  header_format2 String? @db.NVarChar(200)
+  header_format3 String? @db.NVarChar(200)
+  header_format4 String? @db.NVarChar(200)
+  header_format5 String? @db.NVarChar(200)
+  header_format6 String? @db.NVarChar(200)
+  header_format7 String? @db.NVarChar(50)
+
+  @@ignore
+}
+
+model mf_jenis_perusahaan {
+  Kode Int     @id(map: "PK_mf_jenis_perusahaan") @db.SmallInt
+  nama String? @db.NVarChar(50)
+  id   BigInt  @default(autoincrement())
+}
+
+model mf_klas_asing {
+  kode_klas      String? @db.NVarChar(2)
+  kode_klas_lain String? @db.NVarChar(10)
+  nama_klas      String? @db.NVarChar(50)
+  id             BigInt  @id(map: "PK__mf_klas___3213E83F17A3209C") @default(autoincrement())
+}
+
+model mf_kode {
+  REK1    Int
+  STAT3   Int
+  REK2    Int
+  COA_SAP String? @db.VarChar(7)
+  KET     String? @db.NVarChar(1)
+  STAT1   String? @db.NVarChar(1)
+  STAT2   String? @db.NVarChar(1)
+  DESC1   String? @db.NVarChar(60)
+  DESC2   String? @db.NVarChar(100)
+  id      BigInt  @default(autoincrement())
+
+  @@id([REK1, STAT3, REK2], map: "PK_mf_kode")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model mf_kode_lap_survey_bak {
+  no_urut     Int?
+  kode_survey String? @db.NVarChar(20)
+  keterangan  String? @db.NVarChar(50)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model mf_kode_survey_bak {
+  no_urut           Int?
+  kode_survey       String? @db.NVarChar(8)
+  nama_jenis_survey String? @db.NVarChar(50)
+  keterangan        String? @db.NVarChar(50)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model mf_kurs_bak {
+  kode_kurs  String  @db.NVarChar(10)
+  nama_kurs  String? @db.NVarChar(50)
+  keterangan String? @db.NVarChar(50)
+  kode       Int?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model mf_no_rek_cabang_bak {
+  kode_cab     String? @db.NVarChar(3)
+  segmen       String? @db.NVarChar(2)
+  no_rek       String? @db.NVarChar(50)
+  nama_bank    String? @db.NVarChar(150)
+  name_bank    String? @db.NVarChar(150)
+  valuta       String? @db.NVarChar(5)
+  alamat_bank  String? @db.NVarChar(200)
+  no_telp_bank String? @db.NVarChar(50)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model mf_saldo_bak {
+  tahun      Int?
+  segmen     String? @db.NVarChar(1)
+  kode_rek   Int?
+  sub        Int?
+  lokasi     String? @db.VarChar(4)
+  saldo_kas  Float?  @db.Money
+  saldo_bank Float?  @db.Money
+  bulan      Int?
+
+  @@index([bulan, tahun, segmen, kode_rek, sub, lokasi], map: "IX_mf_saldo")
+  @@ignore
+}
+
+model MFFLAG {
+  KFLAG String  @db.NVarChar(3)
+  FLAG  String? @db.NVarChar(250)
+  id    Int     @id(map: "PK__MFFLAG__3213E83F371BCBF5") @default(autoincrement())
+}
+
+model MFJNKPL {
+  id_mfjnkpl     Int      @id(map: "PK_MFJNKPL") @default(autoincrement())
+  KOJEN          String?  @db.NVarChar(5)
+  JENIS          String?  @db.NVarChar(500)
+  TYSHP          String?  @db.NVarChar(50)
+  KOJENISM       String?  @db.NVarChar(5)
+  JENISISM       String?  @db.NVarChar(50)
+  H              Float?
+  M              Float?
+  E              Float?
+  LEVELING       String?  @db.NVarChar(5)
+  NO_URUT_LEVEL  Decimal? @db.Decimal(18, 0)
+  KELOMPOK_LEVEL String?  @db.NVarChar(150)
+  GRADE          String?  @db.NVarChar(10)
+  TYPE_GBR       String?  @db.NVarChar(10)
+  GRADEPEMERIKSA String?  @db.VarChar(10)
+  LEVEL_GBR      String?  @db.VarChar(50)
+  JNKPL_PEN      String?  @db.NVarChar(100)
+  GUIDE_NOTASI   String?  @db.VarChar(50)
+}
+
+model MFKNOT {
+  KONOT       String    @id(map: "PK_MFKNOT") @db.NVarChar(10)
+  ABRE        String?   @db.NVarChar(150)
+  JEL1        String?   @db.NVarChar(2000)
+  JEL2        String?   @db.NVarChar(160)
+  REMARK      String?   @db.NVarChar(100)
+  KONOT_INDUK String?   @db.NVarChar(10)
+  NUP_ENTRY   String?   @db.NVarChar(10)
+  TGL_ENTRY   DateTime? @db.DateTime
+  KEBUTUHAN   String?   @db.VarChar(50)
+  flag        String?   @db.VarChar(10)
+  value_add   String?   @db.VarChar(10)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model MFNOTASI {
+  NOREG   Decimal? @db.Decimal(10, 0)
+  KONOT   String?  @db.NVarChar(10)
+  NO_URUT Decimal? @db.Decimal(18, 0)
+
+  @@ignore
+}
+
+model MFREG01 {
+  NOREG                   Decimal   @id(map: "PK_MFREG01") @db.Decimal(10, 0)
+  NOIMO                   Decimal?  @db.Decimal(8, 0)
+  STAT                    String?   @db.NVarChar(1)
+  BLNAK                   Decimal?  @db.Decimal(2, 0)
+  THNAK                   Decimal?  @db.Decimal(4, 0)
+  BANG                    String?   @db.NVarChar(1)
+  NEW                     String?   @db.NVarChar(1)
+  NMKPL                   String?   @db.NVarChar(500)
+  EXKPL                   String?   @db.NVarChar(50)
+  CALL                    String?   @db.NVarChar(50)
+  KOJEN                   String?   @db.NVarChar(5)
+  KOKOT                   String?   @db.NVarChar(5)
+  KFLAG                   String?   @db.NVarChar(3)
+  NOTL1                   String?   @db.NVarChar(1)
+  NOTL2                   String?   @db.NVarChar(1)
+  NOTL3                   String?   @db.NVarChar(5)
+  NOTL4                   String?   @db.NVarChar(5)
+  NOTL5                   String?   @db.NVarChar(5)
+  NOTL6                   String?   @db.NVarChar(20)
+  NOTL7                   String?   @db.NVarChar(500)
+  NOTL8                   String?   @db.VarChar(5000)
+  NOTM1                   String?   @db.NVarChar(1)
+  NOTM2                   String?   @db.NVarChar(1)
+  NOTM3                   String?   @db.NVarChar(4)
+  NOTM4                   String?   @db.NVarChar(4)
+  NOTM5                   String?   @db.NVarChar(1)
+  NOTM6                   String?   @db.NVarChar(50)
+  NOTM7                   String?   @db.VarChar(5000)
+  DUAL                    String?   @db.NVarChar(5)
+  EDUAL                   String?   @db.NVarChar(3)
+  EXCLS                   String?   @db.NVarChar(50)
+  TKHUS                   String?   @db.NVarChar(10)
+  DOUBLECLASS             String?   @db.NVarChar(5)
+  COOL                    String?   @db.NVarChar(10)
+  OTO                     String?   @db.NVarChar(10)
+  OWNA                    Decimal?  @db.Decimal(5, 0)
+  OWNB                    Decimal?  @db.Decimal(5, 0)
+  OWNC                    Decimal?  @db.Decimal(5, 0)
+  OPRA                    Decimal?  @db.Decimal(5, 0)
+  OPRB                    Decimal?  @db.Decimal(5, 0)
+  OPRC                    Decimal?  @db.Decimal(5, 0)
+  TGKLS                   Decimal?  @db.Decimal(2, 0)
+  BLKLS                   Decimal?  @db.Decimal(2, 0)
+  THKLS                   Decimal?  @db.Decimal(4, 0)
+  BERS                    String?   @db.NVarChar(1)
+  MAT                     String?   @db.NVarChar(1)
+  TGRGS                   Decimal?  @db.Decimal(2, 0)
+  BLRGS                   Decimal?  @db.Decimal(2, 0)
+  THRGS                   Decimal?  @db.Decimal(4, 0)
+  TGLAK                   Decimal?  @db.Decimal(2, 0)
+  TGNAK                   Decimal?  @db.Decimal(2, 0)
+  NOAPL                   Decimal?  @db.Decimal(18, 0)
+  tgsus                   Int?      @db.SmallInt
+  blsus                   Int?      @db.SmallInt
+  thsus                   Int?
+  COVERAGE                String?   @db.NVarChar(1)
+  Lokasi_Regional         String?   @db.NVarChar(50)
+  IACS                    String?   @db.NVarChar(10)
+  QSCS                    String?   @db.NVarChar(50)
+  status_ambil_sap        Boolean?
+  tgl_status_ambil_sap    DateTime? @db.SmallDateTime
+  tgl_draft               DateTime? @db.SmallDateTime
+  tgl_draft_ver_pemeriksa DateTime? @db.SmallDateTime
+  tgl_draft_ver_sm        DateTime? @db.SmallDateTime
+  equasis                 Boolean?
+  stat_reason             String?   @db.NVarChar(50)
+  NOTL7_DESC              String?   @db.VarChar(5000)
+  NOTL8_DESC              String?   @db.VarChar(5000)
+  international_ship      Boolean?
+  status_compliance       String?   @db.NVarChar(250)
+  level_of_compliance     String?   @db.NVarChar(250)
+  offshore                Boolean?
+}
+
+model MFSURVEY {
+  id        BigInt    @id(map: "PK_MFSURVEY") @default(autoincrement())
+  NOREG     Decimal?  @db.Decimal(10, 0)
+  TGMKL     Decimal?  @db.Decimal(2, 0)
+  BLMKL     Decimal?  @db.Decimal(2, 0)
+  THMKL     Decimal?  @db.Decimal(4, 0)
+  PDS       Int?
+  DSSS      DateTime? @db.SmallDateTime
+  PSP       Decimal?  @db.Decimal(1, 0)
+  PBKK      Decimal?  @db.Decimal(2, 0)
+  INFO1     String?   @db.NVarChar(30)
+  STSUR     String?   @db.NVarChar(1)
+  THNK      Decimal?  @db.Decimal(1, 0)
+  VISAL     Decimal?  @db.Decimal(2, 0)
+  VISAM     Decimal?  @db.Decimal(2, 0)
+  STSER     String?   @db.NVarChar(1)
+  TGSER     Decimal?  @db.Decimal(2, 0)
+  BLSER     Decimal?  @db.Decimal(2, 0)
+  THSER     Decimal?  @db.Decimal(4, 0)
+  STPEN     String?   @db.NVarChar(1)
+  TGCET     Decimal?  @db.Decimal(2, 0)
+  BLCET     Decimal?  @db.Decimal(2, 0)
+  THCET     Decimal?  @db.Decimal(4, 0)
+  INFO2     String?   @db.NVarChar(30)
+  NUPENTRY  String?   @db.NVarChar(50)
+  NAMAENTRY String?   @db.NVarChar(250)
+  TGLENTRY  DateTime? @db.DateTime
+  CABENTRY  String?   @db.NVarChar(250)
+}
+
+model PERSMF {
+  unik         Decimal   @id(map: "PK_PERSMF") @db.Decimal(18, 0)
+  KODE1        Decimal?  @db.Decimal(18, 0)
+  KODE2        Decimal?  @db.Decimal(18, 0)
+  KODE3        Decimal?  @db.Decimal(18, 0)
+  NMFL1        String?
+  NMFL2        String?   @db.NVarChar(255)
+  ALMFL1       String?
+  ALMFL2       String?   @db.NVarChar(500)
+  KOTAFL       String?   @db.NVarChar(255)
+  propinsi     String?   @db.NVarChar(250)
+  negara       String?   @db.NVarChar(50)
+  ZIP          Float?
+  PHONE1       String?   @db.NVarChar(255)
+  PHONE2       String?   @db.NVarChar(255)
+  email        String?   @db.NVarChar(500)
+  npwp         String?   @db.NVarChar(50)
+  NOIMOPERS    Decimal?  @db.Decimal(18, 0)
+  JNPERS       Float?
+  WILAYAH_CAB  String?   @db.NVarChar(50)
+  FAX          String?   @db.NVarChar(255)
+  TELEX        String?   @db.NVarChar(255)
+  PIC          String?   @db.VarChar(250)
+  NAMA1        String?   @db.NVarChar(255)
+  NAMA2        String?   @db.NVarChar(255)
+  NUP_ENTRY    Int?
+  TGL_ENTRY    DateTime? @db.DateTime
+  NUPAO        String?   @db.NVarChar(10)
+  kodeSAP      String?   @db.NVarChar(15)
+  kode_hpn     String?   @db.NVarChar(50)
+  as_owner     String?   @db.VarChar(50)
+  as_operator  String?   @db.VarChar(50)
+  as_shipyard  String?   @db.VarChar(50)
+  as_payment   String?   @db.VarChar(50)
+  as_agency    String?   @db.VarChar(50)
+  as_insurance String?   @db.VarChar(50)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model tbl_cabang {
+  no_cab      Int?
+  kode_cab    String?  @db.NVarChar(3)
+  kota        String?  @db.NVarChar(50)
+  kota_besar  String?  @db.NVarChar(50)
+  kode_fak    Int?
+  no_urut_cab Int?
+  klas        Boolean?
+  ks          Boolean?
+  kodeva      String?  @db.VarChar(4)
+  kodegambar  Decimal? @db.Decimal(8, 0)
+
+  @@index([kode_cab], map: "IX_tbl_cabang")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model tbl_histori_bak {
+  no_urut         String   @db.NVarChar(50)
+  jenis_aksi      String   @db.NVarChar(1)
+  tgl_aksi        DateTime @db.DateTime
+  user_id         String   @db.NVarChar(25)
+  ip_cabang       String?  @db.NVarChar(20)
+  no_bukti        Decimal? @db.Decimal(18, 0)
+  kode_beban      Int?
+  kode_rek        Int?
+  kode_sub        Int?
+  cabang          String   @db.NVarChar(3)
+  lokasi          String   @db.NVarChar(3)
+  no_invoice      String?  @db.NVarChar(5)
+  kode_jenis_surv String?  @db.NVarChar(50)
+  bulan           Int?
+  tahun           Int?
+  klas            String?  @db.NVarChar(4)
+  expedisi        Decimal? @db.Decimal(18, 0)
+  tbl_yg_diakses  String   @db.NVarChar(50)
+  file_yg_diakses String?  @db.NVarChar(100)
+  keterangan      String?  @db.NVarChar(240)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model tbl_invoice {
+  no_seri_invoice       String?   @db.NVarChar(5)
+  no_pusat              Decimal?  @db.Decimal(18, 0)
+  no_jurnal             String?   @db.NVarChar(5)
+  kode_jurnal           String?   @db.NVarChar(1)
+  tempat_survey         String?   @db.VarChar(250)
+  tgl_survey            DateTime? @db.DateTime
+  tgl_selesai_survey    DateTime? @db.DateTime
+  no_laporan            String?   @db.NVarChar(40)
+  valuta                String?   @db.NVarChar(10)
+  no_register           Decimal?  @db.Decimal(18, 0)
+  nm_obyek              String?   @db.NVarChar(250)
+  no_agenda_cab         String?   @db.NVarChar(50)
+  no_invoice            String    @db.NVarChar(20)
+  cabang                String    @db.NVarChar(3)
+  kode_jenis_surv       String    @db.NVarChar(50)
+  bulan                 Int
+  tahun_inv             Int
+  klas                  String    @db.NVarChar(3)
+  kode_beban            Int?
+  kode_rek              Int?
+  sub                   String?   @db.NVarChar(2)
+  tahun                 Int?
+  lokasi                String?   @db.NVarChar(3)
+  tgl_invoice           DateTime? @db.DateTime
+  kode_a                Int
+  kode_b                Int
+  kode_c                Int
+  jenis_kapal           String?   @db.NVarChar(150)
+  nilai_tambahan        Float?    @db.Money
+  nilai_invoice         Float?    @db.Money
+  nilai_statutori       Float?    @db.Money
+  nilai_pajak           Float?    @db.Money
+  nilai_total           Float?    @db.Money
+  nilai_invoice_ks      Float?    @db.Money
+  nilai_pajak_ks        Float?    @db.Money
+  share                 Float?    @db.Money
+  nilai_tambahan_a      Float?    @db.Money
+  nilai_invoice_a       Float?    @db.Money
+  nilai_statutori_a     Float?    @db.Money
+  nilai_pajak_a         Float?    @db.Money
+  nilai_total_a         Float?    @db.Money
+  nilai_invoice_ks_a    Float?    @db.Money
+  nilai_pajak_ks_a      Float?    @db.Money
+  share_a               Float?    @db.Money
+  nama_surveyor         String?   @db.NVarChar(30)
+  status_invoice        String?   @db.NVarChar(1)
+  tgl_status_invoice    DateTime? @db.DateTime
+  no_faktur             String?   @db.NVarChar(50)
+  keterangan            String?   @db.NVarChar(50)
+  status_acc            Boolean?
+  tgl_status_acc        DateTime? @db.DateTime
+  juru_tagih            String?   @db.NVarChar(50)
+  tgl_antar             DateTime? @db.DateTime
+  status_ppn            Boolean?
+  nilai_ppn             Float?    @db.Money
+  tgl_ppn_setor         DateTime? @db.DateTime
+  tgl_entry_ppn_setor   DateTime? @db.DateTime
+  acc_ppn_pusat         Boolean?
+  tgl_acc_ppn           DateTime? @db.DateTime
+  ket_ppn               String?   @db.NVarChar(1)
+  kode_expedisi         Int?
+  ket_invoice           String?   @db.NVarChar(1)
+  no_bukti_pph          String?   @db.NVarChar(50)
+  biaya_pph             Float?    @db.Money
+  tgl_bukti_pph         DateTime? @db.DateTime
+  acc_pph               Boolean?
+  tgl_acc_pph           DateTime? @db.DateTime
+  nup_kep_cab           Decimal?  @db.Decimal(18, 0)
+  tgl_permintaan_survey DateTime? @db.DateTime
+  contact_person        String?   @db.NVarChar(250)
+  tgl_ket_invoice       DateTime? @db.SmallDateTime
+  posisi                String?   @db.NVarChar(1)
+  ket_invoice_1         String?   @db.NVarChar(1)
+  tgl_entry_invoice     DateTime? @db.SmallDateTime
+  tgl_cetak_invoice     DateTime? @db.SmallDateTime
+  tgl_melakukan_cetak   DateTime? @db.SmallDateTime
+  no_kontrak            String?   @db.NVarChar(50)
+
+  @@index([bulan, tahun_inv, no_invoice, cabang, kode_jenis_surv, klas, kode_beban, kode_rek, sub, lokasi, tgl_invoice, kode_expedisi, nama_surveyor], map: "IX_tbl_invoice")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model tbl_invoice_ket_bak {
+  no_invoice             String   @db.NVarChar(20)
+  cabang                 String   @db.NVarChar(3)
+  kode_jenis_surv        String   @db.NVarChar(50)
+  bulan                  Int
+  tahun_inv              Int
+  klas                   String   @db.NVarChar(3)
+  kode_expedisi          Int?
+  penerimaan_BB          Boolean?
+  fee_PBB                Float?   @db.Money
+  penerimaan_BL          Boolean?
+  fee_BL                 Float?   @db.Money
+  kondisi                Boolean?
+  fee_kondisi            Float?   @db.Money
+  perombakan             Boolean?
+  fee_rombak             Float?   @db.Money
+  pembaruan              Boolean?
+  fee_pembaruan          Float?   @db.Money
+  tahunan                Boolean?
+  fee_tahunan            Float?   @db.Money
+  antara                 Boolean?
+  fee_antara             Float?   @db.Money
+  antara_tahunan         Boolean?
+  fee_antara_tahunan     Float?   @db.Money
+  cms                    Boolean?
+  fee_cms                Float?   @db.Money
+  chs                    Boolean?
+  fee_chs                Float?   @db.Money
+  re_class               Boolean?
+  fee_re_class           Float?   @db.Money
+  under_water            Boolean?
+  fee_under_water        Float?   @db.Money
+  perpanjangan_kelas     Boolean?
+  fee_perpanjangan       Float?   @db.Money
+  botol_angin            Boolean?
+  fee_botol              Float?   @db.Money
+  ketel                  Boolean?
+  fee_ketel              Float?   @db.Money
+  poros_baling           Boolean?
+  fee_poros              Float?   @db.Money
+  penundaan_poros        Boolean?
+  fee_penundaan_poros    Float?   @db.Money
+  pengedokan             Boolean?
+  fee_pengedokan         Float?   @db.Money
+  penundaan_pengedokan   Boolean?
+  fee_tunda_dok          Float?   @db.Money
+  extension              Boolean?
+  fee_extension          Float?   @db.Money
+  otomasi                Boolean?
+  fee_otomasi            Float?   @db.Money
+  material               String?  @db.NVarChar(100)
+  fee_material           Float?   @db.Money
+  material1              String?  @db.NVarChar(100)
+  fee_material1          Float?   @db.Money
+  material2              String?  @db.NVarChar(100)
+  fee_material2          Float?   @db.Money
+  material3              String?  @db.NVarChar(100)
+  fee_material3          Float?   @db.Money
+  material4              String?  @db.NVarChar(100)
+  fee_material4          Float?   @db.Money
+  khusus                 String?  @db.NVarChar(150)
+  fee_khusus             Float?   @db.Money
+  ganti_nama_kapal       Boolean?
+  fee_ganti_nama_kapal   Float?   @db.Money
+  ganti_nama_pemilik     Boolean?
+  fee_ganti_nama_pemilik Float?   @db.Money
+  ganti_grt              Boolean?
+  fee_ganti_grt          Float?   @db.Money
+  ganti_bendera          Boolean?
+  fee_ganti_bendera      Float?   @db.Money
+  lain_lain_KI           String?  @db.NVarChar(100)
+  fee_lain_lain_KI       Float?   @db.Money
+  lain_lain_KI1          String?  @db.NVarChar(100)
+  fee_lain_lain_KI1      Float?   @db.Money
+  lain_lain_KI2          String?  @db.NVarChar(100)
+  fee_lain_lain_KI2      Float?   @db.Money
+  lain_lain_KI3          String?  @db.NVarChar(100)
+  fee_lain_lain_KI3      Float?   @db.Money
+  lain_lain_KI4          String?  @db.NVarChar(100)
+  fee_lain_lain_KI4      Float?   @db.Money
+  instalasi              Boolean?
+  fee_instalasi          Float?   @db.Money
+  load_line              Boolean?
+  fee_load_line          Float?   @db.Money
+  cargo                  Boolean?
+  fee_cargo              Float?   @db.Money
+  sertifikasi            Boolean?
+  fee_sertifikasi        Float?   @db.Money
+  ket_ism                String?  @db.NVarChar(100)
+  ism                    Boolean?
+  fee_ism                Float?   @db.Money
+  isps                   Boolean?
+  ket_isps               String?  @db.NVarChar(50)
+  fee_isps               Float?   @db.Money
+  mlc                    Boolean?
+  ket_mlc                String?  @db.NVarChar(50)
+  fee_mlc                Float?   @db.Money
+  lain_lain_S            String?  @db.NVarChar(100)
+  fee_lain_lain_S        Float?   @db.Money
+  lain_lain_S1           String?  @db.NVarChar(100)
+  fee_lain_lain_S1       Float?   @db.Money
+  lain_lain_S2           String?  @db.NVarChar(100)
+  fee_lain_lain_S2       Float?   @db.Money
+  crane                  String?  @db.NVarChar(200)
+  fee_crane              Float?   @db.Money
+  pressure               String?  @db.NVarChar(200)
+  fee_pressure           Float?   @db.Money
+  wps                    String?  @db.NVarChar(200)
+  fee_wps                Float?   @db.Money
+  x_ray                  String?  @db.NVarChar(200)
+  fee_xray               Float?   @db.Money
+  lain_lain_Uji          String?  @db.NVarChar(200)
+  fee_lain_lain_uji      Float?   @db.Money
+  platform               String?  @db.NVarChar(200)
+  fee_platform           Float?   @db.Money
+  fee_trans              Float?   @db.Money
+  fee_ahli               Float?   @db.Money
+  fee_fax_telp           Float?   @db.Money
+  fee_libur              Float?   @db.Money
+  ket_expen              String   @db.NVarChar(50)
+  no_surat               String?  @db.NVarChar(50)
+  no_sertifikat          String?  @db.NVarChar(50)
+  khusus1                String?  @db.NVarChar(200)
+  fee_khusus1            Float?   @db.Money
+  fee_work               Float?   @db.Money
+  fee_wait               Float?   @db.Money
+  pnbp                   Float?   @db.Money
+  laid_up                Boolean?
+  fee_laid_up            Float?   @db.Money
+
+  @@index([bulan, tahun_inv, no_invoice, cabang, kode_jenis_surv, klas, kode_expedisi], map: "IX_tbl_invoice_ket")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model tbl_invoice_ket_rek_bak {
+  no_invoice      String   @db.NVarChar(20)
+  cabang          String   @db.NVarChar(3)
+  kode_jenis_surv String   @db.NVarChar(50)
+  bulan           Int
+  tahun_inv       Int
+  klas            String   @db.NVarChar(3)
+  kode_expedisi   Int?
+  no_rek_bank     String   @db.NVarChar(20)
+  format_header   Decimal  @db.Decimal(18, 0)
+  format_header1  String?  @db.Text
+  status_printing Boolean
+  tgl_printing    DateTime @db.DateTime
+  no_surat_bki    String?  @db.NVarChar(50)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model tbl_koreksi {
+  no_urut         Decimal?  @db.Decimal(18, 0)
+  no_jurnal       Int?
+  jenis_jurnal    String?   @db.NVarChar(1)
+  lokasi          String?   @db.NVarChar(3)
+  bulan           Int?
+  tahun           Int?
+  kode_beban      Int?
+  kode_rek        Int?
+  sub             String?   @db.NVarChar(2)
+  cabang          String?   @db.NVarChar(3)
+  transaksi       String?   @db.NVarChar(2)
+  total_biaya     Float?    @db.Money
+  uraian          String?   @db.NVarChar(200)
+  tgl_koreksi     DateTime? @db.SmallDateTime
+  status_koreksi  String?   @db.VarChar(1)
+  tgl_posting     DateTime? @db.DateTime
+  posisi          String?   @db.NVarChar(1)
+  keterangan      Int?
+  no_invoice      String?   @db.NVarChar(5)
+  kode_jenis_surv String?   @db.NVarChar(50)
+  bulan_inv       Int?
+  tahun_inv       Int?
+  klas            String?   @db.NVarChar(5)
+  kode_expedisi   Int?
+  no_urut_jurnal  Int?
+  sementara       String?   @db.NVarChar(50)
+  nm_perusahaan   String?   @db.NVarChar(200)
+  hutang          String?   @db.NVarChar(50)
+
+  @@ignore
+}
+
+model TBL_KOTA {
+  KOKOT String? @db.NVarChar(5)
+  KOTA  String? @db.NVarChar(50)
+  id    Int     @id(map: "PK_TBL_KOTA") @default(autoincrement())
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model tbl_kurs {
+  kode_kurs String? @db.NVarChar(10)
+  bulan     Int?
+  tahun     Int?
+  nominal   Float?  @db.Money
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model tbl_new_owner_bak {
+  nama1         String?   @db.NVarChar(200)
+  nama2         String?   @db.NVarChar(200)
+  almfl1        String?   @db.NVarChar(250)
+  almfl2        String?   @db.NVarChar(250)
+  kotafl        String?   @db.NVarChar(100)
+  zip           Float?
+  phone1        String?   @db.NVarChar(50)
+  phone2        String?   @db.NVarChar(50)
+  fax           String?   @db.NVarChar(50)
+  jnpers        Float?
+  tgl_entry     DateTime? @db.DateTime
+  npwp          String?   @db.NVarChar(50)
+  status        Boolean?
+  no_permintaan String?   @db.NVarChar(20)
+  cabang        String?   @db.NVarChar(5)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model tbl_owner_bak {
+  KODE1       Int
+  KODE2       Int
+  KODE3       Int
+  nama1       String?   @db.NVarChar(255)
+  nama2       String?   @db.NVarChar(255)
+  ALMFL1      String?   @db.NVarChar(255)
+  ALMFL2      String?   @db.NVarChar(255)
+  KOTAFL      String?   @db.NVarChar(100)
+  ZIP         Float?
+  PHONE1      String?   @db.NVarChar(50)
+  PHONE2      String?   @db.NVarChar(50)
+  FAX         String?   @db.NVarChar(50)
+  JNPERS      Float?
+  TGL_ENTRY   DateTime? @db.DateTime
+  NPWP        String    @db.NVarChar(50)
+  EMAIL       String?   @db.VarChar(150)
+  WILAYAH_CAB String?   @db.NVarChar(50)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model tbl_pelunasan {
+  no_invoice          String?   @db.NVarChar(20)
+  kode_jenis_surv     String?   @db.NVarChar(50)
+  bulan               Int?
+  cabang              String?   @db.NVarChar(3)
+  tahun_inv           Decimal?  @db.Decimal(4, 0)
+  klas                String?   @db.NVarChar(3)
+  kode_expedisi       Int?
+  VAL                 String?   @db.NVarChar(5)
+  NUM                 Float?
+  LOKPY               String?   @db.NVarChar(3)
+  BL                  String?   @db.NVarChar(2)
+  TH                  String?   @db.NVarChar(4)
+  KASR                Float?    @db.Money
+  BANKR               Float?    @db.Money
+  KUANG               String?   @db.NVarChar(5)
+  KASV                Float?    @db.Money
+  BANKV               Float?    @db.Money
+  REALP               Float?    @db.Money
+  tgl_entry_pelunasan DateTime? @db.DateTime
+  no_bukti            String?   @db.NVarChar(100)
+  sisa                Float?    @db.Money
+  keterangan          String?   @db.NVarChar(100)
+  tgl_edit_pelunasan  DateTime? @db.DateTime
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model TBL_POSTING_PAJAK {
+  no_faktur             String   @db.NVarChar(20)
+  tgl_faktur            DateTime @db.SmallDateTime
+  cabang                String   @db.NVarChar(2)
+  lokasi                String   @db.NVarChar(2)
+  Kode_Pajak            String   @db.NVarChar(1)
+  Kode_Transaksi        Int
+  Kode_Status           Int
+  Kode_Dokumen          Int
+  NPWP_Lawan_Transaksi  String   @db.NVarChar(20)
+  Nama_Lawan_Transaksi  String   @db.NVarChar(50)
+  Kode_Cabang           String   @db.NVarChar(3)
+  Digit_Tahun           Int
+  Nomor_Seri_FP_PEB_PIB String?  @db.NVarChar(20)
+  Tanggal_Faktur        String   @db.NVarChar(10)
+  Tanggal_SSP           String?  @db.NVarChar(10)
+  Masa_Pajak            Int
+  Tahun_Pajak           Int
+  Pembetulan            Int
+  DPP                   Decimal  @db.Decimal(18, 0)
+  PPN                   Decimal  @db.Decimal(18, 0)
+  PPnBM                 Decimal  @db.Decimal(18, 0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model tbl_rekanan {
+  no            Int?
+  nm_perusahaan String? @db.NVarChar(100)
+  npwp          String? @db.NVarChar(50)
+  alamat        String? @db.NVarChar(200)
+
+  @@ignore
+}
+
+model tbl_surveyor {
+  id_surveyor      Int      @id(map: "PK_tbl_surveyor") @default(autoincrement())
+  nup              String   @db.NVarChar(9)
+  inisial          String?  @db.NVarChar(3)
+  nup_surveyor_sap String?  @db.NVarChar(50)
+  surveyor_name    String?  @db.NVarChar(50)
+  position         String?  @db.NVarChar(20)
+  cabang           String?  @db.NVarChar(50)
+  kode_cab         String?  @db.NVarChar(3)
+  Keterangan       String?  @db.NVarChar(250)
+  handphone        String?  @db.VarChar(20)
+  klas             Boolean?
+  ks               Boolean?
+  statutory        Boolean?
+  iacs             Boolean?
+  fsurveyor        String?  @db.NVarChar(5)
+  auditor          String?  @db.NVarChar(5)
+  matkom           String?  @db.NVarChar(5)
+  no_stempel       String?  @db.NVarChar(50)
+
+  @@index([inisial], map: "IX_tbl_surveyor")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model tbl_transaksi {
+  no_urut         Float?
+  kode_jurnal     String?   @db.NVarChar(1)
+  no_jurnal       String?   @db.NVarChar(5)
+  bulan           Int?
+  tahun           Int?
+  no_bukti        Int?
+  no_printing     Decimal?  @db.Decimal(18, 0)
+  kode_beban      Int?
+  kode_rek        Int?
+  sub             Int?
+  cabang          String?   @db.NVarChar(3)
+  lokasi          String?   @db.NVarChar(3)
+  valuta          String?   @db.NVarChar(10)
+  total_biaya     Float?    @db.Money
+  total_biaya_a   Float?    @db.Money
+  tgl_entry       DateTime? @db.SmallDateTime
+  tgl_bayar       DateTime? @db.SmallDateTime
+  stat_transaksi  Boolean?
+  transaksi       String?   @db.NVarChar(1)
+  posisi          String?   @db.NVarChar(1)
+  no_udp          Int?
+  kode_p          String?   @db.NVarChar(50)
+  nama            String?   @db.NVarChar(50)
+  uraian          String?
+  terbilang       String?   @db.NVarChar(254)
+  status_acc      Boolean
+  tgl_acc         DateTime? @db.SmallDateTime
+  no_urut_inv     Float?
+  no_invoice      String?   @db.NVarChar(20)
+  kode_jenis_surv String?   @db.NVarChar(50)
+  bulan_inv       Int?
+  tahun_inv       Int?
+  klas            String?   @db.NVarChar(3)
+  kode_expedisi   Int?
+  keterangan      Int?
+  nm_rekanan      String?   @db.NVarChar(254)
+  nm_divisi       String?   @db.NVarChar(4)
+  no_faktur       String?   @db.NVarChar(25)
+  npwp            String?   @db.NVarChar(25)
+  no_order        String?   @db.NVarChar(50)
+  ket_posisi      Int?
+  ket_masa_ppn    String?   @db.NVarChar(30)
+  status_pusat    String?   @db.NVarChar(1)
+  jenis_barang    String?   @db.NVarChar(100)
+
+  @@index([no_bukti, kode_beban, kode_rek, sub, tgl_bayar, bulan, tahun, transaksi, posisi, cabang, lokasi, no_invoice, kode_jenis_surv, bulan_inv, tahun_inv, klas], map: "IX_tbl_transaksi")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model tbl_up_pusat {
+  kode_p     Decimal? @db.Decimal(18, 0)
+  kode_up    String?  @db.NVarChar(50)
+  nama_up    String?  @db.NVarChar(100)
+  keterangan String?  @db.NVarChar(200)
+
+  @@ignore
+}
+
+model tbl_user {
+  uid             String    @id(map: "PK_tbl_user") @db.NVarChar(50)
+  password        String?   @db.NVarChar(50)
+  nama            String?   @db.NVarChar(50)
+  lokasi          String?   @db.NVarChar(3)
+  tgl_login       DateTime? @db.SmallDateTime
+  tgl_logout      DateTime? @db.SmallDateTime
+  tgl_update_pass DateTime? @db.SmallDateTime
+  status_konek    Boolean
+  level_akses     String?   @db.NVarChar(50)
+  acc_cabang      String?   @db.NVarChar(50)
+  no_hp           String?   @db.NVarChar(50)
+}

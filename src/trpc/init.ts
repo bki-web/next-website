@@ -1,14 +1,15 @@
 import { initTRPC } from "@trpc/server";
 import { cache } from "react";
 import superjson from "superjson";
+import prisma from "@/lib/prisma"
 
 export const createTRPCContext = cache(async () => {
   return {
-    // auth : ...
+    prisma
   };
 });
 
-const t = initTRPC.create({
+const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
 });
 

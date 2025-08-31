@@ -1,7 +1,7 @@
 "use client"
 
 import PageTransition from "@/components/page-transition";
-import { Fragment } from "react";
+import { Fragment, Suspense, useRef } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,6 +17,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { trpc } from "@/trpc/react";
+import ListShipRegister from "./components/ListShipRegister";
+import LoadingFallback from "./components/LoadingFallback";
+import React from "react";
 
 interface RouteItem {
   text: string;
@@ -42,9 +46,9 @@ const routes: RouteItem[] = [
 ];
 
 const formSchema = z.object({
-  shipName: z.string().optional(),
-  registerNo: z.string().optional(),
-  imoNo: z.string().optional(),
+  nmkpl: z.string().optional(),
+  noreg: z.string().optional(),
+  noimo: z.string().optional(),
   minGT: z.string().optional(),
   maxGT: z.string().optional(),
 });
@@ -52,18 +56,29 @@ const formSchema = z.object({
 type FormSchema = z.infer<typeof formSchema>;
 
 export default function ShipRegisterPage() {
+  const [submitted, setSubmitted] = React.useState(false);
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      shipName: "",
-      registerNo: "",
-      imoNo: "",
+      nmkpl: "",
+      noreg: "",
+      noimo: "",
       minGT: "",
       maxGT: "",
     },
   });
 
+   const resultRef = useRef<HTMLDivElement>(null);
+  
+  const { data, isLoading, isError, error } = trpc.shipRegister.search.useQuery(form.getValues());
   function onSubmit(values: FormSchema) {
+    setSubmitted(true);
+    if (resultRef.current) {
+      resultRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start', // Aligns the top of the element with the top of the viewport
+      });
+    }
     // This function is called when the form is submitted and validated successfully.
     // You can handle your search logic here, e.g., make an API call.
     console.log("Form submitted with values:", values);
@@ -73,7 +88,7 @@ export default function ShipRegisterPage() {
     <div className="relative min-h-screen w-full overflow-hidden">
       <PageTransition />
 
-      <section className="w-full relative overflow-hidden">
+      <section className="w-full relative overflow-hidden min-h-screen">
         <div className="absolute inset-0 bg-[url('/our-services/classification/slider-1.jpg')] bg-cover bg-center"/>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A436A]/60 to-black/60"/>
         
@@ -110,7 +125,7 @@ export default function ShipRegisterPage() {
               <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4 z-10">
                 <FormField
                   control={form.control}
-                  name="shipName"
+                  name="nmkpl"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="lg:text-2xl text-lg text-white text-left">Ship Name</FormLabel>
@@ -129,7 +144,7 @@ export default function ShipRegisterPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                   <FormField
                     control={form.control}
-                    name="registerNo"
+                    name="noreg"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="lg:text-2xl text-lg text-white text-left">Register No</FormLabel>
@@ -146,7 +161,7 @@ export default function ShipRegisterPage() {
                   />
                   <FormField
                     control={form.control}
-                    name="imoNo"
+                    name="noimo"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="lg:text-2xl text-lg text-white text-left">IMO No.</FormLabel>
@@ -214,6 +229,10 @@ export default function ShipRegisterPage() {
           </div>
         </div>
       </section>
+      <div id="ship-register-result" ref={resultRef}>
+        {(isLoading && submitted) && <LoadingFallback /> }
+        {!isLoading && submitted && <ListShipRegister data={data} />}
+      </div>
     </div>
   );
 }
