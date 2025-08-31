@@ -1,14 +1,15 @@
 import { Prisma } from "@prisma/client";
 import { baseProcedure, createTRPCRouter } from "../init";
 import z from "zod";
+import { ShipRegister } from "@/types/shipRegisterResult";
 
 export const shipRegisterRouter = createTRPCRouter({
   search: baseProcedure
     .input(
       z.object({
+        nmkpl: z.string().optional(),
         noreg: z.string().optional(),
         noimo: z.string().optional(),
-        nmkpl: z.string().optional(),
         minGT: z.string().optional(),
         maxGT: z.string().optional(),
         skip: z.number().min(0).optional(),
@@ -19,10 +20,12 @@ export const shipRegisterRouter = createTRPCRouter({
       const skipValue = input.skip || 0;
       const takeValue = input.take || 10;
       const endRow = skipValue + takeValue;
-      if(!input.noreg) {
-        return undefined
+      const noreg = input.noreg ? +input.noreg : undefined;
+
+      if (!noreg) {
+        return [];
       }
-      return []
+
       const result = await ctx.prisma.$queryRaw(
         Prisma.sql`
           SELECT *
@@ -35,6 +38,7 @@ export const shipRegisterRouter = createTRPCRouter({
                   a.dual,
                   a.doubleclass,
                   a.stat,
+                  a.status_compliance,
                   a.mat,
                   a.kojen,
                   a.notl1,
@@ -89,8 +93,9 @@ export const shipRegisterRouter = createTRPCRouter({
               WHERE a.noreg = ${input.noreg}
           ) AS T
           WHERE T.RowNum > ${skipValue} AND T.RowNum <= ${endRow}
-      `);
+      `
+      );
 
-      return result as any[];
+      return result as ShipRegister[];
     }),
 });
