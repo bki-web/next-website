@@ -1,0 +1,76 @@
+"use client";
+import Image from "next/image";
+import {motion} from "framer-motion";
+import {classes} from "@/utils/string";
+
+export type Milestone = {
+    year: string;
+    title: string;
+    desc: string;
+    imageUrl?: string;
+};
+
+type Props = { milestones: Milestone[] };
+
+export default function MilestoneTimeline({milestones}: Props) {
+    return (
+        <section className="relative w-full bg-[#0A436A] text-white">
+            {milestones.map((m, i) => {
+                const isLeft = i % 2 === 0;
+                return (
+                    <motion.div
+                        key={m.year}
+                        initial={{opacity: 0, y: 60}}
+                        whileInView={{opacity: 1, y: 0}}
+                        transition={{type: "spring", stiffness: 100, damping: 18}}
+                        viewport={{once: true, margin: "-20% 0px"}}
+                        className={classes(
+                            "relative grid grid-cols-1 md:grid-cols-2 min-h-[480px] lg:min-h-[560px] overflow-hidden",
+                        )}
+                    >
+                        {/* CONTENT */}
+                        <div
+                            className={[
+                                "flex flex-col justify-center p-10 md:p-16 lg:p-20",
+                                isLeft ? "order-1 bg-[#0A436A]" : "order-2 bg-[#0A436A] items-end text-end",
+                            ].join(" ")}
+                            style={{
+                                clipPath: isLeft
+                                    ? "polygon(0 0, 100% 0, 85% 100%, 0% 100%)"
+                                    : "polygon(15% 0, 100% 0, 100% 100%, 0 100%)",
+                            }}
+                        >
+                            <p className="text-5xl md:text-6xl font-bold mb-6 pb-6 border-b border-white w-full">{m.year}</p>
+                            <h3 className="text-2xl md:text-3xl font-semibold">{m.title}</h3>
+                            <p className="mt-4 text-white/90 leading-relaxed text-sm md:text-base">
+                                {m.desc}
+                            </p>
+                        </div>
+
+                        {/* IMAGE */}
+                        <div
+                            className={[
+                                "relative lg:!h-full !h-[25vh]",
+                                isLeft ? "order-2" : "order-1",
+                            ].join(" ")}
+                            style={{
+                                clipPath: isLeft
+                                    ? "polygon(0 0, 100% 0, 100% 100%, 15% 100%)"
+                                    : "polygon(0 0, 85% 0, 100% 100%, 0 100%)",
+                            }}
+                        >
+                            {m.imageUrl && (
+                                <Image
+                                    src={m.imageUrl}
+                                    alt={m.title}
+                                    fill
+                                    className="object-cover lg:!h-full !h-[25vh]"
+                                />
+                            )}
+                        </div>
+                    </motion.div>
+                );
+            })}
+        </section>
+    );
+}
