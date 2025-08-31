@@ -21,10 +21,12 @@ export const shipRegisterRouter = createTRPCRouter({
       const takeValue = input.take || 10;
       const endRow = skipValue + takeValue;
       const noreg = input.noreg ? +input.noreg : undefined;
+      const noimo = input.noimo ? +input.noimo : undefined;
+      const nmkpl = input.nmkpl ? `%${input.nmkpl}%` : undefined;
+      const minGT = input.minGT ? +input.minGT : undefined;
+      const maxGT = input.maxGT ? +input.maxGT : undefined;
 
-      if (!noreg) {
-        return [];
-      }
+      const isUsingWhere = !!(noreg || noimo || nmkpl || minGT || maxGT);
 
       const result = await ctx.prisma.$queryRaw(
         Prisma.sql`
@@ -82,7 +84,6 @@ export const shipRegisterRouter = createTRPCRouter({
               LEFT JOIN
                   (SELECT TOP 1 m.noreg, m.konot
                   FROM mfnotasi m
-                  WHERE m.noreg = ${input.noreg}
                   ORDER BY m.no_urut ASC) AS m
                   ON a.noreg = m.noreg
               LEFT JOIN mfknot k ON m.konot = k.konot
@@ -90,7 +91,12 @@ export const shipRegisterRouter = createTRPCRouter({
               LEFT JOIN tbl_kota c ON a.kokot = c.kokot
               LEFT JOIN mfflag d ON a.kflag = d.kflag
               LEFT JOIN mfsurvey e ON a.noreg = e.noreg
-              WHERE a.noreg = ${input.noreg}
+              WHERE 1=1
+              ${noreg ? Prisma.sql` AND a.noreg = ${noreg}` : Prisma.empty}
+              ${noimo ? Prisma.sql` AND a.noimo = ${noimo}` : Prisma.empty}
+              ${nmkpl ? Prisma.sql` AND a.nmkpl LIKE ${nmkpl}` : Prisma.empty}
+              ${minGT ? Prisma.sql` AND a.notl5 >= ${minGT}` : Prisma.empty}
+              ${maxGT ? Prisma.sql` AND a.notl5 <= ${maxGT}` : Prisma.empty}
           ) AS T
           WHERE T.RowNum > ${skipValue} AND T.RowNum <= ${endRow}
       `

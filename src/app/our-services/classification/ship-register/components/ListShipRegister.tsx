@@ -1,6 +1,6 @@
 import { match, P } from "ts-pattern";
 import NoResultsCard from "./NoResultsCard";
-import Pagination from "./Pagination";
+import PaginationData from "./PaginationData";
 import { PrismaRawQuery } from "@/types/prismaRawQuery";
 import { ShipRegister } from "@/types/shipRegisterResult";
 import { cn } from "@/lib/utils";
@@ -39,7 +39,7 @@ export default function ListShipRegister({
     // search not yet initiated
     return <div className="hidden" />;
   }
-  console.log(data, "xxxxx");
+  
   return (
     <section className="w-full flex flex-col lg:py-20 py-10 lg:px-24 px-4 lg:gap-y-8 gap-y-4 bg-[#E2E7F0]">
       <p className="lg:text-6xl text-3xl text-[#0A436A] font-bold">Result</p>
@@ -83,8 +83,8 @@ export default function ListShipRegister({
 
                       {/* Meta rows (FLEX) */}
                       <div className="mt-3 flex flex-wrap gap-y-3 border-t border-b border-[#C8C8C8] py-4">
-                        <MetaItem label="Flag" value="Indonesia" />
-                        <MetaItem label="Type of Ship" value="Speed Boat" />
+                        <MetaItem label="Flag" value={ship.flag || "-"} />
+                        <MetaItem label="Type of Ship" value={ship.tyshp || "-"} />
                         <MetaItem
                           label="Status Compliance"
                           value={
@@ -115,7 +115,7 @@ export default function ListShipRegister({
                 </article>
               ))}
 
-              <Pagination />
+              {/* <PaginationData /> */}
             </>
           ))
           .otherwise(() => (
