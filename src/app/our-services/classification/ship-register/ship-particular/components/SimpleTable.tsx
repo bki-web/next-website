@@ -1,5 +1,8 @@
+"use client"
+
 export type Column<T> = { key: keyof T; title: string; align?: "left" | "center" | "right" };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function SimpleTable<T extends Record<string, any>>({
                                                                        columns,
                                                                        data,

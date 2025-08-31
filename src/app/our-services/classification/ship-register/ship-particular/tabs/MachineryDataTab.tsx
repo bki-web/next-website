@@ -1,7 +1,5 @@
-import SpecGrid from "@/app/our-services/classification/ship-register/ship-particular/components/SpecGrid";
-import SimpleTable, {
-    Column
-} from "@/app/our-services/classification/ship-register/ship-particular/components/SimpleTable";
+import SimpleTable, { Column } from "../components/SimpleTable";
+import SpecGrid from "../components/SpecGrid";
 
 type MainEngineRow = {
     no: string;

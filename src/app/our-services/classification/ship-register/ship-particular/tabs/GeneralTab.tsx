@@ -1,5 +1,5 @@
 import Image from "next/image";
-import SpecGrid from "@/app/our-services/classification/ship-register/ship-particular/components/SpecGrid";
+import SpecGrid from "../components/SpecGrid";
 
 const rows = [
     {

@@ -1,4 +1,5 @@
-import SpecGrid, {Row} from "@/app/our-services/classification/ship-register/ship-particular/components/SpecGrid";
+import SpecGrid, { Row } from "../components/SpecGrid";
+
 
 export default function OwnerTab() {
     const Alamat = ({

@@ -1,9 +1,8 @@
 import PageTransition from "@/components/page-transition";
 import Hero from "@/components/Hero";
 import {ArrowLeft, Download} from "lucide-react";
-import ShipParticularContent
-    from "@/app/our-services/classification/ship-register/ship-particular/components/ShipParticularContent";
 import Link from "next/link";
+import { ShipParticularContent } from "./components/ShipParticularContent";
 
 export default function ShipParticular() {
     return (

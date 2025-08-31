@@ -1,14 +1,14 @@
 "use client";
 import {useState} from "react";
-import GeneralTab from "@/app/our-services/classification/ship-register/ship-particular/tabs/GeneralTab";
-import Pill from "@/app/our-services/classification/ship-register/ship-particular/components/Pill";
-import Badge from "@/app/our-services/classification/ship-register/ship-particular/components/Badge";
 import {motion} from "framer-motion";
-import {classes} from "@/utils/string";
-import HullDataTab from "@/app/our-services/classification/ship-register/ship-particular/tabs/HullDataTab";
-import MachineryDataTab from "@/app/our-services/classification/ship-register/ship-particular/tabs/MachineryDataTab";
-import OwnerTab from "@/app/our-services/classification/ship-register/ship-particular/tabs/OwnerTab";
-import SurvetStatusTab from "@/app/our-services/classification/ship-register/ship-particular/tabs/SurveyStatusTab";
+import Badge from "./Badge";
+import Pill from "./Pill";
+import { classes } from "@/utils/string";
+import GeneralTab from "../tabs/GeneralTab";
+import HullDataTab from "../tabs/HullDataTab";
+import MachineryDataTab from "../tabs/MachineryDataTab";
+import OwnerTab from "../tabs/OwnerTab";
+import SurvetStatusTab from "../tabs/SurveyStatusTab";
 
 const tabs = [
     {key: "general", label: "General Data"},
@@ -18,7 +18,7 @@ const tabs = [
     {key: "survey", label: "Survey Status"},
 ];
 
-export default function ShipParticularContent() {
+export function ShipParticularContent() {
     const [activeTab, setActiveTab] = useState("general");
     const activeIndex = tabs.findIndex(tab => tab.key === activeTab);
 
