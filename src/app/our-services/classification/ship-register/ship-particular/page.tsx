@@ -1,8 +1,9 @@
 import PageTransition from "@/components/page-transition";
 import Hero from "@/components/Hero";
-import {Download} from "lucide-react";
+import {ArrowLeft, Download} from "lucide-react";
 import ShipParticularContent
     from "@/app/our-services/classification/ship-register/ship-particular/components/ShipParticularContent";
+import Link from "next/link";
 
 export default function ShipParticular() {
     return (
@@ -45,7 +46,12 @@ export default function ShipParticular() {
                 }
             />
 
-            <section className="w-full flex flex-col lg:py-20 py-10 lg:px-24 px-4 lg:gap-y-8 gap-y-4 bg-[#E2E7F0]">
+            <section className="w-full flex flex-col lg:py-5 py-2.5 lg:px-24 px-4 lg:gap-y-5 gap-y-2.5 bg-[#E2E7F0]">
+                <Link href={'/our-services/classification/ship-register'}
+                      className="flex items-center gap-2 cursor-pointer transition-colors duration-500 rounded-lg hover:bg-[#0A436A]/10 w-fit px-2">
+                    <ArrowLeft className="text-[#0A436A]"/>
+                    <p className="text-[#0A436A] lg:text-xl text-base font-semibold">Back</p>
+                </Link>
                 <ShipParticularContent/>
             </section>
         </div>

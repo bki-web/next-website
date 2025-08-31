@@ -1,5 +1,14 @@
 "use client";
 import {useState} from "react";
+import GeneralTab from "@/app/our-services/classification/ship-register/ship-particular/tabs/GeneralTab";
+import Pill from "@/app/our-services/classification/ship-register/ship-particular/components/Pill";
+import Badge from "@/app/our-services/classification/ship-register/ship-particular/components/Badge";
+import {motion} from "framer-motion";
+import {classes} from "@/utils/string";
+import HullDataTab from "@/app/our-services/classification/ship-register/ship-particular/tabs/HullDataTab";
+import MachineryDataTab from "@/app/our-services/classification/ship-register/ship-particular/tabs/MachineryDataTab";
+import OwnerTab from "@/app/our-services/classification/ship-register/ship-particular/tabs/OwnerTab";
+import SurvetStatusTab from "@/app/our-services/classification/ship-register/ship-particular/tabs/SurveyStatusTab";
 
 const tabs = [
     {key: "general", label: "General Data"},
@@ -11,121 +20,72 @@ const tabs = [
 
 export default function ShipParticularContent() {
     const [activeTab, setActiveTab] = useState("general");
+    const activeIndex = tabs.findIndex(tab => tab.key === activeTab);
 
     return (
-        <div className="w-full max-w-5xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+        <div className="w-full mx-auto bg-white rounded-xl shadow-md overflow-hidden p-3 lg:p-5">
             {/* Header */}
-            <div className="flex justify-between items-center p-4 border-b">
-                <div className="flex items-center">
-                    <h1 className="font-bold text-xl">PROSPERO 9</h1>
-                    <p className="text-sm text-gray-600">
-                        Register No: <span className="font-semibold">11635</span>
-                    </p>
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between lg:pb-4 pb-2">
+                <div className="flex items-center gap-3 lg:flex-row flex-col">
+                    <h2 className="text-lg md:text-xl font-bold text-slate-900">Speed Boat
+                        GT11X</h2>
+                    <Badge>Register No: <span className="ml-1">31873193</span></Badge>
                 </div>
-                <div className="flex gap-4 items-center">
-                    <p className="text-sm">
-                        IMO: <span className="font-semibold">9530840</span>
-                    </p>
-                    <p className="text-sm">
-                        GT: <span className="font-semibold">1212</span>
-                    </p>
-                    <span className="bg-green-600 text-white px-3 py-1 rounded-md text-xs">
-            Aktif
-          </span>
+                <div className="flex lg:flex-row flex-col gap-2 shrink-0 self-start">
+                    <Pill><span className="mr-1 opacity-70">IMO:</span> 69753922</Pill>
+                    <Pill>GT1212</Pill>
+                    <Pill className="!bg-green-500 text-white">Aktif</Pill>
                 </div>
             </div>
 
             {/* Tabs */}
-            <div className="flex border-b">
-                {tabs.map((tab) => (
-                    <button
-                        key={tab.key}
-                        onClick={() => setActiveTab(tab.key)}
-                        className={`flex-1 py-3 text-sm font-semibold transition 
-              ${
-                            activeTab === tab.key
-                                ? "bg-blue-900 text-white"
-                                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                        }`}
-                    >
-                        {tab.label}
-                    </button>
-                ))}
+            <div className="border-y lg:py-3 py-2">
+                <div className="flex bg-[#0A436A] text-white/50 px-1 rounded-full relative">
+                    {/* Highlight geser */}
+                    <motion.div
+                        className="absolute inset-1 rounded-full bg-white"
+                        initial={false}
+                        animate={{
+                            x: `${activeIndex * 99.25}%`,
+                            width: `${100 / tabs.length}%`,
+                        }}
+                        transition={{type: "spring", stiffness: 500, damping: 30}}
+                    />
+                    {tabs.map((tab) => (
+                        <button
+                            key={tab.key}
+                            onClick={() => setActiveTab(tab.key)}
+                            className={classes(
+                                `flex-1 z-10 my-1 py-1 lg:text-sm text-xs font-semibold rounded-full transition-colors cursor-pointer`,
+                                activeTab === tab.key ? "text-[#0A436A]" : "text-white/70 hover:text-white"
+                            )}
+                        >
+                            {tab.label}
+                        </button>
+                    ))}
+                </div>
             </div>
 
             {/* Content */}
             <div className="p-6 text-sm">
                 {activeTab === "general" && (
-                    <div className="space-y-4">
-                        <div className="grid md:grid-cols-2 gap-4">
-                            <div>
-                                <p>
-                                    <span className="font-semibold">Material:</span> LOGAM
-                                </p>
-                                <p>
-                                    <span className="font-semibold">Bendera:</span> INDONESIA
-                                </p>
-                                <p>
-                                    <span className="font-semibold">Jenis Kapal:</span>{" "}
-                                    OFFSHORE SUPPORT VESSEL
-                                </p>
-                                <p>
-                                    <span className="font-semibold">Nama Sebelumnya:</span>{" "}
-                                    PUTRAJAYA SINGOSARI
-                                </p>
-                            </div>
-                            <div>
-                                <p>
-                                    <span className="font-semibold">Port of Register:</span>{" "}
-                                    JAKARTA
-                                </p>
-                                <p>
-                                    <span className="font-semibold">Dual Kelas:</span> BV
-                                </p>
-                                <p>
-                                    <span className="font-semibold">Distinctive No:</span> PMQY
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="border p-4 rounded bg-gray-50">
-                            <p className="font-bold">Tanda Kelas & Notasi Lambung</p>
-                            <p>A100 Offshore Service Vessel, SUPPLY</p>
-                            <p>Uniform Deck Load = 5 t/m</p>
-                        </div>
-                        <div className="border p-4 rounded bg-gray-50">
-                            <p className="font-bold">Ex. Dual Kelas</p>
-                            <p>OFFSHORE SUPPORT VESSEL</p>
-                        </div>
-                    </div>
+                    <GeneralTab/>
                 )}
 
                 {activeTab === "hull" && (
-                    <div>
-                        <p className="text-gray-600 italic">Hull Data content goes here…</p>
-                    </div>
+                    <HullDataTab/>
                 )}
 
                 {activeTab === "machinery" && (
-                    <div>
-                        <p className="text-gray-600 italic">
-                            Machinery Data content goes here…
-                        </p>
-                    </div>
+                    <MachineryDataTab/>
                 )}
 
                 {activeTab === "owner" && (
-                    <div>
-                        <p className="text-gray-600 italic">Owner data content goes here…</p>
-                    </div>
+                    <OwnerTab/>
                 )}
 
                 {activeTab === "survey" && (
-                    <div>
-                        <p className="text-gray-600 italic">
-                            Survey status content goes here…
-                        </p>
-                    </div>
+                    <SurvetStatusTab/>
                 )}
             </div>
         </div>
