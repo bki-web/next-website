@@ -1,9 +1,8 @@
 import { match, P } from "ts-pattern";
 import NoResultsCard from "./NoResultsCard";
-import PaginationData from "./PaginationData";
-import { PrismaRawQuery } from "@/types/prismaRawQuery";
 import { ShipRegister } from "@/types/shipRegisterResult";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
@@ -54,65 +53,66 @@ export default function ListShipRegister({
           .with(P.array(P.any), (list) => (
             <>
               {list.map((ship) => (
-                <article
-                  key={ship.noreg}
-                  className="rounded-xl border border-slate-200 bg-white shadow-sm cursor-pointer"
-                >
-                  <div className="flex flex-col gap-4 p-4 md:p-5 lg:flex-row lg:items-start lg:justify-between">
-                    {/* Left */}
-                    <div className="min-w-0 flex-1">
-                      {/* Title + Register No + IMO No. + GT */}
-                      <div className="flex justify-between items-center">
-                        <div className="flex items-center gap-3 lg:flex-row flex-col">
-                          <h2 className="text-lg md:text-xl font-bold text-slate-900">
-                            {ship.nmkpl}
-                          </h2>
-                          <Badge>
-                            Register No:{" "}
-                            <span className="ml-1">{ship.noreg}</span>
-                          </Badge>
+                <Link href={`/our-services/classification/ship-register/ship-particular/${ship.NOREG}`} key={ship.NOREG}>
+                  <article
+                    className="rounded-xl border border-slate-200 bg-white shadow-sm cursor-pointer"
+                  >
+                    <div className="flex flex-col gap-4 p-4 md:p-5 lg:flex-row lg:items-start lg:justify-between">
+                      {/* Left */}
+                      <div className="min-w-0 flex-1">
+                        {/* Title + Register No + IMO No. + GT */}
+                        <div className="flex justify-between items-center">
+                          <div className="flex items-center gap-3 lg:flex-row flex-col">
+                            <h2 className="text-lg md:text-xl font-bold text-slate-900">
+                              {ship.NMKPL}
+                            </h2>
+                            <Badge>
+                              Register No:{" "}
+                              <span className="ml-1">{ship.NOREG}</span>
+                            </Badge>
+                          </div>
+                          <div className="flex lg:flex-row flex-col gap-2 shrink-0 self-start">
+                            <Pill>
+                              <span className="mr-1 opacity-70">IMO:</span>{" "}
+                              {ship.NOIMO}
+                            </Pill>
+                            <Pill>GT{ship.GRT}</Pill>
+                          </div>
                         </div>
-                        <div className="flex lg:flex-row flex-col gap-2 shrink-0 self-start">
-                          <Pill>
-                            <span className="mr-1 opacity-70">IMO:</span>{" "}
-                            {ship.noimo}
-                          </Pill>
-                          <Pill>GT{ship.grt}</Pill>
+
+                        {/* Meta rows (FLEX) */}
+                        <div className="mt-3 flex flex-wrap gap-y-3 border-t border-b border-[#C8C8C8] py-4">
+                          <MetaItem label="Flag" value={ship.FLAG || "-"} />
+                          <MetaItem label="Type of Ship" value={ship.TYSHP || "-"} />
+                          <MetaItem
+                            label="Status Compliance"
+                            value={
+                              <span className="text-emerald-600">
+                                {ship.status_compliance || "-"}
+                              </span>
+                            }
+                          />
+                          <MetaItem
+                            label="Status Class"
+                            value={
+                              <span className={cn(ship.STAT === "A" ? `text-emerald-600` : `text-red-600`)}>
+                                {match(ship.STAT)
+                                  .with("A", () => "Active")
+                                  .otherwise(() => "Inactive")}
+                              </span>
+                            }
+                          />
                         </div>
-                      </div>
 
-                      {/* Meta rows (FLEX) */}
-                      <div className="mt-3 flex flex-wrap gap-y-3 border-t border-b border-[#C8C8C8] py-4">
-                        <MetaItem label="Flag" value={ship.flag || "-"} />
-                        <MetaItem label="Type of Ship" value={ship.tyshp || "-"} />
-                        <MetaItem
-                          label="Status Compliance"
-                          value={
-                            <span className="text-emerald-600">
-                              {ship.status_compliance || "-"}
-                            </span>
-                          }
-                        />
-                        <MetaItem
-                          label="Status Class"
-                          value={
-                            <span className={cn(ship.stat === "A" ? `text-emerald-600` : `text-red-600`)}>
-                              {match(ship.stat)
-                                .with("A", () => "Active")
-                                .otherwise(() => "Inactive")}
-                            </span>
-                          }
-                        />
-                      </div>
-
-                      {/* Details */}
-                      <div className="mt-3 text-sm text-slate-700 leading-relaxed">
-                        <span className="font-semibold">Details: </span>
-                        Click to view detail
+                        {/* Details */}
+                        <div className="mt-3 text-sm text-slate-700 leading-relaxed">
+                          <span className="font-semibold">Details: </span>
+                          Click to view detail
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </article>
+                  </article>
+                </Link>
               ))}
 
               {/* <PaginationData /> */}
