@@ -1,4 +1,5 @@
-import SimpleTable, { Column } from "../components/SimpleTable";
+import { Column } from "@/types/simpleTable";
+import SimpleTable from "../components/SimpleTable";
 import SpecGrid from "../components/SpecGrid";
 
 type MainEngineRow = {

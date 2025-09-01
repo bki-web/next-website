@@ -31,7 +31,7 @@ export default function Page() {
                 BKI Annual Report 2023 is here!
               </h2>
               <div className="text-lg">
-                This report provides a comprehensive overview of our company's
+                This report provides a comprehensive overview of our company&apos;s
                 performance and achievements over the past year.
               </div>
               <div>
