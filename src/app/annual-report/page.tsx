@@ -21,7 +21,7 @@ export default function Page() {
           "A comprehensive overview of our company's performance and achievements over the past year."
         }
       />
-      <section className="px-6 md:px-24 bg-[#E2E7F0]">
+      <section className="px-6 md:px-24 bg-white py-20">
         <div>
           <section className="flex flex-col lg:flex-row items-center justify-center  text-black">
             {/* Left Column (Text) */}

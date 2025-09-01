@@ -99,7 +99,7 @@ export default function TableAnnualReport() {
     },
   ];
   return (
-    <section className="bg-[#E2E7F0] px-6 md:px-24 pb-20">
+    <section className="bg-[#E2E7F0] px-6 md:px-24 py-20">
       <div className="text-bki-blue text-xl font-bold md:text-4xl mb-4">
         <FancyTitle title="Annual Reports History" />
       </div>
