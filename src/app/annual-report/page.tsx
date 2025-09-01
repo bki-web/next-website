@@ -16,9 +16,9 @@ export default function Page() {
       <Hero
         routes={[{ text: "Home", href: "/" }, { text: "Annual Report" }]}
         backgroundClass="bg-[url('/company-profile-bg.png')] bg-top"
-        title={"Annual Report"}
+        title={"Transparency in every achievements"}
         description={
-          "A comprehensive overview of our company's performance and achievements over the past year."
+          "We publised our annual report to provide stakeholders with a clear view of our performance, strategies, and progres throughout the years"
         }
       />
       <section className="px-6 md:px-24 bg-white py-20">
