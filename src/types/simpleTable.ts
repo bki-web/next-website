@@ -1,0 +1,1 @@
+export type Column<T> = { key: keyof T; title: string; align?: "left" | "center" | "right", customRender?: (value: T[keyof T]) => React.ReactNode };

@@ -1,8 +1,7 @@
 import { SurveyRow, SurveySection } from "@/types/survey";
 import SimpleTable from "../components/SimpleTable";
+import { Column } from "@/types/simpleTable";
 // import SurveyStatusOfClass from "../components/SurveyStatusOfClass";
-
-type Column<T> = { key: keyof T; title: string; align?: "left" | "center" | "right" };
 
 const col = <K extends keyof SurveyRow>(
     key: K,
