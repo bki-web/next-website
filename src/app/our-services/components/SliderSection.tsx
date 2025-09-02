@@ -79,7 +79,7 @@ export default function SliderSection({
         setSlideIndex((i) => (i - 1 + currentSlide.length) % currentSlide.length);
 
     return (
-        <section className="relative w-screen h-[90vh]">
+        <section className="relative w-screen h-[90vh] bg-black">
             <div className="relative w-full h-full">
                 <AnimatePresence
                     initial={false}

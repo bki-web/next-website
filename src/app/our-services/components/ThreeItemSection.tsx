@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 // Define the type for a single card item
 interface CardItem {
   title: string;
   content: string;
   imageSrc: string;
- 
 }
 
 // Define the props for the reusable component
@@ -13,14 +13,16 @@ interface ThreeItemSectionProps {
   mainTitle: string;
   subTitle: string;
   cards: CardItem[];
-   col?: number;
+  col?: number;
+  subtitleClassName?: string;
 }
 
 const ThreeItemSection: React.FC<ThreeItemSectionProps> = ({
   mainTitle,
   subTitle,
   cards,
-  col=3
+  col = 3,
+  subtitleClassName,
 }) => {
   return (
     <section className="py-12 px-4 sm:px-6 md:px-24 bg-gray-50">
@@ -29,7 +31,12 @@ const ThreeItemSection: React.FC<ThreeItemSectionProps> = ({
         <div className="2xl:text-6xl md:text-5xl text-4xl font-bold text-bki-blue">
           {mainTitle}
         </div>
-        <p className="text-3xl text-black md:w-auto max-w-2xl mx-auto md:mx-0">
+        <p
+          className={cn(
+            "text-3xl text-black md:w-auto max-w-2xl mx-auto md:mx-0",
+            subtitleClassName
+          )}
+        >
           {subTitle}
         </p>
       </div>
