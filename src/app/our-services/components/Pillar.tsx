@@ -55,7 +55,7 @@ export default function Pillar({index, title, lead, bullets, image, keyId, hideP
                         <motion.ul variants={stagger} className="mt-6 space-y-4">
                             {bullets.map((b, i) => (
                                 <motion.li key={i} variants={fadeInUp} className="flex items-start gap-3">
-                                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-white/70"/>
+                                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-white/70 shrink-0"/>
                                     <div>
                                         <p className="text-white font-medium">{b.title}</p>
                                         <p className="text-white/75 text-sm leading-relaxed mt-0.5">{b.desc}</p>
