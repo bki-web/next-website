@@ -311,12 +311,12 @@ export default function MarineServicesTabContent({
           ))}
         </div>
       </section> */}
-      <ThreeItemSectionWithSection
+      {/* <ThreeItemSectionWithSection
         mainTitle="Our expertise"
         subTitle="We have structured our extensive capabilities into key service areas to meet your specific needs."
         subtitleClassName="text-xl md:text-2xl"
         sections={vesselLifecycle}
-      />
+      /> */}
 
       {pillar.map((p, idx) => (
         <Pillar
