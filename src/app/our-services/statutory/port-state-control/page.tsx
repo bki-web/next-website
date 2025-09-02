@@ -3,7 +3,7 @@ import PageTransition from "@/components/page-transition";
 import Hero from "@/components/Hero";
 import DigitalPlatform from "../../components/DigitalPlatform";
 
-export default function IsmRegisterPage() {
+export default function PortStateControlPage() {
     return (
         <div className="relative min-h-screen w-full overflow-hidden">
             <PageTransition/>
@@ -24,11 +24,11 @@ export default function IsmRegisterPage() {
                         href: "/our-services#statutory",
                     },
                     {
-                        text: "ISM Register",
+                        text: "Port State Control",
                     },
                 ]}
                 backgroundClass="bg-[url('/classification-bg.jpg')]"
-                title={"ISM Register"}
+                title={"Port State Control"}
                 description={
                     "Lorem Ipsum Dolor sit Amet."
                 }

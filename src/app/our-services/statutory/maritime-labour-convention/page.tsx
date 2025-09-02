@@ -3,7 +3,7 @@ import PageTransition from "@/components/page-transition";
 import Hero from "@/components/Hero";
 import DigitalPlatform from "../../components/DigitalPlatform";
 
-export default function PortStateControlPage() {
+export default function MaritimeLabourConventionPage() {
     return (
         <div className="relative min-h-screen w-full overflow-hidden">
             <PageTransition/>
@@ -24,11 +24,11 @@ export default function PortStateControlPage() {
                         href: "/our-services#statutory",
                     },
                     {
-                        text: "Port State Control",
+                        text: "Maritime Labour Convention",
                     },
                 ]}
                 backgroundClass="bg-[url('/classification-bg.jpg')]"
-                title={"Port State Control"}
+                title={"Maritime Labour Convention"}
                 description={
                     "Lorem Ipsum Dolor sit Amet."
                 }

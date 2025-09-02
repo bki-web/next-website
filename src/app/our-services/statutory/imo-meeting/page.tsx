@@ -3,7 +3,7 @@ import PageTransition from "@/components/page-transition";
 import Hero from "@/components/Hero";
 import DigitalPlatform from "../../components/DigitalPlatform";
 
-export default function LoadLinePage() {
+export default function IMOMeetingPage() {
     return (
         <div className="relative min-h-screen w-full overflow-hidden">
             <PageTransition/>
@@ -24,11 +24,11 @@ export default function LoadLinePage() {
                         href: "/our-services#statutory",
                     },
                     {
-                        text: "Load Line",
+                        text: "IMO Meeting",
                     },
                 ]}
                 backgroundClass="bg-[url('/classification-bg.jpg')]"
-                title={"Load Line"}
+                title={"IMO Meeting"}
                 description={
                     "Lorem Ipsum Dolor sit Amet."
                 }
