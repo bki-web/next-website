@@ -221,7 +221,7 @@ function Pillar({index, title, lead, bullets, image, keyId}: {
                     <motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{once: true}}
                                 className={isEven ? "order-1" : "order-2 md:order-2"}>
                         <div
-                            className={`relative w-full aspect-[16/10] rounded-3xl overflow-hidden border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.35)]`}>
+                            className={`relative w-full aspect-[16/10] overflow-hidden border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.35)]`}>
                             {image ? (
                                 <Image src={image} alt={title} fill className="object-cover"/>
                             ) : (
@@ -295,7 +295,7 @@ export default function EnergyIndustryTabContent({
                         {/* Local video content */}
                         <motion.div variants={fadeInUp} initial="hidden" animate="show" className="w-full">
                             <div
-                                className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg border border-[#0A436A]/20">
+                                className="relative w-full aspect-video overflow-hidden shadow-lg border border-[#0A436A]/20">
                                 <video
                                     className="absolute inset-0 w-full h-full object-cover"
                                     src="/hero-banner-bki.mp4"
@@ -321,13 +321,13 @@ export default function EnergyIndustryTabContent({
                                 {data.overview.text}
                             </motion.p>
                         </div>
-                        <motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{once: true}}
-                                    className="md:col-span-5 justify-self-end">
-                            <a href="#"
-                               className="inline-flex items-center rounded-xl bg-white text-[#0A436A] px-4 py-2 font-medium hover:opacity-90 transition">
-                                Get in touch
-                            </a>
-                        </motion.div>
+                        {/*<motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{once: true}}*/}
+                        {/*            className="md:col-span-5 justify-self-end">*/}
+                        {/*    <a href="#"*/}
+                        {/*       className="inline-flex items-center rounded-xl bg-white text-[#0A436A] px-4 py-2 font-medium hover:opacity-90 transition">*/}
+                        {/*        Get in touch*/}
+                        {/*    </a>*/}
+                        {/*</motion.div>*/}
                     </div>
                     {/* Pillar mini-cards */}
                     <motion.div variants={stagger} initial="hidden" whileInView="show"
@@ -335,10 +335,11 @@ export default function EnergyIndustryTabContent({
                                 className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
                         {data.pillars.map((p) => (
                             <motion.div key={p.key} variants={zoomCard}
-                                        className="group rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur hover:bg-white/10 transition">
+                                        className="group border border-white/10 bg-white/5 p-5 backdrop-blur hover:bg-white/10 transition">
                                 <div className="flex items-start gap-3">
                                     <div
-                                        className="shrink-0 h-9 w-9 rounded-xl border border-white/15 bg-white/10 grid place-items-center group-hover:scale-105 transition">
+                                        className="shrink-0 p-1.5 pb-0 rounded-xl border border-white/15 bg-white/10 group-hover:scale-105 transition flex items-center justify-center">
+                                        {/*className="shrink-0 p-1.5 rounded-xl border border-white/15 bg-white/10 grid place-items-center group-hover:scale-105 transition flex items-center justify-center">*/}
                                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                                             <path d="M12 3l9 4.5-9 4.5L3 7.5 12 3z" stroke="currentColor"
                                                   strokeWidth="1.4"/>
@@ -346,7 +347,7 @@ export default function EnergyIndustryTabContent({
                                     </div>
                                     <div>
                                         <h3 className="text-white font-semibold leading-snug">{p.title}</h3>
-                                        <p className="mt-1 text-sm text-white/70 line-clamp-3">{p.lead}</p>
+                                        <p className="mt-1 text-sm text-white/70">{p.lead}</p>
                                     </div>
                                 </div>
                             </motion.div>
@@ -370,11 +371,11 @@ export default function EnergyIndustryTabContent({
                         <Paragraph className="mt-4">{data.cta.sub}</Paragraph>
                         <motion.div variants={fadeInUp} className="mt-8 flex items-center justify-center gap-3">
                             <a href={data.cta.href}
-                               className="inline-flex items-center rounded-2xl bg-white text-[#0A436A] px-5 py-3 font-medium hover:opacity-90 transition">
+                               className="inline-flex items-center bg-white text-[#0A436A] px-5 py-3 font-medium hover:opacity-90 transition">
                                 {data.cta.btnText}
                             </a>
                             <a href="#"
-                               className="inline-flex items-center rounded-2xl border border-white/25 text-white px-5 py-3 font-medium hover:bg-white/10 transition">
+                               className="inline-flex items-center border border-white/25 text-white px-5 py-3 font-medium hover:bg-white/10 transition">
                                 Explore services
                             </a>
                         </motion.div>
