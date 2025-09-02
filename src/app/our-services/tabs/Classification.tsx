@@ -16,14 +16,14 @@ const programItems: ProgramItem[] = [
         href: "/our-services/classification/ship-register",
     },
     {
-        title: "Floating Offshore",
-        image: "/our-services/program/floating-offshore.jpeg",
-        href: "/our-services/classification/floating-offshore"
-    },
-    {
         title: "Class Suspend / Withdrawn",
         image: "/our-services/program/class-suspend.jpg",
         href: "/our-services/classification/class-withdrawal"
+    },
+    {
+        title: "Floating Offshore",
+        image: "/our-services/program/floating-offshore.jpeg",
+        href: "/our-services/classification/floating-offshore"
     },
     {
         title: "Class Maintenance Certificate",
