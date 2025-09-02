@@ -15,7 +15,7 @@ const stagger: Variants = {
     show: {transition: {staggerChildren: 0.08, delayChildren: 0.05}},
 };
 
-export default function Pillar({index, title, lead, bullets, image, keyId, hidePillarText = false}: {
+export default function Pillar({index, title, lead, bullets, image, keyId, hidePillarText = false, pillarText}: {
     index: number;
     title: string;
     lead: string;
@@ -23,6 +23,7 @@ export default function Pillar({index, title, lead, bullets, image, keyId, hideP
     image?: string;
     keyId: string
     hidePillarText?: boolean
+    pillarText?: string
 }) {
     const isEven = index % 2 === 0;
     const bg = isEven ? "bg-[#0A436A]" : "bg-[#072F4B]";
@@ -50,7 +51,7 @@ export default function Pillar({index, title, lead, bullets, image, keyId, hideP
                     <motion.div variants={stagger} initial="hidden" whileInView="show"
                                 viewport={{once: true, margin: "-15% 0px"}}
                                 className={isEven ? "order-2" : "order-1 md:order-1"}>
-                        <Heading title={title} subtitle={hidePillarText ? "" : `Pillar ${index + 1}`} align="left"/>
+                        <Heading title={title} subtitle={hidePillarText ? pillarText : `Pillar ${index + 1}`} align="left"/>
                         <Paragraph className="mt-3">{lead}</Paragraph>
                         <motion.ul variants={stagger} className="mt-6 space-y-4">
                             {bullets.map((b, i) => (

@@ -328,6 +328,7 @@ export default function MarineServicesTabContent({
           bullets={p.bullets}
           image={p.image}
           hidePillarText={true}
+          pillarText={"Our Expertise"}
         />
       ))}
     </Fragment>
