@@ -43,10 +43,10 @@ const aboutUs = [
   },
   {
     title: "Documentation",
-    href: "https://www.bki.co.id/galery.html",
+    href: "/photos",
     children: [
-      { title: "Photo", href: "https://www.bki.co.id/galery.html" },
-      { title: "Podcast", href: "https://www.bki.co.id/galery.html" },
+      { title: "Photo", href: "/photos" },
+      { title: "Podcast", href: "/podcasts" },
     ],
   },
   {

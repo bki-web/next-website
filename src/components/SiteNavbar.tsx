@@ -201,7 +201,7 @@ const NAV: Navigation[] = [
             },
             {
                 label: "Documentation",
-                href: "https://www.bki.co.id/galery.html",
+                href: "/photos",
                 type: "",
                 submenu: [
                     {
