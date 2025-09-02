@@ -1,7 +1,7 @@
 import { Prisma } from "@prisma/client";
 import { baseProcedure, createTRPCRouter } from "../init";
 import z from "zod";
-import { ShipRegister, ShipRegisterDetail } from "@/types/shipRegisterResult";
+import { ShipRegister, ShipRegisterDetail, ShipRegisterHullData } from "@/types/shipRegisterResult";
 
 export const shipRegisterRouter = createTRPCRouter({
   search: baseProcedure
@@ -46,7 +46,7 @@ export const shipRegisterRouter = createTRPCRouter({
             WHERE
               a.qscs = 'YES'
               ${(() => {
-                if (nmkpl && nmkpl !== '%%') {
+                if (nmkpl && nmkpl !== "%%") {
                   return Prisma.sql`AND a.nmkpl LIKE ${nmkpl}`;
                 }
                 if (noimo) {
@@ -103,5 +103,25 @@ export const shipRegisterRouter = createTRPCRouter({
       );
 
       return result as ShipRegisterDetail[];
+    }),
+  getHullData: baseProcedure
+    .input(
+      z.object({
+        noreg: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const noreg = input.noreg ? +input.noreg : undefined;
+      const result = await ctx.prisma.$queryRaw(
+        Prisma.sql`
+          Select 	brt,nrt,dwt,dspl,loa,lbp,bmld,hmld,sarat,lt,nmgal,lgal,thba,tgnas,blnas,thnas,tglun,bllun,thlun,jmuat,jglad,jpal,upal,jskpj,jskml,pjfd,pjbd,pjbrd,jjhl,bjhl,tjhl,krjhl,drjhl,prjhl,trjhl,jjar,bjar,tjar,krjar,drjar,prjar,trjar,dtl,ptl,btl,jml,dml,pml,bml,jdk,jtm,jbm,albom
+          FROM
+            mfreg024
+          WHERE
+            noreg = ${noreg};
+        `
+      );
+
+      return result as ShipRegisterHullData[];
     }),
 });

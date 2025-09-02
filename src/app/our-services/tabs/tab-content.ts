@@ -58,3 +58,30 @@ export const StatutorySlides: Slide[] = [
         body: "Proactive surveys ensure your certificates remain valid, satisfying Port State Control (PSC) authorities and enabling seamless global operations.",
     },
 ];
+
+export const MarineServicesSlides: Slide[] = [
+    {
+        image: "/our-services/classification/slider-1.jpg",
+        title: "",
+        headline: "From Blueprint to Delivery",
+        body: "Providing expert engineering, consultancy, and on-site supervision for new constructions, conversions, and complex repair projects.",
+    },
+    {
+        image: "/our-services/classification/slider-2.jpg",
+        title: "",
+        headline: "Maximizing Fleet Value and Availability",
+        body: "In-depth inspections, performance audits, and condition surveys to ensure the long-term integrity and operational efficiency of your assets.",
+    },
+    {
+        image: "/our-services/classification/slider-3.jpg",
+        title: "",
+        headline: "Precision Data for Critical Decisions",
+        body: "Utilizing advanced Non-Destructive Testing (NDT), laboratory analysis, and underwater technology to reveal the true condition of your structures.",
+    },
+    {
+        image: "/our-services/classification/slider-4.jpg",
+        title: "",
+        headline: "Empowering People, Fortifying Systems",
+        body: "Expert training, personnel certification, and management system audits to enhance the safety, compliance, and competency of your operations.",
+    },
+];

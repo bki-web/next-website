@@ -26,12 +26,16 @@ const tabs = [
 export function ShipParticularContent({ noreg }: { noreg: string }) {
   const { data, isLoading, isError, error } =
     trpc.shipRegister.getDetail.useQuery({ noreg });
-  const [activeTab, setActiveTab] = useState("general");
+
+  const { data: dataHull, isLoading: isHullLoading } =
+    trpc.shipRegister.getHullData.useQuery({ noreg });
+  
+    const [activeTab, setActiveTab] = useState("general");
   const activeIndex = tabs.findIndex((tab) => tab.key === activeTab);
 
-  if (isLoading) {
-    return <Skeleton className="w-full h-96 rounded-lg bg-gray-400" />;
-  }
+  // if (isLoading) {
+  //   return <Skeleton className="w-full h-96 rounded-lg bg-gray-400" />;
+  // }
 
   if (!data?.length) {
     return (
@@ -57,10 +61,16 @@ export function ShipParticularContent({ noreg }: { noreg: string }) {
         </div>
         <div className="flex lg:flex-row flex-col gap-2 shrink-0 self-start">
           <Pill>
-            <span className="mr-1 opacity-70">IMO:</span> {selectedData.noimo || "-"}
+            <span className="mr-1 opacity-70">IMO:</span>{" "}
+            {selectedData.noimo || "-"}
           </Pill>
           <Pill>GT{selectedData.grt || "-"}</Pill>
-          <Pill className={cn("text-white", selectedData.stat === "A" ? "!bg-green-500" : "!bg-red-500")}>
+          <Pill
+            className={cn(
+              "text-white",
+              selectedData.stat === "A" ? "!bg-green-500" : "!bg-red-500"
+            )}
+          >
             {match(selectedData.stat)
               .with("A", () => "Active")
               .otherwise(() => "Inactive")}
@@ -100,9 +110,17 @@ export function ShipParticularContent({ noreg }: { noreg: string }) {
 
       {/* Content */}
       <div className="p-6 text-sm">
-        {activeTab === "general" && <GeneralTab data={selectedData}/>}
+        {activeTab === "general" && !isLoading && (
+          <GeneralTab data={selectedData} />
+        )}
+        {activeTab === "general" && isLoading && (
+          <Skeleton className="w-full h-96 rounded-lg bg-gray-400" />
+        )}
 
-        {activeTab === "hull" && <HullDataTab />}
+        {activeTab === "hull" && !isHullLoading && <HullDataTab data={dataHull}/>}
+        {activeTab === "general" && isHullLoading && (
+          <Skeleton className="w-full h-96 rounded-lg bg-gray-400" />
+        )}
 
         {activeTab === "machinery" && <MachineryDataTab />}
 

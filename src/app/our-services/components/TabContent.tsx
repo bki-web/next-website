@@ -4,6 +4,7 @@ import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import TabBar from "./TabBar";
 import ClassificationTabContent from "@/app/our-services/tabs/Classification";
 import StatutoryTabContent from "@/app/our-services/tabs/Statutory";
+import MarineServicesTabContent from "../tabs/MarineServices";
 
 export type Tab = {
     key: string;
@@ -48,8 +49,8 @@ export default function TabContent() {
                 label: "Marine Services",
                 icon: "/icon-service-marine-services.png",
                 content: (
-                    <ClassificationTabContent
-                        keyContent={"classification"}
+                    <MarineServicesTabContent
+                        keyContent={"marine-services"}
                         activeIndex={activeIndex}
                         prevIndex={prevIndex}
                     />
@@ -137,7 +138,7 @@ export default function TabContent() {
                 backgroundClass="bg-[url('/our-services-bg.jpg')]"
                 title={"Our Services"}
                 description={
-                    "Partner with BKI for world-class marine classification services."
+                    "Partner with BKI for world-class solutions across the maritime, energy, and industrial sectors."
                 }
                 innerComponent={
                     <TabBar tabs={tabs} active={active} setActive={setActiveWithHash}/>

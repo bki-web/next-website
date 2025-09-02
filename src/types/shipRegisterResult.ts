@@ -1,14 +1,14 @@
 export type ShipRegister = {
-    RowNum: number;
-    NOREG: number;
-    NOIMO: number;
-    NMKPL: string;
-    GRT: number;
-    FLAG: string;
-    TYSHP: string;
-    STAT: string;
-    status_compliance: string;
-}
+  RowNum: number;
+  NOREG: number;
+  NOIMO: number;
+  NMKPL: string;
+  GRT: number;
+  FLAG: string;
+  TYSHP: string;
+  STAT: string;
+  status_compliance: string;
+};
 
 export type ShipRegisterDetail = {
   abre: string;
@@ -56,4 +56,60 @@ export type ShipRegisterDetail = {
   thnk: string;
   tyshp: string;
   grt: string;
+};
+
+export type ShipRegisterHullData = {
+  brt: string;
+  nrt: string;
+  dwt: string;
+  dspl: string;
+  loa: string;
+  lbp: string;
+  bmld: string;
+  hmld: string;
+  sarat: string;
+  lt: string;
+  nmgal: string;
+  lgal: string;
+  thba: string;
+  tgnas: string;
+  blnas: string;
+  thnas: string;
+  tglun: string;
+  bllun: string;
+  thlun: string;
+  jmuat: string;
+  jglad: string;
+  jpal: string;
+  upal: string;
+  jskpj: string;
+  jskml: string;
+  pjfd: string;
+  pjbd: string;
+  pjbrd: string;
+  jjhl: string;
+  bjhl: string;
+  tjhl: string;
+  krjhl: string;
+  drjhl: string;
+  prjhl: string;
+  trjhl: string;
+  jjar: string;
+  bjar: string;
+  tjar: string;
+  krjar: string;
+  drjar: string;
+  prjar: string;
+  trjar: string;
+  dtl: string;
+  ptl: string;
+  btl: string;
+  jml: string;
+  dml: string;
+  pml: string;
+  bml: string;
+  jdk: string;
+  jtm: string;
+  jbm: string;
+  albom: string;
 };

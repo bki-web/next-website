@@ -2,7 +2,7 @@
 import {AnimatePresence, motion, useReducedMotion, Variants,} from "framer-motion";
 import Link from "next/link";
 import {RefObject, useEffect, useRef, useState} from "react";
-import {ClassificationSlides, Slide, StatutorySlides} from "@/app/our-services/tabs/tab-content";
+import {ClassificationSlides, MarineServicesSlides, Slide, StatutorySlides} from "@/app/our-services/tabs/tab-content";
 
 interface Props {
     keyContent: string;
@@ -25,7 +25,7 @@ export default function SliderSection({
     const Slides: { [key: string]: Slide[] } = {
         'classification': ClassificationSlides,
         'statutory': StatutorySlides,
-        'marine-services': ClassificationSlides,
+        'marine-services': MarineServicesSlides,
         'energy-industry': StatutorySlides,
     }
     const currentSlide = Slides[key];
