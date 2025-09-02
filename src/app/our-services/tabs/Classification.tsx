@@ -17,7 +17,7 @@ const programItems: ProgramItem[] = [
     },
     {
         title: "Floating Offshore",
-        image: "/our-services/program/floating-offshore.png",
+        image: "/our-services/program/floating-offshore.jpeg",
         href: "/our-services/classification/floating-offshore"
     },
     {
