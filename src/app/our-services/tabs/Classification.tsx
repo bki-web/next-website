@@ -33,7 +33,7 @@ const programItems: ProgramItem[] = [
     {
         title: "Material and Component",
         image: "/our-services/program/plan-approval.jpg",
-        href: "/our-services/classification/plan-approval",
+        href: "/our-services/classification/material-component",
     },
     {
         title: "Plan Approval",
@@ -43,6 +43,7 @@ const programItems: ProgramItem[] = [
     {
         title: "Ship Recycling",
         image: "/our-services/program/floating-offshore.png",
+        href: "/our-services/classification/ship-recycling",
     },
 ];
 
