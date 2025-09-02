@@ -105,7 +105,7 @@ export default function SliderSection({
                                     key={slide.image}
                                     custom={dirSlide}
                                     className="absolute inset-0 bg-cover bg-center"
-                                    style={{backgroundImage: `url(${slide.image})`}}
+                                    style={{background: `#000 url(${slide.image})`}}
                                     initial={{
                                         opacity: 0,
                                         scale: prefersReduced ? 1 : 1,
