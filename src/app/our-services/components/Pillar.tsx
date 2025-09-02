@@ -1,4 +1,4 @@
-import { motion, Variants } from "framer-motion";
+import {motion, Variants} from "framer-motion";
 import Section from "./Section";
 import Image from 'next/image';
 import Heading from "./Heading";
@@ -13,12 +13,6 @@ const fadeInUp: Variants = {
 const stagger: Variants = {
     hidden: {},
     show: {transition: {staggerChildren: 0.08, delayChildren: 0.05}},
-};
-
-
-const zoomCard: Variants = {
-    hidden: {opacity: 0, scale: 0.96},
-    show: {opacity: 1, scale: 1, transition: {duration: 0.45, ease: "easeOut"}},
 };
 
 export default function Pillar({index, title, lead, bullets, image, keyId, hidePillarText = false}: {
@@ -41,7 +35,7 @@ export default function Pillar({index, title, lead, bullets, image, keyId, hideP
                     <motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{once: true}}
                                 className={isEven ? "order-1" : "order-2 md:order-2"}>
                         <div
-                            className={`relative w-full aspect-[16/10] rounded-3xl overflow-hidden border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.35)]`}>
+                            className={`relative w-full aspect-[16/10] overflow-hidden border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.35)]`}>
                             {image ? (
                                 <Image src={image} alt={title} fill className="object-cover"/>
                             ) : (
