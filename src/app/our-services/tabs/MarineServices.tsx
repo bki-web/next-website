@@ -258,7 +258,7 @@ export default function MarineServicesTabContent({
             vessels, port facilities, and management systems. We leverage our
             deep technical expertise to offer solutions that ensure safety,
             integrity, compliance, and operational excellence throughout your
-            asset's lifecycle.
+            asset&apos;s lifecycle.
             <br />
             <br />
             From initial design and construction to in-service management and
