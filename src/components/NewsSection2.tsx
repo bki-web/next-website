@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Newsletter from "./Newsletter";
 import NewsCard from "./NewsCard";
+import FancyTitle from "./FancyTitle";
 
 export function NewsDivider() {
   return <div className="w-full h-1 bg-[#00385A]"></div>;
@@ -59,7 +60,7 @@ export default function NewsSection2() {
         </button>
       </div>
       <h1 className="text-white text-5xl md:text-6xl font-bold mb-2">
-        BKI Updates
+        <FancyTitle title="BKI Updates"/>
       </h1>
       <h2 className="text-white text-2xl md:text-3xl font-medium mb-8">
         Top News

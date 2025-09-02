@@ -36,7 +36,7 @@ const services = [
     },
     {
         title: "BKI Academy",
-        description: "Advancing skills for the maritime industry",
+        description: "World class training and certification for industry professionals",
         // icon: "/icon-service-bki-academy.png",
         image: "/our-services-bki-academy.jpg",
         href: "https://www.bki.academy/id",
@@ -111,7 +111,7 @@ export default function OurServicesSection() {
                         <FancyTitle title="Our Services"/>
                     </p>
                     <p className="text-2xl md:text-2xl text-white text-center">
-                        Discover maritime services built for safety, compliance, and
+                        Discover our essential services built for safety, compliance, and
                         excellence.
                     </p>
                 </div>

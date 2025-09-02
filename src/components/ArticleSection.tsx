@@ -2,6 +2,7 @@ import { Article } from "@/types/articles";
 import Image from "next/image";
 import ArticleCard from "./ArticleCard";
 import ArticleCardModern from "./ArticleCardModern";
+import FancyTitle from "./FancyTitle";
 
 export default async function ArticleSection() {
   const data = (await fetch(
@@ -32,7 +33,7 @@ export default async function ArticleSection() {
         }}
       />
       <h1 className="text-white text-5xl md:text-6xl font-bold mb-2">
-        Knowledge Hub
+        <FancyTitle title="Knowledge Hub"/>
       </h1>
       <div className="text-white text-2xl md:text-3xl font-medium mb-8">
         Articles

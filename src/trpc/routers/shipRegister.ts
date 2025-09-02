@@ -35,7 +35,7 @@ export const shipRegisterRouter = createTRPCRouter({
               a.*,
               UPPER(b.NMFL1) AS owner,
               (SELECT f.FLAG FROM MFFLAG f WHERE f.KFLAG = a.KFLAG) AS FLAG,
-              -- (SELECT g.GRT FROM MFREG_STAT g WHERE g.NOREGBKI = a.NOREG) AS GRT,
+              (SELECT g.GRT FROM MFREG_STAT g WHERE g.NOREGBKI = a.NOREG) AS GRT,
               (SELECT h.TYSHP FROM MFJNKPL h WHERE h.KOJEN = a.KOJEN) AS TYSHP,
               ROW_NUMBER() OVER (ORDER BY a.noreg) AS rn -- Use a relevant column for ordering
             FROM
@@ -56,7 +56,7 @@ export const shipRegisterRouter = createTRPCRouter({
                   return Prisma.sql`AND a.noreg = ${noreg}`;
                 }
                 if (minGT && maxGT) {
-                  // return Prisma.sql`AND (SELECT g.GRT FROM MFREG_STAT g WHERE g.NOREGBKI = a.NOREG) BETWEEN ${minGT} AND ${maxGT}`;
+                  return Prisma.sql`AND (SELECT g.GRT FROM MFREG_STAT g WHERE g.NOREGBKI = a.NOREG) BETWEEN ${minGT} AND ${maxGT}`;
                 }
                 return Prisma.empty;
               })()}
@@ -83,7 +83,7 @@ export const shipRegisterRouter = createTRPCRouter({
               a.bers, a.cool, a.coverage, a.exkpl, a.notm1, a.notm2, a.notm3, a.notm4,
               a.notm5, a.notm6, a.edual, a.bang, a.tgkls, a.blkls, a.thkls, a.call,
               a.iacs, k.abre, b.jenis, c.kota, d.flag, b.tyshp, e.tgmkl, e.blmkl,
-              e.thmkl, e.stpen, e.pbkk, e.thnk
+              e.thmkl, e.stpen, e.pbkk, e.thnk, g.grt
           FROM
               MFREG01 AS a
           LEFT JOIN
@@ -97,6 +97,7 @@ export const shipRegisterRouter = createTRPCRouter({
           LEFT JOIN tbl_kota c ON a.kokot = c.kokot
           LEFT JOIN mfflag d ON a.kflag = d.kflag
           LEFT JOIN mfsurvey e ON a.noreg = e.noreg
+          LEFT JOIN mfreg_stat g ON g.NOREGBKI = a.NOREG
           WHERE a.noreg = ${noreg}
         `
       );
