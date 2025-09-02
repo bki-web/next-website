@@ -34,24 +34,24 @@ const boardOfCommissioner = [
 
 const boardOfDirectors = [
     {
-        name: "Arisudono Soerono",
+        name: "R. Benny Susanto",
         position: "President Director",
-        image: "/director/director1.jpg",
+        image: "/directors/4-president-director.jpg",
     },
     {
-        name: "R Benny Susanto",
-        position: "Director of Operation",
-        image: "/director/director2.jpg",
+        name: "Arief Budi Permana",
+        position: "Director of Operation Of Business Classification",
+        image: "/directors/2-director-of-classification.jpg",
     },
     {
-        name: "Sinung Triwulandari",
-        position: "Director of Finance, Aministration and Risk Mangement",
-        image: "/director/director3.jpg",
+        name: "Erwin Ernanto Hoesni",
+        position: "Director of Business Commercial",
+        image: "/directors/3-director-of-commercial.jpg",
     },
     {
-        name: "​​​​​​​Andry Tanudjaja",
-        position: "Director of Institutional Relations",
-        image: "/director/director4.png",
+        name: "R. Agus Doddy Dwi Sagita",
+        position: "Director of Finance",
+        image: "/directors/1-director-of-finance.jpg",
     },
 ];
 
@@ -263,7 +263,7 @@ export default function CompanyProfile() {
         </span>
 
                 <div className="flex flex-col gap-5 w-full">
-                    <div
+                    {/* <div
                         className="flex flex-col md:flex-row justify-between items-start md:items-center w-full px-6 md:px-18 2xl:px-[105px] mb-5 gap-2 md:gap-0">
                         <p className="text-4xl 2xl:text-5xl font-bold text-black md:flex-1/2">
                             Board of Commissioners
@@ -277,7 +277,7 @@ export default function CompanyProfile() {
                         <div id="boc">
                             <BoardOfDirectors members={boardOfCommissioner.slice(0, 2)}/>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="flex flex-row justify-center items-center my-14">
                         <div className="bg-gradient-to-r from-[#00000050] to-[#00000000] h-[1px] w-[89%]"/>
@@ -294,7 +294,7 @@ export default function CompanyProfile() {
                         </p>
                     </div>
                     <div id="bod" className="pl-18">
-                        <BoardOfDirectors members={boardOfDirectors.slice(0, 2)}/>
+                        <BoardOfDirectors members={boardOfDirectors}/>
                     </div>
                 </div>
             </section>

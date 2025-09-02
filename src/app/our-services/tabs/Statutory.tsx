@@ -15,50 +15,62 @@ const programItems: ProgramItem[] = [
     {
         title: "ISM Register",
         image: "/our-services/program/plan-approval.jpg",
+        href: "/our-services/statutory/ism-register",
     },
     {
         title: "ISPS Register",
         image: "/our-services/program/floating-offshore.png",
+        href: "/our-services/statutory/isps-register",
     },
     {
         title: "Flag States Regulations",
         image: "/our-services/program/class-suspend.jpg",
+        href: "/our-services/statutory/flag-states-regulations",
     },
     {
         title: "Statutory Information",
         image: "/our-services/program/class-suspend.jpg",
+        href: "/our-services/statutory/statutory-information",
     },
     {
         title: "IMO Meeting",
         image: "/our-services/program/plan-approval.jpg",
+        href: "/our-services/statutory/imo-meeting",
     },
     {
         title: "Load Line",
         image: "/classification-plan-approval.jpg",
+        href: "/our-services/statutory/load-line",
     },
     {
         title: "Ballast Water Management",
         image: "/our-services/program/floating-offshore.png",
+        href: "/our-services/statutory/ballast-water-management",
     },
     {
         title: "Energy Efficiency for Ships",
         image: "/our-services/program/floating-offshore.png",
+        href: "/our-services/statutory/energy-efficiency-for-ships",
     },
     {
         title: "Maritime Labour Convention",
         image: "/our-services/program/floating-offshore.png",
+        href: "/our-services/statutory/maritime-labour-convention",
     },
     {
         title: "Port State Control",
         image: "/our-services/program/floating-offshore.png",
+        href: "/our-services/statutory/port-state-control",
     },
     {
         title: "Ship Detention",
         image: "/our-services/program/floating-offshore.png",
+        href: "/our-services/statutory/ship-detention",
     },
     {
         title: "Authorization",
         image: "/our-services/program/floating-offshore.png",
+        href: "/our-services/statutory/authorization",
     },
 ];
 

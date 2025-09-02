@@ -78,11 +78,92 @@ const NAV: Navigation[] = [
                     {
                         label: "Plan Approval",
                         href: "/our-services/classification/plan-approval",
-                        type: ""
-                    }
-                ]
+                        type: "",
+                    },
+                ],
             },
-            {label: "Statutory", href: "/our-services#statutory", type: ""},
+            {
+                label: "Statutory",
+                href: "/our-services#statutory",
+                type: "",
+                submenu: [
+                    {
+                        label: "Ship Register",
+                        href: "/our-services#statutory",
+                        type: "",
+                    },
+                    {
+                        label: "ISM Register",
+                        href: "/our-services#example",
+                        type: "",
+                    },
+                    {
+                        label: "ISPS Register",
+                        href: "/our-services#example",
+                        type: "",
+                    },
+                    {
+                        label: "IMO Meeting",
+                        href: "/our-services#example",
+                        type: "",
+                    },
+                    {
+                        label: "Flag States Regulations",
+                        href: "/our-services#example",
+                        type: "",
+                    },
+                    {
+                        label: "ISM Code",
+                        href: "/our-services#example",
+                        type: "",
+                    },
+                    {
+                        label: "ISPS Code",
+                        href: "/our-services#example",
+                        type: "",
+                    },
+                    {
+                        label: "Load Line",
+                        href: "/our-services#example",
+                        type: "",
+                    },
+                    {
+                        label: "MLC",
+                        href: "/our-services#example",
+                        type: "",
+                    },
+                    {
+                        label: "PSC",
+                        href: "/our-services#example",
+                        type: "",
+                    },
+                    {
+                        label: "Energy Efficiency for Ships",
+                        href: "/our-services#example",
+                        type: "",
+                    },
+                    {
+                        label: "Ballast Water Management",
+                        href: "/our-services#example",
+                        type: "",
+                    },
+                    {
+                        label: "Authorization",
+                        href: "/our-services#example",
+                        type: "",
+                    },
+                    {
+                        label: "Statutory Information",
+                        href: "/our-services#example",
+                        type: "",
+                    },
+                    {
+                        label: "Ship Detention",
+                        href: "/our-services#example",
+                        type: "",
+                    },
+                ],
+            },
             {
                 label: "Marine Services",
                 href: "/our-services#marine-services",
@@ -93,7 +174,11 @@ const NAV: Navigation[] = [
                 href: "/our-services#energy-industry",
                 type: "",
             },
-            {label: "BKI Academy", href: "https://www.bki.academy/id", type: "_blank"},
+            {
+                label: "BKI Academy",
+                href: "https://www.bki.academy/id",
+                type: "_blank",
+            },
         ],
     },
     {
@@ -580,7 +665,7 @@ export default function SiteNavbar() {
                                                                                         {...(ssub.type === "_blank"
                                                                                             ? {
                                                                                                 target: "_blank",
-                                                                                                rel: "noopener noreferrer"
+                                                                                                rel: "noopener noreferrer",
                                                                                             }
                                                                                             : {})}
                                                                                     >
@@ -618,29 +703,19 @@ export default function SiteNavbar() {
                                         href={"https://my.bki.co.id/user/login"}
                                         className={`relative inline-flex font-semibold text-sm items-center gap-1 px-1 ${
                                             isCompact ? "py-1.5" : "py-2"
-                                        } transition-colors group-hover:${
+                                        } transition-colors hover:${
                                             useWhiteLogo ? "!text-white/30" : "!text-[#0A436A]"
-                                        } group`}
+                                        } hover:scale-110 transition-transform duration-200`}
                                         onFocus={() => handleEnter(NAV.length + 1)}
                                         onBlur={handleLeaveSoon}
                                     >
-                                        <div
-                                            className="transition-transform duration-200 group-hover:scale-105"
-                                            style={{willChange: "transform"}}
-                                        >
-                                            Sign in
-                                        </div>
-                                        <span
-                                            className="transition-transform duration-200 group-hover:scale-110"
-                                            style={{willChange: "transform"}}
-                                        >
-                      <Image
-                          src="/my-bki-logo.png"
-                          width={88}
-                          height={88}
-                          alt="my-bki"
-                      />
-                    </span>
+                                        Sign in
+                                        <Image
+                                            src="/my-bki-logo.png"
+                                            width={88}
+                                            height={88}
+                                            alt="my-bki"
+                                        />
                                     </Link>
                                 </motion.div>
                                 <motion.div
@@ -795,7 +870,13 @@ export default function SiteNavbar() {
                                 >
                                     {/* Top bar: logo + close */}
                                     <div className="flex items-center justify-between px-5 py-4">
-                                        <Image src="/bki-white.png" alt="BKI" className="h-8" width={36} height={36}/>
+                                        <Image
+                                            src="/bki-white.png"
+                                            alt="BKI"
+                                            className="h-8"
+                                            width={36}
+                                            height={36}
+                                        />
                                         <button
                                             aria-label="Close menu"
                                             onClick={() => setMobileOpen(false)}
