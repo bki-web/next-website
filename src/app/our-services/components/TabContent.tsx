@@ -5,6 +5,7 @@ import TabBar from "./TabBar";
 import ClassificationTabContent from "@/app/our-services/tabs/Classification";
 import StatutoryTabContent from "@/app/our-services/tabs/Statutory";
 import MarineServicesTabContent from "../tabs/MarineServices";
+import EnergyIndustryTabContent from "@/app/our-services/tabs/EnergyIndustry";
 
 export type Tab = {
     key: string;
@@ -61,7 +62,7 @@ export default function TabContent() {
                 label: "Energy & Industry",
                 icon: "/icon-service-energy-industry.png",
                 content: (
-                    <ClassificationTabContent
+                    <EnergyIndustryTabContent
                         keyContent={"classification"}
                         activeIndex={activeIndex}
                         prevIndex={prevIndex}
