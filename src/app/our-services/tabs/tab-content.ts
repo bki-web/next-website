@@ -85,3 +85,30 @@ export const MarineServicesSlides: Slide[] = [
         body: "Expert training, personnel certification, and management system audits to enhance the safety, compliance, and competency of your operations.",
     },
 ];
+
+export const EnergyIndustrySlides: Slide[] = [
+    {
+        image: "/our-services/classification/slider-1.jpg",
+        title: "",
+        headline: "Strategic Assurance for Energy & Industry",
+        body: "Empowering Oil & Gas, Power, Mining, and Manufacturing sectors with unparalleled technical expertise and regulatory foresight.",
+    },
+    {
+        image: "/our-services/classification/slider-2.jpg",
+        title: "",
+        headline: "Integrated Integrity for Complex Projects",
+        body: "From initial design certification (SKPI, SKKP) to advanced Remaining Life Assessment (RLA), ensuring continuous safety and performance.",
+    },
+    {
+        image: "/our-services/classification/slider-3.jpg",
+        title: "",
+        headline: "Precision Inspection for Critical Assets",
+        body: "Utilizing cutting-edge NDT, material testing, and specialized equipment certification to guarantee reliability across your operations.",
+    },
+    {
+        image: "/our-services/classification/slider-4.jpg",
+        title: "",
+        headline: "Navigating Regulations, Cultivating Competency",
+        body: "Achieve full compliance with national (SLO DJK, DISNAKER) and international standards, strengthened by certified training and skilled labor.",
+    },
+];
