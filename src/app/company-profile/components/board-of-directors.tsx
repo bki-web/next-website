@@ -14,7 +14,7 @@ export default function BoardOfDirectors(props: { members: Member[] }) {
         {props.members.map((member, i) => (
           <div
             key={i}
-            className="relative flex-shrink-0 w-[250px] md:w-[380px] lg:w-[450px] h-[250px] md:h-[380px] lg:h-[450px] shadow-lg overflow-hidden rounded-md"
+            className="relative flex-shrink-0 w-[250px] md:w-[380px] lg:w-[400px] h-[250px] md:h-[380px] lg:h-[400px] shadow-lg overflow-hidden rounded-md"
           >
             <Image
               src={`${member.image}`}

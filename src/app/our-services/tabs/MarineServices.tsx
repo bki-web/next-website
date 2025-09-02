@@ -4,6 +4,7 @@ import SliderSection from "@/app/our-services/components/SliderSection";
 import ServiceCard from "@/components/ServiceCard";
 import FancyTitle from "@/components/FancyTitle";
 import ThreeItemSection from "../components/ThreeItemSection";
+import ThreeItemSectionWithSection from "../components/ThreeItemSectionWithSection";
 
 type ProgramItem = {
   title: string;
@@ -52,6 +53,70 @@ interface Props {
   activeIndex: number;
   prevIndex: RefObject<number>;
 }
+
+const vesselLifecycle = [
+    {
+        title: "Vessel Lifecycle & Project Management",
+        subtitle: "We provide complete oversight for your most critical projects, ensuring they are executed to the highest standards of quality from concept to completion.",
+        cards: [
+            {
+              title: "New Building, Repair & Conversion",
+              content:
+                "Full project support including design review, structural analysis, on-site inspection, and supervision for new constructions, modifications, conversions, and vessel re-activations.",
+              imageSrc: "/our-services/program/floating-offshore.png",
+            },
+            {
+              title: "Owner Representation & Supervision",
+              content:
+                "Acting as your dedicated technical representative to supervise all project phases, ensuring compliance with specifications and timelines.",
+              imageSrc: "/our-services/program/floating-offshore.png",
+            },
+            {
+              title: "Monitoring Services",
+              content: "Continuous monitoring of asset condition, performance, and corrosion control systems to inform maintenance strategies and ensure long-term integrity.",
+              imageSrc: "/our-services/program/floating-offshore.png",
+            },
+        ]
+    },
+    {
+        title: "Asset Integrity & Performance Verification",
+        subtitle: "We deliver a clear and accurate assessment of your vessel's condition, performance, and compliance status.",
+        cards: [
+            {
+              title: "Condition & Pre-Purchase Surveys",
+              content:
+                "Thorough vessel inspections to assess structural and machinery condition, identify potential risks, and support sale and purchase transactions.",
+              imageSrc: "/our-services/program/floating-offshore.png",
+            },
+            {
+              title: "On-Hire & Off-Hire Surveys",
+              content:
+                "Independent verification of a vessel's condition and bunker quantities at the start and end of a charter period",
+              imageSrc: "/our-services/program/floating-offshore.png",
+            },
+            {
+              title: "Draught & Cargo Quantity Surveys",
+              content: "Precision surveys to determine vessel displacement for cargo weight calculation and liquid cargo quantity verification (sounding).",
+              imageSrc: "/our-services/program/floating-offshore.png",
+            },
+            {
+              title: "Towing & Lashing Surveys",
+              content: "Analysis and approval of towing arrangements and cargo securing plans to ensure the safe transport of vessels and project cargo.",
+              imageSrc: "/our-services/program/floating-offshore.png",
+            },
+            {
+              title: "Performance Audits & Testing",
+              content: "Comprehensive trials and tests including fuel consumption analysis, speed trials, and technical audits of vessel performance.",
+              imageSrc: "/our-services/program/floating-offshore.png",
+            },
+            {
+              title: "Machinery Inspection",
+              content: "Including crank shaft deflection measurement and detailed machinery analysis.",
+              imageSrc: "/our-services/program/floating-offshore.png",
+            },
+        ]
+    }
+];
 
 export default function MarineServicesTabContent({
   keyContent: key,
@@ -128,11 +193,11 @@ export default function MarineServicesTabContent({
           ))}
         </div>
       </section> */}
-      <ThreeItemSection
+      <ThreeItemSectionWithSection
         mainTitle="Our expertise"
         subTitle="We have structured our extensive capabilities into key service areas to meet your specific needs."
         subtitleClassName="text-xl md:text-2xl"
-        cards={[]}
+        sections={vesselLifecycle}
       />
     </Fragment>
   );

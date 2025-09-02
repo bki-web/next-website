@@ -42,7 +42,7 @@ const ThreeItemSection: React.FC<ThreeItemSectionProps> = ({
       </div>
 
       {/* Cards Grid */}
-      <div className={`grid grid-cols-1 md:grid-cols-${col} gap-8`}>
+      <div className={`grid grid-cols-1 md:grid-cols-${col} gap-8`}>  
         {cards.map((item, index) => (
           <div
             key={index}
