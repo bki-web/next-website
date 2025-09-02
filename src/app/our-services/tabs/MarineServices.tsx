@@ -127,97 +127,114 @@ const vesselLifecycle = [
 ];
 
 const pillar =  [
-        {
-            key: "advance",
-            title: "Advanced Testing & Analysis",
-            lead:
-                "Our specialized testing services provide the definitive data you need to make critical decisions about asset integrity and material quality.",
-            bullets: [
-                {
-                    title: "Non-Destructive Testing (NDT)",
-                    desc:
-                        "A complete range of NDT services to detect defects and assess material condition without causing damage. Methods include: Ultrasonic Testing (UT Thickness & Flaw Detection), Magnetic Particle Testing (MT), Penetrant Testing (PT), Radiography Testing (RT), Eddy Current, Acoustic Emission, Long Range UT, and Magnetic Flux Leakage",
-                },
-                {
-                    title: "Laboratory Testing",
-                    desc:
-                        "In-depth mechanical and chemical testing of materials to verify specifications and analyze failures.",
-                },
-                {
-                    title: "Specialized Onboard Testing",
-                    desc: "Including gas-free testing, insulation resistance (megger) tests, noise and vibration analysis, and bollard pull tests."
-                },
-            ],
-            image: "/bki-marine4.jpg",
-        },
-        // {
-        //     key: "integrity",
-        //     title: "Asset Integrity Management: Ensuring Peak Performance & Safety",
-        //     lead:
-        //         "The integrity of your assets is the bedrock of your success. We specialize in advanced inspection and testing methodologies that provide a clear picture of your equipment's condition, helping you optimize maintenance, prevent failures, and extend operational life.",
-        //     bullets: [
-        //         {
-        //             title: "Advanced Inspection",
-        //             desc: "Comprehensive services including Risk-Based Inspection (RBI) and Remaining Life Assessment (RLA) for aging assets."
-        //         },
-        //         {
-        //             title: "Non-Destructive Testing (NDT)",
-        //             desc: "UT, RT, MT, PT, Eddy Current, dan lainnya—mendeteksi cacat tanpa merusak komponen."
-        //         },
-        //         {
-        //             title: "Equipment Certification",
-        //             desc: "Pressure Vessels, Boilers (DISNAKER), Cranes, Storage Tanks, Rotating Equipment, dan peralatan kritikal lain."
-        //         },
-        //         {
-        //             title: "Corrosion Control",
-        //             desc: "Analisis & monitoring untuk coating, painting, dan cathodic protection systems."
-        //         },
-        //     ],
-        //     image: "/article2.jpg",
-        // },
-        // {
-        //     key: "compliance",
-        //     title: "Regulatory & Systems Compliance: Your Guide Through Complexity",
-        //     lead:
-        //         "Navigating the web of national and international regulations can be daunting. BKI is your expert guide to achieving and maintaining full compliance, ensuring your operations are licensed, lawful, and aligned with global best practices.",
-        //     bullets: [
-        //         {
-        //             title: "National Fitness Certificates",
-        //             desc: "Sertifikasi wajib untuk sektor energi (SKPI, SKPP) dan industri (DISNAKER, DEPHUB)."
-        //         },
-        //         {
-        //             title: "Health, Safety & Environment (HSE)",
-        //             desc: "Audit dan sertifikasi Sistem Manajemen K3 (SMK3)."
-        //         },
-        //         {
-        //             title: "Specialized Equipment",
-        //             desc: "Kepatuhan untuk Well Head, Drilling Units, Lifting Gear, dan Instalasi Kelistrikan pabrik."
-        //         },
-        //     ],
-        //     image: "/article3.jpg",
-        // },
-        // {
-        //     key: "people",
-        //     title: "Workforce Competency & Development: Empowering Your People",
-        //     lead:
-        //         "Your greatest asset is your workforce. We help you build a team that is skilled, certified, and safe, ensuring that human performance matches the high standards of your physical assets.",
-        //     bullets: [
-        //         {
-        //             title: "Personnel Certification",
-        //             desc: "Kualifikasi & sertifikasi independen untuk Welder, Welding Inspector, dan Operator Alat Angkat (SIO)."
-        //         },
-        //         {
-        //             title: "Specialized Technical Training",
-        //             desc: "Program peningkatan kompetensi, termasuk manajemen HSE (SMK3)."
-        //         },
-        //         {
-        //             title: "Skilled Labor Supply",
-        //             desc: "Penyediaan teknisi NDT tersertifikasi dan tenaga ahli teknis sesuai kebutuhan proyek."
-        //         },
-        //     ],
-        //     image: "/available-opportunities-bg.jpg",
-        // },
-    ]
+    {
+        key: "advance",
+        title: "Advanced Testing & Analysis",
+        lead:
+            "Our specialized testing services provide the definitive data you need to make critical decisions about asset integrity and material quality.",
+        bullets: [
+            {
+                title: "Non-Destructive Testing (NDT)",
+                desc:
+                    "A complete range of NDT services to detect defects and assess material condition without causing damage. Methods include: Ultrasonic Testing (UT Thickness & Flaw Detection), Magnetic Particle Testing (MT), Penetrant Testing (PT), Radiography Testing (RT), Eddy Current, Acoustic Emission, Long Range UT, and Magnetic Flux Leakage",
+            },
+            {
+                title: "Laboratory Testing",
+                desc:
+                    "In-depth mechanical and chemical testing of materials to verify specifications and analyze failures.",
+            },
+            {
+                title: "Specialized Onboard Testing",
+                desc: "Including gas-free testing, insulation resistance (megger) tests, noise and vibration analysis, and bollard pull tests."
+            },
+        ],
+        image: "/bki-armada.jpg",
+    },
+    {
+        key: "engineering",
+        title: "Engineering, Design & Consultancy",
+        lead: "Leverage our deep engineering expertise to solve complex technical challenges and optimize your vessel and structural designs.",
+        bullets: [
+            {
+                title: "Naval Architecture & Engineering",
+                desc: "Including intact stability calculations, hydrodynamic analysis, and mooring design and analysis.",
+            },
+            {
+                title: "Structural Analysis",
+                desc: "Advanced Finite Element Analysis (FEA) for hull structures and components.",
+            },
+            {
+                title: "Design & Documentation",
+                desc: "Creation of as-built drawings and ship tank calibration tables.",
+            },
+            {
+                title: "Corrosion Control",
+                desc: "Expert design, testing, and monitoring of corrosion protection systems, including coatings, painting, and cathodic protection.",
+            },
+            {
+                title: "General Marine Consultancy",
+                desc: "Providing expert advice on marine transportation, operational efficiency, and regulatory compliance.",
+            },
+        ],
+        image: "/bki-marine4.jpg",
+    },
+    {
+        key: "management",
+        title: "Management Systems & Regulatory Compliance",
+        lead: "We are your partners in navigating the complex landscape of maritime regulations and achieving full compliance.",
+        bullets: [
+            {
+                title: "ISM Code Services",
+                desc: "Consultancy, internal audits, and support for implementing and maintaining your Safety Management System.",
+            },
+            {
+                title: "ISPS Code Services",
+                desc: "Consultancy, ship and port facility security assessments, verification, and certification (CSO, SSO, PFSO).",
+            },
+            {
+                title: "SIMON Permit Support",
+                desc: "Assisting with the necessary inspections and documentation for securing entry permits for oil and gas operations.",
+            },
+        ],
+        image: "/classification-bg.jpg",
+    },
+    {
+        key: "port",
+        title: "Port Facilities & Underwater Services",
+        lead: "Our services extend from the vessel to the port infrastructure that supports it.",
+        bullets: [
+            {
+                title: "Mapping & Underwater Surveys",
+                desc: "Utilizing advanced technology for hydrographic surveys and underwater inspections of hulls and structures.",
+            },
+            {
+                title: "Special Purpose Jetty Services",
+                desc: "Comprehensive support for the design, analysis, and inspection of specialized port and jetty facilities.",
+            },
+        ],
+        image: "/our-world-bg.jpg",
+    },
+    {
+        key: "competency",
+        title: "Competency Development & Personnel Services",
+        lead: "Through our certification and training programs, BKI Commercial helps you demonstrate a firm commitment to quality, safety, and operational excellence.",
+        bullets: [
+            {
+                title: "Personnel Certification",
+                desc: "Independent qualification and certification for Welders (and WPS) and Welding Inspectors, validating their skills to international standards.",
+            },
+            {
+                title: "Specialized Training Courses",
+                desc: "We offer a wide range of industry-leading training programs, including: Marine Surveyor Training, ISM Code (Internal Auditor, DPA) & ISPS Code (SSO, CSO, PFSO, Internal Auditor), International Maritime Dangerous Goods (IMDG) Code, Survey-Specific Training (Draught, On/Off Hire, Damage & Repair), Towing, Lashing, and Industrial Staging",
+            },
+            {
+                title: "Skilled Labor Supply",
+                desc: "Provision of qualified technical personnel, including NDT technicians, surveyors, auditors, and welding inspectors, to support your project needs.",
+            },
+        ],
+        image: "/service-statutory.jpg",
+    },
+]
 
 export default function MarineServicesTabContent({
   keyContent: key,
