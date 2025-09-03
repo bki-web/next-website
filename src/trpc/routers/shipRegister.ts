@@ -143,6 +143,10 @@ export const shipRegisterRouter = createTRPCRouter({
       })
     )
     .query(async ({ ctx, input }) => {
+
+      await new Promise((resolve, reject) =>
+        setTimeout(() => resolve(null), 10000)
+      );
       const noreg = input.noreg ? +input.noreg : undefined;
       const result = await ctx.prisma.$queryRaw(
         Prisma.sql`

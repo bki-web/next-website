@@ -118,7 +118,7 @@ export default function ListShipRegister({
                 </Link>
               ))}
               <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-                <p className="text-bki-blue">Showing <b>{pagination?.pageSize}</b> of <b>{pagination?.totalRecords}</b> data</p>
+                <p className="text-bki-blue">Showing <b>{data.length}</b> of <b>{pagination?.totalRecords}</b> data</p>
                 <PaginationData />
               </div>
             </>

@@ -29,13 +29,13 @@ export function ShipParticularContent({ noreg }: { noreg: string }) {
 
   const { data: dataHull, isLoading: isHullLoading } =
     trpc.shipRegister.getHullData.useQuery({ noreg });
-  
-    const [activeTab, setActiveTab] = useState("general");
+
+  const [activeTab, setActiveTab] = useState("general");
   const activeIndex = tabs.findIndex((tab) => tab.key === activeTab);
 
-  // if (isLoading) {
-  //   return <Skeleton className="w-full h-96 rounded-lg bg-gray-400" />;
-  // }
+  if (isLoading) {
+    return <Skeleton className="w-full h-96 rounded-lg bg-gray-400" />;
+  }
 
   if (!data?.length) {
     return (
@@ -117,7 +117,9 @@ export function ShipParticularContent({ noreg }: { noreg: string }) {
           <Skeleton className="w-full h-96 rounded-lg bg-gray-400" />
         )}
 
-        {activeTab === "hull" && !isHullLoading && <HullDataTab data={dataHull}/>}
+        {activeTab === "hull" && !isHullLoading && (
+          <HullDataTab data={dataHull} />
+        )}
         {activeTab === "general" && isHullLoading && (
           <Skeleton className="w-full h-96 rounded-lg bg-gray-400" />
         )}

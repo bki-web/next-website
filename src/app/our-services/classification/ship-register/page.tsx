@@ -92,7 +92,7 @@ export default function ShipRegisterPage() {
       <PageTransition />
 
       <section className="w-full relative overflow-hidden min-h-screen">
-        <div className="absolute inset-0 bg-[url('/our-services/classification/slider-1.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-[url('/our-services/classification/ship-register-background.jpg')] bg-cover bg-center" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A436A]/60 to-black/60" />
         <div className="w-full relative flex flex-col justify-center items-center py-24 2xl:pt-40 text-center text-white text-shadow-lg text-shadow-black/30 gap-y-7 lg:gap-y-14 px-4">
           <div className="flex flex-row flex-wrap justify-center items-center gap-2">
