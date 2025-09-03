@@ -4,16 +4,15 @@ import MetroGallery from "@/app/photos/components/MetroGallery";
 import {TileItem} from "@/app/photos/components/Tile";
 
 const tiles = [
-    // {type: "text", label: "MAX", size: "tall"},
-    {src: "/photos/01.jpg", alt: "Petal crest", size: "sm"},
-    {src: "/photos/02.jpg", alt: "Ridges", size: "wide"},
-    {src: "/photos/03.jpg", alt: "Curve grain", size: "sm"},
-    {src: "/photos/04.jpg", alt: "Shell form", size: "md"},
-    {src: "/photos/05.jpg", alt: "Texture macro", size: "sm"},
-    {src: "/photos/06.jpg", alt: "Smoke study", size: "md"},
-    {src: "/photos/07.jpg", alt: "Blade stack", size: "wide"},
-    {src: "/photos/08.jpg", alt: "Edge", size: "lg"},
-    {src: "/photos/09.jpg", alt: "Chiseled", size: "md"},
+    {src: "/photos/01.jpg", alt: "Petal crest"},
+    {src: "/photos/02.jpg", alt: "Ridges"},
+    {src: "/photos/03.jpg", alt: "Curve grain"},
+    {src: "/photos/04.jpg", alt: "Shell form"},
+    {src: "/photos/05.jpg", alt: "Texture macro"},
+    {src: "/photos/06.jpg", alt: "Smoke study"},
+    {src: "/photos/07.jpg", alt: "Blade stack"},
+    {src: "/photos/08.jpg", alt: "Edge"},
+    {src: "/photos/09.jpg", alt: "Chiseled"},
 ] satisfies TileItem[];
 
 export default function Photos() {

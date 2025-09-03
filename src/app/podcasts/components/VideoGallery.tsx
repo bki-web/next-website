@@ -64,10 +64,10 @@ export default function VideoGallery({
         }
     }, [aspect]);
 
-    const openAt = useCallback((i: number) => {
-        setIdx(i);
-        setOpen(true);
-    }, []);
+    // const openAt = useCallback((i: number) => {
+    //     setIdx(i);
+    //     setOpen(true);
+    // }, []);
 
     const next = useCallback(
         () => setIdx((i) => (i + 1) % videos.length),
@@ -129,7 +129,8 @@ export default function VideoGallery({
                         type="button"
                         key={(v.thumb || v.src) + i}
                         variants={itemVariants}
-                        onClick={() => openAt(i)}
+                        // onClick={() => openAt(i)}
+                        onClick={() => window.open(v.src, '_blank')}
                         className={classes(
                             "group relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 focus:outline-none focus:ring-2 focus:ring-white/40 cursor-pointer",
                             aspectClass,

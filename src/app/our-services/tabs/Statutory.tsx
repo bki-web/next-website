@@ -63,11 +63,6 @@ const programItems: ProgramItem[] = [
         href: "/our-services/statutory/port-state-control",
     },
     {
-        title: "Ship Detention",
-        image: "/our-services/program/floating-offshore.png",
-        href: "/our-services/statutory/ship-detention",
-    },
-    {
         title: "Authorization",
         image: "/our-services/program/floating-offshore.png",
         href: "/our-services/statutory/authorization",

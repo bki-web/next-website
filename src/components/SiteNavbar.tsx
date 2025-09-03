@@ -88,78 +88,58 @@ const NAV: Navigation[] = [
                 type: "",
                 submenu: [
                     {
-                        label: "Ship Register",
-                        href: "/our-services#statutory",
-                        type: "",
-                    },
-                    {
                         label: "ISM Register",
-                        href: "/our-services#example",
+                        href: "/our-services/statutory/ism-register",
                         type: "",
                     },
                     {
                         label: "ISPS Register",
-                        href: "/our-services#example",
-                        type: "",
-                    },
-                    {
-                        label: "IMO Meeting",
-                        href: "/our-services#example",
+                        href: "/our-services/statutory/isps-register",
                         type: "",
                     },
                     {
                         label: "Flag States Regulations",
-                        href: "/our-services#example",
-                        type: "",
-                    },
-                    {
-                        label: "ISM Code",
-                        href: "/our-services#example",
-                        type: "",
-                    },
-                    {
-                        label: "ISPS Code",
-                        href: "/our-services#example",
-                        type: "",
-                    },
-                    {
-                        label: "Load Line",
-                        href: "/our-services#example",
-                        type: "",
-                    },
-                    {
-                        label: "MLC",
-                        href: "/our-services#example",
-                        type: "",
-                    },
-                    {
-                        label: "PSC",
-                        href: "/our-services#example",
-                        type: "",
-                    },
-                    {
-                        label: "Energy Efficiency for Ships",
-                        href: "/our-services#example",
-                        type: "",
-                    },
-                    {
-                        label: "Ballast Water Management",
-                        href: "/our-services#example",
-                        type: "",
-                    },
-                    {
-                        label: "Authorization",
-                        href: "/our-services#example",
+                        href: "/our-services/statutory/flag-states-regulations",
                         type: "",
                     },
                     {
                         label: "Statutory Information",
-                        href: "/our-services#example",
+                        href: "/our-services/statutory/statutory-information",
                         type: "",
                     },
                     {
-                        label: "Ship Detention",
-                        href: "/our-services#example",
+                        label: "IMO Meeting",
+                        href: "/our-services/statutory/imo-meeting",
+                        type: "",
+                    },
+                    {
+                        label: "Load Line",
+                        href: "/our-services/statutory/load-line",
+                        type: "",
+                    },
+                    {
+                        label: "Ballast Water Management",
+                        href: "/our-services/statutory/ballast-water-management",
+                        type: "",
+                    },
+                    {
+                        label: "Energy Efficiency for Ships",
+                        href: "/our-services/statutory/energy-efficiency-for-ships",
+                        type: "",
+                    },
+                    {
+                        label: "Maritime Labour Convention",
+                        href: "/our-services/statutory/maritime-labour-convention",
+                        type: "",
+                    },
+                    {
+                        label: "Port State Control",
+                        href: "/our-services/statutory/port-state-control",
+                        type: "",
+                    },
+                    {
+                        label: "Authorization",
+                        href: "/our-services/statutory/authorization",
                         type: "",
                     },
                 ],
@@ -313,12 +293,12 @@ const NAV: Navigation[] = [
                     },
                     {
                         label: "Corporate Social Responsibility",
-                        href: "/opportunities#corporate-social-responsibility",
+                        href: "/esgrc/corporate-social-responsibility",
                         type: "",
                     },
                     {
                         label: "Good Corporate Governance",
-                        href: "/opportunities#good-corporate-governance",
+                        href: "/esgrc/good-corporate-governance",
                         type: "",
                     },
                 ],
