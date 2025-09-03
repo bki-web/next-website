@@ -1,4 +1,4 @@
-export default function Pagination(props: {totalPages: number, currentPage: number}) {
+export default function Pagination(props: {totalPages: number, currentPage: number, onPageChange: (page: number) => void}) {
         // Pagination logic
         const groupSize = 5;
         const currentGroup = Math.floor((props.currentPage - 1) / groupSize);
@@ -8,17 +8,12 @@ export default function Pagination(props: {totalPages: number, currentPage: numb
         for (let i = startPage; i <= endPage; i++) {
             pageNumbers.push(i);
         }
-
-        const onPageChange = (page: number) => {
-            console.log(page);
-        }
-
         return (
                 <div className="flex items-center gap-2 justify-center mt-4">
                     <button
                         className="px-3 py-1 rounded bg-gray-200 text-gray-700 hover:bg-gray-300 disabled:opacity-50 cursor-pointer"
                         disabled={props.currentPage === 1}
-                        onClick={() => onPageChange(Math.max(1, startPage - groupSize))}
+                        onClick={() => props.onPageChange(Math.max(1, startPage - groupSize))}
                     >
                         Prev
                     </button>
@@ -30,7 +25,7 @@ export default function Pagination(props: {totalPages: number, currentPage: numb
                                     ? "bg-bki-blue text-white font-bold"
                                     : "bg-gray-100 text-gray-700 hover:bg-gray-300"
                             }`}
-                            onClick={() => onPageChange(page)}
+                            onClick={() => props.onPageChange(page)}
                         >
                             {page}
                         </button>
@@ -38,7 +33,7 @@ export default function Pagination(props: {totalPages: number, currentPage: numb
                     <button
                         className="px-3 py-1 cursor-pointer rounded bg-gray-200 text-gray-700 hover:bg-gray-300 disabled:opacity-50"
                         disabled={endPage === props.totalPages}
-                        onClick={() => onPageChange(Math.min(props.totalPages, startPage + groupSize))}
+                        onClick={() => props.onPageChange(Math.min(props.totalPages, startPage + groupSize))}
                     >
                         Next
                     </button>

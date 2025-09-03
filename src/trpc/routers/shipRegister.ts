@@ -16,13 +16,14 @@ export const shipRegisterRouter = createTRPCRouter({
         noimo: z.string().optional(),
         minGT: z.string().optional(),
         maxGT: z.string().optional(),
-        skip: z.number().min(0).optional(),
-        take: z.number().min(1).max(100).optional(),
+        page: z.number().min(0).optional(),
+        limit: z.number().min(1).max(100).optional(),
       })
     )
     .query(async ({ ctx, input }) => {
-      const skipValue = input.skip || 0;
-      const takeValue = input.take || 10;
+      const page = (input.page ? input.page - 1 : 0)
+      const takeValue = input.limit || 10;
+      const skipValue = page * takeValue;
       const noreg = input.noreg ? +input.noreg : undefined;
       const noimo = input.noimo ? +input.noimo : undefined;
       const nmkpl = input.nmkpl ? `%${input.nmkpl}%` : undefined;

@@ -1,12 +1,11 @@
 "use client";
 
 import PageTransition from "@/components/page-transition";
-import { Fragment, Suspense, useRef, useState } from "react";
+import { Fragment, Suspense, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-
 import {
   Form,
   FormControl,
@@ -22,6 +21,8 @@ import ListShipRegister from "./components/ListShipRegister";
 import LoadingFallback from "./components/LoadingFallback";
 import React from "react";
 import { ArrowLeft } from "lucide-react";
+import { useSearchParams, useRouter } from "next/navigation";
+import Pagination from "@/components/pagination";
 
 interface RouteItem {
   text: string;
@@ -57,6 +58,9 @@ const formSchema = z.object({
 type FormSchema = z.infer<typeof formSchema>;
 
 export default function ShipRegisterPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const currentPage = Number(searchParams.get("page")) || 1;
   const defaultValue = {
     nmkpl: "",
     noreg: "",
@@ -65,7 +69,8 @@ export default function ShipRegisterPage() {
     maxGT: "",
   };
   const [submitted, setSubmitted] = React.useState(false);
-  const [searchParams, setSearchParams] = useState<FormSchema>(defaultValue);
+  const [searchParamsData, setSearchParamsData] =
+    useState<FormSchema>(defaultValue);
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -74,30 +79,50 @@ export default function ShipRegisterPage() {
 
   const resultRef = useRef<HTMLDivElement>(null);
 
-  const { data, isLoading, isError, error } =
-    trpc.shipRegister.search.useQuery(searchParams);
-  function onSubmit(values: FormSchema) {
-    setSubmitted(true);
-    setSearchParams(values);
-    if (resultRef.current) {
+  const { data, isLoading, isError, error } = trpc.shipRegister.search.useQuery(
+    { ...searchParamsData, page: currentPage, limit: 10 }
+  );
+
+  useEffect(() => {
+    if (data && data.data.length && resultRef.current && submitted) {
+      console.log("not calledd");
       resultRef.current.scrollIntoView({
         behavior: "smooth",
-        block: "start", // Aligns the top of the element with the top of the viewport
+        block: "start",
       });
     }
+  }, [submitted, data]);
+
+  function onSubmit(values: FormSchema) {
+    setSearchParamsData(values);
+    setSubmitted(true);
   }
+
+  const handlePageChange = (page: number) => {
+    const newParams = new URLSearchParams(searchParams.toString());
+    newParams.set("page", String(page));
+    router.push(
+      `/our-services/classification/ship-register?${newParams.toString()}`
+    );
+  };
+
+  const dataNumber = data ? data.data.length * (currentPage - 1) + 1 : 0
+  const dataNumberTo = data ? dataNumber - 1 + data.pagination.pageSize : 0
+
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       <PageTransition />
-
       <section className="w-full relative overflow-hidden min-h-screen">
         <div className="absolute inset-0 bg-[url('/our-services/classification/ship-register-background.jpg')] bg-cover bg-center" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A436A]/60 to-black/60" />
         <div className="w-full relative flex flex-col justify-center items-center py-24 2xl:pt-40 text-center text-white text-shadow-lg text-shadow-black/30 gap-y-7 lg:gap-y-14 px-4">
           <div className="flex flex-row flex-wrap justify-center items-center gap-2">
-            <Link href={'/our-services#classification'} className="cursor-pointer">
-              <ArrowLeft className="text-white w-12 h-12"/>
+            <Link
+              href={"/our-services#classification"}
+              className="cursor-pointer"
+            >
+              <ArrowLeft className="text-white w-12 h-12" />
             </Link>
             {routes.map((route, index) => (
               <Fragment key={route.text + "-" + index}>
@@ -255,7 +280,25 @@ export default function ShipRegisterPage() {
       </section>
       <div id="ship-register-result" ref={resultRef}>
         {isLoading && submitted && <LoadingFallback />}
-        {!isLoading && submitted && <ListShipRegister data={data?.data} pagination={data?.pagination}/>}
+        {!isLoading && submitted && data && (
+          <>
+            <ListShipRegister data={data?.data} pagination={data?.pagination} />
+            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 bg-[#E2E7F0] lg:px-24 px-4 pt-4 pb-10">
+              <p className="text-bki-blue">
+                Showing <b>{dataNumber}</b> to{" "}
+                <b>
+                  {dataNumberTo}
+                </b>{" "}
+                of <b>{data.pagination.totalRecords}</b> data
+              </p>
+              <Pagination
+                totalPages={data.pagination.pageCount}
+                currentPage={currentPage}
+                onPageChange={handlePageChange}
+              />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

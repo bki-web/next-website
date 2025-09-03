@@ -3,7 +3,6 @@ import NoResultsCard from "./NoResultsCard";
 import { PaginationInfo, ShipRegister } from "@/types/shipRegisterResult";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import PaginationData from "./PaginationData";
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
@@ -32,7 +31,7 @@ function MetaItem({ label, value }: { label: string; value: React.ReactNode }) {
 
 export default function ListShipRegister({
   data,
-  pagination
+  pagination,
 }: {
   data: ShipRegister[] | undefined;
   pagination: PaginationInfo | undefined;
@@ -43,7 +42,7 @@ export default function ListShipRegister({
   }
   
   return (
-    <section className="w-full flex flex-col lg:py-20 py-10 lg:px-24 px-4 lg:gap-y-8 gap-y-4 bg-[#E2E7F0]">
+    <section className="w-full flex flex-col lg:pt-20 pt-10 lg:px-24 px-4 lg:gap-y-8 gap-y-4 bg-[#E2E7F0]">
       <p className="lg:text-6xl text-3xl text-[#0A436A] font-bold">{pagination?.totalRecords} Results</p>
       <div className="w-full flex flex-col lg:gap-y-8 gap-y-4">
         {match(data)
@@ -117,10 +116,6 @@ export default function ListShipRegister({
                   </article>
                 </Link>
               ))}
-              <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-                <p className="text-bki-blue">Showing <b>{data.length}</b> of <b>{pagination?.totalRecords}</b> data</p>
-                <PaginationData />
-              </div>
             </>
           ))
           .otherwise(() => (
