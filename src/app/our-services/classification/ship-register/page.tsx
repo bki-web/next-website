@@ -21,6 +21,7 @@ import { trpc } from "@/trpc/react";
 import ListShipRegister from "./components/ListShipRegister";
 import LoadingFallback from "./components/LoadingFallback";
 import React from "react";
+import { ArrowLeft } from "lucide-react";
 
 interface RouteItem {
   text: string;
@@ -38,7 +39,7 @@ const routes: RouteItem[] = [
   },
   {
     text: "Classification",
-    href: "/our-services/classification",
+    href: "/our-services#classification",
   },
   {
     text: "Ship Register",
@@ -64,9 +65,7 @@ export default function ShipRegisterPage() {
     maxGT: "",
   };
   const [submitted, setSubmitted] = React.useState(false);
-  const [searchParams, setSearchParams] = useState<FormSchema>(
-    defaultValue
-  );
+  const [searchParams, setSearchParams] = useState<FormSchema>(defaultValue);
 
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
@@ -75,10 +74,11 @@ export default function ShipRegisterPage() {
 
   const resultRef = useRef<HTMLDivElement>(null);
 
-  const { data, isLoading, isError, error } = trpc.shipRegister.search.useQuery(searchParams);
+  const { data, isLoading, isError, error } =
+    trpc.shipRegister.search.useQuery(searchParams);
   function onSubmit(values: FormSchema) {
     setSubmitted(true);
-    setSearchParams(values)
+    setSearchParams(values);
     if (resultRef.current) {
       resultRef.current.scrollIntoView({
         behavior: "smooth",
@@ -94,9 +94,11 @@ export default function ShipRegisterPage() {
       <section className="w-full relative overflow-hidden min-h-screen">
         <div className="absolute inset-0 bg-[url('/our-services/classification/slider-1.jpg')] bg-cover bg-center" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A436A]/60 to-black/60" />
-
         <div className="w-full relative flex flex-col justify-center items-center py-24 2xl:pt-40 text-center text-white text-shadow-lg text-shadow-black/30 gap-y-7 lg:gap-y-14 px-4">
           <div className="flex flex-row flex-wrap justify-center items-center gap-2">
+            <Link href={'/our-services#classification'} className="cursor-pointer">
+              <ArrowLeft className="text-white w-12 h-12"/>
+            </Link>
             {routes.map((route, index) => (
               <Fragment key={route.text + "-" + index}>
                 {index > 0 && (
@@ -253,7 +255,7 @@ export default function ShipRegisterPage() {
       </section>
       <div id="ship-register-result" ref={resultRef}>
         {isLoading && submitted && <LoadingFallback />}
-        {!isLoading && submitted && <ListShipRegister data={data} />}
+        {!isLoading && submitted && <ListShipRegister data={data?.data} pagination={data?.pagination}/>}
       </div>
     </div>
   );

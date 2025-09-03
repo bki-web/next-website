@@ -12,12 +12,12 @@ type ProgramItem = {
 const programItems: ProgramItem[] = [
     {
         title: "Ship Register",
-        image: "/our-services/program/plan-approval.jpg",
+        image: "/our-services/classification/ship-register.jpg",
         href: "/our-services/classification/ship-register",
     },
     {
         title: "Class Suspend / Withdrawn",
-        image: "/our-services/program/class-suspend.jpg",
+        image: "/our-services/classification/class-suspend.jpg",
         href: "/our-services/classification/class-withdrawal"
     },
     {
@@ -32,12 +32,12 @@ const programItems: ProgramItem[] = [
     },
     {
         title: "Material and Component",
-        image: "/our-services/program/plan-approval.jpg",
+        image: "/our-services/classification/material-components.jpg",
         href: "/our-services/classification/plan-approval",
     },
     {
         title: "Plan Approval",
-        image: "/classification-plan-approval.jpg",
+        image: "/our-services/classification/plan-approval.jpg",
         href: "/our-services/classification/plan-approval",
     },
     {

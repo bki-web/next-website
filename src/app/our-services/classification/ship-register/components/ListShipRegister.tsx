@@ -1,8 +1,9 @@
 import { match, P } from "ts-pattern";
 import NoResultsCard from "./NoResultsCard";
-import { ShipRegister } from "@/types/shipRegisterResult";
+import { PaginationInfo, ShipRegister } from "@/types/shipRegisterResult";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import PaginationData from "./PaginationData";
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
@@ -31,8 +32,10 @@ function MetaItem({ label, value }: { label: string; value: React.ReactNode }) {
 
 export default function ListShipRegister({
   data,
+  pagination
 }: {
   data: ShipRegister[] | undefined;
+  pagination: PaginationInfo | undefined;
 }) {
   if (data === undefined) {
     // search not yet initiated
@@ -41,7 +44,7 @@ export default function ListShipRegister({
   
   return (
     <section className="w-full flex flex-col lg:py-20 py-10 lg:px-24 px-4 lg:gap-y-8 gap-y-4 bg-[#E2E7F0]">
-      <p className="lg:text-6xl text-3xl text-[#0A436A] font-bold">Result</p>
+      <p className="lg:text-6xl text-3xl text-[#0A436A] font-bold">{pagination?.totalRecords} Results</p>
       <div className="w-full flex flex-col lg:gap-y-8 gap-y-4">
         {match(data)
           .with([], () => (
@@ -62,13 +65,13 @@ export default function ListShipRegister({
                       <div className="min-w-0 flex-1">
                         {/* Title + Register No + IMO No. + GT */}
                         <div className="flex justify-between items-center">
-                          <div className="flex items-center gap-3 lg:flex-row flex-col">
+                          <div className="flex items-start md:items-center gap-3 lg:flex-row flex-col">
                             <h2 className="text-lg md:text-xl font-bold text-slate-900">
                               {ship.NMKPL}
                             </h2>
                             <Badge>
                               Register No:{" "}
-                              <span className="ml-1">{ship.NOREG}</span>
+                              <span className="ml-0 md:ml-1">{ship.NOREG}</span>
                             </Badge>
                           </div>
                           <div className="flex lg:flex-row flex-col gap-2 shrink-0 self-start">
@@ -114,8 +117,10 @@ export default function ListShipRegister({
                   </article>
                 </Link>
               ))}
-
-              {/* <PaginationData /> */}
+              <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+                <p className="text-bki-blue">Showing <b>{pagination?.pageSize}</b> of <b>{pagination?.totalRecords}</b> data</p>
+                <PaginationData />
+              </div>
             </>
           ))
           .otherwise(() => (

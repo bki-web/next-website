@@ -113,3 +113,9 @@ export type ShipRegisterHullData = {
   jbm: string;
   albom: string;
 };
+
+export type PaginationInfo = {
+  totalRecords: number;
+  pageCount: number;
+  pageSize: number;
+}

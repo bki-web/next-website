@@ -10,7 +10,7 @@ import {
 
 export default function PaginationData() {
   return (
-    <div className="w-full h-96 text-black">
+    <div className=" text-black">
 
     <Pagination>
       <PaginationContent>

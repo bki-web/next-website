@@ -1,7 +1,11 @@
 import { Prisma } from "@prisma/client";
 import { baseProcedure, createTRPCRouter } from "../init";
 import z from "zod";
-import { ShipRegister, ShipRegisterDetail, ShipRegisterHullData } from "@/types/shipRegisterResult";
+import {
+  ShipRegister,
+  ShipRegisterDetail,
+  ShipRegisterHullData,
+} from "@/types/shipRegisterResult";
 
 export const shipRegisterRouter = createTRPCRouter({
   search: baseProcedure
@@ -19,53 +23,81 @@ export const shipRegisterRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       const skipValue = input.skip || 0;
       const takeValue = input.take || 10;
-      const endRow = skipValue + takeValue;
       const noreg = input.noreg ? +input.noreg : undefined;
       const noimo = input.noimo ? +input.noimo : undefined;
       const nmkpl = input.nmkpl ? `%${input.nmkpl}%` : undefined;
       const minGT = input.minGT ? +input.minGT : undefined;
       const maxGT = input.maxGT ? +input.maxGT : undefined;
 
-      const isUsingWhere = !!(noreg || noimo || nmkpl || minGT || maxGT);
+      // Build the WHERE clause dynamically
+      const whereClause = (() => {
+        const conditions: Prisma.Sql[] = [Prisma.sql`a.qscs = 'YES'`];
+        if (nmkpl && nmkpl !== "%%") {
+          conditions.push(Prisma.sql`a.nmkpl LIKE ${nmkpl}`);
+        }
+        if (noimo) {
+          conditions.push(Prisma.sql`a.noimo = ${noimo}`);
+        }
+        if (noreg) {
+          conditions.push(Prisma.sql`a.noreg = ${noreg}`);
+        }
+        if (minGT && maxGT) {
+          conditions.push(
+            Prisma.sql`
+            AND (SELECT g.GRT FROM MFREG_STAT g WHERE g.NOREGBKI = a.NOREG) BETWEEN ${minGT} AND ${maxGT}
+          `
+          );
+        }
+        return Prisma.join(conditions, " AND ");
+      })();
 
-      const result = await ctx.prisma.$queryRaw(
+      // Query for the paginated data
+      const resultPromise = ctx.prisma.$queryRaw(
         Prisma.sql`
-           SELECT * FROM (
-            SELECT
-              a.*,
-              UPPER(b.NMFL1) AS owner,
-              (SELECT f.FLAG FROM MFFLAG f WHERE f.KFLAG = a.KFLAG) AS FLAG,
-              (SELECT g.GRT FROM MFREG_STAT g WHERE g.NOREGBKI = a.NOREG) AS GRT,
-              (SELECT h.TYSHP FROM MFJNKPL h WHERE h.KOJEN = a.KOJEN) AS TYSHP,
-              ROW_NUMBER() OVER (ORDER BY a.noreg) AS rn -- Use a relevant column for ordering
-            FROM
-              mfreg01 a
-              LEFT JOIN PERSMF b ON a.OWNA = b.KODE1
-              AND a.OWNB = b.KODE2
-              AND a.OWNC = b.KODE3
-            WHERE
-              a.qscs = 'YES'
-              ${(() => {
-                if (nmkpl && nmkpl !== "%%") {
-                  return Prisma.sql`AND a.nmkpl LIKE ${nmkpl}`;
-                }
-                if (noimo) {
-                  return Prisma.sql`AND a.noimo = ${noimo}`;
-                }
-                if (noreg) {
-                  return Prisma.sql`AND a.noreg = ${noreg}`;
-                }
-                if (minGT && maxGT) {
-                  return Prisma.sql`AND (SELECT g.GRT FROM MFREG_STAT g WHERE g.NOREGBKI = a.NOREG) BETWEEN ${minGT} AND ${maxGT}`;
-                }
-                return Prisma.empty;
-              })()}
-          ) AS subquery
-          WHERE rn > ${skipValue} AND rn <= ${skipValue + takeValue}
-        `
+        SELECT * FROM (
+          SELECT
+            a.*,
+            UPPER(b.NMFL1) AS owner,
+            (SELECT f.FLAG FROM MFFLAG f WHERE f.KFLAG = a.KFLAG) AS FLAG,
+            (SELECT g.GRT FROM MFREG_STAT g WHERE g.NOREGBKI = a.NOREG) AS GRT,
+            (SELECT h.TYSHP FROM MFJNKPL h WHERE h.KOJEN = a.KOJEN) AS TYSHP,
+            ROW_NUMBER() OVER (ORDER BY a.noreg) AS rn
+          FROM
+            mfreg01 a
+            LEFT JOIN PERSMF b ON a.OWNA = b.KODE1
+            AND a.OWNB = b.KODE2
+            AND a.OWNC = b.KODE3
+          WHERE ${whereClause}
+        ) AS subquery
+        WHERE rn > ${skipValue} AND rn <= ${skipValue + takeValue}
+      `
       );
 
-      return result as ShipRegister[];
+      // Query for the total count of filtered records
+      const totalCountPromise = ctx.prisma.$queryRaw(
+        Prisma.sql`
+        SELECT COUNT(*) as total FROM mfreg01 a WHERE ${whereClause}
+      `
+      );
+
+      // Run both queries in parallel to improve performance
+      const [result, totalCountResult] = await Promise.all([
+        resultPromise,
+        totalCountPromise,
+      ]);
+
+      const totalCount = (totalCountResult as { total: BigInt }[])[0].total;
+      const totalRecords = Number(totalCount);
+      const totalPages = Math.ceil(totalRecords / takeValue);
+
+      return {
+        data: result as ShipRegister[],
+        pagination: {
+          totalRecords,
+          pageCount: totalPages,
+          pageSize: takeValue,
+        },
+      };
     }),
   getDetail: baseProcedure
     .input(
