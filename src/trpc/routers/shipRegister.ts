@@ -18,10 +18,21 @@ export const shipRegisterRouter = createTRPCRouter({
         maxGT: z.string().optional(),
         page: z.number().min(0).optional(),
         limit: z.number().min(1).max(100).optional(),
+        submitted: z.boolean(),
       })
     )
     .query(async ({ ctx, input }) => {
-      const page = (input.page ? input.page - 1 : 0)
+      if (!input.submitted) {
+        return {
+          data: [],
+          pagination: {
+            totalRecords: 0,
+            pageCount: 1,
+            pageSize: 1,
+          },
+        };
+      }
+      const page = input.page ? input.page - 1 : 0;
       const takeValue = input.limit || 10;
       const skipValue = page * takeValue;
       const noreg = input.noreg ? +input.noreg : undefined;
@@ -144,7 +155,6 @@ export const shipRegisterRouter = createTRPCRouter({
       })
     )
     .query(async ({ ctx, input }) => {
-
       await new Promise((resolve, reject) =>
         setTimeout(() => resolve(null), 10000)
       );

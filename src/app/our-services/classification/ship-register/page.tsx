@@ -80,7 +80,7 @@ export default function ShipRegisterPage() {
   const resultRef = useRef<HTMLDivElement>(null);
 
   const { data, isLoading, isError, error } = trpc.shipRegister.search.useQuery(
-    { ...searchParamsData, page: currentPage, limit: 10 }
+    { ...searchParamsData, page: currentPage, limit: 10, submitted }
   );
 
   useEffect(() => {
