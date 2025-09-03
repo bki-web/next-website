@@ -27,13 +27,13 @@ const programItems: ProgramItem[] = [
     },
     {
         title: "Class Maintenance Certificate",
-        image: "/our-services/program/class-suspend.jpg",
+        image: "/our-services/program/class-maintenance-certificate.jpg",
         href: "/our-services/classification/class-maintenance"
     },
     {
         title: "Material and Component",
         image: "/our-services/classification/material-components.jpg",
-        href: "/our-services/classification/plan-approval",
+        href: "/our-services/classification/material-component",
     },
     {
         title: "Plan Approval",
@@ -42,7 +42,8 @@ const programItems: ProgramItem[] = [
     },
     {
         title: "Ship Recycling",
-        image: "/our-services/program/floating-offshore.png",
+        image: "/our-services/program/ship-recycle.jpg",
+        href: "/our-services/classification/ship-recycling",
     },
 ];
 
