@@ -283,12 +283,12 @@ const NAV: Navigation[] = [
             },
             {
                 label: "ESGRC",
-                href: "https://www.bki.co.id/galery.html",
+                href: "/esgrc/corporate-social-responsibility",
                 type: "",
                 submenu: [
                     {
                         label: "Environment",
-                        href: "/opportunities#environment",
+                        href: "/environment",
                         type: "",
                     },
                     {
