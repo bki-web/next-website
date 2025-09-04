@@ -12,19 +12,19 @@ const logisticsData = [
     title: "Floating Production & Storage",
     content:
       "Optimized sea-based logistics with real-time tracking and seamless coordination.",
-    imageSrc: "/our-services/program/floating-offshore.png",
+    imageSrc: "/floating-offshore/Floating-Production.jpg",
   },
   {
     title: "Drilling & Exploration",
     content:
       "Fast, secure air logistics powered by intelligent routing and cloud integration.",
-    imageSrc: "/our-services/program/floating-offshore.png",
+    imageSrc: "/floating-offshore/Drilling-Exploration.jpg",
   },
   {
     title: "Support & Infrastructure",
     content:
       "Reliable land-based delivery with smart scheduling and route optimization tools.",
-    imageSrc: "/our-services/program/floating-offshore.png",
+    imageSrc: "/floating-offshore/Support-Infrastructure.jpg",
   },
 ];
 
@@ -80,7 +80,7 @@ export default function Page() {
           },
           { text: "Classification" },
         ]}
-        backgroundClass="bg-[url('/classification-bg.jpg')]"
+        backgroundClass="bg-[url('/floating-offshore/Top-Page.jpg')]"
         title={"Floating Offshore"}
         description={
           "Learn about the process for classifying floating offshore structures."
@@ -88,7 +88,7 @@ export default function Page() {
       />
       <section className="w-full 2xl:py-20 md:py-16 py-12 2xl:px-28 md:px-24 px-8 bg-white flex lg:flex-row flex-col justify-center items-center lg:gap-16 gap-8">
         <Image
-          src={"/our-services/program/floating-offshore.png"}
+          src={"/floating-offshore/Introduction.jpg"}
           alt={"Introduction"}
           width={800}
           height={570}
@@ -184,7 +184,7 @@ export default function Page() {
           </div>
         </div>
         <Image
-          src={"/our-services/plan-approval-introduction.jpg"}
+          src={"/floating-offshore/Technology-Driven-Solution.jpeg"}
           alt={"Introduction"}
           width={800}
           height={570}
@@ -208,7 +208,7 @@ export default function Page() {
           </div>
         </div>
         <Image
-          src={"/our-services/plan-approval-introduction.jpg"}
+          src={"/floating-offshore/Proven.jpg"}
           alt={"Introduction"}
           width={800}
           height={570}
