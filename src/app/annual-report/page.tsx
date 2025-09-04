@@ -37,7 +37,7 @@ export default function Page() {
               <div>
                 <DownloadButton
                   link={
-                    "https://www.bki.co.id/file_download/911998AR%20BKI%2016102024.pdf"
+                    process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/file_download/911998AR%20BKI%2016102024.pdf"
                   }
                   className="bg-[#0A436A] hover:bg-[#0A436A]/60 hover:transition hover:duration-150 hover:ease-in-out"
                   label="Download"

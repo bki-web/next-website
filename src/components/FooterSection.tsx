@@ -34,11 +34,11 @@ const aboutUs = [
             },
             {
                 title: "Assets Auction",
-                href: "https://www.bki.co.id/halamanstatis-1.html",
+                href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-1.html",
             },
             {
                 title: "Career Auction",
-                href: "https://www.bki.co.id/halamanstatis-92.html",
+                href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-92.html",
             },
         ],
     },
@@ -134,15 +134,15 @@ export default function FooterSection() {
                                 },
                                 {
                                     label: "Statutory",
-                                    href: "https://www.bki.co.id/info_statutory-1.html",
+                                    href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/info_statutory-1.html",
                                 },
                                 {
                                     label: "Marine Services",
-                                    href: "https://www.bki.co.id/halamanstatis-29.html",
+                                    href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-29.html",
                                 },
                                 {
                                     label: "Energy & Industry",
-                                    href: "https://www.bki.co.id/halamanstatis-30.html",
+                                    href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-30.html",
                                 },
                                 {label: "BKI Academy", href: "https://www.bki.academy/id", type: "_blank"},
                             ].map((item) => (
@@ -169,11 +169,11 @@ export default function FooterSection() {
                             {[
                                 {
                                     label: "Research & Development",
-                                    href: "https://www.bki.co.id/rnd.html",
+                                    href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/rnd.html",
                                 },
                                 {
                                     label: "Technical Journal",
-                                    href: "https://www.bki.co.id/halamanstatis-119.html",
+                                    href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-119.html",
                                 },
                             ].map((item) => (
                                 <li key={item.label} className="py-1">
@@ -198,11 +198,11 @@ export default function FooterSection() {
                             {[
                                 {
                                     label: "News",
-                                    href: "https://www.bki.co.id/halamanstatis-64.html",
+                                    href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-64.html",
                                 },
                                 {
                                     label: "Event",
-                                    href: "https://www.bki.co.id/halamanstatis-64.html",
+                                    href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-64.html",
                                 },
                                 {label: "Article", href: "/articles"},
                                 {

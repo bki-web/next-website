@@ -8,7 +8,7 @@ export default function DownloadPDF(props: { noreg: string }) {
     const encodedNoreg = encodeNoreg(props.noreg);
 
     // 2. Construct the final URL
-    const url = `${process.env.SHIP_REGISTER_API_URL || "https://www.bki.co.id"}/proxy.php?noreg=${encodedNoreg}`;
+    const url = `${process.env.NEXT_PUBLIC_SHIP_REGISTER_API_URL || "https://www.bki.co.id"}/proxy.php?noreg=${encodedNoreg}`;
 
     // 3. Open the URL in a new tab
     window.open(url, "_blank");
