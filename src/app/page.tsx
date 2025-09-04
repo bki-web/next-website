@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
     <Head>
-      <link rel="preload" href="/hero-banner-bki.mp4" as="video"/>
+      <link rel="preload" href="/hero-banner-bki-very-fast.mp4" as="video"/>
     </Head>
     <main className="min-h-screen">
       <HeroSection />
