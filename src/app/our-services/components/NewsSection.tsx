@@ -50,9 +50,9 @@ export default function NewsSection() {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-5 md:gap-6 2xl:gap-7">
-        {news.map((n, i) => (
+        {/* {news.map((n, i) => (
           <NewsCard key={i} news={n} hasShadow={true}/>
-        ))}
+        ))} */}
       </div>
     </section>
   );
