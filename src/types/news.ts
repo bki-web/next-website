@@ -1,3 +1,5 @@
+import { Cover } from "./articles";
+
 export type News = {
     id: string;
     title: string;
@@ -6,3 +8,11 @@ export type News = {
     img: string;
     link: string;
 }
+
+export type NewsStrapi = {
+  documentId: string;
+  title: string;
+  description: string;
+  cover: Cover;
+  publishedAt: string;
+};
