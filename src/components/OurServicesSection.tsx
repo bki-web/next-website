@@ -8,28 +8,28 @@ import FancyTitle from "./FancyTitle";
 const services = [
     {
         title: "Classification",
-        description: "Setting safety and performance standards for every vessel.",
+        description: "Ensuring the safety, integrity, and reliability of your maritime assets through world-class technical standards.",
         // icon: "/icon-service-classification.png",
         image: "/service-classification.jpg",
         href: "/our-services#classification",
     },
     {
         title: "Statutory",
-        description: "Ensuring vessels comply with all regulatory requirements.",
+        description: "Authorized by Flag Administrations to conduct mandatory surveys and certifications for global maritime compliance.",
         // icon: "/icon-service-statutory.png",
         image: "/service-statutory.jpg",
         href: "/our-services#statutory",
     },
     {
         title: "Marine Services",
-        description: "Supporting safe and efficient vessel operations.",
+        description: "End-to-end technical support, from project supervision and asset inspection to advanced testing and analysis.",
         // icon: "/icon-service-marine-services.png",
         image: "/our-services-bki-marine-services.jpg",
         href: "/our-services#marine-services",
     },
     {
         title: "Energy & Industry",
-        description: "Delivering reliable solutions maritime and industrial needs.",
+        description: "Extending our technical expertise to power generation, oil & gas, manufacturing, and critical infrastructure.",
         // icon: "/icon-service-energy-industry.png",
         image: "/our-services-energy-industry.jpg",
         href: "/our-services#energy-industry",
@@ -44,7 +44,7 @@ const services = [
     },
     {
         title: "Others",
-        description: "Learn more about our other services.",
+        description: "Pioneering digital solutions, green initiatives, and other specialized services.",
         image: "/our-services-bki-others.jpg",
         href: "/our-services",
     },
