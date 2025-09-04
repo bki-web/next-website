@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function ContactUsSection() {
     return (
-        <section className="2xl:p-24 lg:p-16 p-8 flex flex-col justify-center items-center bg-white">
+        <section id='contact-bki' className="2xl:p-24 lg:p-16 p-8 flex flex-col justify-center items-center bg-white">
             <div
                 className="relative w-full xl:p-12 md:p-10 p-8 flex 2xl:flex-row flex-col justify-center items-center bg-gradient-to-b from-[#0A436A] to-black min-h-[50vh]">
                 <Image src={'/bki-white-bg.png'} alt={"Logo BKI Putih"} width={780} height={500}
