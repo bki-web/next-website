@@ -40,9 +40,7 @@ export default function RootLayout({
         <TRPCProvider>
           <TransitionProvider>
             <SiteNavbar />
-            <Suspense>
             {children}
-            </Suspense>
             <FooterSection/>
             <FloatingCallButton />
           </TransitionProvider>
