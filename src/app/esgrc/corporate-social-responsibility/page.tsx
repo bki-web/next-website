@@ -29,7 +29,7 @@ export default function CorporateSocialResponsibility() {
                         text: "ESGRC - Corporate Social Responsibility",
                     },
                 ]}
-                backgroundClass="bg-[url('/environment-bg.png')]"
+                backgroundClass="bg-[url('/environment-bg.jpg')]"
                 title={"Corporate Social Responsibility"}
             />
 

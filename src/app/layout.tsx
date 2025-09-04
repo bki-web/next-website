@@ -7,6 +7,7 @@ import {Jost, Montserrat} from 'next/font/google';
 import FooterSection from "@/components/FooterSection";
 import { TRPCProvider } from "@/trpc/react";
 import FloatingCallButton from "@/components/FloatingCallButton";
+import { Suspense } from "react";
 
 // Load Montserrat with chosen weights
 const montserrat = Montserrat({
@@ -39,7 +40,9 @@ export default function RootLayout({
         <TRPCProvider>
           <TransitionProvider>
             <SiteNavbar />
+            <Suspense>
             {children}
+            </Suspense>
             <FooterSection/>
             <FloatingCallButton />
           </TransitionProvider>

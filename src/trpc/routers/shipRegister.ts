@@ -98,7 +98,7 @@ export const shipRegisterRouter = createTRPCRouter({
         totalCountPromise,
       ]);
 
-      const totalCount = (totalCountResult as { total: BigInt }[])[0].total;
+      const totalCount = (totalCountResult as { total: bigint }[])[0].total;
       const totalRecords = Number(totalCount);
       const totalPages = Math.ceil(totalRecords / takeValue);
 

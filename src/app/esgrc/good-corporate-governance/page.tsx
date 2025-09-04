@@ -89,7 +89,7 @@ export default function GoodCorporateGovernancePage() {
                         text: "ESGRC - Good Corporate Governance",
                     },
                 ]}
-                backgroundClass="bg-[url('/environment-bg.png')]"
+                backgroundClass="bg-[url('/environment-bg.jpg')]"
                 title={"Good Corporate Governance"}
             />
 

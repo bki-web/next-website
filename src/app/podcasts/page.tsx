@@ -22,7 +22,7 @@ export default function Photos() {
 
             <Hero
                 routes={[{text: "Home", href: "/"}, {text: "Podcast"}]}
-                backgroundClass="bg-[url('/photos-bg.png')] bg-top"
+                backgroundClass="bg-[url('/photos-bg.jpg')] bg-top"
                 title={"Podcasts"}
                 description={"Exploring potential to grow and create impact."}
                 customOverlayClass={"from-[#FFFFFF] to-[#FFFFFF00]"}
