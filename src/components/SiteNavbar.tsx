@@ -167,7 +167,7 @@ const NAV: Navigation[] = [
         submenu: [
             {
                 label: "Research & Development",
-                href: "https://www.bki.co.id/rnd.html",
+                href: "/research/rnd",
                 type: "",
             },
             {

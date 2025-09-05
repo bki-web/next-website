@@ -169,7 +169,7 @@ export default function FooterSection() {
                             {[
                                 {
                                     label: "Research & Development",
-                                    href: "https://www.bki.co.id/rnd.html",
+                                    href: "/research/rnd",
                                 },
                                 {
                                     label: "Technical Journal",
