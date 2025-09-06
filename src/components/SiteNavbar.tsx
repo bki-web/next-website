@@ -167,7 +167,7 @@ const NAV: Navigation[] = [
         submenu: [
             {
                 label: "Research & Development",
-                href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/rnd.html",
+                href: "/research/rnd",
                 type: "",
             },
             {

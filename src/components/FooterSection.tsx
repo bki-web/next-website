@@ -169,7 +169,7 @@ export default function FooterSection() {
                             {[
                                 {
                                     label: "Research & Development",
-                                    href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/rnd.html",
+                                    href: "/research/rnd",
                                 },
                                 {
                                     label: "Technical Journal",
