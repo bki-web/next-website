@@ -1,20 +1,28 @@
 "use client";
-import ArticleCardModern from "@/components/ArticleCardModern";
 import EmptyStateCard from "@/components/EmptyState";
 import NewsCard from "@/components/NewsCard";
 import PaginationCommon from "@/components/PaginationCommon";
 import PublicationContainer from "@/components/publication-container";
+import { cn } from "@/lib/utils";
 import { trpc } from "@/trpc/react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function NewsList() {
+export default function NewsList({
+  limit = 10,
+  className = "",
+  hidePagination = false,
+}: {
+  limit?: number;
+  className?: string;
+  hidePagination?: boolean;
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
 
   const { data, isLoading, isError, error } = trpc.news.getList.useQuery({
     page: currentPage,
-    limit: 10,
+    limit,
   });
 
   if (data && data.data && data.data.length === 0) {
@@ -40,19 +48,26 @@ export default function NewsList() {
   };
 
   return (
-      <PublicationContainer>
-        <div className="grid relative grid-cols-1 md:grid-cols-3 gap-6 ">
-          {data?.data.map((a, i) => (
-            <NewsCard key={i} news={a} hasShadow={true} rounded={true} />
-          ))}
-        </div>
+    <div
+      className={cn(
+        "relative flex flex-col gap-6 -top-16 md:-top-48 px-6 md:px-24",
+        className
+      )}
+    >
+      <div className="grid relative grid-cols-1 md:grid-cols-3 gap-6 ">
+        {data?.data.map((a, i) => (
+          <NewsCard key={i} news={a} hasShadow={true} rounded={true} />
+        ))}
+      </div>
+      {!hidePagination && (
         <PaginationCommon
           handlePageChange={handlePageChange}
           totalRecords={total}
           dataLength={data?.data.length || 0}
           pageCount={pageCount}
-          pageSize={10}
+          pageSize={limit}
         />
-      </PublicationContainer>
+      )}
+    </div>
   );
 }

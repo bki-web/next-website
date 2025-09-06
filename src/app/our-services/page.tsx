@@ -13,7 +13,7 @@ export default function OurServices() {
       <DigitalPlatform />
 
       <ContactUsSection />
-      {/* <NewsSection /> */}
+      <NewsSection />
     </div>
   );
 }
