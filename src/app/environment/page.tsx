@@ -67,10 +67,10 @@ export default function Page() {
                             />
                         </div>
 
-                        <div className="w-full h-auto flex justify-center">
+                        <div className="w-full h-auto flex flex-col-reverse md:flex-row justify-center">
                             {/* Left Column (Text) */}
-                            <div className="lg:w-3/4 p-4 flex flex-col gap-6 2xl:gap-8 text-xl 2xl:text-2xl">
-                                <h3 className="text-2xl 2xl:text-3xl font-bold text-[#0A436A]">Responsibility Towards
+                            <div className="lg:w-3/4 p-4 flex flex-col gap-4 md:gap-6 2xl:gap-8 text-base md:text-xl 2xl:text-2xl">
+                                <h3 className="text-lg md:text-2xl 2xl:text-3xl font-bold text-[#0A436A]">Responsibility Towards
                                     Environmental Preservation</h3>
                                 <p className="font-bold text-[#0A436A]">Commitment and Policy</p>
                                 <p>
