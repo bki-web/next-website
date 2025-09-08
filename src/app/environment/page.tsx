@@ -19,6 +19,30 @@ export default function Page() {
         autoplay: true,
         autoplaySpeed: 4000,
     };
+    const menuNav = [
+        {
+            title: "Environment",
+            href: "/environment",
+        },
+        {
+            title: "Corporate Social Responsibility",
+            href: "/esgrc/corporate-social-responsibility",
+        },
+        {
+            title: "Good Corporate Governance",
+            href: "/esgrc/good-corporate-governance",
+            children: [
+                {title: "Code of Conduct", href: "#"},
+                {title: "Principal & Policy", href: "#"},
+                {title: "Implementation", href: "#"},
+                {title: "Internal Audit Unit", href: "#"},
+                {title: "Gratification Control", href: "#"},
+                {title: "Whistle Blowing System", href: "#"},
+                {title: "Risk Management Policy", href: "#"},
+                {title: "Communication Policy", href: "#"},
+            ],
+        },
+    ];
     return (
         <div className="w-full min-h-screen">
             <PageTransition/>
@@ -101,27 +125,42 @@ export default function Page() {
 
                             {/* Right Column (menu) */}
                             <div className="lg:w-1/4 flex justify-center p-4">
-                                <motion.div
-                                    // Floating animation
-                                    animate={{y: [0, -20, 0]}}
-                                    transition={{
-                                        duration: 3,
-                                        ease: "easeInOut",
-                                        repeat: Infinity,
-                                    }}
-                                    // 3D hover effect
-                                    // whileHover={{ scale: 1.2 }}
-                                    // whileTap={{ scale: 0.8 }}
-                                    className="relative"
-                                >
-                                    <Image
-                                        src="/cover-annual-report-2023.jpg"
-                                        alt="Cover of the Annual Report 2023"
-                                        width={500}
-                                        height={300}
-                                        className="h-auto"
-                                    />
-                                </motion.div>
+                                <div className={"w-full h-fit px-4 py-3 flex flex-col gap-8 2xl:gap-12 bg-gradient-to-b from-[#000000] to-[#0a436a] text-white"}>
+                                    <h3 className={"text-base md:text-xl 2xl:text-3xl font-bold"}>ESGRC</h3>
+                                    <ul className="space-y-2 text-xs md:text-sm 2xl:text-base font-light">
+                                        {menuNav.map((child, childIdx) => (
+                                            <li
+                                                key={childIdx}
+                                                className={child.children ? "group/esgrc" : ""}
+                                            >
+                                                <a
+                                                    href={child.href}
+                                                    className="block w-full border-b-2 border-b-zinc-600 pb-2 hover:border-b-white transition-colors duration-300 hover:text-white/50"
+                                                >
+                                                    {child.title}
+                                                </a>
+                                                {/* Render sub-submenu kalau ada children */}
+                                                {child.children && (
+                                                    <ul
+                                                        className="pl-4 mt-2 space-y-2 md:max-h-0 md:opacity-0 overflow-hidden transition-all duration-1000 group-hover/esgrc:max-h-screen group-hover/esgrc:opacity-100"
+                                                    >
+                                                        {child.children.map((child2, child2Idx) => (
+                                                            <li key={child2Idx}>
+                                                                <a
+                                                                    href={child2.href}
+                                                                    className="block w-full border-b-2 border-b-zinc-600 pb-2 hover:border-b-white transition-colors duration-300 hover:text-white/50"
+                                                                >
+                                                                    {child2.title}
+                                                                </a>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                )}
+                                            </li>
+                                        ))}
+
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
@@ -144,9 +183,10 @@ export default function Page() {
                                 transform: scale(1); /* yang di tengah normal/besar */
                                 opacity: 1;
                             }
-                            .slick-prev:before, .slick-next:before{
-                                font-family: inherit!important;
-                                color:black !important;
+
+                            .slick-prev:before, .slick-next:before {
+                                font-family: inherit !important;
+                                color: black !important;
                             }
                         `}</style>
 
