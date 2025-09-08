@@ -10,12 +10,12 @@ type Slide = {
 
 const SLIDES: Slide[] = [
   {
-    image: "/our-services/classification/slider-1.jpg",
+    image: "/plan-approval/slider1.jpg",
     description:
       "Reviewing, assessing, and approving class and statutory documentation to ensure compliance with applicable rules and regulations.",
   },
   {
-    image: "/our-services/classification/slider-2.jpg",
+    image: "/plan-approval/slider2.jpg",
     description:
       "Continuously collaborating and coordinating with our internal management and external associate members to develop solutions that enhance safety, quality, and sustainability in the real-world engineering challenges.",
   },
@@ -30,7 +30,7 @@ const SLIDES: Slide[] = [
       "Reviewing and adapting frequently to our Standard Operating Procedure to meet the demands of document approvals through effective, efficient, and precise work processes.",
   },
   {
-    image: "/our-services/classification/slider-5.jpg",
+    image: "/plan-approval/slider5.jpg",
     description:
       "Supporting the company’s business vision through our best implementation strategies within our department.",
   },

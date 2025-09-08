@@ -10,7 +10,7 @@ export function NewsDivider() {
 
 export default async function NewsSection2() {
   const data = (await fetch(
-      process.env.STRAPI_API_URL +
+      process.env.STRAPI_API_URL || "https://unwavering-card-a95a991f83.strapiapp.com/api" +
         "/newss?populate=cover&pagination[page]=1&pagination[pageSize]=3"
     ).then((response) => response.json())) as { data: NewsStrapi[] };
 
@@ -44,7 +44,7 @@ export default async function NewsSection2() {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {data.data.map((n, i) => (
+        {(data?.data || []).map((n, i) => (
           <NewsCard key={i} news={n} />
         ))}
       </div>
