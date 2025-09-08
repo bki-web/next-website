@@ -39,6 +39,14 @@ export default function WhyCrossfadeSteppedLocked() {
       description:
         "Leveraging years of expertise to deliver exceptional service. Our seasoned professionals guarantee reliable solutions.",
     },
+    {
+      src: "/guided-by-experience.jpg",
+      topTitle: "Why",
+      subTitle: "Global Client Trust Us",
+      bottomRight: "Guided by Experience, Defined by Integrity",
+      description:
+        "Our organization is steered by a credible and experienced Board of Directors. Their strategic oversight ensures ethical governance, long-term stability, and a steadfast focus on our clients' success.",
+    },
   ];
 
   const [index, setIndex] = useState(0);
