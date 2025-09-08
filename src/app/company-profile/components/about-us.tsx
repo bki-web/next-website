@@ -44,7 +44,7 @@ export default function AboutUs() {
 
           {/* Button */}
           <div className="flex justify-center md:justify-start">
-            <DownloadButton link={"https://www.bki.co.id/file_download/552466Compro%20BKI%202021%20210522%20.pdf"}/>
+            <DownloadButton link={process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/file_download/552466Compro%20BKI%202021%20210522%20.pdf"}/>
           </div>
         </div>
       </div>

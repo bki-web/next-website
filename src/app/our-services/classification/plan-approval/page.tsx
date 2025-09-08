@@ -41,7 +41,7 @@ export default function ClassificationPage() {
                     },
                     {text: "Classification Plan Approval"},
                 ]}
-                backgroundClass="bg-[url('/classification-bg.jpg')]"
+                backgroundClass="bg-[url('/plan-approval/top-page.jpg')]"
                 title={"Classification Plan Approval"}
                 description={
                     "Comprehensive review and approval of ship plans to ensure compliance with international safety and classification standards."
@@ -52,7 +52,7 @@ export default function ClassificationPage() {
             <section
                 className="w-full 2xl:py-20 md:py-16 py-12 2xl:px-28 md:px-24 px-8 bg-white flex lg:flex-row flex-col justify-center items-center lg:gap-16 gap-8">
                 <Image
-                    src={"/our-services/plan-approval-introduction.jpg"}
+                    src={"/plan-approval/introduction.jpg"}
                     alt={"Introduction"}
                     width={800}
                     height={570}
@@ -105,7 +105,7 @@ export default function ClassificationPage() {
                     </div>
                 </div>
                 <Image
-                    src={"/our-services/plan-approval-introduction.jpg"}
+                    src={"/plan-approval/classification-service.jpg"}
                     alt={"Introduction"}
                     width={800}
                     height={570}
@@ -144,7 +144,7 @@ export default function ClassificationPage() {
                     </div>
                 </div>
                 <Image
-                    src={"/our-services/plan-approval-introduction.jpg"}
+                    src={"/plan-approval/technology.jpg"}
                     alt={"Introduction"}
                     width={800}
                     height={570}

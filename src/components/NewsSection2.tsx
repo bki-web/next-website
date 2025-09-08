@@ -2,41 +2,18 @@ import Image from "next/image";
 import Newsletter from "./Newsletter";
 import NewsCard from "./NewsCard";
 import FancyTitle from "./FancyTitle";
+import { NewsStrapi } from "@/types/news";
 
 export function NewsDivider() {
   return <div className="w-full h-1 bg-[#00385A]"></div>;
 }
 
-export default function NewsSection2() {
-  const news = [
-    {
-      id: "1",
-      date: "08 Aug 2025 4:40 pm",
-      title: "New Research Vessel For Marine Science in SA",
-      content:
-        "Research Vessel Encounter pulls in at O'Sullivan Beach boat ramp. A new coastal research vessel, RV Encounter, will support the investigations and training opportunities of Flinders",
-      img: "/news1.jpg",
-      link: "/news/news1",
-    },
-    {
-      id: "2",
-      date: "05 Aug 2025 1:10 pm",
-      title: "Container Shipping Sees Record High Traffic",
-      content:
-        "Container shipping has experienced a significant surge in traffic, with ports reporting record volumes and increased demand for freight services.",
-      img: "/news2.png",
-      link: "/news/news1",
-    },
-    {
-      id: "3",
-      date: "05 Aug 2025 1:10 pm",
-      title: "Container Shipping Sees Record High Traffic",
-      content:
-        "Container shipping has experienced a significant surge in traffic, with ports reporting record volumes and increased demand for freight services.",
-      img: "/news3.jpg",
-      link: "/news/news1",
-    },
-  ];
+export default async function NewsSection2() {
+  const data = (await fetch(
+      process.env.STRAPI_API_URL || "https://unwavering-card-a95a991f83.strapiapp.com/api" +
+        "/newss?populate=cover&pagination[page]=1&pagination[pageSize]=3"
+    ).then((response) => response.json())) as { data: NewsStrapi[] };
+
   return (
     <section
       className="px-6 md:px-24 py-12 bg-cover bg-center text-white"
@@ -67,7 +44,7 @@ export default function NewsSection2() {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {news.map((n, i) => (
+        {(data?.data || []).map((n, i) => (
           <NewsCard key={i} news={n} />
         ))}
       </div>

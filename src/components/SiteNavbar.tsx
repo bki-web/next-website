@@ -167,12 +167,12 @@ const NAV: Navigation[] = [
         submenu: [
             {
                 label: "Research & Development",
-                href: "https://www.bki.co.id/rnd.html",
+                href: "/research/rnd",
                 type: "",
             },
             {
                 label: "Technical Journal",
-                href: "https://www.bki.co.id/halamanstatis-119.html",
+                href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-119.html",
                 type: "",
             },
         ],
