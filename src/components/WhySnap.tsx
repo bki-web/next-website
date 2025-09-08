@@ -16,7 +16,7 @@ type Slide = {
 export default function WhyCrossfadeSteppedLocked() {
   const slides: Slide[] = [
     {
-      src: "/member.jpg",
+      src: "/why-trust-us/slider1-iso.jpg",
       topTitle: "Why",
       subTitle: "Global Client Trust Us",
       bottomRight: "Certified to International ISO Standards",
@@ -24,7 +24,7 @@ export default function WhyCrossfadeSteppedLocked() {
         "Setting safety and performance standards for every vessel. Trusted by industry leaders for our rigorous certification process.",
     },
     {
-      src: "/office-bki-1.jpg",
+      src: "/why-trust-us/slider2-international.jpg",
       topTitle: "Why",
       subTitle: "Global Client Trust Us",
       bottomRight: "International Recognition & Compliance",
@@ -32,12 +32,20 @@ export default function WhyCrossfadeSteppedLocked() {
         "Ensuring adherence to global standards and regulations. Our compliance record is recognized by authorities worldwide.",
     },
     {
-      src: "/crew-1.jpg",
+      src: "/why-trust-us/slider3-decade.jpg",
       topTitle: "Why",
       subTitle: "Global Client Trust Us",
       bottomRight: "Decades of Experience",
       description:
         "Leveraging years of expertise to deliver exceptional service. Our seasoned professionals guarantee reliable solutions.",
+    },
+    {
+      src: "/why-trust-us/guided-by-experience.jpg",
+      topTitle: "Why",
+      subTitle: "Global Client Trust Us",
+      bottomRight: "Guided by Experience, Defined by Integrity",
+      description:
+        "Our organization is steered by a credible and experienced Board of Directors. Their strategic oversight ensures ethical governance, long-term stability, and a steadfast focus on our clients' success.",
     },
   ];
 

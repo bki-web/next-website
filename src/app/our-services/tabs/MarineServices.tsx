@@ -148,7 +148,7 @@ const pillar =  [
                 desc: "Including gas-free testing, insulation resistance (megger) tests, noise and vibration analysis, and bollard pull tests."
             },
         ],
-        image: "/bki-armada.jpg",
+        image: "/marine-services/advance-testing.jpg",
     },
     {
         key: "engineering",
@@ -176,7 +176,7 @@ const pillar =  [
                 desc: "Providing expert advice on marine transportation, operational efficiency, and regulatory compliance.",
             },
         ],
-        image: "/bki-marine4.jpg",
+        image: "/marine-services/engineering-design.jpg",
     },
     {
         key: "management",
@@ -196,7 +196,7 @@ const pillar =  [
                 desc: "Assisting with the necessary inspections and documentation for securing entry permits for oil and gas operations.",
             },
         ],
-        image: "/classification-bg.jpg",
+        image: "/marine-services/management-system.jpg",
     },
     {
         key: "port",
@@ -212,7 +212,7 @@ const pillar =  [
                 desc: "Comprehensive support for the design, analysis, and inspection of specialized port and jetty facilities.",
             },
         ],
-        image: "/our-world-bg.jpg",
+        image: "/marine-services/port-facilities.jpg",
     },
     {
         key: "competency",
@@ -232,7 +232,7 @@ const pillar =  [
                 desc: "Provision of qualified technical personnel, including NDT technicians, surveyors, auditors, and welding inspectors, to support your project needs.",
             },
         ],
-        image: "/service-statutory.jpg",
+        image: "/marine-services/competency.jpg",
     },
 ]
 
