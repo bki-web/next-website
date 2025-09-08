@@ -220,17 +220,10 @@ export default function CompanyProfile() {
       >
         <div className="flex flex-col gap-7 px-10 2xl:px-[105px]">
           <h2 className="text-3xl 2xl:text-[64px] font-bold text-white">
-            Our History
+            Meet Our Board of Directors
           </h2>
           <p className="2xl:text-2xl">
-            <span className="font-bold">Biro Klasifikasi Indonesia (BKI)</span>{" "}
-            berdiri pada 1 Juli 1964 sebagai satu-satunya biro klasifikasi
-            nasional untuk kapal berbendera Indonesia. Didirikan untuk
-            mengurangi ketergantungan pada biro asing, BKI memastikan standar
-            yang sesuai dengan kondisi pelayaran Indonesia sekaligus menghemat
-            devisa dan mengembangkan keahlian lokal. Seiring perkembangan, BKI
-            bertransformasi menjadi PT (Persero) pada 1977 dan memperluas
-            layanan ke berbagai sektor maritim, industri, serta minyak dan gas.
+            Meet the strategic minds actively guiding the strategic growth of BKI, driving innovation and positioning our organization to lead in an era of profound industrial transformation.
           </p>
         </div>
         <div className="flex flex-col pl-10 2xl:pl-[105px] py-3 2xl:py-[21px]">
@@ -240,14 +233,14 @@ export default function CompanyProfile() {
             </p>
             <div className="bg-gradient-to-r from-[#FFFFFF75] to-[#FFFFFF00] h-[1px] w-2/3 2xl:w-5/6" />
           </div>
-          <ImageScroll members={boardOfCommissioner} />
+          <ImageScroll members={boardOfDirectors} />
         </div>
       </section>
 
       <MilestoneTimeline milestones={milestones} />
 
       {/* Board Governance */}
-      <section className="bg-white py-16 flex flex-col items-center justify-center pb-36">
+      {/* <section className="bg-white py-16 flex flex-col items-center justify-center pb-36">
         <span className="text-4xl 2xl:text-[64px] font-medium mb-6 -tracking-tight text-black">
           Board Governance
         </span>
@@ -258,7 +251,7 @@ export default function CompanyProfile() {
         </span>
 
         <div className="flex flex-col gap-5 w-full">
-          {/* <div
+          <div
                         className="flex flex-col md:flex-row justify-between items-start md:items-center w-full px-6 md:px-18 2xl:px-[105px] mb-5 gap-2 md:gap-0">
                         <p className="text-4xl 2xl:text-5xl font-bold text-black md:flex-1/2">
                             Board of Commissioners
@@ -272,7 +265,7 @@ export default function CompanyProfile() {
                         <div id="boc">
                             <BoardOfDirectors members={boardOfCommissioner.slice(0, 2)}/>
                         </div>
-                    </div> */}
+                    </div>
 
           <div className="flex flex-row justify-center items-center my-14">
             <div className="bg-gradient-to-r from-[#00000050] to-[#00000000] h-[1px] w-[89%]" />
@@ -291,7 +284,7 @@ export default function CompanyProfile() {
             <BoardOfDirectors members={boardOfDirectors} />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Committees */}
       <section
