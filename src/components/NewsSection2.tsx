@@ -9,11 +9,16 @@ export function NewsDivider() {
 }
 
 export default async function NewsSection2() {
-  const data = (await fetch(
-      process.env.STRAPI_API_URL || "https://unwavering-card-a95a991f83.strapiapp.com/api" +
-        "/newss?populate=cover&pagination[page]=1&pagination[pageSize]=3"
-    ).then((response) => response.json())) as { data: NewsStrapi[] };
+  const url =
+    (process.env.STRAPI_API_URL ||
+    "https://unwavering-card-a95a991f83.strapiapp.com/api") +
+      "/newss?populate=cover&pagination[page]=1&pagination[pageSize]=3";
+      console.log(url,'xxxxxxx')
+  const data = (await fetch(url).then((response) => response.json())) as {
+    data: NewsStrapi[];
+  };
 
+  console.log(data, 'xxxx')
   return (
     <section
       className="px-6 md:px-24 py-12 bg-cover bg-center text-white"
