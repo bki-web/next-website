@@ -1,16 +1,9 @@
 'use client';
+
 import {motion, Variants} from "framer-motion";
 import ActivityCard from "@/app/research/rnd/components/ActivityCard";
-
-export type ActivityItem = {
-    id: string;
-    dateLabel: string; // e.g. "2025, April 6"
-    status: "Upcoming" | "Ongoing" | "Completed";
-    title: string; // e.g. "Riset Bersama PUTA ( ITS - BKI )"
-    regarding: string;
-    imageUrl: string;
-    href?: string;
-};
+import {ActivityItem} from "@/app/research/rnd/components/ActivitySection";
+import Button from "@/components/Button";
 
 const container: Variants = {
     hidden: {opacity: 0},
@@ -56,18 +49,14 @@ const items: ActivityItem[] = [
     },
 ];
 
-export default function ActivitySection() {
+export default function LatestActivitiySection() {
     return (
-        <section className="relative 2xl:px-28 lg:px-20 px-4 2xl:py-20 lg:py-16 py-12 bg-white">
-            {/* Header */}
-            <div className="mb-6 md:mb-8 flex items-center justify-between gap-3">
+        <section
+            className="relative 2xl:px-28 xl:px-24 lg:px-20 px-4 2xl:py-20 lg:py-16 py-12 bg-[#E2E7F0] flex flex-col gap-6 md:gap-8">
+            <div className=" flex items-center justify-between gap-3">
                 <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0A436A]">
-                    Our Latest <span className="text-[#0A436A]/80">Activities</span>
+                    Latest Activities
                 </h2>
-                <button
-                    className="inline-flex items-center gap-2 border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 cursor-pointer">
-                    Activities <span>→</span>
-                </button>
             </div>
 
             {/* List */}
@@ -82,6 +71,10 @@ export default function ActivitySection() {
                     <ActivityCard key={a.id} a={a}/>
                 ))}
             </motion.div>
+
+            <div className="w-full flex justify-center items-center">
+                <Button text={'Show More'}/>
+            </div>
         </section>
-    );
+    )
 }

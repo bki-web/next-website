@@ -27,7 +27,7 @@ const gridInfoItems: GridInfoItem[] = [
     {
         title: "RnD Activities",
         description: "BKI work in research, developing rules and regulation for both of classification and industrial sector, in order to maintain the quality of our services. Providing the integrated system, and introduce our service-on-hand to our customers by developing several technical software to give excellent services in this digital era.",
-        href: "#",
+        href: "/research/rnd/activities",
         bgClass: "bg-[url('/rnd/rnd-activities.jpg')]",
     },
     {
