@@ -74,7 +74,7 @@ export default function ClassificationTabContent({
             >
                 <video
                     className="2xl:w-1/2 w-full h-full object-cover rounded-lg"
-                    src="/hero-banner-bki-very-fast.mp4"
+                    src="/hero-banner-bki.mp4"
                     autoPlay
                     loop
                     muted

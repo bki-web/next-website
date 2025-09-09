@@ -69,7 +69,7 @@ export default function HeroSection() {
         <video
           ref={videoRef}
           className={`w-full h-full object-cover transition-all duration-1000 blur-0 scale-100`}
-          src="/hero-banner-bki-very-fast.mp4"
+          src="/hero-banner-bki.mp4"
           autoPlay
           loop
           muted

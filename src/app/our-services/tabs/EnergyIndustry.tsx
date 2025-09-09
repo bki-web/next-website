@@ -245,7 +245,7 @@ export default function EnergyIndustryTabContent({
                                 className="relative w-full aspect-video overflow-hidden shadow-lg border border-[#0A436A]/20">
                                 <video
                                     className="absolute inset-0 w-full h-full object-cover"
-                                    src="/hero-banner-bki-very-fast.mp4"
+                                    src="/hero-banner-bki.mp4"
                                     autoPlay
                                     muted
                                     loop
