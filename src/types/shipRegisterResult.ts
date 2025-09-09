@@ -119,3 +119,31 @@ export type PaginationInfo = {
   pageCount: number;
   pageSize: number;
 }
+
+export type ShipRegisterOwner = {
+  nmfl1: string;
+  nmfl2: string;
+  almfl1: string;
+  almfl2: string;
+  kotafl: string;
+};
+
+export type ShipRegisterMachine = {
+  jme: string;
+  jmprop: string;
+  jmb: string;
+  sstr: string;
+  rasgr: string;
+  jpbb: string;
+  tpbb: string;
+  kdin: string;
+  kcob: string;
+  volt: string;
+  arus: string;
+  daya: string;
+  jenme: string;
+  ckme1: string;
+  ckme2: string;
+  dia: string;
+  lang: string;
+};

@@ -5,6 +5,8 @@ import {
   ShipRegister,
   ShipRegisterDetail,
   ShipRegisterHullData,
+  ShipRegisterMachine,
+  ShipRegisterOwner,
 } from "@/types/shipRegisterResult";
 
 export const shipRegisterRouter = createTRPCRouter({
@@ -44,7 +46,7 @@ export const shipRegisterRouter = createTRPCRouter({
       // Build the WHERE clause dynamically
       const whereClause = (() => {
         const conditions: Prisma.Sql[] = [Prisma.sql`a.qscs = 'YES'`];
-        if (nmkpl && nmkpl !== "%%") {
+        if (nmkpl && nmkpl !== "%%" && nmkpl !== "*all*") {
           conditions.push(Prisma.sql`a.nmkpl LIKE ${nmkpl}`);
         }
         if (noimo) {
@@ -167,8 +169,56 @@ export const shipRegisterRouter = createTRPCRouter({
           WHERE
             noreg = ${noreg};
         `
-      );
+      ) as ShipRegisterHullData[];
 
-      return result as ShipRegisterHullData[];
+      if(result.length){
+        return result[0]
+      }
+      
+      return null
+    }),
+    getOwnerData: baseProcedure
+    .input(
+      z.object({
+        noreg: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const noreg = input.noreg ? +input.noreg : undefined;
+      const result = await ctx.prisma.$queryRaw(
+        Prisma.sql`
+          SELECT nmfl1, nmfl2, almfl1, almfl2, kotafl
+          FROM vw_register
+          WHERE noreg = ${noreg}
+        `
+      ) as ShipRegisterOwner[];
+
+      if(result.length){
+        return result[0]
+      }
+
+      return null
+    }),
+     getMachineData: baseProcedure
+    .input(
+      z.object({
+        noreg: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const noreg = input.noreg ? +input.noreg : undefined;
+      const result = await ctx.prisma.$queryRaw(
+        Prisma.sql`
+          SELECT jme, jmprop, jmb, sstr, rasgr, jpbb, tpbb, kdin, kcob, volt, arus, daya, jenme, ckme1, ckme2, dia, lang
+          FROM mfreg03
+          WHERE noreg = ${noreg}
+        `
+      ) as ShipRegisterMachine[];
+
+      if(result.length){
+        return result[0]
+      }
+
+      return null
     }),
 });

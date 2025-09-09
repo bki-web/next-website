@@ -3,8 +3,8 @@ import SpecGrid, { Row } from "../components/SpecGrid";
 import NoResultsCard from "../../components/NoResultsCard";
 
 
-export default function HullDataTab({data}: { data: ShipRegisterHullData[] | undefined }) {
-  if (!data || !data.length) {
+export default function HullDataTab({data}: { data: ShipRegisterHullData | null | undefined}) {
+  if (!data ) {
     return (
       <NoResultsCard
         title="No Data"
@@ -13,7 +13,7 @@ export default function HullDataTab({data}: { data: ShipRegisterHullData[] | und
     );
   }
 
-  const selectedData = data[0]
+  const selectedData = data
   const rows = [
   {
     left: {

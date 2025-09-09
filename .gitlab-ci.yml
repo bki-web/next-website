@@ -1,0 +1,141 @@
+variables:
+  BKI_PROJECT_PATH: "bki/web-bki-2025"
+  NODE_VERSION: "lts"
+
+default:
+  image: node:lts-alpine
+  tags:
+    - shared-docker-executor
+  before_script:
+    - apk add --no-cache openssh git bash curl
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY_STAGING" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 700 ~/.ssh/id_rsa
+    - eval "$(ssh-agent -s)"
+    - ssh-add ~/.ssh/id_rsa
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    # Enable yarn via corepack
+    - corepack enable
+
+stages:
+  - test
+  - build
+  - pull_code
+  - staging_container
+  - codeproduction
+  - deploy
+
+# Stage untuk testing dan linting
+test:
+  stage: test
+  script:
+    - echo "Installing dependencies with yarn..."
+    - yarn install --pure-lockfile
+    - echo "Running ESLint with warnings allowed..."
+    - yarn lint --max-warnings 50 || echo "Linting completed with warnings"
+    - echo "Running TypeScript check..."
+    - yarn type-check
+    - echo "Running build test..."
+    - yarn build
+  artifacts:
+    reports:
+      junit: junit.xml
+    paths:
+      - coverage/
+      - dist/
+    expire_in: 1 week
+  only:
+    - master
+    - develop
+    - merge_requests
+
+# Stage untuk build (opsional, bisa digabung dengan test)
+build:
+  stage: build
+  script:
+    - echo "Installing dependencies with yarn..."
+    - yarn install --pure-lockfile
+    - echo "Building application..."
+    - yarn build
+    - echo "Build completed successfully!"
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 week
+  only:
+    - main
+
+deploy_staging:
+  stage: pull_code
+  image: alpine:latest
+  before_script:
+    - apk add --no-cache openssh git bash
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY_STAGING" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 700 ~/.ssh/id_rsa
+    - eval "$(ssh-agent -s)"
+    - ssh-add ~/.ssh/id_rsa
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  variables:
+    MIGRATE_FRESH_SEED: "true"
+  script:
+    - chmod +x ./.gitlab-pull.sh
+    - /bin/bash ./.gitlab-pull.sh
+  only:
+    - main
+
+container_staging:
+  stage: staging_container
+  image: alpine:latest
+  before_script:
+    - apk add --no-cache openssh git bash
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY_STAGING" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 700 ~/.ssh/id_rsa
+    - eval "$(ssh-agent -s)"
+    - ssh-add ~/.ssh/id_rsa
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - chmod +x ./.gitlab-pull.sh
+    - /bin/bash ./.gitlab-pull.sh
+  when: manual
+  only:
+    - main
+
+deploy_production:
+  stage: codeproduction
+  image: alpine:latest
+  before_script:
+    - apk add --no-cache openssh git bash
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY_PRD_INT" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 700 ~/.ssh/id_rsa
+    - eval "$(ssh-agent -s)"
+    - ssh-add ~/.ssh/id_rsa
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  variables:
+    MIGRATE_FRESH_SEED: "true"
+  script:
+    - chmod +x ./.gitlab-pull.sh
+    - /bin/bash ./.gitlab-pull.sh
+  when: manual
+  only:
+    - main
+
+container_production:
+  stage: deploy
+  image: alpine:latest
+  before_script:
+    - apk add --no-cache openssh git bash
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY_PRD_INT" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 700 ~/.ssh/id_rsa
+    - eval "$(ssh-agent -s)"
+    - ssh-add ~/.ssh/id_rsa
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - chmod +x ./.gitlab-pull.sh
+    - /bin/bash ./.gitlab-pull.sh
+  when: manual
+  only:
+    - main

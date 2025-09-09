@@ -30,6 +30,12 @@ export function ShipParticularContent({ noreg }: { noreg: string }) {
   const { data: dataHull, isLoading: isHullLoading } =
     trpc.shipRegister.getHullData.useQuery({ noreg });
 
+  const { data: dataOwner, isLoading: isOwnerDataLoading } =
+    trpc.shipRegister.getOwnerData.useQuery({ noreg });
+
+  const { data: dataMachine, isLoading: isMachineDataLoading } =
+    trpc.shipRegister.getMachineData.useQuery({ noreg });
+
   const [activeTab, setActiveTab] = useState("general");
   const activeIndex = tabs.findIndex((tab) => tab.key === activeTab);
 
@@ -124,9 +130,11 @@ export function ShipParticularContent({ noreg }: { noreg: string }) {
           <Skeleton className="w-full h-96 rounded-lg bg-gray-400" />
         )}
 
-        {activeTab === "machinery" && <MachineryDataTab />}
+        {(activeTab === "machinery" && !isMachineDataLoading) && <MachineryDataTab data={dataMachine}/>}
 
-        {activeTab === "owner" && <OwnerTab />}
+        {activeTab === "owner" && !isOwnerDataLoading && (
+          <OwnerTab data={dataOwner} />
+        )}
 
         {activeTab === "survey" && <SurvetStatusTab />}
       </div>
