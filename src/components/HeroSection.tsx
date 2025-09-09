@@ -138,7 +138,7 @@ export default function HeroSection() {
             exit={{ opacity: 0, transition: { duration: 0.35 } }}
           >
             <h1 className="text-5xl md:text-6xl font-semibold text-white">
-              Welcome To
+              Welcome
             </h1>
           </motion.div>
         )}

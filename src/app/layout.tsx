@@ -42,7 +42,7 @@ export default function RootLayout({
             <SiteNavbar />
             {children}
             <FooterSection/>
-            <FloatingCallButton />
+            {/* <FloatingCallButton /> */}
           </TransitionProvider>
         </TRPCProvider>
       </body>

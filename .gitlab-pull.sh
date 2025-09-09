@@ -122,7 +122,7 @@ elif  [ "staging_container" = $CI_JOB_STAGE ]; then
     sudo docker compose -f docker-compose.staging.yml build
 
     echo "run container to daemon"
-    sudo docker compose -f  .yml up -d
+    sudo docker compose -f  docker-compose.staging.yml up -d
 
     echo "✅ React Frontend deployed successfully!"
 
