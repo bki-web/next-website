@@ -23,12 +23,13 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
       error.message.includes("Raw query failed");
 
     if (isDatabaseError) {
+      console.log({...shape.data}, 'test')
       // Return a sanitized, generic error to the client.
       return {
         ...shape,
         message: "Something went wrong.",
         data: {
-          ...shape.data,
+          // ...shape.data,
           code: "INTERNAL_SERVER_ERROR",
         },
       };

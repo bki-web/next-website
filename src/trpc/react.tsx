@@ -18,9 +18,15 @@ function getQueryClient() {
   return (clientQueryClientSingleton ??= makeQueryClient());
 }
 
+export function getBaseUrl() {
+  if (typeof window !== "undefined") return "";
+  if (process.env.APP_URL) return `https://${process.env.APP_URL}`;
+  return `http://localhost:${process.env.PORT ?? 3000}`;
+}
+
 function getUrl() {
   // need to change for deploy url
-  return "http://localhost:3000/api/trpc";
+  return getBaseUrl() + "/api/trpc";
 }
 
 export function TRPCProvider(props: PropsWithChildren) {
