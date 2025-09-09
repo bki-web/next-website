@@ -21,7 +21,7 @@ const gridInfoItems: GridInfoItem[] = [
     {
         title: "BKI RULES & REGULATIONS",
         description: "BKI held the classification activities based on the latest rules, guidelines, and technical standard. In order to provide better service, our team continuously develop BKI Rules and Regulation through current research and practical maritime experiences. The development is also based on the interpretation from IACS, IMO regulation and other relevant standard so that the rules is comply with the applicable international regulations. Click here for the complete edition of BKI Rules and Regulation.",
-        href: "#",
+        href: "/research/rnd/bki-rules-regulations",
         bgClass: "bg-[url('/rnd/bki-rules-regulations.jpg')]",
     },
     {
