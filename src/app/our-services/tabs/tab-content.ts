@@ -61,7 +61,7 @@ export const StatutorySlides: Slide[] = [
 
 export const MarineServicesSlides: Slide[] = [
     {
-        image: "/our-services/classification/slider-1.jpg",
+        image: "/our-services/marine-services/slider-1.jpg",
         title: "",
         headline: "From Blueprint to Delivery",
         body: "Providing expert engineering, consultancy, and on-site supervision for new constructions, conversions, and complex repair projects.",
@@ -73,7 +73,7 @@ export const MarineServicesSlides: Slide[] = [
         body: "In-depth inspections, performance audits, and condition surveys to ensure the long-term integrity and operational efficiency of your assets.",
     },
     {
-        image: "/our-services/classification/slider-3.jpg",
+        image: "/our-services/marine-services/slider-3.jpg",
         title: "",
         headline: "Precision Data for Critical Decisions",
         body: "Utilizing advanced Non-Destructive Testing (NDT), laboratory analysis, and underwater technology to reveal the true condition of your structures.",
