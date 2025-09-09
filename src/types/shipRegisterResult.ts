@@ -147,3 +147,19 @@ export type ShipRegisterMachine = {
   dia: string;
   lang: string;
 };
+
+export type ShipRegisterSurvey = {
+  jenis: "KLAS" | "STATUTORIA",
+   KOSUR: string;
+  NOREG: string;
+  NUP: string;
+  STATUS_VER: string | null;
+  VISAL: string;
+  VISAM: string;
+  duedate: string;
+  jenissurvey: string;
+  lastdate: string;
+  postponeddate: string | null;
+  rangedate: string | null;
+  no?: number | string
+}

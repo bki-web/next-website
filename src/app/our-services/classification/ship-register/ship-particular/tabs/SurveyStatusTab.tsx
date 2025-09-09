@@ -1,56 +1,44 @@
 import { SurveyRow, SurveySection } from "@/types/survey";
 import SimpleTable from "../components/SimpleTable";
 import { Column } from "@/types/simpleTable";
+import { ShipRegisterSurvey } from "@/types/shipRegisterResult";
 // import SurveyStatusOfClass from "../components/SurveyStatusOfClass";
 
-const col = <K extends keyof SurveyRow>(
+const col = <K extends keyof ShipRegisterSurvey>(
     key: K,
     title: string,
     align?: "left" | "center" | "right"
-): Column<SurveyRow> => ({key, title, align});
+): Column<ShipRegisterSurvey> => ({key, title, align});
 
-export default function SurvetStatusTab() {
+export default function SurvetStatusTab(props: {data: ShipRegisterSurvey[] | undefined}) {
+    const data = props.data || []
+    const classData = data.filter(prop => prop.jenis === "KLAS").map((prop, index) => ({
+        ...prop,
+        no: index + 1
+    }))
+    const statutoryData = data.filter(prop => prop.jenis === "STATUTORIA").map((prop, index) => ({
+        ...prop,
+        no: index + 1
+    }))
 
     const sections: SurveySection[] = [
     {
         title: "Survey Status of Class",
-        rows: [
-            {no: 1, kind: "Special Survey", dueDate: "12-Mar-2030", lastDate: "10-Mar-2025"},
-            {no: 2, kind: "Annual Survey", rangeDate: "12-Dec-2025 to 12-Jun-2026"},
-            {no: 3, kind: "Docking Survey", dueDate: "10-Mar-2028", lastDate: "10-Mar-2025"},
-            {no: 4, kind: "Intermediate Survey", rangeDate: "12-Dec-2026 to 12-Jun-2028"},
-            {no: 5, kind: "Propeller Shaft (starboard-aft), Method 4", dueDate: "10-Mar-2030", lastDate: "10-Mar-2025"},
-            {no: 6, kind: "Propeller Shaft (portside-aft), Method 4", dueDate: "10-Mar-2030", lastDate: "10-Mar-2025"},
-        ],
+        rows: classData
     },
     {
         title: "Survey Status of Class",
-        rows: [
-            {
-                no: 1,
-                kind: "LOAD LINE ANNUAL",
-                dueDate: "12 Jun 2026",
-                rangeDate: "12 Dec 2025 to 12 Jun 2026",
-                lastDate: "10-Mar-2025"
-            },
-            {
-                no: 2,
-                kind: "LOAD LINE RENEWAL ILLC 88",
-                dueDate: "12 Mar 2026",
-                rangeDate: "- to 12 Mar 2030",
-                lastDate: "10 Mar 2025"
-            },
-        ],
+        rows: statutoryData 
     },
 ];
 
- const columns: Column<SurveyRow>[] = [
-        col("no", "No", "center"),
-        col("kind", "Kind of Survey"),
-        col("dueDate", "Due Date"),
-        col("rangeDate", "Range Date"),
-        col("postponed", "Postponed"),
-        col("lastDate", "Last Date"),
+ const columns: Column<ShipRegisterSurvey>[] = [
+       col("no", "No", "center"),
+        col("jenissurvey", "Kind of Survey"),
+        col("duedate", "Due Date"),
+        col("rangedate", "Range Date"),
+        col("postponeddate", "Postponed"),
+        col("lastdate", "Last Date"),
     ];
     return (
         <section className="w-full space-y-4">

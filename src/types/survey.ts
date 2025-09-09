@@ -1,6 +1,8 @@
+import { ShipRegisterSurvey } from "./shipRegisterResult";
+
 export type SurveySection = {
     title: string;
-    rows: SurveyRow[];
+    rows: ShipRegisterSurvey[];
 };
 
 export type SurveyRow = {

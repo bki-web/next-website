@@ -36,6 +36,9 @@ export function ShipParticularContent({ noreg }: { noreg: string }) {
   const { data: dataMachine, isLoading: isMachineDataLoading } =
     trpc.shipRegister.getMachineData.useQuery({ noreg });
 
+  const { data: dataSurvey, isLoading: isSurveyDataLoading } =
+    trpc.shipRegister.getSurveyData.useQuery({ noreg });
+
   const [activeTab, setActiveTab] = useState("general");
   const activeIndex = tabs.findIndex((tab) => tab.key === activeTab);
 
@@ -130,13 +133,15 @@ export function ShipParticularContent({ noreg }: { noreg: string }) {
           <Skeleton className="w-full h-96 rounded-lg bg-gray-400" />
         )}
 
-        {(activeTab === "machinery" && !isMachineDataLoading) && <MachineryDataTab data={dataMachine}/>}
+        {activeTab === "machinery" && !isMachineDataLoading && (
+          <MachineryDataTab data={dataMachine} />
+        )}
 
         {activeTab === "owner" && !isOwnerDataLoading && (
           <OwnerTab data={dataOwner} />
         )}
 
-        {activeTab === "survey" && <SurvetStatusTab />}
+        {(activeTab === "survey" && !isSurveyDataLoading) && <SurvetStatusTab data={dataSurvey}/>}
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import {
   ShipRegisterHullData,
   ShipRegisterMachine,
   ShipRegisterOwner,
+  ShipRegisterSurvey,
 } from "@/types/shipRegisterResult";
 
 export const shipRegisterRouter = createTRPCRouter({
@@ -161,7 +162,7 @@ export const shipRegisterRouter = createTRPCRouter({
         setTimeout(() => resolve(null), 10000)
       );
       const noreg = input.noreg ? +input.noreg : undefined;
-      const result = await ctx.prisma.$queryRaw(
+      const result = (await ctx.prisma.$queryRaw(
         Prisma.sql`
           Select 	brt,nrt,dwt,dspl,loa,lbp,bmld,hmld,sarat,lt,nmgal,lgal,thba,tgnas,blnas,thnas,tglun,bllun,thlun,jmuat,jglad,jpal,upal,jskpj,jskml,pjfd,pjbd,pjbrd,jjhl,bjhl,tjhl,krjhl,drjhl,prjhl,trjhl,jjar,bjar,tjar,krjar,drjar,prjar,trjar,dtl,ptl,btl,jml,dml,pml,bml,jdk,jtm,jbm,albom
           FROM
@@ -169,15 +170,15 @@ export const shipRegisterRouter = createTRPCRouter({
           WHERE
             noreg = ${noreg};
         `
-      ) as ShipRegisterHullData[];
+      )) as ShipRegisterHullData[];
 
-      if(result.length){
-        return result[0]
+      if (result.length) {
+        return result[0];
       }
-      
-      return null
+
+      return null;
     }),
-    getOwnerData: baseProcedure
+  getOwnerData: baseProcedure
     .input(
       z.object({
         noreg: z.string(),
@@ -185,21 +186,21 @@ export const shipRegisterRouter = createTRPCRouter({
     )
     .query(async ({ ctx, input }) => {
       const noreg = input.noreg ? +input.noreg : undefined;
-      const result = await ctx.prisma.$queryRaw(
+      const result = (await ctx.prisma.$queryRaw(
         Prisma.sql`
           SELECT nmfl1, nmfl2, almfl1, almfl2, kotafl
           FROM vw_register
           WHERE noreg = ${noreg}
         `
-      ) as ShipRegisterOwner[];
+      )) as ShipRegisterOwner[];
 
-      if(result.length){
-        return result[0]
+      if (result.length) {
+        return result[0];
       }
 
-      return null
+      return null;
     }),
-     getMachineData: baseProcedure
+  getMachineData: baseProcedure
     .input(
       z.object({
         noreg: z.string(),
@@ -207,18 +208,31 @@ export const shipRegisterRouter = createTRPCRouter({
     )
     .query(async ({ ctx, input }) => {
       const noreg = input.noreg ? +input.noreg : undefined;
-      const result = await ctx.prisma.$queryRaw(
+      const result = (await ctx.prisma.$queryRaw(
         Prisma.sql`
           SELECT jme, jmprop, jmb, sstr, rasgr, jpbb, tpbb, kdin, kcob, volt, arus, daya, jenme, ckme1, ckme2, dia, lang
           FROM mfreg03
           WHERE noreg = ${noreg}
         `
-      ) as ShipRegisterMachine[];
+      )) as ShipRegisterMachine[];
 
-      if(result.length){
-        return result[0]
+      if (result.length) {
+        return result[0];
       }
 
-      return null
+      return null;
+    }),
+  getSurveyData: baseProcedure
+    .input(
+      z.object({
+        noreg: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      return await fetch(
+        process.env.OLD_API_BKI_URL +
+          "/api-cops/get_surveystatus_kapal.php?noreg=" +
+          input.noreg
+      ).then((response) => response.json()) as ShipRegisterSurvey[];
     }),
 });
