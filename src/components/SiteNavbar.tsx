@@ -288,7 +288,7 @@ const NAV: Navigation[] = [
                 submenu: [
                     {
                         label: "Environment",
-                        href: "/environment",
+                        href: "/esgrc/environment",
                         type: "",
                     },
                     {
