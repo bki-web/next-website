@@ -65,7 +65,7 @@ export default function OurServicesSection() {
         <div
             id={"our-services"}
             ref={servicesRef}
-            className="relative w-full lg:h-[110vh] text-white bg-black overflow-hidden"
+            className="relative w-full 2xl:h-[110vh] text-white bg-black overflow-hidden"
         >
             {/* <div
                 className="flex flex-col justify-center items-center bg-[linear-gradient(to_bottom,rgba(11,63,101,1),rgba(11,63,101,1)_30%,rgb(134,167,212))] py-32">
@@ -93,7 +93,7 @@ export default function OurServicesSection() {
                 <Image
                     src="/bg-our-services-2.jpg"
                     alt="Background"
-                    className="w-screen lg:h-[110vh] h-[300vh] object-cover z-0"
+                    className="w-screen 2xl:h-[110vh] xl:h-[200vh] h-[300vh] object-cover z-0"
                     width={1920}
                     height={1080}
                     priority={true}
@@ -104,7 +104,7 @@ export default function OurServicesSection() {
 
             <motion.div
                 style={{y: servicesSection, willChange: "transform"}}
-                className="absolute inset-0 lg:h-[calc(100vh+240px)] flex flex-col justify-center items-center pt-5 lg:pb-36 -mt-7 z-1"
+                className="absolute inset-0 2xl:h-[calc(100vh+240px)] flex flex-col justify-center items-center pt-5 2xl:pb-36 -mt-7 z-1"
             >
                 <div className="flex flex-col gap-6 mb-20">
                     <p className="text-5xl md:text-6xl text-white font-bold text-center">
