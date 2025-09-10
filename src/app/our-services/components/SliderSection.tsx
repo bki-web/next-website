@@ -1,6 +1,5 @@
 "use client";
 import {AnimatePresence, motion, useReducedMotion, Variants,} from "framer-motion";
-import Link from "next/link";
 import {RefObject, useEffect, useRef, useState} from "react";
 import {
     ClassificationSlides,
@@ -9,6 +8,7 @@ import {
     Slide,
     StatutorySlides
 } from "@/app/our-services/tabs/tab-content";
+import Button from "@/components/Button";
 
 interface Props {
     keyContent: string;
@@ -204,10 +204,10 @@ export default function SliderSection({
                                     }}
                                     className="flex flex-col gap-4 sm:gap-6 md:gap-8 w-full xl:w-1/2"
                                 >
-                                    <p className="text-white font-bold text-2xl sm:text-3xl md:text-4xl xl:text-6xl leading-tight">
+                                    <p className="text-white font-bold text-xl md:text-2xl xl:text-4xl leading-tight">
                                         {slide.headline}
                                     </p>
-                                    <p className="text-white text-base sm:text-lg md:text-xl xl:text-3xl leading-relaxed md:leading-8 opacity-90">
+                                    <p className="text-white text-base md:text-lg 2xl:text-2xl leading-relaxed md:leading-8 opacity-90">
                                         {slide.body}
                                     </p>
                                     <motion.div
@@ -215,24 +215,16 @@ export default function SliderSection({
                                         animate={{opacity: 1, y: 0}}
                                         transition={{duration: 1, ease: "easeOut", delay: 0.4}}
                                     >
-                                        <Link
-                                            href="#"
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                const el = document.getElementById("program");
-                                                if (el) {
-                                                    el.scrollIntoView({
-                                                        behavior: "smooth",
-                                                        block: "start",
-                                                    });
-                                                    history.replaceState(null, "", "#program");
-                                                }
-                                            }}
-                                            className="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-base sm:text-lg md:text-xl xl:text-3xl font-light text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-                                        >
-                                            Explore our services
-                                            <span className="ml-2">→</span>
-                                        </Link>
+                                        <Button text={'Explore our services'} onClick={() => {
+                                            const el = document.getElementById("program");
+                                            if (el) {
+                                                el.scrollIntoView({
+                                                    behavior: "smooth",
+                                                    block: "start",
+                                                });
+                                                history.replaceState(null, "", "#program");
+                                            }
+                                        }} style={'blur'}/>
                                     </motion.div>
                                 </motion.div>
                             </AnimatePresence>
