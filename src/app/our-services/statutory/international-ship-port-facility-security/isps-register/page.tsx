@@ -10,9 +10,9 @@ import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {z} from "zod";
 import Pagination from "@/components/pagination";
-import ListISMRegister
-    from "@/app/our-services/statutory/international-safety-management/ism-register/components/ListISMRegister";
 import {useRouter} from "next/navigation";
+import ListISPSRegister
+    from "@/app/our-services/statutory/international-ship-port-facility-security/isps-register/components/ListISPSRegister";
 
 const routes = [
     {
@@ -47,7 +47,7 @@ const defaultValue = {
     companyName: '',
 };
 
-export default function InternationalSafetyManagementPage() {
+export default function ISPSRegisterPage() {
     const router = useRouter();
     const form = useForm<FormSchema>({
         resolver: zodResolver(formSchema),
@@ -100,9 +100,9 @@ export default function InternationalSafetyManagementPage() {
                         className="flex flex-col items-center lg:gap-y-3 gap-y-2 lg:p-8 p-6 rounded-lg overflow-hidden border-2 border-[#E8E8E866]/40 lg:w-1/2 w-full relative">
                         <div className="absolute inset-0 bg-black/50 blur-xl z-0"/>
                         <p className="text-lg md:text-4xl 2xl:text-5xl font-bold text-white text-center z-10">
-                            ISM Register
+                            ISPS Register
                         </p>
-                        <p className="text-md md:text-lg xl:text-xl 2xl:text-2xl text-white text-center z-10">
+                        <p className="ltext-md md:text-lg xl:text-xl 2xl:text-2xl text-white text-center z-10">
                             We provide independent and reliable ship classification services
                             to ensure your vessels comply with international safety,
                             environmental, and quality standards.
@@ -169,7 +169,7 @@ export default function InternationalSafetyManagementPage() {
             </section>
 
             <section>
-                <ListISMRegister/>
+                <ListISPSRegister/>
                 <div
                     className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 bg-[#E2E7F0] lg:px-24 px-4 pt-4 pb-10">
                     <p className="text-bki-blue">
