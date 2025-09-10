@@ -93,7 +93,7 @@ export default function OurServicesSection() {
                 <Image
                     src="/bg-our-services-2.jpg"
                     alt="Background"
-                    className="w-screen 2xl:h-[110vh] xl:h-[175vh] h-[300vh] object-cover z-0"
+                    className="w-screen lg:h-[110vh] h-[300vh] object-cover z-0"
                     width={1920}
                     height={1080}
                     priority={true}
@@ -104,14 +104,14 @@ export default function OurServicesSection() {
 
             <motion.div
                 style={{y: servicesSection, willChange: "transform"}}
-                className="absolute inset-0 2xl:h-[calc(100vh+240px)] flex flex-col justify-center items-center pt-5 2xl:pb-36 -mt-7 z-1"
+                className="absolute inset-0 2xl:h-[calc(100vh+240px)] flex flex-col justify-center items-center pt-10 2xl:pb-36 -mt-7 z-1"
             >
                 <div className="flex flex-col gap-6 mb-20">
                     <motion.div initial={{opacity: 0, x: -100}}
                                 whileInView={{opacity: 1, x: 0}}
                                 transition={{duration: 0.8, delay: 0.25}}
                                 viewport={{once: true}}>
-                        <p className="text-5xl md:text-6xl text-white font-bold text-center">
+                        <p className="text-3xl md:text-5xl text-white font-bold text-center">
                             <FancyTitle title="Our Services"/>
                         </p>
                     </motion.div>
@@ -119,7 +119,7 @@ export default function OurServicesSection() {
                                 whileInView={{opacity: 1, x: 0}}
                                 transition={{duration: 0.8, delay: 0.5}}
                                 viewport={{once: true}}>
-                        <p className="text-2xl md:text-2xl text-white text-center">
+                        <p className="text-xl md:text-2xl text-white text-center">
                             Discover our essential services built for safety, compliance, and
                             excellence.
                         </p>
