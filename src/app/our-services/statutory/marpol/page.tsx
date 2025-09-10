@@ -2,7 +2,7 @@ import ContactUsSection from "@/components/ContactUsSection";
 import PageTransition from "@/components/page-transition";
 import Hero from "@/components/Hero";
 
-export default function IspsRegisterPage() {
+export default function MarpolPage() {
     return (
         <div className="relative min-h-screen w-full overflow-hidden">
             <PageTransition/>
@@ -23,11 +23,11 @@ export default function IspsRegisterPage() {
                         href: "/our-services#statutory",
                     },
                     {
-                        text: "ISPS Register",
+                        text: "MARPOL",
                     },
                 ]}
                 backgroundClass="bg-[url('/classification-bg.jpg')]"
-                title={"ISPS Register"}
+                title={"MARPOL"}
                 description={
                     "Lorem Ipsum Dolor sit Amet."
                 }

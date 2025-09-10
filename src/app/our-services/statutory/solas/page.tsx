@@ -2,7 +2,7 @@ import ContactUsSection from "@/components/ContactUsSection";
 import PageTransition from "@/components/page-transition";
 import Hero from "@/components/Hero";
 
-export default function IMOMeetingPage() {
+export default function SOLASPage() {
     return (
         <div className="relative min-h-screen w-full overflow-hidden">
             <PageTransition/>
@@ -23,11 +23,11 @@ export default function IMOMeetingPage() {
                         href: "/our-services#statutory",
                     },
                     {
-                        text: "IMO Meeting",
+                        text: "SOLAS",
                     },
                 ]}
                 backgroundClass="bg-[url('/classification-bg.jpg')]"
-                title={"IMO Meeting"}
+                title={"SOLAS"}
                 description={
                     "Lorem Ipsum Dolor sit Amet."
                 }

@@ -2,7 +2,7 @@ import ContactUsSection from "@/components/ContactUsSection";
 import PageTransition from "@/components/page-transition";
 import Hero from "@/components/Hero";
 
-export default function FlagStatesRegulationsPage() {
+export default function CoastalStateServicesPage() {
     return (
         <div className="relative min-h-screen w-full overflow-hidden">
             <PageTransition/>
@@ -23,11 +23,11 @@ export default function FlagStatesRegulationsPage() {
                         href: "/our-services#statutory",
                     },
                     {
-                        text: "Flag States Regulations",
+                        text: "Coastal State Services",
                     },
                 ]}
                 backgroundClass="bg-[url('/classification-bg.jpg')]"
-                title={"Flag States Regulations"}
+                title={"Coastal State Services"}
                 description={
                     "Lorem Ipsum Dolor sit Amet."
                 }

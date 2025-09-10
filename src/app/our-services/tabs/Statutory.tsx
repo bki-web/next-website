@@ -13,29 +13,24 @@ type ProgramItem = {
 };
 const programItems: ProgramItem[] = [
     {
-        title: "ISM Register",
+        title: "International Safety Management",
         image: "/our-services/program/plan-approval.jpg",
-        href: "/our-services/statutory/ism-register",
+        href: "/our-services/statutory/international-safety-management",
     },
     {
-        title: "ISPS Register",
+        title: "International Ship & Port Facility Security",
         image: "/our-services/program/floating-offshore.png",
-        href: "/our-services/statutory/isps-register",
+        href: "/our-services/statutory/international-ship-port-facility-security",
     },
     {
-        title: "Flag States Regulations",
+        title: "Coastal State Services",
         image: "/our-services/program/class-suspend.jpg",
-        href: "/our-services/statutory/flag-states-regulations",
+        href: "/our-services/statutory/coastal-state-services",
     },
     {
-        title: "Statutory Information",
+        title: "Statutory & Flag State Services",
         image: "/our-services/program/class-suspend.jpg",
-        href: "/our-services/statutory/statutory-information",
-    },
-    {
-        title: "IMO Meeting",
-        image: "/our-services/program/plan-approval.jpg",
-        href: "/our-services/statutory/imo-meeting",
+        href: "/our-services/statutory/statutory-flag-state-services",
     },
     {
         title: "Load Line",
@@ -43,18 +38,8 @@ const programItems: ProgramItem[] = [
         href: "/our-services/statutory/load-line",
     },
     {
-        title: "Ballast Water Management",
-        image: "/our-services/program/floating-offshore.png",
-        href: "/our-services/statutory/ballast-water-management",
-    },
-    {
-        title: "Energy Efficiency for Ships",
-        image: "/our-services/program/floating-offshore.png",
-        href: "/our-services/statutory/energy-efficiency-for-ships",
-    },
-    {
         title: "Maritime Labour Convention",
-        image: "/our-services/program/floating-offshore.png",
+        image: "/our-services/program/maritime-labour-convention.jpg",
         href: "/our-services/statutory/maritime-labour-convention",
     },
     {
@@ -63,9 +48,29 @@ const programItems: ProgramItem[] = [
         href: "/our-services/statutory/port-state-control",
     },
     {
+        title: "Energy Efficiency for Ships",
+        image: "/our-services/program/floating-offshore.png",
+        href: "/our-services/statutory/energy-efficiency-for-ships",
+    },
+    {
+        title: "Ballast Water Management",
+        image: "/our-services/program/ballast-water-management.jpg",
+        href: "/our-services/statutory/ballast-water-management",
+    },
+    {
         title: "Authorization",
         image: "/our-services/program/floating-offshore.png",
         href: "/our-services/statutory/authorization",
+    },
+    {
+        title: "MARPOL",
+        image: "/our-services/program/floating-offshore.png",
+        href: "/our-services/statutory/marpol",
+    },
+    {
+        title: "SOLAS",
+        image: "/our-services/program/floating-offshore.png",
+        href: "/our-services/statutory/solas",
     },
 ];
 

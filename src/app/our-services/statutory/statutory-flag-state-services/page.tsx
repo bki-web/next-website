@@ -2,7 +2,7 @@ import ContactUsSection from "@/components/ContactUsSection";
 import PageTransition from "@/components/page-transition";
 import Hero from "@/components/Hero";
 
-export default function ShipDetentionPage() {
+export default function StatutoryFlagStateServicesPage() {
     return (
         <div className="relative min-h-screen w-full overflow-hidden">
             <PageTransition/>
@@ -23,11 +23,11 @@ export default function ShipDetentionPage() {
                         href: "/our-services#statutory",
                     },
                     {
-                        text: "Ship Detention",
+                        text: "Statutory Flag State Services",
                     },
                 ]}
                 backgroundClass="bg-[url('/classification-bg.jpg')]"
-                title={"Ship Detention"}
+                title={"Statutory Flag State Services"}
                 description={
                     "Lorem Ipsum Dolor sit Amet."
                 }
