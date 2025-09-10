@@ -5,9 +5,7 @@ import SiteNavbar from "@/components/SiteNavbar";
 
 import {Jost, Montserrat} from 'next/font/google';
 import FooterSection from "@/components/FooterSection";
-import { TRPCProvider } from "@/trpc/react";
-import FloatingCallButton from "@/components/FloatingCallButton";
-import { Suspense } from "react";
+import {TRPCProvider} from "@/trpc/react";
 
 // Load Montserrat with chosen weights
 const montserrat = Montserrat({
@@ -32,20 +30,20 @@ export default function RootLayout({
                                    }: Readonly<{
     children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" className="scroll-smooth">
-      <body
-        className={`${montserrat.variable} ${jost.variable} antialiased`}
-      >
+    return (
+        <html lang="en" className="scroll-smooth">
+        <body
+            className={`${montserrat.variable} ${jost.variable} antialiased`}
+        >
         <TRPCProvider>
-          <TransitionProvider>
-            <SiteNavbar />
-            {children}
-            <FooterSection/>
-            {/* <FloatingCallButton /> */}
-          </TransitionProvider>
+            <TransitionProvider>
+                <SiteNavbar/>
+                {children}
+                <FooterSection/>
+                {/* <FloatingCallButton /> */}
+            </TransitionProvider>
         </TRPCProvider>
-      </body>
-    </html>
-  );
+        </body>
+        </html>
+    );
 }

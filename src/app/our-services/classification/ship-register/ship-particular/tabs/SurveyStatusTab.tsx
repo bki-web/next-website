@@ -1,7 +1,7 @@
-import { SurveyRow, SurveySection } from "@/types/survey";
+import {SurveySection} from "@/types/survey";
 import SimpleTable from "../components/SimpleTable";
-import { Column } from "@/types/simpleTable";
-import { ShipRegisterSurvey } from "@/types/shipRegisterResult";
+import {Column} from "@/types/simpleTable";
+import {ShipRegisterSurvey} from "@/types/shipRegisterResult";
 // import SurveyStatusOfClass from "../components/SurveyStatusOfClass";
 
 const col = <K extends keyof ShipRegisterSurvey>(
@@ -10,7 +10,7 @@ const col = <K extends keyof ShipRegisterSurvey>(
     align?: "left" | "center" | "right"
 ): Column<ShipRegisterSurvey> => ({key, title, align});
 
-export default function SurvetStatusTab(props: {data: ShipRegisterSurvey[] | undefined}) {
+export default function SurvetStatusTab(props: { data: ShipRegisterSurvey[] | undefined }) {
     const data = props.data || []
     const classData = data.filter(prop => prop.jenis === "KLAS").map((prop, index) => ({
         ...prop,
@@ -22,18 +22,18 @@ export default function SurvetStatusTab(props: {data: ShipRegisterSurvey[] | und
     }))
 
     const sections: SurveySection[] = [
-    {
-        title: "Survey Status of Class",
-        rows: classData
-    },
-    {
-        title: "Survey Status of Class",
-        rows: statutoryData 
-    },
-];
+        {
+            title: "Survey Status of Class",
+            rows: classData
+        },
+        {
+            title: "Survey Status of Class",
+            rows: statutoryData
+        },
+    ];
 
- const columns: Column<ShipRegisterSurvey>[] = [
-       col("no", "No", "center"),
+    const columns: Column<ShipRegisterSurvey>[] = [
+        col("no", "No", "center"),
         col("jenissurvey", "Kind of Survey"),
         col("duedate", "Due Date"),
         col("rangedate", "Range Date"),

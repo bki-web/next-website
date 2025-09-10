@@ -1,7 +1,6 @@
 import ContactUsSection from "@/components/ContactUsSection";
 import PageTransition from "@/components/page-transition";
 import Hero from "@/components/Hero";
-import DigitalPlatform from "../../components/DigitalPlatform";
 
 export default function FlagStatesRegulationsPage() {
     return (

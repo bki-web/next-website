@@ -87,7 +87,8 @@ export default function MaritimeLabourConventionPage() {
                             className="mt-6 text-base leading-7 text-slate-300 sm:text-lg"
                         >
                             “BKI provides comprehensive approval and audit services to ensure your fleet meets the
-                            global standard for seafarers' rights, safeguarding both your crew and your operations.”
+                            global standard for seafarers&apos; rights, safeguarding both your crew and your
+                            operations.”
                         </motion.p>
                     </motion.header>
 
@@ -100,12 +101,12 @@ export default function MaritimeLabourConventionPage() {
                         className="mx-auto mt-12 max-w-4xl"
                     >
                         <div className="rounded-sm border border-white/10 bg-white/5 p-6 backdrop-blur sm:p-8">
-                            <h2 className="text-xl font-semibold text-white sm:text-2xl">The Seafarers' Bill of
+                            <h2 className="text-xl font-semibold text-white sm:text-2xl">The Seafarers&apos; Bill of
                                 Rights</h2>
                             <p className="mt-4 text-slate-300">
                                 The Maritime Labour Convention (MLC, 2006), established by the International Labour
                                 Organization (ILO), is a comprehensive international standard that protects the rights
-                                and working conditions of the world's seafarers. Compliance is not only a moral and
+                                and working conditions of the world&apos;s seafarers. Compliance is not only a moral and
                                 legal obligation but a commercial necessity, as Port State Control (PSC) enforces MLC
                                 standards rigorously.
                             </p>
@@ -143,7 +144,8 @@ export default function MaritimeLabourConventionPage() {
                                     <li className="flex gap-3"><span
                                         className="mt-1 size-1.5 shrink-0 rounded-full bg-cyan-400"/>
                                         <p><span className="font-medium text-white">DMLC Part I:</span> This is a
-                                            standardized document issued by the ship's Flag State Administration. It
+                                            standardized document issued by the ship&apos;s Flag State Administration.
+                                            It
                                             outlines the national requirements and laws that implement the MLC, 2006.
                                         </p>
                                     </li>
@@ -163,7 +165,7 @@ export default function MaritimeLabourConventionPage() {
                                         className="rounded-sm border border-white/10 bg-white/5 p-6 backdrop-blur sm:p-8">
                             <h3 className="text-lg font-semibold text-white sm:text-xl">Our MLC Approval Services</h3>
                             <p className="mt-3 text-slate-300">
-                                BKI's crucial role is to meticulously review and approve your DMLC Part II. Our
+                                BKI&apos;s crucial role is to meticulously review and approve your DMLC Part II. Our
                                 experienced team will verify that the measures you have documented are robust and
                                 sufficient to meet the standards of the convention.
                             </p>
