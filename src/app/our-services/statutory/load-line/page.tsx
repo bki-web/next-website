@@ -80,7 +80,7 @@ export default function LoadLinePage() {
             />
 
             <section
-                className="relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900 text-slate-100 2xl:px-28 xl:px-24 lg:px-20 px-4">
+                className="relative overflow-hidden bg-gradient-to-b from-[#0A436A] via-[#0A436A]/90 to-[#0A436A]/70 text-slate-100 2xl:px-28 xl:px-24 lg:px-20 px-4">
                 {/* Decorative glow */}
                 <div
                     aria-hidden
