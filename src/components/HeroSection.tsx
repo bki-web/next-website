@@ -2,6 +2,7 @@
 import {useEffect, useRef, useState} from "react";
 import {AnimatePresence, motion, useScroll, useTransform,} from "framer-motion";
 import {useHeroTransition} from "./TransitionProvider";
+import {IphoneLockBar} from "@/components/IphoneLockBar";
 // Dynamically import to avoid SSR issues
 // const LottiePlayer = dynamic(() => import("@lottiefiles/react-lottie-player").then(m => m.Player), { ssr: false });
 
@@ -101,18 +102,18 @@ export default function HeroSection() {
             />
 
             {/* Blue parallax wash that appears while scrolling (pic 1 vibe) */}
-            <motion.div
-                className="absolute inset-x-0 bottom-0 z-20 pointer-events-none h-[10vh]"
-                style={{
-                    // y: washY,
-                    // opacity: washOpacity,
-                    background:
-                        "linear-gradient(0deg, rgba(10,67,106,0.95) 0%, rgba(10,67,106,0.80) 5%, rgba(10,67,106,0.65) 10%,  rgba(10,67,106,0) 100%)",
-                    // backdropFilter: "blur(8px)",
-                    // WebkitBackdropFilter: "blur(8px)",
-                    willChange: "transform, opacity",
-                }}
-            />
+            {/*<motion.div*/}
+            {/*    className="absolute inset-x-0 bottom-0 z-20 pointer-events-none h-[10vh]"*/}
+            {/*    style={{*/}
+            {/*        // y: washY,*/}
+            {/*        // opacity: washOpacity,*/}
+            {/*        background:*/}
+            {/*            "linear-gradient(0deg, rgba(10,67,106,0.95) 0%, rgba(10,67,106,0.80) 5%, rgba(10,67,106,0.65) 10%,  rgba(10,67,106,0) 100%)",*/}
+            {/*        // backdropFilter: "blur(8px)",*/}
+            {/*        // WebkitBackdropFilter: "blur(8px)",*/}
+            {/*        willChange: "transform, opacity",*/}
+            {/*    }}*/}
+            {/*/>*/}
 
             {/* Title flow */}
             <AnimatePresence>
@@ -150,7 +151,7 @@ export default function HeroSection() {
                             style={{y: titleY, willChange: "transform"}}
                         >
                             <div
-                                className="jost-font font-extrabold text-5xl md:text-6xl bg-clip-text tracking-tight text-shadow-lg"
+                                className="font-extrabold text-5xl md:text-6xl bg-clip-text tracking-tight text-shadow-lg"
                                 style={
                                     {
                                         // backgroundImage:
@@ -163,7 +164,7 @@ export default function HeroSection() {
                             </div>
                             {/* <div className="text-white font-semibold mt-2 md:text-3xl"></div> */}
                             <div
-                                className="text-white font-extrabold text-sm md:text-xl 2xl:text-3xl mt-4 text-shadow-lg">
+                                className="text-white font-normal text-sm md:text-xl 2xl:text-3xl mt-4 text-shadow-lg">
                                 In TICCS (Testing, Inspection, Certification, Classification and
                                 Statutory)
                             </div>
@@ -179,6 +180,7 @@ export default function HeroSection() {
                         >
                             <DotLottieReact autoplay loop src="/fv_assets.lottie" style={{width: 550, height: 300}}/>
                         </motion.div> */}
+                        <IphoneLockBar/>
                     </>
                 )}
             </AnimatePresence>

@@ -63,7 +63,7 @@ export default function WhyCrossfadeSteppedLocked() {
 
     // autoplay with reset on user interaction
     useEffect(() => {
-        const timer = setInterval(nextSlide, 2500);
+        const timer = setInterval(nextSlide, 3500);
         return () => clearInterval(timer);
     }, [nextSlide]);
 
