@@ -3,6 +3,7 @@ import WhyTrustSection from "@/components/WhyTrustSection";
 import SliderSection from "@/app/our-services/components/SliderSection";
 import ServiceCard from "@/components/ServiceCard";
 import FancyTitle from "@/components/FancyTitle";
+import DigitalPlatform from "../components/DigitalPlatform";
 
 type ProgramItem = {
     title: string;
@@ -129,6 +130,8 @@ export default function ClassificationTabContent({
                     ))}
                 </div>
             </section>
+
+            <DigitalPlatform />
         </Fragment>
     );
 }

@@ -34,7 +34,7 @@ export default function IMOMeetingPage() {
                 }
             />
 
-            <DigitalPlatform/>
+            
             <ContactUsSection/>
         </div>
     );

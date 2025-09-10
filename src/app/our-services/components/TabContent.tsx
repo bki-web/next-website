@@ -74,11 +74,7 @@ export default function TabContent() {
                 label: "BKI Academy",
                 icon: "/icon-service-bki-academy.png",
                 content: (
-                    <ClassificationTabContent
-                        keyContent={"classification"}
-                        activeIndex={activeIndex}
-                        prevIndex={prevIndex}
-                    />
+                    <div/>
                 ),
                 href: "https://www.bki.academy/id",
             },

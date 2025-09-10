@@ -33,8 +33,6 @@ export default function AuthorizationPage() {
                     "Lorem Ipsum Dolor sit Amet."
                 }
             />
-
-            <DigitalPlatform/>
             <ContactUsSection/>
         </div>
     );

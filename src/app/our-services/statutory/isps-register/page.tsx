@@ -34,7 +34,7 @@ export default function IspsRegisterPage() {
                 }
             />
 
-            <DigitalPlatform/>
+            
             <ContactUsSection/>
         </div>
     );

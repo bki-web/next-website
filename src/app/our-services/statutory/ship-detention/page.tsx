@@ -34,7 +34,7 @@ export default function ShipDetentionPage() {
                 }
             />
 
-            <DigitalPlatform/>
+            
             <ContactUsSection/>
         </div>
     );

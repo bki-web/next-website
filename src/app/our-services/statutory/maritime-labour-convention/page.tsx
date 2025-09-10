@@ -34,7 +34,7 @@ export default function MaritimeLabourConventionPage() {
                 }
             />
 
-            <DigitalPlatform/>
+            
             <ContactUsSection/>
         </div>
     );

@@ -10,7 +10,6 @@ export default function OurServices() {
       <PageTransition />
 
       <TabContent />
-      <DigitalPlatform />
 
       <ContactUsSection />
       <NewsSection />
