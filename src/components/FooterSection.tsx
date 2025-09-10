@@ -134,20 +134,20 @@ export default function FooterSection() {
                                 },
                                 {
                                     label: "Statutory",
-                                    href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/info_statutory-1.html",
+                                    href: "/our-services#statutory",
                                 },
                                 {
                                     label: "Marine Services",
-                                    href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-29.html",
+                                    href: "/our-services#marine-services",
                                 },
                                 {
                                     label: "Energy & Industry",
-                                    href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-30.html",
+                                    href: "/our-services#energy-industry",
                                 },
                                 {label: "BKI Academy", href: "https://www.bki.academy/id", type: "_blank"},
                             ].map((item) => (
                                 <li key={item.label} className="py-1">
-                                    <Link
+                                    <a
                                         href={item.href}
                                         {...(item.type === "_blank"
                                             ? {target: "_blank", rel: "noopener noreferrer"}
@@ -156,7 +156,7 @@ export default function FooterSection() {
                                 transition-all duration-300 pb-2"
                                     >
                                         {item.label}
-                                    </Link>
+                                    </a>
                                 </li>
                             ))}
                         </ul>
@@ -198,11 +198,11 @@ export default function FooterSection() {
                             {[
                                 {
                                     label: "News",
-                                    href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-64.html",
+                                    href: "/news",
                                 },
                                 {
                                     label: "Event",
-                                    href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-64.html",
+                                    href: "/events",
                                 },
                                 {label: "Article", href: "/articles"},
                                 {
