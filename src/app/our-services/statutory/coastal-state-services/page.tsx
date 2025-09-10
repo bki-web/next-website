@@ -141,7 +141,7 @@ export default function CoastalStateServicesPage() {
                                         </li>
                                     </ul>
                                     <p className="mt-4 text-sm leading-relaxed text-white/70">
-                                        As Indonesia's national classification society, BKI brings deep archipelagic
+                                        As Indonesia&apos;s national classification society, BKI brings deep archipelagic
                                         expertise to support these critical national functions.
                                     </p>
                                 </div>
@@ -173,7 +173,7 @@ export default function CoastalStateServicesPage() {
                                             for Foreign Vessels</h4>
                                     </div>
                                     <p className="text-sm leading-relaxed text-white/70">
-                                        Foreign vessels entering a nation's waters must comply with specific local
+                                        Foreign vessels entering a nation&apos;s waters must comply with specific local
                                         regulations. BKI verifies that these vessels meet the required standards.
                                     </p>
                                     <ul className="mt-3 grid grid-cols-1 gap-2 pl-1 text-sm text-white/80 md:grid-cols-2">

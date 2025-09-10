@@ -137,7 +137,7 @@ export default function StatutoryFlagStateServicesPage() {
                                     </Bullet>
                                     <Bullet>Review and approve vessel plans and manuals.</Bullet>
                                     <Bullet>Issue and endorse all necessary international certificates to ensure your
-                                        vessel's uninterrupted worldwide operation.</Bullet>
+                                        vessel&apos;s uninterrupted worldwide operation.</Bullet>
                                 </ul>
                             </Card>
                         </motion.div>
