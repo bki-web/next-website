@@ -7,27 +7,33 @@ import Hero from "@/components/Hero";
 import PageTransition from "@/components/page-transition";
 import MilestoneTimeline, {Milestone,} from "@/app/company-profile/components/MilestoneTimeline";
 import Image from "next/image";
+import ImageModal from "@/components/ImageModal";
+import ImageScrollDialog from "./components/image-scroll-dialog";
 
 const boardOfDirectors = [
     {
         name: "R. Benny Susanto",
         position: "President Director",
         image: "/directors/4-president-director.jpg",
+        description: "President director is"
     },
     {
         name: "Arief Budi Permana",
         position: "Director of Operation Of Business Classification",
         image: "/directors/2-director-of-classification.jpg",
+        description: "Director of Operation Of Business Classification is"
     },
     {
         name: "Erwin Ernanto Hoesni",
         position: "Director of Business Commercial",
         image: "/directors/3-director-of-commercial.jpg",
+        description: "Director of Business Commercial is"
     },
     {
         name: "R. Agus Doddy Dwi Sagita",
         position: "Director of Finance",
         image: "/directors/1-director-of-finance.jpg",
+        description: "Director of finance is"
     },
 ];
 
@@ -186,6 +192,8 @@ export default function CompanyProfile() {
                 </div>
             </section>
 
+            {/* <ImageModal /> */}
+
             {/* History Section */}
             <section
                 id="history"
@@ -207,7 +215,7 @@ export default function CompanyProfile() {
                         </p>
                         <div className="bg-gradient-to-r from-[#FFFFFF75] to-[#FFFFFF00] h-[1px] w-2/3 2xl:w-5/6"/>
                     </div>
-                    <ImageScroll members={boardOfDirectors}/>
+                    <ImageScrollDialog members={boardOfDirectors}/>
                 </div>
             </section>
 
