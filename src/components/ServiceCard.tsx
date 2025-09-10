@@ -27,7 +27,7 @@ export default function ServiceCard({
                                     }: Props) {
     const parentClasses = useMemo(() => {
         if (isProgramPage) {
-            return 'w-[calc(100vw-80px)] md:w-[calc(50vw-100px)] 2xl:w-[calc(33.333vw-100px)]';
+            return 'w-[calc(100vw-80px)] md:w-[calc(50vw-100px)] lg:w-[calc(33.333vw-100px)]';
         }
         return 'w-full md:w-[calc(50%-22px)] lg:w-[calc(33.333%-22px)]';
     }, [isProgramPage]);
