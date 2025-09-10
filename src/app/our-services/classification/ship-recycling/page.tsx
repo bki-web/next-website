@@ -59,7 +59,7 @@ export default function ShipRecyclingPage() {
                 backgroundClass="bg-[url('/classification-bg.jpg')]"
                 title={"Ship Recycling"}
                 description={
-                    "Lorem Ipsum Dolor sit Amet."
+                    "A safe and environmentally responsible solution for the end-of-life management of marine vessels."
                 }
             />
 
