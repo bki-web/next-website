@@ -428,13 +428,13 @@ export default function SiteNavbar() {
 
                     {/* ===== layered navbar bar ===== */}
                     <div
-                        className={`relative rounded-xl ${
+                        className={`relative rounded-sm ${
                             isCompact ? "py-3" : "py-4"
                         } px-0`}
                     >
                         {/* background layer only (animates in) */}
                         <motion.div
-                            className={`absolute inset-0 rounded-xl ${
+                            className={`absolute inset-0 rounded-sm ${
                                 isScrolled && "bg-black/50 backdrop-blur-md"
                             }`}
                             initial={{opacity: 0, scaleY: 0.92, transformOrigin: "top"}}
