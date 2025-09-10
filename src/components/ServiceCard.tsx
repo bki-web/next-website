@@ -35,8 +35,8 @@ export default function ServiceCard({
         <motion.div
             initial={{opacity: 0, y: 30}}
             whileInView={{opacity: 1, y: 0}}
-            transition={{duration: 0.8, delay: orderNumber * 0.25}}
-            viewport={{once: true}}
+            transition={{duration: 0.8, delay: orderNumber * 0.05}}
+            viewport={{once: false}}
             className={classes(
                 "relative shadow-lg shadow-black/50 group py-[20px] px-[32px] rounded-[4px] overflow-hidden cursor-pointer h-[200px] 2xl:h-[300px]",
                 parentClasses,

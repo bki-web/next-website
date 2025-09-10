@@ -21,7 +21,7 @@ const jost = Jost({
 
 
 export const metadata: Metadata = {
-    title: "Marine Classification Services | Biro Klasifikasi Indonesia (BKI)",
+    title: "Biro Klasifikasi Indonesia (Persero)",
     description: "Partner with BKI for world-class marine classification services. Ensuring safety, compliance, and operational excellence for your fleet, from new builds to ships in service. Discover our commitment to global standards.",
 };
 
