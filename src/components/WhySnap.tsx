@@ -136,7 +136,8 @@ function SlideView({ slide, hideText }: { slide: Slide; hideText: boolean }) {
           right: 0,
           bottom: 0,
           height: "120px",
-          background: "linear-gradient(to bottom, transparent 0%, #D4A66A 100%)",
+          background:
+            "linear-gradient(to bottom, transparent 0%, #D4A66A 100%)",
           zIndex: 2,
           pointerEvents: "none",
         }}
@@ -153,18 +154,18 @@ function SlideView({ slide, hideText }: { slide: Slide; hideText: boolean }) {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <div className="font-montserrat text-5xl text-shadow-xs text-shadow-black/50 md:text-9xl leading-none font-extrabold flex items-center gap-2">
-              {slide.topTitle ?? "Why"}{" "}
+              {slide.topTitle ?? "Why"}
+            </div>
+            <div className="mt-2 text-xl md:text-5xl font-mediu text-shadow-xs text-shadow-black/50 flex items-center gap-2">
+              {slide.subTitle ?? "The Global Trust Us"}{" "}
               <Image
                 src="/tick-only.png"
                 alt="Tick"
                 width={64}
                 height={32}
-                className="md:w-[96px] md:h-[96px] w-[32px] h-[32px]"
+                className="md:w-[58px] md:h-[58px] w-[32px] h-[32px]"
               />
             </div>
-            <p className="mt-2 text-xl md:text-5xl font-mediu text-shadow-xs text-shadow-black/50">
-              {slide.subTitle ?? "The Global Trust Us"}
-            </p>
           </motion.div>
 
           {/* Bottom-right text */}
