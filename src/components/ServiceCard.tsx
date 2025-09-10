@@ -29,7 +29,7 @@ export default function ServiceCard({
         if (isProgramPage) {
             return 'w-[calc(100vw-80px)] md:w-[calc(50vw-100px)] 2xl:w-[calc(33.333vw-100px)]';
         }
-        return 'w-full md:w-[calc(50%-30px)] 2xl:w-[calc(33.333%-30px)]';
+        return 'w-full md:w-[calc(50%-30px)] xl:w-[calc(33.333%-30px)]';
     }, [isProgramPage]);
     return (
         <motion.div
