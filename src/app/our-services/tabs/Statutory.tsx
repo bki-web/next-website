@@ -278,6 +278,7 @@ export default function StatutoryTabContent({
                     className="w-full grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-x-3 md:gap-x-5 2xl:gap-x-8 gap-y-8 md:gap-y-12 2xl:gap-y-16">
                     {programItems.map((item, index) => (
                         <ServiceCard
+                            orderNumber={index + 1}
                             href={item.href ?? "#"}
                             image={item.image}
                             title={item.title}
