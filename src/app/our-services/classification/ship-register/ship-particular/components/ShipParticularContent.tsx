@@ -24,7 +24,7 @@ const tabs = [
 ];
 
 export function ShipParticularContent({noreg}: { noreg: string }) {
-    const {data, isLoading} =
+    const {data, isLoading, isError} =
         trpc.shipRegister.getDetail.useQuery({noreg});
 
     const {data: dataHull, isLoading: isHullLoading} =
@@ -41,12 +41,12 @@ export function ShipParticularContent({noreg}: { noreg: string }) {
 
     const [activeTab, setActiveTab] = useState("general");
     const activeIndex = tabs.findIndex((tab) => tab.key === activeTab);
-
-    if (isLoading) {
+    
+    if (isLoading && !isError) {
         return <Skeleton className="w-full h-96 rounded-lg bg-gray-400"/>;
     }
 
-    if (!data?.length) {
+    if (!data?.length || isError) {
         return (
             <NoResultsCard
                 title="Ship with this register not found"

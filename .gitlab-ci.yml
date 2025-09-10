@@ -62,6 +62,7 @@ build:
     paths:
       - dist/
     expire_in: 1 week
+  when: manual
   only:
     - main
 
@@ -81,6 +82,7 @@ deploy_staging:
   script:
     - chmod +x ./.gitlab-pull.sh
     - /bin/bash ./.gitlab-pull.sh
+  when: manual  
   only:
     - main
 

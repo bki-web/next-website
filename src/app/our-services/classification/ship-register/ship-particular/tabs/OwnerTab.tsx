@@ -4,7 +4,6 @@ import SpecGrid, {Row} from "../components/SpecGrid";
 export default function OwnerTab(props: {
     data: ShipRegisterOwner | null | undefined;
 }) {
-    console.log(props.data);
     const Alamat = ({
                         baris1,
                         baris2,
@@ -37,9 +36,9 @@ export default function OwnerTab(props: {
                 label: "",
                 value: (
                     <Alamat
-                        baris1="SOWOHI KENTITI JAYA, PT."
-                        baris2="JL.PASAR KEMBANG NO.23"
-                        kotaProv="SURABAYA - JAWA TIMUR"
+                        baris1={props.data?.nmfl1 + " " + props.data?.nmfl2}
+                        baris2={(props.data?.almfl1 + " " + props.data?.almfl2) }
+                        kotaProv={props.data?.kotafl || ""}
                     />
                 ),
             },
@@ -52,9 +51,9 @@ export default function OwnerTab(props: {
                 label: "",
                 value: (
                     <Alamat
-                        baris1="SOWOHI KENTITI JAYA, PT."
-                        baris2="JL.PASAR KEMBANG NO.23"
-                        kotaProv="SURABAYA - JAWA TIMUR"
+                        baris1={props.data?.nmfl1 + " " + props.data?.nmfl2}
+                        baris2={props.data?.almfl1 || "" + props.data?.almfl2}
+                        kotaProv={props.data?.kotafl || ""}
                     />
                 ),
             },
