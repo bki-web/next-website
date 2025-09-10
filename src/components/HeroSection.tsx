@@ -68,7 +68,7 @@ export default function HeroSection() {
                     preload="auto"
                 />
             </motion.div>
-            <div className="absolute inset-0 bg-black/30"/>
+            <div className="absolute inset-0 bg-black/10"/>
 
             {/* INTRO overlay (your multi-gradient) → fades out as before */}
             <motion.div
