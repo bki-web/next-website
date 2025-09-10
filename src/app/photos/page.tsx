@@ -31,7 +31,7 @@ export default function Photos() {
                 customOverlayClass={"from-[#FFFFFF] to-[#FFFFFF00]"}
             />
 
-            <section className="w-full 2xl:px-28 lg:px-20 px-4 2xl:py-20 lg:py-16 py-12 bg-white">
+            <section className="w-full 2xl:px-28 xl:px-24 lg:px-20 px-4 2xl:py-20 lg:py-16 py-12 bg-white">
                 {/*<Gallery*/}
                 {/*    images={images}*/}
                 {/*    columns={3}*/}

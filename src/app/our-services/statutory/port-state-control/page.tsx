@@ -75,7 +75,7 @@ export default function PortStateControlPage() {
 
             {/* Body */}
             <section
-                className="grid grid-cols-1 gap-8 py-10 lg:grid-cols-4 lg:py-16 bg-white 2xl:px-28 lg:px-20 px-4 2xl:py-20">
+                className="grid grid-cols-1 gap-8 py-10 lg:grid-cols-4 lg:py-16 bg-white 2xl:px-28 xl:px-24 lg:px-20 px-4 2xl:py-20">
                 {/* TOC */}
                 <aside className="lg:col-span-1 sticky top-10">
                     <div

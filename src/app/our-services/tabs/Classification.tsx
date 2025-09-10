@@ -71,7 +71,7 @@ export default function ClassificationTabContent({
 
             <section
                 id={"video-section"}
-                className="w-full h-full 2xl:p-28 lg:p-20 p-8 flex 2xl:flex-row flex-col justify-center items-center bg-[#E2E7F0] gap-8 2xl:gap-12"
+                className="w-full h-full 2xl:p-28 xl:p-24 lg:p-20 p-8 flex 2xl:flex-row flex-col justify-center items-center bg-[#E2E7F0] gap-8 2xl:gap-12"
             >
                 <video
                     className="2xl:w-1/2 w-full h-full object-cover rounded-lg"
