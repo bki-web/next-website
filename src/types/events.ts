@@ -1,20 +1,14 @@
 import { Cover } from "./articles";
 
-export type News = {
-    id: string;
-    title: string;
-    content: string;
-    date: string;
-    img: string;
-    link: string;
-}
-
-export type NewsStrapi = {
+export type Event = {
   documentId: string;
   title: string;
   description: string;
+  startDate: string;
   cover: Cover;
+  location: string;
   publishedAt: string;
+  endDate?: string
   blocks: [{
     body: string
   }]

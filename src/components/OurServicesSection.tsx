@@ -1,5 +1,5 @@
 "use client";
-import {useRef} from "react";
+import {forwardRef, Ref, RefObject} from "react";
 import Image from "next/image";
 import {motion, useScroll, useTransform} from "framer-motion";
 import ServiceCard from "@/components/ServiceCard";
@@ -50,11 +50,11 @@ const services = [
     },
 ];
 
-export default function OurServicesSection() {
-    const servicesRef = useRef<HTMLDivElement | null>(null);
+const OurServicesSection = forwardRef((props, ref: Ref<HTMLDivElement | null>) => {
+    // const servicesRef = useRef<HTMLDivElement | null>(null);
 
     const {scrollYProgress} = useScroll({
-        target: servicesRef,
+        target: ref as RefObject<HTMLDivElement>,
         offset: ["start start", "end start"], // 0 at top, 1 at bottom of hero
     });
 
@@ -64,7 +64,7 @@ export default function OurServicesSection() {
     return (
         <div
             id={"our-services"}
-            ref={servicesRef}
+            ref={ref}
             className="relative w-full 2xl:h-[110vh] text-white bg-black overflow-hidden"
         >
             {/* <div
@@ -136,4 +136,7 @@ export default function OurServicesSection() {
             </motion.div>
         </div>
     );
-}
+})
+
+OurServicesSection.displayName = "OurServicesSection"
+export default OurServicesSection

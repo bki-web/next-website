@@ -20,7 +20,7 @@ export default function ArticleCardModern({article}: { article: Article }) {
                     </h3>
                     <div className="text-xs 2xl:text-sm mb-2">{article.description}</div>
                     <Link
-                        href={"/news/news1"}
+                        href={"/articles/" + article.documentId}
                         className="inline-block text-base md:text-lg px-4 py-2 bg-[rgba(255,255,255,0.3)] hover:bg-white hover:text-black transition-colors duration-400 border border-white border-opacity-50"
                     >
                         Read Article →

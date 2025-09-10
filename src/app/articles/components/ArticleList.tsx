@@ -41,7 +41,7 @@ export default function ArticleList() {
             <ArticleCardModern key={i} article={a} />
         ))}
         </div>
-        <PaginationCommon handlePageChange={handlePageChange} totalRecords={total} dataLength={data?.data.length || 0} pageCount={pageCount} pageSize={10}/>
+        {data?.data?.length && <PaginationCommon handlePageChange={handlePageChange} totalRecords={total} dataLength={data?.data.length || 0} pageCount={pageCount} pageSize={10}/> }
     </>
   );
 }

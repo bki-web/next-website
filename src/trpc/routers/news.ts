@@ -29,11 +29,11 @@ export const newsRouter = createTRPCRouter({
       return fullResponse;
     }),
   getDetail: baseProcedure
-    .input(z.object({ id: z.number().int().positive() }))
+    .input(z.object({ id: z.string() }))
     .query(async ({ input }) => {
       const { id } = input;
       const response = await fetch(
-        `${process.env.STRAPI_API_URL}/newss/${id}?populate=cover`
+        `${process.env.STRAPI_API_URL}/newss/${id}?populate=*`
       );
 
       if (!response.ok) {

@@ -5,6 +5,7 @@ import ArticleSection from "@/components/ArticleSection";
 import NewsSection2, { NewsDivider } from "@/components/NewsSection2";
 import OurServicesSection from "@/components/OurServicesSection";
 import Head from "next/head";
+import TopPage from "@/components/TopPage";
 
 export default function Home() {
   return (
@@ -13,8 +14,7 @@ export default function Home() {
       <link rel="preload" href="/hero-banner-bki.mp4" as="video"/>
     </Head>
     <main className="min-h-screen">
-      <HeroSection />
-      <OurServicesSection />
+      <TopPage />
       <WhyTrustSection />
       <WhyCrossfade />
       <ArticleSection />

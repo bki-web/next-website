@@ -13,4 +13,7 @@ export type Article = {
   description: string;
   cover: Cover;
   publishedAt: string;
+  blocks: [{
+    body: string
+  }]
 };

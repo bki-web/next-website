@@ -3,10 +3,11 @@ import {useEffect, useRef, useState} from "react";
 import {AnimatePresence, motion, useScroll, useTransform,} from "framer-motion";
 import {useHeroTransition} from "./TransitionProvider";
 import {IphoneLockBar} from "@/components/IphoneLockBar";
+import Button from "./Button";
 // Dynamically import to avoid SSR issues
 // const LottiePlayer = dynamic(() => import("@lottiefiles/react-lottie-player").then(m => m.Player), { ssr: false });
 
-export default function HeroSection() {
+export default function HeroSection({onButtonClick}: {onButtonClick: ()=>void}) {
     const {startTransition, setStartTransition} = useHeroTransition();
     const [showIntroText, setShowIntroText] = useState(false);
     const heroRef = useRef<HTMLDivElement | null>(null);
@@ -167,6 +168,9 @@ export default function HeroSection() {
                                 className="text-white font-normal text-sm md:text-xl 2xl:text-3xl mt-4 text-shadow-lg">
                                 In TICCS (Testing, Inspection, Certification, Classification and
                                 Statutory)
+                            </div>
+                            <div className="mt-4">
+                                <Button style="blur" text="Explore our services" onClick={onButtonClick} /> 
                             </div>
                         </motion.div>
 

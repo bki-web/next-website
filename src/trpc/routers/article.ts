@@ -29,11 +29,11 @@ export const articleRouter = createTRPCRouter({
       return fullResponse;
     }),
   getDetail: baseProcedure
-    .input(z.object({ id: z.number().int().positive() }))
+    .input(z.object({ id: z.string() }))
     .query(async ({ input }) => {
       const { id } = input;
       const response = await fetch(
-        `${process.env.STRAPI_API_URL || "https://unwavering-card-a95a991f83.strapiapp.com/api" }/articles/${id}?populate=cover`
+        `${process.env.STRAPI_API_URL || "https://unwavering-card-a95a991f83.strapiapp.com/api" }/articles/${id}?populate=*`
       );
 
       if (!response.ok) {
