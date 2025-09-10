@@ -7,14 +7,14 @@ const aboutUs = [
     {
         title: "Company Profile",
         href: "/company-profile",
-        // children: [
-        //     {title: "History", href: "/company-profile"},
-        //     {title: "Vision, Mission & Culture", href: "/company-profile"},
-        //     {title: "BOC", href: "/company-profile"},
-        //     {title: "BOD", href: "/company-profile"},
-        //     {title: "Technical Committee", href: "/company-profile"},
-        //     {title: "Organization Structure", href: "/company-profile"},
-        // ],
+        children: [
+            {title: "History", href: "/company-profile"},
+            {title: "Vision, Mission & Culture", href: "/company-profile"},
+            // {title: "BOC", href: "/company-profile"},
+            {title: "BOD", href: "/company-profile"},
+            {title: "Technical Committee", href: "/company-profile"},
+            {title: "Organization Structure", href: "/company-profile"},
+        ],
     },
     // {
     //     title: "Achievement",
@@ -246,7 +246,7 @@ export default function FooterSection() {
                                             {menu.children.map((child, childIdx) => (
                                                 <li
                                                     key={childIdx}
-                                                    className={child.children ? "group/sub" : ""}
+                                                    className={""}
                                                 >
                                                     <a
                                                         href={child.href}
@@ -255,7 +255,7 @@ export default function FooterSection() {
                                                         {child.title}
                                                     </a>
                                                     {/* Render sub-submenu kalau ada children */}
-                                                    {child.children && (
+                                                    {/* {child.children && (
                                                         <ul
                                                             className="pl-4 mt-2 space-y-2 md:max-h-0 md:opacity-0 overflow-hidden transition-all duration-1000
                 group-hover/sub:max-h-screen group-hover/sub:opacity-100"
@@ -271,7 +271,7 @@ export default function FooterSection() {
                                                                 </li>
                                                             ))}
                                                         </ul>
-                                                    )}
+                                                    )} */}
                                                 </li>
                                             ))}
                                         </ul>
