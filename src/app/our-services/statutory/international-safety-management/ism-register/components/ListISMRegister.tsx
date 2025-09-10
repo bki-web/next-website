@@ -77,8 +77,9 @@ export default function ListISMRegister() {
             <p className="lg:text-6xl text-3xl text-[#0A436A] font-bold">20 Results</p>
             <div className="w-full flex flex-col lg:gap-y-8 gap-y-4">
                 {list.map((ism) => (
-                    <Link href={`/our-services/statutory/ism-register/${ism.registerNo}`}
-                          key={ism.registerNo}>
+                    <Link
+                        href={`/src/app/our-services/statutory/international-safety-management/ism-register/${ism.registerNo}`}
+                        key={ism.registerNo}>
                         <article
                             className="rounded-xl border border-slate-200 bg-white shadow-sm cursor-pointer"
                         >
