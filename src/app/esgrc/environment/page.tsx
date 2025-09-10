@@ -1,6 +1,5 @@
 "use client"; // This must be a client component to use Framer Motion
 
-import {motion} from "framer-motion";
 import Hero from "@/components/Hero";
 import PageTransition from "@/components/page-transition";
 import Image from "next/image";
@@ -69,8 +68,10 @@ export default function Page() {
 
                         <div className="w-full h-auto flex flex-col-reverse md:flex-row justify-center">
                             {/* Left Column (Text) */}
-                            <div className="lg:w-3/4 p-4 flex flex-col gap-4 md:gap-6 2xl:gap-8 text-base md:text-xl 2xl:text-2xl">
-                                <h3 className="text-lg md:text-2xl 2xl:text-3xl font-bold text-[#0A436A]">Responsibility Towards
+                            <div
+                                className="lg:w-3/4 p-4 flex flex-col gap-4 md:gap-6 2xl:gap-8 text-base md:text-xl 2xl:text-2xl">
+                                <h3 className="text-lg md:text-2xl 2xl:text-3xl font-bold text-[#0A436A]">Responsibility
+                                    Towards
                                     Environmental Preservation</h3>
                                 <p className="font-bold text-[#0A436A]">Commitment and Policy</p>
                                 <p>
@@ -125,7 +126,8 @@ export default function Page() {
 
                             {/* Right Column (menu) */}
                             <div className="lg:w-1/4 flex justify-center p-4">
-                                <div className={"w-full h-fit px-4 py-3 flex flex-col gap-8 2xl:gap-12 bg-gradient-to-b from-[#000000] to-[#0a436a] text-white"}>
+                                <div
+                                    className={"w-full h-fit px-4 py-3 flex flex-col gap-8 2xl:gap-12 bg-gradient-to-b from-[#000000] to-[#0a436a] text-white"}>
                                     <h3 className={"text-base md:text-xl 2xl:text-3xl font-bold"}>ESGRC</h3>
                                     <ul className="space-y-2 text-xs md:text-sm 2xl:text-base font-light">
                                         {menuNav.map((child, childIdx) => (

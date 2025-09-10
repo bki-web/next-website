@@ -80,7 +80,7 @@ export default function LoadLinePage() {
             />
 
             <section
-                className="relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900 text-slate-100 2xl:px-28 xl:px-24 lg:px-20 px-4">
+                className="relative overflow-hidden bg-gradient-to-b from-[#0A436A] via-[#0A436A]/90 to-[#0A436A]/70 text-slate-100 2xl:px-28 xl:px-24 lg:px-20 px-4">
                 {/* Decorative glow */}
                 <div
                     aria-hidden
@@ -111,7 +111,7 @@ export default function LoadLinePage() {
                             which a ship can be safely loaded—maintaining stability, buoyancy, and structural integrity
                             during a voyage.
                             As a Flag State-approved agency, BKI has full authority to conduct surveys, calculations,
-                            and certification to ensure your ship's load line markings are accurate and valid.
+                            and certification to ensure your ship&apos;s load line markings are accurate and valid.
                         </motion.p>
                     </motion.div>
 
@@ -172,7 +172,7 @@ export default function LoadLinePage() {
                             Our Load Line Certification Services
                         </motion.h2>
                         <motion.p variants={fadeUp} className="mt-2 max-w-3xl text-sm text-slate-300">
-                            BKI offers two types of load line certification, depending on your vessel's area of
+                            BKI offers two types of load line certification, depending on your vessel&apos;s area of
                             operation and regulatory framework. Both certificates are valid for a period of 5 (five)
                             years, conditional upon successful periodic surveys.
                         </motion.p>

@@ -10,7 +10,7 @@ import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {z} from "zod";
 import Pagination from "@/components/pagination";
-import ListISMRegister from "@/app/our-services/statutory/ism-register/components/ListISMRegister";
+import ListISMRegister from "@/app/our-services/statutory/international-safety-management/components/ListISMRegister";
 
 const routes = [
     {
@@ -41,7 +41,7 @@ const defaultValue = {
     companyName: '',
 };
 
-export default function IsmRegisterPage() {
+export default function InternationalSafetyManagementPage() {
     const form = useForm<FormSchema>({
         resolver: zodResolver(formSchema),
         defaultValues: defaultValue,
@@ -94,7 +94,7 @@ export default function IsmRegisterPage() {
                         className="flex flex-col items-center lg:gap-y-3 gap-y-2 lg:p-8 p-6 rounded-lg overflow-hidden border-2 border-[#E8E8E866]/40 lg:w-1/2 w-full relative">
                         <div className="absolute inset-0 bg-black/50 blur-xl z-0"/>
                         <p className="lg:text-5xl text-2xl font-bold text-white text-center z-10">
-                            ISM Register
+                            International Safety Management
                         </p>
                         <p className="lg:text-2xl text-lg text-white text-center z-10">
                             We provide independent and reliable ship classification services

@@ -1,9 +1,8 @@
 import ContactUsSection from "@/components/ContactUsSection";
 import PageTransition from "@/components/page-transition";
 import Hero from "@/components/Hero";
-import DigitalPlatform from "../../components/DigitalPlatform";
 
-export default function IspsRegisterPage() {
+export default function SOLASPage() {
     return (
         <div className="relative min-h-screen w-full overflow-hidden">
             <PageTransition/>
@@ -24,17 +23,17 @@ export default function IspsRegisterPage() {
                         href: "/our-services#statutory",
                     },
                     {
-                        text: "ISPS Register",
+                        text: "SOLAS",
                     },
                 ]}
                 backgroundClass="bg-[url('/classification-bg.jpg')]"
-                title={"ISPS Register"}
+                title={"SOLAS"}
                 description={
                     "Lorem Ipsum Dolor sit Amet."
                 }
             />
 
-            
+
             <ContactUsSection/>
         </div>
     );

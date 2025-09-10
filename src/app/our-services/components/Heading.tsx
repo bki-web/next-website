@@ -1,4 +1,4 @@
-import { motion, Variants } from "framer-motion";
+import {motion, Variants} from "framer-motion";
 
 const fadeInUp: Variants = {
     hidden: {opacity: 0, y: 24},
@@ -11,11 +11,6 @@ const stagger: Variants = {
     show: {transition: {staggerChildren: 0.08, delayChildren: 0.05}},
 };
 
-
-const zoomCard: Variants = {
-    hidden: {opacity: 0, scale: 0.96},
-    show: {opacity: 1, scale: 1, transition: {duration: 0.45, ease: "easeOut"}},
-};
 const Heading = ({title, subtitle, align = "center" as const}: {
     title: string;
     subtitle?: string;

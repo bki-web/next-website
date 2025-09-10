@@ -1,9 +1,8 @@
 import ContactUsSection from "@/components/ContactUsSection";
 import PageTransition from "@/components/page-transition";
 import Hero from "@/components/Hero";
-import DigitalPlatform from "../../components/DigitalPlatform";
 
-export default function ShipDetentionPage() {
+export default function InternationalShipAndPortFacilitySecurityPage() {
     return (
         <div className="relative min-h-screen w-full overflow-hidden">
             <PageTransition/>
@@ -24,17 +23,17 @@ export default function ShipDetentionPage() {
                         href: "/our-services#statutory",
                     },
                     {
-                        text: "Ship Detention",
+                        text: "International Ship & Port Facility Security",
                     },
                 ]}
                 backgroundClass="bg-[url('/classification-bg.jpg')]"
-                title={"Ship Detention"}
+                title={"International Ship & Port Facility Security"}
                 description={
                     "Lorem Ipsum Dolor sit Amet."
                 }
             />
 
-            
+
             <ContactUsSection/>
         </div>
     );

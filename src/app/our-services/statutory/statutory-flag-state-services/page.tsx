@@ -1,9 +1,8 @@
 import ContactUsSection from "@/components/ContactUsSection";
 import PageTransition from "@/components/page-transition";
 import Hero from "@/components/Hero";
-import DigitalPlatform from "../../components/DigitalPlatform";
 
-export default function IMOMeetingPage() {
+export default function StatutoryFlagStateServicesPage() {
     return (
         <div className="relative min-h-screen w-full overflow-hidden">
             <PageTransition/>
@@ -24,17 +23,17 @@ export default function IMOMeetingPage() {
                         href: "/our-services#statutory",
                     },
                     {
-                        text: "IMO Meeting",
+                        text: "Statutory Flag State Services",
                     },
                 ]}
                 backgroundClass="bg-[url('/classification-bg.jpg')]"
-                title={"IMO Meeting"}
+                title={"Statutory Flag State Services"}
                 description={
                     "Lorem Ipsum Dolor sit Amet."
                 }
             />
 
-            
+
             <ContactUsSection/>
         </div>
     );
