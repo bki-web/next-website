@@ -5,7 +5,7 @@ export default function DigitalPlatform() {
     return (
         <section
             id={"digital-platform"}
-            className="w-full h-full 2xl:px-28 xl:px-24 lg:px-20 px-8 2xl:pt-12 pt-8 2xl:pb-52 pb-56 flex flex-col justify-center items-center bg-[#E2E7F0] gap-10 2xl:gap-14"
+            className="w-full h-full 2xl:px-28 xl:px-24 lg:px-20 px-8 lg:pt-12 pt-8 lg:pb-52 pb-56 flex flex-col justify-center items-center bg-[#E2E7F0] gap-10 2xl:gap-14"
         >
             <div className="w-full lg:w-2/3 flex flex-col lg:gap-4 gap-3">
                 <p className="2xl:text-6xl lg:text-4xl text-2xl font-bold text-[#0A436A] text-center">

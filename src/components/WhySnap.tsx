@@ -79,7 +79,7 @@ export default function WhyCrossfadeSteppedLocked() {
                     onClick={prevSlide}
                     className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full p-2 z-20 cursor-pointer"
                 >
-                    <ChevronLeft size={32}/>
+                    <ChevronLeft size={24}/>
                 </button>
 
                 {/* Next Button */}
@@ -87,7 +87,7 @@ export default function WhyCrossfadeSteppedLocked() {
                     onClick={nextSlide}
                     className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full p-2 z-20 cursor-pointer"
                 >
-                    <ChevronRight size={32}/>
+                    <ChevronRight size={24}/>
                 </button>
 
                 {/* Circle Indicators */}
@@ -96,7 +96,7 @@ export default function WhyCrossfadeSteppedLocked() {
                         <button
                             key={i}
                             onClick={() => setIndex(i)}
-                            className={`w-3 h-3 rounded-full cursor-pointer ${
+                            className={`w-2 h-2 rounded-full cursor-pointer ${
                                 i === index ? "bg-white" : "border border-white"
                             }`}
                         />

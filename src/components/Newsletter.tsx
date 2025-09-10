@@ -31,7 +31,7 @@ export default function NewsletterHero() {
     };
 
     return (
-        <section className="relative py-24 md:py-32">
+        <section className="relative py-6 md:py-12">
 
             {/* CARD */}
             <motion.form
@@ -108,7 +108,7 @@ export default function NewsletterHero() {
                     variants={item}
                     className="relative z-10 mt-3 text-[12px] md:text-xs text-white/60"
                 >
-                    We respect your privacy. Unsubscribe anytime.
+                    We respect your privacy.
                 </motion.p>
             </motion.form>
         </section>
