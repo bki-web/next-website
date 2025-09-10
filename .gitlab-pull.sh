@@ -30,6 +30,7 @@ if  [ "deploy" = $CI_JOB_STAGE ]; then
         exit 1
     fi
     cd ${CI_PROJECT_NAME}
+    cp -f env-prod .env
 
     #Removing previus container
     echo "Removing previous container"

@@ -19,13 +19,21 @@ const boardOfDirectors = [
         name: "Arief Budi Permana",
         position: "Director of Operation Of Business Classification",
         image: "/directors/2-director-of-classification.jpg",
-        description: "Director of Operation Of Business Classification is",
+        description: `With a distinguished career at PT Biro Klasifikasi Indonesia (BKI) spanning nearly three decades, Arief Budi Permana brings a wealth of hands-on experience and executive leadership to his role as Director of Classification Business Operations. Since beginning his journey with BKI in 1996, he has developed profound expertise in marine survey, statutory regulations, and operational management.
+
+Arief's career is marked by a steady progression through key technical and leadership positions. Starting as a field surveyor, he gained invaluable frontline experience before being appointed to manage several branch offices and key head office divisions, including Survey and Statutory. Before assuming his current directorship, he served as the Deputy Director of Classification Business Management, where he was instrumental in overseeing critical operations and ensuring compliance with maritime standards.
+
+Arief Budi Permana is a graduate of the prestigious Institut Teknologi Sepuluh Nopember (ITS) in Surabaya with a degree in Naval Architecture and Marine Engineering. His extensive technical knowledge and vast operational experience make him a vital asset to the BKI leadership team.`,
     },
     {
         name: "Erwin Ernanto Hoesni",
         position: "Director of Business Commercial",
         image: "/directors/3-director-of-commercial.jpg",
-        description: "Director of Business Commercial is",
+        description: `Mr. Erwin Ernanto Hoesni is a seasoned executive with over 30 years of experience in commercial operations and strategic business development. As Director of Business Commercial at PT Biro Klasifikasi Indonesia (BKI), he is responsible for driving the company's commercial strategy, expanding its market presence, and fostering sustainable revenue growth.
+
+Before joining BKI, Mr. Erwin built an extensive career at PT Sucofindo, holding key leadership positions such as Head of the Commercial Sub-Directorate and Head of the Trade, Industry, and Maritime Strategic Business Unit (SBU). In these roles, he successfully managed large-scale projects and represented the organization with key government and industry stakeholders.
+
+A visionary leader with a passion for innovation, Mr. Erwin has a proven track record of developing technology-driven procedures to enhance customer satisfaction. His strategic mindset is further complemented by his experience as a Commissioner for PT Sucofindo Advisory Utama. Mr. Erwin holds a Bachelor's degree in Law from Universitas Brawijaya, and his deep commercial acumen is pivotal to BKI's future success.`,
     },
     {
         name: "R. Agus Doddy Dwi Sagita",
