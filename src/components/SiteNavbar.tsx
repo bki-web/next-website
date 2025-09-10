@@ -430,13 +430,13 @@ export default function SiteNavbar() {
 
                     {/* ===== layered navbar bar ===== */}
                     <div
-                        className={`relative rounded-xl ${
+                        className={`relative rounded-sm ${
                             isCompact ? "py-3" : "2xl:py-4 py-2"
                         } px-0`}
                     >
                         {/* background layer only (animates in) */}
                         <motion.div
-                            className={`absolute inset-0 rounded-xl ${
+                            className={`absolute inset-0 rounded-sm ${
                                 isScrolled && "bg-black/50 backdrop-blur-md"
                             }`}
                             initial={{opacity: 0, scaleY: 0.92, transformOrigin: "top"}}
@@ -837,7 +837,7 @@ export default function SiteNavbar() {
                                 type="button"
                                 aria-label="Open menu"
                                 onClick={() => setMobileOpen(true)}
-                                className={`md:hidden p-2 pr-4 rounded-lg transition-colors duration-200 ${textClass}`}
+                                className={`md:hidden p-2 pr-4 rounded-sm transition-colors duration-200 ${textClass}`}
                                 initial={{opacity: 0}}
                                 animate={{opacity: startTransition ? 1 : 0}}
                                 transition={{delay: 1.0, duration: 0.5}}
@@ -897,7 +897,7 @@ export default function SiteNavbar() {
                                         <button
                                             aria-label="Close menu"
                                             onClick={() => setMobileOpen(false)}
-                                            className="p-2 pr-0 rounded-lg text-white/90 active:scale-95 transition"
+                                            className="p-2 pr-0 rounded-sm text-white/90 active:scale-95 transition"
                                             style={{WebkitTapHighlightColor: "transparent"}}
                                         >
                                             <svg
@@ -1072,7 +1072,7 @@ export default function SiteNavbar() {
                                                                                                     duration: 0.22,
                                                                                                     ease: "easeInOut",
                                                                                                 }}
-                                                                                                className="overflow-hidden pl-4 border-l border-white/15 bg-white/5 rounded-md"
+                                                                                                className="overflow-hidden pl-4 border-l border-white/15 bg-white/5 rounded-sm"
                                                                                             >
                                                                                                 {(sub?.submenu || []).map(
                                                                                                     (ssub) => (
