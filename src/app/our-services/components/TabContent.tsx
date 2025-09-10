@@ -24,7 +24,7 @@ export default function TabContent() {
             {
                 key: "classification",
                 label: "Classification",
-                icon: "/icon-service-classification.png",
+                icon: "/icons/classification.png",
                 content: (
                     <ClassificationTabContent
                         keyContent={"classification"}
@@ -36,7 +36,7 @@ export default function TabContent() {
             {
                 key: "statutory",
                 label: "Statutory",
-                icon: "/icon-service-statutory.png",
+                icon: "/icons/statutory.png",
                 content: (
                     <StatutoryTabContent
                         keyContent={"statutory"}
@@ -48,7 +48,7 @@ export default function TabContent() {
             {
                 key: "marine-services",
                 label: "Marine Services",
-                icon: "/icon-service-marine-services.png",
+                icon: "/icons/marine-service.png",
                 content: (
                     <MarineServicesTabContent
                         keyContent={"marine-services"}
@@ -60,7 +60,7 @@ export default function TabContent() {
             {
                 key: "energy-industry",
                 label: "Energy & Industry",
-                icon: "/icon-service-energy-industry.png",
+                icon: "/icons/energy-industry.png",
                 content: (
                     <EnergyIndustryTabContent
                         keyContent={"classification"}
@@ -72,7 +72,7 @@ export default function TabContent() {
             {
                 key: "bki-academy",
                 label: "BKI Academy",
-                icon: "/icon-service-bki-academy.png",
+                icon: "/icons/academy.png",
                 content: (
                     <div/>
                 ),
