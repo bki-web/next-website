@@ -88,7 +88,7 @@ export default function ImageScrollDialog(props: {members: Member[]}) {
         <DialogContent
           className={cn(
             "text-white bg-bki-blue backdrop-blur-3xl border border-white/40 p-0  rounded-lg",
-            "lg:w-[70vw] lg:h-[60vh]",
+            "lg:w-[70vw] lg:h-[70vh]",
             "sm:w-full sm:h-full",
             "flex flex-col overflow-hidden",
             "max-w-lvw"
@@ -110,9 +110,9 @@ export default function ImageScrollDialog(props: {members: Member[]}) {
 
               {/* Right Column (Description) */}
               <div className="flex flex-col justify-center p-4">
-                <h2 className="text-2xl md:text-4xl font-semibold mb-2 text-white">{activeImage.name}</h2>
-                <div className="text-white text-xl">{activeImage.position}</div>
-                <p>{activeImage.description}</p>
+                <h2 className="text-2xl md:text-4xl font-bold mb-2 text-white">{activeImage.name}</h2>
+                <div className="text-white text-xl mb-1 font-semibold">{activeImage.position}</div>
+                <p className="whitespace-pre-wrap">{activeImage.description}</p>
               </div>
             </div>
           )}
