@@ -126,7 +126,7 @@ export default function OurServicesSection() {
                     </motion.div>
                 </div>
                 <div
-                    className="flex flex-wrap justify-center gap-x-8 gap-y-16 mx-6 md:mx-24 pb-[100px] 2xl:pb-0">
+                    className="flex flex-wrap justify-center gap-x-8 gap-y-16 2xl:px-28 lg:px-20 xl:px-24 px-4 pb-[100px] 2xl:pb-0">
                     {services.map((service, index) => (
                         <ServiceCard key={index} orderNumber={index + 1} href={service.href} image={service.image}
                                      icon={undefined}

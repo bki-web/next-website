@@ -58,7 +58,7 @@ const items: ActivityItem[] = [
 
 export default function ActivitySection() {
     return (
-        <section className="relative 2xl:px-28 lg:px-20 px-4 2xl:py-20 lg:py-16 py-12 bg-white">
+        <section className="relative 2xl:px-28 lg:px-20 xl:px-24 px-4 2xl:py-20 lg:py-16 py-12 bg-white">
             {/* Header */}
             <div className="mb-6 md:mb-8 flex items-center justify-between gap-3">
                 <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0A436A]">
