@@ -268,7 +268,7 @@ export default function StatutoryTabContent({
             {/*Program Section*/}
             <section
                 id="program"
-                className="w-full h-full 2xl:px-24 2xl:py-18 md:px-24 md:py-6 py-8 px-8 flex flex-col justify-center items-center bg-white gap-14"
+                className="w-full h-full 2xl:px-24 2xl:py-18 md:px-24 md:py-6 py-8 px-8 xl:py-12 flex flex-col justify-center items-center bg-white gap-14"
             >
                 <div className="w-full flex md:flex-row flex-col justify-between items-center gap-5 md:gap-0">
                     <p className="2xl:text-6xl text-4xl font-bold text-[#0A436A] w-full">
