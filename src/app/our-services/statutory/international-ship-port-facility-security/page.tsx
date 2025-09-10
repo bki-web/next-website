@@ -236,7 +236,7 @@ export default function InternationalShipAndPortFacilitySecurityPage() {
                                     </li>
                                     <li className="flex items-start gap-2"><BadgeCheck
                                         className="mt-0.5 h-4 w-4 text-cyan-400"/><span><span
-                                        className="font-medium">Approval:</span> Once compliant, BKI issues an SSP Conformance Document and places an "Approval" stamp on each SSP page.</span>
+                                        className="font-medium">Approval:</span> Once compliant, BKI issues an SSP Conformance Document and places an &quot;Approval&quot; stamp on each SSP page.</span>
                                     </li>
                                 </ul>
                             </motion.div>

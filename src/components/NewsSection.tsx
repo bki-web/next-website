@@ -25,94 +25,94 @@ const NewsSection = () => {
     const [searchTerm] = useState("")
     const [filteredNews, setFilteredNews] = useState<NewsItem[]>([])
 
-    const newsData: NewsItem[] = [
-        {
-            id: 1,
-            title: "BKI Achieves ISO 9001:2015 Certification for Quality Management Excellence",
-            excerpt:
-                "Our commitment to quality management systems has been recognized with the prestigious ISO 9001:2015 certification, reinforcing our dedication to maritime safety standards.",
-            content: "Full article content here...",
-            category: "Achievement",
-            author: "Corporate Communications",
-            publishDate: "2024-01-15",
-            readTime: "5 min read",
-            image: "/maritime-safety.png",
-            featured: true,
-            tags: ["ISO", "Quality", "Certification"],
-        },
-        {
-            id: 2,
-            title: "New Maritime Safety Regulations Effective March 2024",
-            excerpt:
-                "Important updates to international maritime safety regulations that will impact vessel classification and inspection procedures across all maritime operations.",
-            content: "Full article content here...",
-            category: "Regulatory",
-            author: "Regulatory Affairs Department",
-            publishDate: "2024-01-12",
-            readTime: "8 min read",
-            image: "/maritime-safety.png",
-            featured: false,
-            tags: ["Regulations", "Safety", "IMO"],
-        },
-        {
-            id: 3,
-            title: "Strategic Partnership with International Maritime Organization",
-            excerpt:
-                "BKI announces a landmark partnership with IMO to enhance global maritime safety standards and promote sustainable shipping practices worldwide.",
-            content: "Full article content here...",
-            category: "Press Release",
-            author: "Executive Office",
-            publishDate: "2024-01-10",
-            readTime: "6 min read",
-            image: "/maritime-safety.png",
-            featured: true,
-            tags: ["Partnership", "IMO", "Global"],
-        },
-        {
-            id: 4,
-            title: "Enhanced Digital Inspection Platform Launched",
-            excerpt:
-                "Revolutionary digital platform streamlines vessel inspection processes, reducing inspection time by 40% while maintaining the highest safety standards.",
-            content: "Full article content here...",
-            category: "Industry News",
-            author: "Technology Division",
-            publishDate: "2024-01-08",
-            readTime: "4 min read",
-            image: "/placeholder-dul3c.png",
-            featured: false,
-            tags: ["Technology", "Digital", "Innovation"],
-        },
-        {
-            id: 5,
-            title: "Annual Maritime Safety Conference 2024 Announcement",
-            excerpt:
-                "Join industry leaders and maritime experts at our annual conference focusing on sustainable shipping and advanced safety technologies.",
-            content: "Full article content here...",
-            category: "Press Release",
-            author: "Event Management",
-            publishDate: "2024-01-05",
-            readTime: "3 min read",
-            image: "/maritime-conference.png",
-            featured: false,
-            tags: ["Conference", "Event", "Industry"],
-        },
-        {
-            id: 6,
-            title: "Critical Safety Alert: New Hull Inspection Requirements",
-            excerpt:
-                "Immediate implementation of enhanced hull inspection protocols following recent international maritime safety recommendations and industry best practices.",
-            content: "Full article content here...",
-            category: "Safety Update",
-            author: "Safety Department",
-            publishDate: "2024-01-03",
-            readTime: "7 min read",
-            image: "/ship-hull-inspection.png",
-            featured: false,
-            tags: ["Safety", "Hull", "Inspection"],
-        },
-    ]
-
     useEffect(() => {
+        const newsData: NewsItem[] = [
+            {
+                id: 1,
+                title: "BKI Achieves ISO 9001:2015 Certification for Quality Management Excellence",
+                excerpt:
+                    "Our commitment to quality management systems has been recognized with the prestigious ISO 9001:2015 certification, reinforcing our dedication to maritime safety standards.",
+                content: "Full article content here...",
+                category: "Achievement",
+                author: "Corporate Communications",
+                publishDate: "2024-01-15",
+                readTime: "5 min read",
+                image: "/maritime-safety.png",
+                featured: true,
+                tags: ["ISO", "Quality", "Certification"],
+            },
+            {
+                id: 2,
+                title: "New Maritime Safety Regulations Effective March 2024",
+                excerpt:
+                    "Important updates to international maritime safety regulations that will impact vessel classification and inspection procedures across all maritime operations.",
+                content: "Full article content here...",
+                category: "Regulatory",
+                author: "Regulatory Affairs Department",
+                publishDate: "2024-01-12",
+                readTime: "8 min read",
+                image: "/maritime-safety.png",
+                featured: false,
+                tags: ["Regulations", "Safety", "IMO"],
+            },
+            {
+                id: 3,
+                title: "Strategic Partnership with International Maritime Organization",
+                excerpt:
+                    "BKI announces a landmark partnership with IMO to enhance global maritime safety standards and promote sustainable shipping practices worldwide.",
+                content: "Full article content here...",
+                category: "Press Release",
+                author: "Executive Office",
+                publishDate: "2024-01-10",
+                readTime: "6 min read",
+                image: "/maritime-safety.png",
+                featured: true,
+                tags: ["Partnership", "IMO", "Global"],
+            },
+            {
+                id: 4,
+                title: "Enhanced Digital Inspection Platform Launched",
+                excerpt:
+                    "Revolutionary digital platform streamlines vessel inspection processes, reducing inspection time by 40% while maintaining the highest safety standards.",
+                content: "Full article content here...",
+                category: "Industry News",
+                author: "Technology Division",
+                publishDate: "2024-01-08",
+                readTime: "4 min read",
+                image: "/placeholder-dul3c.png",
+                featured: false,
+                tags: ["Technology", "Digital", "Innovation"],
+            },
+            {
+                id: 5,
+                title: "Annual Maritime Safety Conference 2024 Announcement",
+                excerpt:
+                    "Join industry leaders and maritime experts at our annual conference focusing on sustainable shipping and advanced safety technologies.",
+                content: "Full article content here...",
+                category: "Press Release",
+                author: "Event Management",
+                publishDate: "2024-01-05",
+                readTime: "3 min read",
+                image: "/maritime-conference.png",
+                featured: false,
+                tags: ["Conference", "Event", "Industry"],
+            },
+            {
+                id: 6,
+                title: "Critical Safety Alert: New Hull Inspection Requirements",
+                excerpt:
+                    "Immediate implementation of enhanced hull inspection protocols following recent international maritime safety recommendations and industry best practices.",
+                content: "Full article content here...",
+                category: "Safety Update",
+                author: "Safety Department",
+                publishDate: "2024-01-03",
+                readTime: "7 min read",
+                image: "/ship-hull-inspection.png",
+                featured: false,
+                tags: ["Safety", "Hull", "Inspection"],
+            },
+        ];
+
         let filtered = newsData
 
         if (selectedCategory !== "All") {
@@ -129,7 +129,7 @@ const NewsSection = () => {
         }
 
         setFilteredNews(filtered)
-    }, [selectedCategory, searchTerm, newsData])
+    }, [selectedCategory, searchTerm])
 
     const regularNews = filteredNews.filter((news) => !news.featured)
 

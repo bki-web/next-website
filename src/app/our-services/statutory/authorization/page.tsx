@@ -366,7 +366,7 @@ export default function AuthorizationPage() {
                         <p className="max-w-3xl text-pretty text-white/80">
                             To ensure the consistent application of international maritime safety and environmental
                             standards, Flag State Administrations delegate authority to Recognized Organizations (ROs).
-                            This page details BKI's specific authorizations by Flag State.
+                            This page details BKI&apos;s specific authorizations by Flag State.
                         </p>
                     </motion.header>
 

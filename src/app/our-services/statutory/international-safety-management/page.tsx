@@ -104,7 +104,7 @@ export default function InternationalSafetyManagementPage() {
                         aria-labelledby="ism-services"
                     >
                         <h2 id="ism-services" className="sr-only">
-                            BKI's ISM Code Services
+                            BKI&apos;s ISM Code Services
                         </h2>
                         <ServiceCard
                             title="Document of Compliance (DOC)"
