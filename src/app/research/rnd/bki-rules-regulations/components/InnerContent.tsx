@@ -11,7 +11,7 @@ export default function InnerContent() {
         console.log("Search:", search);
     };
     return (
-        <div className="w-full flex items-center justify-between relative 2xl:px-28 lg:px-20 px-4">
+        <div className="w-full flex items-center justify-between relative 2xl:px-28 xl:px-24 lg:px-20 px-4">
             <form
                 onSubmit={handleSubmitSearch}
                 className="flex items-center bg-white/10 backdrop-blur-md border border-white"

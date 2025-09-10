@@ -33,7 +33,7 @@ export default function VideoSection() {
     return (
         <section
             ref={sectionRef}
-            className="w-full h-screen flex flex-col items-start justify-end 2xl:px-28 lg:px-20 px-4 2xl:py-40 lg:py-32 py-12 relative">
+            className="w-full h-screen flex flex-col items-start justify-end 2xl:px-28 xl:px-24 lg:px-20 px-4 2xl:py-40 lg:py-32 py-12 relative">
             <motion.div
                 className="absolute inset-0 -z-2"
                 style={{y: videoY, willChange: "transform"}}

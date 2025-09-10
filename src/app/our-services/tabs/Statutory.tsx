@@ -91,7 +91,7 @@ export default function StatutoryTabContent({
             <WhyTrustSection/>
 
             <section
-                className="w-full h-full 2xl:p-28 lg:p-20 p-8 flex flex-col justify-center items-center bg-[#E2E7F0] gap-8 2xl:gap-24">
+                className="w-full h-full 2xl:p-28 xl:p-24 lg:p-20 p-8 flex flex-col justify-center items-center bg-[#E2E7F0] gap-8 2xl:gap-24">
                 <div className="w-full flex lg:flex-row flex-col justify-center items-center gap-3 lg:gap-6">
                     <div className="flex flex-col gap-3 lg:gap-6 flex-[1]">
                         <p className="lg:text-4xl text-2xl font-semibold text-[#0A436A]">
@@ -176,7 +176,7 @@ export default function StatutoryTabContent({
             </section>
 
             <section
-                className="w-full h-full 2xl:p-28 lg:p-20 p-8 flex flex-col justify-center items-center bg-[#0A436A] gap-8 2xl:gap-12">
+                className="w-full h-full 2xl:p-28 xl:p-24 lg:p-20 p-8 flex flex-col justify-center items-center bg-[#0A436A] gap-8 2xl:gap-12">
                 <p className="lg:text-5xl text-3xl font-bold text-white text-center">
                     A Comprehensive Scope of Statutory Certification
                 </p>
@@ -290,7 +290,7 @@ export default function StatutoryTabContent({
             </section>
 
             <section
-                className="w-full relative h-full 2xl:p-28 lg:p-20 p-8 flex flex-col justify-center items-center gap-8 2xl:gap-12 overflow-hidden"
+                className="w-full relative h-full 2xl:p-28 xl:p-24 lg:p-20 p-8 flex flex-col justify-center items-center gap-8 2xl:gap-12 overflow-hidden"
             >
                 {/* Background Parallax */}
                 <div

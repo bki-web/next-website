@@ -56,7 +56,7 @@ const publications = [
 export default function TechnicalPublicationGrid() {
     return (
         <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 2xl:px-28 lg:px-20 px-4 2xl:py-20 lg:py-16 py-12 bg-white">
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 2xl:px-28 xl:px-24 lg:px-20 px-4 2xl:py-20 lg:py-16 py-12 bg-white">
             {publications.map((pub) => (
                 <div
                     key={pub.id}

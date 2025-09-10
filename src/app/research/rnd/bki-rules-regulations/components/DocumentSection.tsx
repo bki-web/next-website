@@ -1514,7 +1514,8 @@ export default function DocumentSection() {
     );
 
     return (
-        <section className="relative 2xl:px-28 lg:px-20 px-4 2xl:py-20 lg:py-16 py-12 bg-white flex flex-col gap-4">
+        <section
+            className="relative 2xl:px-28 xl:px-24 lg:px-20 px-4 2xl:py-20 lg:py-16 py-12 bg-white flex flex-col gap-4">
             {DATA.map((sec) => {
                 const isOpenTop = openTop[sec.id];
                 return (
