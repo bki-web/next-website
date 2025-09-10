@@ -7,39 +7,39 @@ const aboutUs = [
     {
         title: "Company Profile",
         href: "/company-profile",
-        children: [
-            {title: "History", href: "/company-profile"},
-            {title: "Vision, Mission & Culture", href: "/company-profile"},
-            {title: "BOC", href: "/company-profile"},
-            {title: "BOD", href: "/company-profile"},
-            {title: "Technical Committee", href: "/company-profile"},
-            {title: "Organization Structure", href: "/company-profile"},
-        ],
+        // children: [
+        //     {title: "History", href: "/company-profile"},
+        //     {title: "Vision, Mission & Culture", href: "/company-profile"},
+        //     {title: "BOC", href: "/company-profile"},
+        //     {title: "BOD", href: "/company-profile"},
+        //     {title: "Technical Committee", href: "/company-profile"},
+        //     {title: "Organization Structure", href: "/company-profile"},
+        // ],
     },
-    {
-        title: "Achievement",
-        href: "#",
-        children: [
-            {title: "Cooperation", href: "/achievements"},
-            {title: "Award & Recognition", href: "/achievements"},
-        ],
-    },
+    // {
+    //     title: "Achievement",
+    //     href: "#",
+    //     children: [
+    //         {title: "Cooperation", href: "/achievements"},
+    //         {title: "Award & Recognition", href: "/achievements"},
+    //     ],
+    // },
     {
         title: "Opportunity",
-        href: "/opportunities",
+        href: "#",
         children: [
             {
                 title: "Procurement",
                 href: "https://vms.bki.co.id/",
             },
-            {
-                title: "Assets Auction",
-                href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-1.html",
-            },
-            {
-                title: "Career Auction",
-                href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-92.html",
-            },
+            // {
+            //     title: "Assets Auction",
+            //     href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-1.html",
+            // },
+            // {
+            //     title: "Career Auction",
+            //     href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-92.html",
+            // },
         ],
     },
     {
@@ -58,24 +58,24 @@ const aboutUs = [
                 title: "Environment",
                 href: "/esgrc/environment",
             },
-            {
-                title: "Corporate Social Responsibility",
-                href: "/esgrc/corporate-social-responsibility",
-            },
-            {
-                title: "Good Corporate Governance",
-                href: "/esgrc/good-corporate-governance",
-                children: [
-                    {title: "Code of Conduct", href: "#"},
-                    {title: "Principal & Policy", href: "#"},
-                    {title: "Implementation", href: "#"},
-                    {title: "Internal Audit Unit", href: "#"},
-                    {title: "Gratification Control", href: "#"},
-                    {title: "Whistle Blowing System", href: "#"},
-                    {title: "Risk Management Policy", href: "#"},
-                    {title: "Communication Policy", href: "#"},
-                ],
-            },
+            // {
+            //     title: "Corporate Social Responsibility",
+            //     href: "/esgrc/corporate-social-responsibility",
+            // },
+            // {
+            //     title: "Good Corporate Governance",
+            //     href: "/esgrc/good-corporate-governance",
+            //     children: [
+            //         {title: "Code of Conduct", href: "#"},
+            //         {title: "Principal & Policy", href: "#"},
+            //         {title: "Implementation", href: "#"},
+            //         {title: "Internal Audit Unit", href: "#"},
+            //         {title: "Gratification Control", href: "#"},
+            //         {title: "Whistle Blowing System", href: "#"},
+            //         {title: "Risk Management Policy", href: "#"},
+            //         {title: "Communication Policy", href: "#"},
+            //     ],
+            // },
         ],
     },
 ];
