@@ -18,10 +18,6 @@ export default function HeroSection() {
     // video moves slower upward
     const videoY = useTransform(scrollYProgress, [0, 1], [0, 240]);
 
-    // blue wash rises / strengthens as you start scrolling
-    const washY = useTransform(scrollYProgress, [0, 1], [40, -40]);
-    const washOpacity = useTransform(scrollYProgress, [0, 0.3, 1], [0, 1, 1]);
-
     // headline subtle lift
     const titleY = useTransform(scrollYProgress, [0, 1], [0, -40]);
 
@@ -154,7 +150,7 @@ export default function HeroSection() {
                             style={{y: titleY, willChange: "transform"}}
                         >
                             <div
-                                className="jost-font font-extrabold text-5xl md:text-6xl 2xl:text-8xl bg-clip-text tracking-tight text-shadow-lg"
+                                className="jost-font font-extrabold text-5xl md:text-6xl bg-clip-text tracking-tight text-shadow-lg"
                                 style={
                                     {
                                         // backgroundImage:

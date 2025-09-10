@@ -48,6 +48,7 @@ export default function BallastWaterManagementPage() {
                 ]}
                 backgroundClass="bg-[url('/classification-bg.jpg')]"
                 title={"Ballast Water Management"}
+                customOverlayClass={"from-slate-900/60"}
             />
 
             <section className="relative overflow-hidden bg-[#0A436A] text-slate-100">
@@ -71,11 +72,6 @@ export default function BallastWaterManagementPage() {
                         viewport={{once: true, amount: 0.3}}
                         className="mx-auto max-w-3xl text-center"
                     >
-          <span
-              className="inline-flex items-center gap-2 rounded-full bg-slate-800/60 px-3 py-1 text-sm text-cyan-300 ring-1 ring-slate-700">
-            <span className="relative inline-block h-1.5 w-1.5 rounded-full bg-cyan-300"/>
-            Ballast Water Management
-          </span>
                         <h1 className="mt-4 text-3xl font-semibold tracking-tight text-slate-50 md:text-4xl">
                             Protecting Our Marine Ecosystems
                         </h1>

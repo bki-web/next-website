@@ -27,9 +27,9 @@ export default function ServiceCard({
                                     }: Props) {
     const parentClasses = useMemo(() => {
         if (isProgramPage) {
-            return 'w-[calc(100vw-80px)] md:w-[calc(50vw-100px)] 2xl:w-[calc(33.333vw-100px)]';
+            return 'w-[calc(100vw-80px)] md:w-[calc(50vw-100px)] lg:w-[calc(33.333vw-100px)]';
         }
-        return 'w-full md:w-[calc(50%-30px)] 2xl:w-[calc(33.333%-30px)]';
+        return 'w-full md:w-[calc(50%-22px)] lg:w-[calc(33.333%-22px)]';
     }, [isProgramPage]);
     return (
         <motion.div
@@ -38,7 +38,7 @@ export default function ServiceCard({
             transition={{duration: 0.8, delay: orderNumber * 0.25}}
             viewport={{once: true}}
             className={classes(
-                "relative shadow-lg shadow-black/50 group py-[20px] px-[32px] rounded-[4px] overflow-hidden cursor-pointer h-[250px] 2xl:h-[300px]",
+                "relative shadow-lg shadow-black/50 group py-[20px] px-[32px] rounded-[4px] overflow-hidden cursor-pointer h-[200px] 2xl:h-[300px]",
                 parentClasses,
                 "group"
             )}
@@ -67,11 +67,11 @@ export default function ServiceCard({
                         height={22}
                     /> : <div/>}
                     <div className="flex flex-col gap-1">
-                        <p className="text-4xl 2xl:text-5xl text-white group-hover:translate-y-0 translate-y-12 mt-[15px] transition-all duration-500">
+                        <p className={classes("text-3xl 2xl:text-5xl text-white group-hover:translate-y-0 mt-[15px] transition-all duration-500", description ? "translate-y-12" : "")}>
                             {title}
                         </p>
                         {!!description &&
-                            <p className="text-sm 2xl:text-[16px] text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 min-h-12">
+                            <p className="text-xs 2xl:text-[16px] text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 min-h-12">
                                 {description}
                             </p>}
                     </div>
