@@ -67,7 +67,7 @@ export default function ServiceCard({
                         height={22}
                     /> : <div/>}
                     <div className="flex flex-col gap-1">
-                        <p className="text-3xl 2xl:text-5xl text-white group-hover:translate-y-0 translate-y-12 mt-[15px] transition-all duration-500">
+                        <p className={classes("text-3xl 2xl:text-5xl text-white group-hover:translate-y-0 mt-[15px] transition-all duration-500", description ? "translate-y-12" : "")}>
                             {title}
                         </p>
                         {!!description &&
