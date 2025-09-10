@@ -71,10 +71,10 @@ export default function ClassificationTabContent({
 
             <section
                 id={"video-section"}
-                className="w-full h-full 2xl:p-28 xl:p-24 lg:p-20 p-8 flex 2xl:flex-row flex-col justify-center items-center bg-[#E2E7F0] gap-8 2xl:gap-12"
+                className="w-full h-full 2xl:p-28 xl:p-24 lg:p-20 p-8 flex lg:flex-row flex-col justify-center items-center bg-[#E2E7F0] gap-8 lg:gap-12"
             >
                 <video
-                    className="2xl:w-1/2 w-full h-full object-cover rounded-lg"
+                    className="lg:w-1/2 w-full h-[-webkit-fill-available] object-cover rounded-lg"
                     src="/hero-banner-bki.mp4"
                     autoPlay
                     loop
@@ -104,7 +104,7 @@ export default function ClassificationTabContent({
             {/*Program Section*/}
             <section
                 id="program"
-                className="w-full h-full 2xl:px-24 2xl:py-18 md:px-24 md:py-6 py-8 px-8 flex flex-col justify-center items-center bg-white gap-14"
+                className="w-full h-full 2xl:px-24 lg:py-18 md:px-24 md:py-6 py-8 px-8 flex flex-col justify-center items-center bg-white gap-14"
             >
                 <div className="w-full flex md:flex-row flex-col justify-between items-center gap-5 md:gap-0">
                     <p className="2xl:text-6xl text-4xl font-bold text-[#0A436A] w-full">
@@ -131,7 +131,7 @@ export default function ClassificationTabContent({
                 </div>
             </section>
 
-            <DigitalPlatform />
+            <DigitalPlatform/>
         </Fragment>
     );
 }

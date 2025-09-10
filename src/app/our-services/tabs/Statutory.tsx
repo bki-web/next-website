@@ -142,7 +142,7 @@ export default function StatutoryTabContent({
                             transition={{type: "spring", stiffness: 120, damping: 18, mass: 0.6}}
                         >
                             <Image
-                                src="/our-services/classification/slider-1.jpg"
+                                src="/our-services/statutory/2.jpg"
                                 alt="partnership"
                                 width={600}
                                 height={400}
