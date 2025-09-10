@@ -65,7 +65,7 @@ const OurServicesSection = forwardRef((props, ref: Ref<HTMLDivElement | null>) =
         <div
             id={"our-services"}
             ref={ref}
-            className="relative w-full 2xl:h-[110vh] text-white bg-black overflow-hidden"
+            className="relative w-full h-[100vh] 2xl:h-[105vh] text-white overflow-hidden"
         >
             {/* <div
                 className="flex flex-col justify-center items-center bg-[linear-gradient(to_bottom,rgba(11,63,101,1),rgba(11,63,101,1)_30%,rgb(134,167,212))] py-32">
@@ -93,7 +93,7 @@ const OurServicesSection = forwardRef((props, ref: Ref<HTMLDivElement | null>) =
                 <Image
                     src="/bg-our-services-2.jpg"
                     alt="Background"
-                    className="w-screen lg:h-[110vh] h-[300vh] object-cover z-0"
+                    className="w-screen 2xl:h-[105vh] lg:h-[100vh] h-[300vh] object-cover z-0 blur-[2px]"
                     width={1920}
                     height={1080}
                     priority={true}
@@ -104,14 +104,14 @@ const OurServicesSection = forwardRef((props, ref: Ref<HTMLDivElement | null>) =
 
             <motion.div
                 style={{y: servicesSection, willChange: "transform"}}
-                className="absolute inset-0 2xl:h-[calc(100vh+240px)] flex flex-col justify-center items-center pt-10 2xl:pb-36 -mt-7 z-1"
+                className="absolute inset-0 2xl:h-[calc(100vh+240px)] flex flex-col justify-center items-center 2xl:pb-36 z-1"
             >
-                <div className="flex flex-col gap-6 mb-20">
+                <div className="flex flex-col gap-3 mb-14">
                     <motion.div initial={{opacity: 0, x: -100}}
                                 whileInView={{opacity: 1, x: 0}}
                                 transition={{duration: 0.8, delay: 0.25}}
                                 viewport={{once: true}}>
-                        <p className="text-3xl md:text-5xl text-white font-bold text-center">
+                        <p className="text-3xl md:text-4xl text-white font-bold text-center">
                             <FancyTitle title="Our Services"/>
                         </p>
                     </motion.div>
@@ -119,14 +119,14 @@ const OurServicesSection = forwardRef((props, ref: Ref<HTMLDivElement | null>) =
                                 whileInView={{opacity: 1, x: 0}}
                                 transition={{duration: 0.8, delay: 0.5}}
                                 viewport={{once: true}}>
-                        <p className="text-xl md:text-2xl text-white text-center">
+                        <p className="text-lg md:text-xl text-white text-center">
                             Discover our essential services built for safety, compliance, and
                             excellence.
                         </p>
                     </motion.div>
                 </div>
                 <div
-                    className="flex flex-wrap justify-center gap-x-8 gap-y-16 2xl:px-28 xl:px-24 lg:px-20 px-4 pb-[100px] 2xl:pb-0">
+                    className="flex flex-wrap justify-center gap-x-8 gap-y-16 2xl:px-28 xl:px-24 lg:px-20 px-4 pb-[100px] xl:pb-0">
                     {services.map((service, index) => (
                         <ServiceCard key={index} orderNumber={index + 1} href={service.href} image={service.image}
                                      icon={undefined}
