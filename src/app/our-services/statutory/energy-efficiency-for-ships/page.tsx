@@ -49,74 +49,74 @@ const sectionTitle = (
 const measures = [
     {
         title: "Energy Efficiency Design Index (EEDI)",
-        desc: "Standar efisiensi energi untuk kapal baru ≥ 400 GT, diverifikasi pada tahap desain dan saat sea trials sebelum penerbitan IEEC.",
+        desc: "Energy efficiency standards for new ships ≥ 400 GT, operating at the design stage and during sea trials before publication by the IEEC.",
     },
     {
         title: "Energy Efficiency eXisting ship Index (EEXI)",
-        desc: "Penerapan prinsip efisiensi pada kapal eksisting ≥ 400 GT. Termasuk solusi seperti SHAPOLI/EPL dan re-issue IEEC.",
+        desc: "Implementation of efficiency principles on existing vessels ≥ 400 GT. Including solutions such as SHAPOLI/EPL and the re-issue of the IEEC.",
     },
     {
         title: "Ship Energy Efficiency Management Plan (SEEMP)",
-        desc: "Bagian I, II (IMO DCS), dan III (CII): perencanaan, pengumpulan data konsumsi bahan bakar, serta peningkatan performa berkelanjutan.",
+        desc: "Parts I, II (IMO DCS), and III (CII): planning, fuel consumption data collection, and continuous performance improvement.",
     },
 ];
 
 const services = [
-    "Verifikasi Berkas Teknis EEDI (Preliminary & Final)",
-    "Persetujuan EEXI & Re-issuance IEEC",
-    "Persetujuan SEEMP Bagian I, II, dan III",
-    "Penerbitan Confirmation of Compliance (CoC) untuk SEEMP",
-    "Verifikasi Data Tahunan Bahan Bakar & SoC untuk IMO DCS",
-    "Perhitungan & verifikasi CII tahunan",
-    "Persetujuan Rencana Tindakan Korektif untuk rating D/E",
+    "EEDI Technical File Verification (Preliminary & Final)",
+    "EEXI Approval & IEEC Re-issuance",
+    "SEEMP Agreement Parts I, II, and III",
+    "Issuance of Confirmation of Compliance (CoC) for SEEMP",
+    "Annual Fuel & SoC Data Verification for IMO DCS",
+    "Annual CII calculation & verification",
+    "Approval of Corrective Action Plan for D/E rating",
 ];
 
 const stepsEEDI = [
     {
         step: "1",
         title: "Preliminary Verification",
-        desc: "Verifikasi EEDI pada tahap desain sebelum konstruksi.",
+        desc: "EEDI verification at design stage before construction.",
     },
     {
         step: "2",
         title: "Final Verification",
-        desc: "Survei saat sea trial untuk konfirmasi nilai EEDI & penerbitan IEEC.",
+        desc: "Survey during sea trial to confirm EEDI value & IEEC issuance.",
     },
 ];
 
 const stepsEEXI = [
     {
         step: "A",
-        title: "Penilaian Kepatuhan",
-        desc: "Bandingkan Attained vs Required EEXI; siapkan tindakan bila belum memenuhi.",
+        title: "Compliance Assessment",
+        desc: "Compare Attained vs. Required EEXI; take action if not met.",
     },
     {
         step: "B",
         title: "Countermeasures",
-        desc: "Implementasi SHAPOLI/EPL atau solusi lain, dengan bimbingan & persetujuan BKI.",
+        desc: "Implementation of SHAPOLI/EPL or other solutions, with guidance & approval of BKI.",
     },
     {
         step: "C",
-        title: "Verifikasi & Sertifikasi",
-        desc: "Verifikasi pada IAPP survey pertama ≥ 1 Jan 2023, lalu re-issue IEEC.",
+        title: "Verification & Certification",
+        desc: "Verification on the first IAPP survey ≥ 1 Jan 2023, then re-issue IEEC.",
     },
 ];
 
 const seempParts = [
     {
         tag: "Part I",
-        title: "Fondasi & Pemantauan",
-        desc: "Wajib sejak 2013 untuk semua kapal ≥ 400 GT. Rencana peningkatan efisiensi energi kapal.",
+        title: "Foundation & Monitoring",
+        desc: "Mandatory since 2013 for all ships ≥ 400 GT. Plans to improve ship energy efficiency.",
     },
     {
         tag: "Part II (IMO DCS)",
-        title: "Pengumpulan Data",
-        desc: "Untuk kapal ≥ 5.000 GT. Metodologi pengumpulan & pelaporan konsumsi bahan bakar tahunan.",
+        title: "Data collection",
+        desc: "For vessels ≥ 5,000 GT. Annual fuel consumption collection & reporting methodology.",
     },
     {
         tag: "Part III (CII)",
-        title: "Performa & Peningkatan",
-        desc: "Rencana mencapai rating CII (A–E): metodologi perhitungan, rencana 3 tahun, dan prosedur evaluasi mandiri.",
+        title: "Performance & Improvements",
+        desc: "Plan to achieve CII (A–E) rating: calculation methodology, 3-year plan, and self-evaluation procedures.",
     },
 ];
 
@@ -175,12 +175,13 @@ export default function EnergyEfficiencyForShipsPage() {
                                 Energy Efficiency for Ships
                             </div>
                             <h1 className="text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-5xl">
-                                Komitmen Global Menuju Masa Depan yang Lebih Hijau
+                                Global Commitment to a Greener Future
                             </h1>
                             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
-                                Selaras dengan SDG 13, IMO menerapkan langkah wajib untuk menekan emisi gas rumah kaca
-                                dari pelayaran melalui MARPOL Annex VI. Sebagai Recognized Organization (RO), BKI
-                                membantu armada Anda patuh, efisien, dan kompetitif.
+                                In line with SDG 13, the IMO has implemented mandatory measures to reduce greenhouse gas
+                                emissions
+                                from shipping through MARPOL Annex VI. As a Recognized Organization (RO), BKI
+                                helps your fleet be compliant, efficient, and competitive.
                             </p>
                         </motion.div>
 
@@ -220,16 +221,16 @@ export default function EnergyEfficiencyForShipsPage() {
                         className="grid gap-10 lg:grid-cols-2"
                     >
                         {sectionTitle(
-                            "Langkah Teknis: EEDI & EEXI",
-                            "Fokus pada desain & peralatan kapal agar memenuhi tingkat efisiensi minimum.",
+                            "Technical Steps: EEDI & EEXI",
+                            "Focus on ship design & equipment to meet minimum efficiency levels.",
                             "MARPOL Annex VI"
                         )}
 
                         <motion.div variants={fadeInUp} className="space-y-6">
                             <div className="rounded-sm border border-white/10 bg-white/5 p-6 backdrop-blur">
-                                <h3 className="text-lg font-semibold text-white">Untuk Kapal Baru: EEDI</h3>
+                                <h3 className="text-lg font-semibold text-white">For New Ships: EEDI</h3>
                                 <p className="mt-2 text-white/70">
-                                    EEDI mendorong kapal baru yang lebih efisien & rendah emisi untuk ≥ 400 GT.
+                                    EEDI is pushing for new, more efficient & low-emission vessels for ≥ 400 GT.
                                 </p>
                                 <div className="mt-4 grid gap-4 sm:grid-cols-2">
                                     {stepsEEDI.map((s) => (
@@ -246,10 +247,10 @@ export default function EnergyEfficiencyForShipsPage() {
                             </div>
 
                             <div className="rounded-sm border border-white/10 bg-white/5 p-6 backdrop-blur">
-                                <h3 className="text-lg font-semibold text-white">Untuk Kapal Eksisting: EEXI</h3>
+                                <h3 className="text-lg font-semibold text-white">For Existing Vessels: EEXI</h3>
                                 <p className="mt-2 text-white/70">
-                                    Prinsip serupa EEDI untuk kapal dalam operasi ≥ 400 GT, memastikan armada memenuhi
-                                    standar iklim.
+                                    EEDI-like principles apply to vessels operating above 400 GT, ensuring the fleet
+                                    meets climate standards.
                                 </p>
                                 <div className="mt-4 grid gap-4 sm:grid-cols-3">
                                     {stepsEEXI.map((s) => (
@@ -278,9 +279,9 @@ export default function EnergyEfficiencyForShipsPage() {
                         className="grid gap-10 lg:grid-cols-2"
                     >
                         {sectionTitle(
-                            "Langkah Operasional: SEEMP, DCS & CII",
-                            "Pengelolaan & pemantauan operasi kapal untuk peningkatan kinerja berkelanjutan.",
-                            "Manajemen Energi Kapal"
+                            "Operational Steps: SEEMP, DCS & CII",
+                            "Management & monitoring of ship operations for continuous performance improvement.",
+                            "Ship Energy Management"
                         )}
 
                         <motion.div variants={fadeInUp} className="space-y-6">
@@ -304,9 +305,8 @@ export default function EnergyEfficiencyForShipsPage() {
                                         <p className="text-lg font-semibold text-white">Carbon Intensity Indicator
                                             (CII)</p>
                                         <p className="mt-1 text-white/70">
-                                            Rating A–E per tahun berdasarkan data IMO DCS: pelaporan ≤ 3 bulan; SoC ≤ 5
-                                            bulan; rencana korektif bila rating E (1 tahun) atau D (3 tahun
-                                            berturut-turut).
+                                            Annual A–E ratings based on IMO DCS data: reporting ≤ 3 months; SoC ≤ 5
+                                            months; corrective plan if rating E (1 year) or D (3 consecutive years).
                                         </p>
                                     </div>
                                     <div
@@ -333,9 +333,9 @@ export default function EnergyEfficiencyForShipsPage() {
                         className="grid gap-10 lg:grid-cols-2"
                     >
                         {sectionTitle(
-                            "Partner Kepatuhan Ujung-ke-Ujung",
-                            "BKI menyediakan layanan statutori lengkap agar setiap tenggat & persyaratan terpenuhi dengan percaya diri.",
-                            "Layanan BKI"
+                            "End-to-End Compliance Partner",
+                            "BKI provides complete statutory services to ensure every deadline & requirement is met with confidence.",
+                            "BKI Services"
                         )}
 
                         <motion.ul
@@ -350,7 +350,7 @@ export default function EnergyEfficiencyForShipsPage() {
                                     <div className="mb-2 flex items-center gap-2 text-sm text-white/60">
                                         <span
                                             className="inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400 transition group-hover:scale-125"/>
-                                        Layanan
+                                        Service
                                     </div>
                                     <p className="text-white">{s}</p>
                                 </li>

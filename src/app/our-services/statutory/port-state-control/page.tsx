@@ -53,8 +53,6 @@ export default function PortStateControlPage() {
                         transition={{duration: 0.6, ease: "easeOut"}}
                         className="max-w-3xl"
                     >
-                        <span
-                            className="inline-flex items-center rounded-full border border-slate-200/70 bg-slate-50 px-3 py-1 text-xs font-medium tracking-wide text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-neutral-200">Port State Control</span>
                         <h1 className="mt-4 text-3xl font-bold leading-tight text-[#0A436A] md:text-5xl dark:text-[#7ab7dd]">
                             Navigating Port State Control (PSC) with Confidence
                         </h1>
@@ -80,27 +78,27 @@ export default function PortStateControlPage() {
                 <aside className="lg:col-span-1 sticky top-10">
                     <div
                         className="sticky top-6 rounded-lg border border-slate-200/70 p-4 shadow-sm bg-[#0A436A]">
-                        <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-neutral-300">
+                        <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-white">
                             On this page
                         </p>
                         <nav className="space-y-2 text-sm">
-                            <a className="block rounded-sm px-3 py-2 hover:bg-slate-100 dark:hover:bg-white/10"
+                            <a className="block rounded-sm px-3 py-2 hover:bg-slate-100 text-white hover:text-[#0A436A] transition-colors duration-200"
                                href="#understanding-psc">
                                 Understanding PSC
                             </a>
-                            <a className="block rounded-sm px-3 py-2 hover:bg-slate-100 dark:hover:bg-white/10"
+                            <a className="block rounded-sm px-3 py-2 hover:bg-slate-100 text-white hover:text-[#0A436A] transition-colors duration-200"
                                href="#global-psc-network">
                                 The Global PSC Network
                             </a>
-                            <a className="block rounded-sm px-3 py-2 hover:bg-slate-100 dark:hover:bg-white/10"
+                            <a className="block rounded-sm px-3 py-2 hover:bg-slate-100 text-white hover:text-[#0A436A] transition-colors duration-200"
                                href="#high-stakes">
                                 The High Stakes of Non-Compliance
                             </a>
-                            <a className="block rounded-sm px-3 py-2 hover:bg-slate-100 dark:hover:bg-white/10"
+                            <a className="block rounded-sm px-3 py-2 hover:bg-slate-100 text-white hover:text-[#0A436A] transition-colors duration-200"
                                href="#proactive-prep">
                                 Proactive PSC Preparation
                             </a>
-                            <a className="block rounded-sm px-3 py-2 hover:bg-slate-100 dark:hover:bg-white/10"
+                            <a className="block rounded-sm px-3 py-2 hover:bg-slate-100 text-white hover:text-[#0A436A] transition-colors duration-200"
                                href="#rapid-response">
                                 Rapid Response Detention Support
                             </a>
