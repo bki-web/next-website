@@ -2,7 +2,8 @@
 import React, {useState} from "react";
 import {Search} from "lucide-react";
 import {classes} from "@/utils/string";
-import Link from "next/link";
+import Button from "@/components/Button";
+import {useRouter} from "next/navigation";
 
 interface GridInfoItem {
     title: string;
@@ -27,19 +28,20 @@ const gridInfoItems: GridInfoItem[] = [
     {
         title: "RnD Activities",
         description: "BKI work in research, developing rules and regulation for both of classification and industrial sector, in order to maintain the quality of our services. Providing the integrated system, and introduce our service-on-hand to our customers by developing several technical software to give excellent services in this digital era.",
-        href: "#",
+        href: "/research/rnd/activities",
         bgClass: "bg-[url('/rnd/rnd-activities.jpg')]",
     },
     {
         title: "Technical Publication",
         description: "BKI researches and studies are presented periodically in National and International Conferences to offer the benefits to stakeholders. The research themes are evolving as science and technology growth, therefore BKI capable to provide technical solution for practical issues in hull structural, electrical/machinery, stability and offshore engineering. In addition, “Propulsion Journal” is to gather all of our technical publications and papers submitted in both internal and external.",
-        href: "#",
+        href: "/research/rnd/technical-publication",
         bgClass: "bg-[url('/rnd/technical-publication.jpg')]",
     },
 ];
 
 export default function GridInfoSection() {
     const [query, setQuery] = useState("");
+    const router = useRouter();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -90,13 +92,11 @@ export default function GridInfoSection() {
                         <p className="font-bold xl:text-6xl text-2xl text-white z-2">{item.title}</p>
                         <p className="xl:text-xl text-base text-white z-2">{item.description}</p>
                         <div className="z-2">
-                            <Link
-                                href={item.href ?? "#"}
-                                className="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-base sm:text-lg md:text-xl xl:text-3xl font-light text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-                            >
-                                Read More
-                                <span className="ml-2">→</span>
-                            </Link>
+                            <Button text={'Read More'} style={'blur'} onClick={() => {
+                                if (item.href) {
+                                    router.push(item.href);
+                                }
+                            }}/>
                         </div>
                     </div>
                 );

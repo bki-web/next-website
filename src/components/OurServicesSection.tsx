@@ -93,7 +93,7 @@ export default function OurServicesSection() {
                 <Image
                     src="/bg-our-services-2.jpg"
                     alt="Background"
-                    className="w-screen 2xl:h-[110vh] xl:h-[200vh] h-[300vh] object-cover z-0"
+                    className="w-screen 2xl:h-[110vh] xl:h-[175vh] h-[300vh] object-cover z-0"
                     width={1920}
                     height={1080}
                     priority={true}
@@ -107,18 +107,29 @@ export default function OurServicesSection() {
                 className="absolute inset-0 2xl:h-[calc(100vh+240px)] flex flex-col justify-center items-center pt-5 2xl:pb-36 -mt-7 z-1"
             >
                 <div className="flex flex-col gap-6 mb-20">
-                    <p className="text-5xl md:text-6xl text-white font-bold text-center">
-                        <FancyTitle title="Our Services"/>
-                    </p>
-                    <p className="text-2xl md:text-2xl text-white text-center">
-                        Discover our essential services built for safety, compliance, and
-                        excellence.
-                    </p>
+                    <motion.div initial={{opacity: 0, x: -100}}
+                                whileInView={{opacity: 1, x: 0}}
+                                transition={{duration: 0.8, delay: 0.25}}
+                                viewport={{once: true}}>
+                        <p className="text-5xl md:text-6xl text-white font-bold text-center">
+                            <FancyTitle title="Our Services"/>
+                        </p>
+                    </motion.div>
+                    <motion.div initial={{opacity: 0, x: 100}}
+                                whileInView={{opacity: 1, x: 0}}
+                                transition={{duration: 0.8, delay: 0.5}}
+                                viewport={{once: true}}>
+                        <p className="text-2xl md:text-2xl text-white text-center">
+                            Discover our essential services built for safety, compliance, and
+                            excellence.
+                        </p>
+                    </motion.div>
                 </div>
                 <div
                     className="flex flex-wrap justify-center gap-x-[30px] gap-y-[60px] mx-6 md:mx-24 pb-[100px] 2xl:pb-0">
                     {services.map((service, index) => (
-                        <ServiceCard key={index} href={service.href} image={service.image} icon={undefined}
+                        <ServiceCard key={index} orderNumber={index + 1} href={service.href} image={service.image}
+                                     icon={undefined}
                                      title={service.title} description={service.description} target={service.type}/>
                     ))}
                 </div>

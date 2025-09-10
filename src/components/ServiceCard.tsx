@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {useMemo} from "react";
 import {classes} from "@/utils/string";
+import {motion} from "framer-motion";
 
 interface Props {
     href: string;
@@ -11,9 +12,19 @@ interface Props {
     description?: string;
     isProgramPage?: boolean;
     target?: string;
+    orderNumber: number;
 }
 
-export default function ServiceCard({href, image, icon, title, description, isProgramPage, target}: Props) {
+export default function ServiceCard({
+                                        href,
+                                        image,
+                                        icon,
+                                        title,
+                                        description,
+                                        isProgramPage,
+                                        target,
+                                        orderNumber
+                                    }: Props) {
     const parentClasses = useMemo(() => {
         if (isProgramPage) {
             return 'w-[calc(100vw-80px)] md:w-[calc(50vw-100px)] 2xl:w-[calc(33.333vw-100px)]';
@@ -21,51 +32,61 @@ export default function ServiceCard({href, image, icon, title, description, isPr
         return 'w-full md:w-[calc(50%-30px)] 2xl:w-[calc(33.333%-30px)]';
     }, [isProgramPage]);
     return (
-        <Link
-            href={href}
-            target={target ? target : "_self"}
-            // rel={"noopener noreferrer"}
-            className={classes("relative shadow-lg shadow-black/50 group py-[20px] px-[32px] rounded-[4px] overflow-hidden cursor-pointer h-[250px] 2xl:h-[300px]", parentClasses)}
+        <motion.div
+            initial={{opacity: 0, y: 30}}
+            whileInView={{opacity: 1, y: 0}}
+            transition={{duration: 0.8, delay: orderNumber * 0.25}}
+            viewport={{once: true}}
+            className={classes(
+                "relative shadow-lg shadow-black/50 group py-[20px] px-[32px] rounded-[4px] overflow-hidden cursor-pointer h-[250px] 2xl:h-[300px]",
+                parentClasses,
+                "group"
+            )}
         >
-            {/* Background Image */}
-            <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-[130%]"
-                style={{backgroundImage: `url(${image})`}}
-            />
+            <Link
+                href={href}
+                target={target ? target : "_self"}
+            >
+                {/* Background Image */}
+                <div
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-[130%]"
+                    style={{backgroundImage: `url(${image})`}}
+                />
 
-            {/*Backround Overlay*/}
-            <div
-                className="absolute left-0 bottom-0 right-0 h-1/2 bg-gradient-to-b from-transparent to-[rgb(11,63,101)]"/>
+                {/*Backround Overlay*/}
+                <div
+                    className="absolute left-0 bottom-0 right-0 h-1/2 bg-gradient-to-b from-transparent to-[rgb(11,63,101)]"/>
 
-            {/* Content */}
-            <div
-                className="relative z-10 flex flex-col justify-between gap-[15px] w-full h-full pb-[8px]">
-                {icon ? <Image
-                    src={icon}
-                    alt={title}
-                    width={32}
-                    height={22}
-                /> : <div/>}
-                <div className="flex flex-col gap-1">
-                    <p className="text-4xl 2xl:text-5xl text-white group-hover:opacity-100 mt-[15px] transition-opacity duration-1000">
-                        {title}
-                    </p>
-                    {!!description &&
-                        <p className="text-sm 2xl:text-[16px] text-white group-hover:opacity-100 transition-opacity duration-1000">
-                            {description}
-                        </p>}
+                {/* Content */}
+                <div
+                    className="relative z-10 flex flex-col justify-between gap-[15px] w-full h-full pb-[8px]">
+                    {icon ? <Image
+                        src={icon}
+                        alt={title}
+                        width={32}
+                        height={22}
+                    /> : <div/>}
+                    <div className="flex flex-col gap-1">
+                        <p className="text-4xl 2xl:text-5xl text-white group-hover:translate-y-0 translate-y-12 mt-[15px] transition-all duration-500">
+                            {title}
+                        </p>
+                        {!!description &&
+                            <p className="text-sm 2xl:text-[16px] text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 min-h-12">
+                                {description}
+                            </p>}
+                    </div>
                 </div>
-            </div>
 
-            {/* Bottom line */}
-            <div
-                className="absolute bottom-0 left-[32px] right-[32px] h-[2px] bg-white opacity-30 z-10"/>
-            <div
-                className="absolute bottom-0 left-[32px] right-[32px] h-[2px] bg-white z-10
+                {/* Bottom line */}
+                <div
+                    className="absolute bottom-0 left-[32px] right-[32px] h-[2px] bg-white opacity-30 z-10"/>
+                <div
+                    className="absolute bottom-0 left-[32px] right-[32px] h-[2px] bg-white z-10
                    opacity-30 group-hover:opacity-100
                    transform scale-x-0 group-hover:scale-x-100
                    origin-right transition-all duration-1000 ease-out"
-            />
-        </Link>
+                />
+            </Link>
+        </motion.div>
     )
 }

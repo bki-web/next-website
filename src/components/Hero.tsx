@@ -1,6 +1,9 @@
+'use client';
 import Link from "next/link";
 import {classes} from "@/utils/string";
 import {Fragment} from "react";
+import {ArrowLeft} from "lucide-react";
+import {useRouter} from "next/navigation";
 
 interface RouteItem {
     text: string;
@@ -18,6 +21,7 @@ interface Props {
 
 export default function Hero(props: Props) {
     const {routes, backgroundClass, title, description, innerComponent, customOverlayClass} = props;
+    const router = useRouter();
     return (
         <section
             className={classes("w-full relative overflow-hidden", innerComponent ? "h-[60vh]" : "h-[50vh]")}>
@@ -33,7 +37,11 @@ export default function Hero(props: Props) {
             />
             <div
                 className="w-full relative flex flex-col justify-center items-center py-24 2xl:pt-40 text-center text-white text-shadow-lg text-shadow-black/30">
-                <div className="flex flex-row w-full justify-center items-center gap-2">
+                <div className="flex flex-row w-full justify-center items-center gap-2 relative">
+                    {routes.length > 1 ?
+                        <button className="absolute lg:left-28 group cursor-pointer" onClick={router.back}>
+                            <ArrowLeft className="group-hover:scale-125 transition-transform duration-500"/>
+                        </button> : null}
                     {routes.map((route, index) => (
                         <Fragment key={route.text + '-' + index}>
                             {index > 0 && (

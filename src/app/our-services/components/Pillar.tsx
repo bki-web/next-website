@@ -3,6 +3,7 @@ import Section from "./Section";
 import Image from 'next/image';
 import Heading from "./Heading";
 import Paragraph from "./Paragraf";
+import {classes} from "@/utils/string";
 
 const fadeInUp: Variants = {
     hidden: {opacity: 0, y: 24},
@@ -34,11 +35,15 @@ export default function Pillar({index, title, lead, bullets, image, keyId, hideP
             <Section>
                 <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 items-center`}>
                     <motion.div variants={fadeInUp} initial="hidden" whileInView="show" viewport={{once: true}}
-                                className={isEven ? "order-1" : "order-2 md:order-2"}>
+                                className={classes(
+                                    isEven ? "order-1" : "order-2 md:order-2",
+                                    "h-[-webkit-fill-available]"
+                                )}>
                         <div
-                            className={`relative w-full aspect-[16/10] overflow-hidden border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.35)]`}>
+                            className={`relative w-full aspect-[16/10] overflow-hidden border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.35)] h-[-webkit-fill-available]`}>
                             {image ? (
-                                <Image src={image} alt={title} fill className="object-cover"/>
+                                <Image src={image} alt={title} fill
+                                       className="object-cover h-[-webkit-fill-available]"/>
                             ) : (
                                 <div className="absolute inset-0 grid place-items-center bg-white/10 text-white/70">Add
                                     image</div>
@@ -51,7 +56,8 @@ export default function Pillar({index, title, lead, bullets, image, keyId, hideP
                     <motion.div variants={stagger} initial="hidden" whileInView="show"
                                 viewport={{once: true, margin: "-15% 0px"}}
                                 className={isEven ? "order-2" : "order-1 md:order-1"}>
-                        <Heading title={title} subtitle={hidePillarText ? pillarText : `Pillar ${index + 1}`} align="left"/>
+                        <Heading title={title} subtitle={hidePillarText ? pillarText : `Pillar ${index + 1}`}
+                                 align="left"/>
                         <Paragraph className="mt-3">{lead}</Paragraph>
                         <motion.ul variants={stagger} className="mt-6 space-y-4">
                             {bullets.map((b, i) => (
