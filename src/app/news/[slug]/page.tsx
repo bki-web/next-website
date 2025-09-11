@@ -8,6 +8,8 @@ import {Skeleton} from "@/components/ui/skeleton";
 import Link from "next/link";
 import PageTransition from "@/components/page-transition";
 import { getCoverUrl } from "@/utils/strapi";
+import { useQuery } from "@tanstack/react-query";
+import { fetchNewsDetail } from "../actions";
 
 export default function Article({
                                     params,
@@ -15,8 +17,15 @@ export default function Article({
     params: Promise<{ slug: string }>;
 }) {
     const {slug} = use(params);
-    const {data, isLoading} = trpc.news.getDetail.useQuery({
-        id: slug,
+    // const {data, isLoading} = trpc.news.getDetail.useQuery({
+    //     id: slug,
+    // });
+
+     const { data, isLoading, error } = useQuery({
+        // The query key uniquely identifies this query's data
+        queryKey: ["news", slug],
+        // The query function that returns a Promise
+        queryFn: () => fetchNewsDetail(slug),
     });
     const newsRef = useRef<HTMLDivElement | null>(null);
 

@@ -1,49 +1,50 @@
-import type {Metadata} from "next";
+import type { Metadata } from "next";
 import "./globals.css";
-import {TransitionProvider} from "@/components/TransitionProvider";
+import { TransitionProvider } from "@/components/TransitionProvider";
 import SiteNavbar from "@/components/SiteNavbar";
 
-import {Jost, Montserrat} from 'next/font/google';
+import { Jost, Montserrat } from "next/font/google";
 import FooterSection from "@/components/FooterSection";
-import {TRPCProvider} from "@/trpc/react";
+import { TRPCProvider } from "@/trpc/react";
+import { Providers } from "./providers";
 
 // Load Montserrat with chosen weights
 const montserrat = Montserrat({
-    subsets: ['latin'],
-    weight: ['400', '500', '600', '700'], // choose what you need
-    variable: '--font-montserrat', // optional CSS variable
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"], // choose what you need
+  variable: "--font-montserrat", // optional CSS variable
 });
 
 const jost = Jost({
-    subsets: ["latin"],
-    variable: "--font-jost",
+  subsets: ["latin"],
+  variable: "--font-jost",
 });
 
-
 export const metadata: Metadata = {
-    title: "Biro Klasifikasi Indonesia (Persero)",
-    description: "Partner with BKI for world-class marine classification services. Ensuring safety, compliance, and operational excellence for your fleet, from new builds to ships in service. Discover our commitment to global standards.",
+  title: "Biro Klasifikasi Indonesia (Persero)",
+  description:
+    "Partner with BKI for world-class marine classification services. Ensuring safety, compliance, and operational excellence for your fleet, from new builds to ships in service. Discover our commitment to global standards.",
 };
 
 export default function RootLayout({
-                                       children,
-                                   }: Readonly<{
-    children: React.ReactNode;
+  children,
+}: Readonly<{
+  children: React.ReactNode;
 }>) {
-    return (
-        <html lang="en" className="scroll-smooth">
-        <body
-            className={`${montserrat.variable} ${jost.variable} antialiased`}
-        >
-        <TRPCProvider>
+  return (
+    <Providers>
+      <html lang="en" className="scroll-smooth">
+        <body className={`${montserrat.variable} ${jost.variable} antialiased`}>
+          <TRPCProvider>
             <TransitionProvider>
-                <SiteNavbar/>
-                {children}
-                <FooterSection/>
-                {/* <FloatingCallButton /> */}
+              <SiteNavbar />
+              {children}
+              <FooterSection />
+              {/* <FloatingCallButton /> */}
             </TransitionProvider>
-        </TRPCProvider>
+          </TRPCProvider>
         </body>
-        </html>
-    );
+      </html>
+    </Providers>
+  );
 }

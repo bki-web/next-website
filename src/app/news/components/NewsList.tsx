@@ -3,8 +3,9 @@ import EmptyStateCard from "@/components/EmptyState";
 import NewsCard from "@/components/NewsCard";
 import PaginationCommon from "@/components/PaginationCommon";
 import {cn} from "@/lib/utils";
-import {trpc} from "@/trpc/react";
+import { useQuery } from "@tanstack/react-query";
 import {useRouter, useSearchParams} from "next/navigation";
+import { fetchNews } from "../actions";
 
 export default function NewsList({
                                      limit = 10,
@@ -19,10 +20,18 @@ export default function NewsList({
     const searchParams = useSearchParams();
     const currentPage = Number(searchParams.get("page")) || 1;
 
-    const {data} = trpc.news.getList.useQuery({
-        page: currentPage,
-        limit,
+    // const {data} = trpc.news.getList.useQuery({
+    //     page: currentPage,
+    //     limit,
+    // });
+
+    const { data, isLoading, error } = useQuery({
+        // The query key uniquely identifies this query's data
+        queryKey: ["news", currentPage, limit],
+        // The query function that returns a Promise
+        queryFn: () => fetchNews(currentPage, limit),
     });
+
 
     if (data && data.data && data.data.length === 0) {
         return (

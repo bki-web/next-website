@@ -6,16 +6,25 @@ import { trpc } from "@/trpc/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { getCoverUrl } from "@/utils/strapi";
+import { useQuery } from "@tanstack/react-query";
+import { fetchEvents } from "../actions";
 
 export default function EventList() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
 
-  const { data, isLoading } = trpc.event.getList.useQuery({
-    page: currentPage,
-    limit: 10,
-  });
+  // const { data, isLoading } = trpc.event.getList.useQuery({
+  //   page: currentPage,
+  //   limit: 10,
+  // });
+
+  const { data, isLoading, error } = useQuery({
+        // The query key uniquely identifies this query's data
+        queryKey: ["events", currentPage, 10],
+        // The query function that returns a Promise
+        queryFn: () => fetchEvents(currentPage, 10),
+    });
 
   if (data && data.data && data.data.length === 0) {
     return (

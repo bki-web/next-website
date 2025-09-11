@@ -31,23 +31,6 @@ export const eventRouter = createTRPCRouter({
         .input(z.object({id: z.string()}))
         .query(async ({input}) => {
             const {id} = input;
-
-            // const query = qs.stringify(
-            //   {
-            //     populate: {
-            //       blocks: {
-            //         on: {
-            //           "text.rich-text": {
-            //             fields: ["body"],
-            //           },
-            //         },
-            //       },
-            //     },
-            //   },
-            //   {
-            //     encodeValuesOnly: true, // Optional: prettifies the URL
-            //   }
-            // );
             const response = await fetch(
                 `${
                     STRAPI_URL

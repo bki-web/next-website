@@ -8,6 +8,8 @@ import {Skeleton} from "@/components/ui/skeleton";
 import {match} from "ts-pattern";
 import Link from "next/link";
 import { getCoverUrl } from "@/utils/strapi";
+import { useQuery } from "@tanstack/react-query";
+import { fetchEventDetail } from "../actions";
 
 export default function Event({
                                   params,
@@ -15,8 +17,14 @@ export default function Event({
     params: Promise<{ slug: string }>;
 }) {
     const {slug} = use(params);
-    const {data, isLoading} = trpc.event.getDetail.useQuery({
-        id: slug,
+    // const {data, isLoading} = trpc.event.getDetail.useQuery({
+    //     id: slug,
+    // });
+    const { data, isLoading, error } = useQuery({
+        // The query key uniquely identifies this query's data
+        queryKey: ["events", slug],
+        // The query function that returns a Promise
+        queryFn: () => fetchEventDetail(slug),
     });
 
     return (

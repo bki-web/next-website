@@ -3,16 +3,25 @@ import ArticleCardModern from "@/components/ArticleCardModern";
 import EmptyStateCard from "@/components/EmptyState";
 import PaginationCommon from "@/components/PaginationCommon";
 import {trpc} from "@/trpc/react";
+import { useQuery } from "@tanstack/react-query";
 import {useRouter, useSearchParams} from "next/navigation";
+import { fetchArticles } from "../actions";
 
 export default function ArticleList() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const currentPage = Number(searchParams.get("page")) || 1;
 
-    const {data} = trpc.article.getList.useQuery({
-        page: currentPage,
-        limit: 10,
+    // const {data} = trpc.article.getList.useQuery({
+    //     page: currentPage,
+    //     limit: 10,
+    // });
+
+    const { data, isLoading, error } = useQuery({
+        // The query key uniquely identifies this query's data
+        queryKey: ["articles", currentPage, 10],
+        // The query function that returns a Promise
+        queryFn: () => fetchArticles(currentPage, 10),
     });
 
     if (data && data.data && data.data.length === 0) {
