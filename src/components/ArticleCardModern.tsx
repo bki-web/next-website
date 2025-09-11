@@ -1,5 +1,5 @@
 import {Article} from "@/types/articles";
-import { getCoverUrl } from "@/utils/strapiCover";
+import { getCoverUrl } from "@/utils/strapi";
 import Image from "next/image";
 import Link from "next/link";
 

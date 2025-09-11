@@ -2,6 +2,7 @@ import z from "zod";
 import {baseProcedure, createTRPCRouter} from "../init";
 import {StrapiResponse} from "@/types/strapi";
 import {NewsStrapi} from "@/types/news";
+import { STRAPI_URL } from "@/utils/strapi";
 
 export const newsRouter = createTRPCRouter({
     getList: baseProcedure
@@ -15,7 +16,7 @@ export const newsRouter = createTRPCRouter({
             const page = input.page || 1;
             const pageSize = input.limit || 10;
             const response = await fetch(
-               process.env.NEXT_PUBLIC_STRAPI_API_URL +
+               STRAPI_URL +
                 `/newss?populate=cover&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
             );
 

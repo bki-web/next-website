@@ -5,7 +5,7 @@ import PaginationCommon from "@/components/PaginationCommon";
 import { trpc } from "@/trpc/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
-import { getCoverUrl } from "@/utils/strapiCover";
+import { getCoverUrl } from "@/utils/strapi";
 
 export default function EventList() {
   const router = useRouter();

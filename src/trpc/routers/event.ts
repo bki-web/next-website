@@ -2,6 +2,7 @@ import z from "zod";
 import {baseProcedure, createTRPCRouter} from "../init";
 import {StrapiResponse} from "@/types/strapi";
 import {Event} from "@/types/events";
+import { STRAPI_URL } from "@/utils/strapi";
 
 export const eventRouter = createTRPCRouter({
     getList: baseProcedure
@@ -15,7 +16,7 @@ export const eventRouter = createTRPCRouter({
             const page = input.page || 1;
             const pageSize = input.limit || 10;
             const response = await fetch(
-                process.env.NEXT_PUBLIC_STRAPI_API_URL +
+                STRAPI_URL +
                 `/events?populate=cover&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
             );
 
@@ -49,7 +50,7 @@ export const eventRouter = createTRPCRouter({
             // );
             const response = await fetch(
                 `${
-                    process.env.NEXT_PUBLIC_STRAPI_API_URL
+                    STRAPI_URL
                 }/events/${id}?populate=*`
             );
 

@@ -1,10 +1,11 @@
 import {Article} from "@/types/articles";
 import ArticleCardModern from "./ArticleCardModern";
 import FancyTitle from "./FancyTitle";
+import { STRAPI_URL } from "@/utils/strapi";
 
 export default async function ArticleSection() {
     const data = (await fetch(
-        process.env.NEXT_PUBLIC_STRAPI_API_URL +
+        STRAPI_URL +
         "/articles?populate=cover&pagination[page]=1&pagination[pageSize]=3"
     ).then((response) => response.json())) as { data: Article[] };
 

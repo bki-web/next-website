@@ -7,7 +7,7 @@ import {format} from "date-fns";
 import {Skeleton} from "@/components/ui/skeleton";
 import Link from "next/link";
 import PageTransition from "@/components/page-transition";
-import { getCoverUrl } from "@/utils/strapiCover";
+import { getCoverUrl } from "@/utils/strapi";
 
 export default function Article({
                                     params,

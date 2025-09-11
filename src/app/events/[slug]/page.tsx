@@ -7,7 +7,7 @@ import {use} from "react";
 import {Skeleton} from "@/components/ui/skeleton";
 import {match} from "ts-pattern";
 import Link from "next/link";
-import { getCoverUrl } from "@/utils/strapiCover";
+import { getCoverUrl } from "@/utils/strapi";
 
 export default function Event({
                                   params,

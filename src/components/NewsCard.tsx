@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {classes} from "@/utils/string";
 import {format} from 'date-fns';
-import { getCoverUrl } from "@/utils/strapiCover";
+import { getCoverUrl } from "@/utils/strapi";
 
 interface Props {
     news: NewsStrapi;

@@ -2,7 +2,7 @@ import { Article } from "@/types/articles";
 import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
-import { getCoverUrl } from "@/utils/strapiCover";
+import { getCoverUrl } from "@/utils/strapi";
 export default function ArticleCard({ article }: { article: Article }) {
   return (
     <div className="bg-bki-blue border-white border-1 text-white rounded-lg overflow-hidden shadow-lg hover:-translate-y-1 hover:shadow-lg transition duration-300 ease-in-out cursor-pointer">

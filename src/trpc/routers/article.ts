@@ -2,6 +2,7 @@ import z from "zod";
 import {baseProcedure, createTRPCRouter} from "../init";
 import {Article} from "@/types/articles";
 import {StrapiResponse} from "@/types/strapi";
+import { STRAPI_URL } from "@/utils/strapi";
 
 export const articleRouter = createTRPCRouter({
     getList: baseProcedure
@@ -15,7 +16,7 @@ export const articleRouter = createTRPCRouter({
             const page = input.page || 1;
             const pageSize = input.limit || 10;
             const response = await fetch(
-               process.env.NEXT_PUBLIC_STRAPI_API_URL +
+               STRAPI_URL +
                 `/articles?populate=cover&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
             );
 
@@ -33,7 +34,7 @@ export const articleRouter = createTRPCRouter({
     .query(async ({ input }) => {
       const { id } = input;
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_API_URL }/articles/${id}?populate=*`
+        `${STRAPI_URL }/articles/${id}?populate=*`
       );
 
             if (!response.ok) {

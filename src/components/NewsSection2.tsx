@@ -3,6 +3,7 @@ import NewsCard from "./NewsCard";
 import FancyTitle from "./FancyTitle";
 import {NewsStrapi} from "@/types/news";
 import SearchBar from "@/components/SearchBar";
+import { STRAPI_URL } from "@/utils/strapi";
 
 export function NewsDivider() {
     return <div className="w-full h-1 bg-[#00385A]"></div>;
@@ -10,7 +11,7 @@ export function NewsDivider() {
 
 export default async function NewsSection2() {
     const url =
-        process.env.NEXT_PUBLIC_STRAPI_API_URL +
+        STRAPI_URL +
         "/newss?populate=cover&pagination[page]=1&pagination[pageSize]=3";
     const data = (await fetch(url).then((response) => response.json())) as {
         data: NewsStrapi[];
