@@ -33,7 +33,7 @@ export const newsRouter = createTRPCRouter({
     .query(async ({ input }) => {
       const { id } = input;
       const response = await fetch(
-        `${process.env.STRAPI_API_URL}/newss/${id}?populate=*`
+        `${STRAPI_URL}/newss/${id}?populate=*`
       );
 
             if (!response.ok) {
