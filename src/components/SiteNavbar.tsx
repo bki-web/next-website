@@ -58,8 +58,8 @@ const NAV: Navigation[] = [
                 submenu: [
                     {
                         label: "Ship Register",
-                        href: "/our-services/classification/ship-register",
-                        type: "",
+                        href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/register_of_ships.html",
+                        type: "_blank",
                     },
                     {
                         label: "Floating Offshore",

@@ -15,7 +15,8 @@ const programItems: ProgramItem[] = [
     {
         title: "Ship Register",
         image: "/our-services/classification/ship-register.jpg",
-        href: "/our-services/classification/ship-register",
+        href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/register_of_ships.html",
+        target: "_blank"
     },
     {
         title: "Class Suspend / Withdrawn",
