@@ -20,7 +20,7 @@ export default function MilestoneTimeline({milestones}: Props) {
                         Our history
                     </h2>
                     <p className="2xl:text-2xl">
-                        BKI (PT Biro Klasifikasi Indonesia) is a classification bureau for marine services with a rich history of professional expertise. As Indonesia's only national classification body, BKI is entrusted by the government to uphold safety and quality standards for Indonesian-flagged vessels and foreign vessels operating in the country's waters. Our core mission involves applying rigorous technical standards for the design, construction, and operation of marine vessels, ensuring their seaworthiness and reliability.
+                        BKI (PT Biro Klasifikasi Indonesia) is a classification bureau for marine services with a rich history of professional expertise. As Indonesia&apos;s only national classification body, BKI is entrusted by the government to uphold safety and quality standards for Indonesian-flagged vessels and foreign vessels operating in the country&apos;s waters. Our core mission involves applying rigorous technical standards for the design, construction, and operation of marine vessels, ensuring their seaworthiness and reliability.
                     </p>
             </div>
             {milestones.map((m, i) => {
