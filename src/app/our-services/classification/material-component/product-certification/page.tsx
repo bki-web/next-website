@@ -10,8 +10,8 @@ import Link from "next/link";
 
 const images = [
     "/material/product-1.jpg",
-    "/material/product-2.jpg",
-    "/material/product-3.jpg",
+    "/material/product-2.jpeg",
+    "/material/product-3.jpeg",
 ];
 
 const settings = {
