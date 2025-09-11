@@ -120,7 +120,7 @@ const data = {
                     desc: "In-depth analysis, verification, and consultancy for all structural and mechanical designs."
                 },
             ],
-            image: "/article1.jpg",
+            image: "/our-services/energy-industry/pillar-1.jpg",
         },
         {
             key: "integrity",
@@ -145,7 +145,7 @@ const data = {
                     desc: "Analisis & monitoring untuk coating, painting, dan cathodic protection systems."
                 },
             ],
-            image: "/article2.jpg",
+            image: "/our-services/energy-industry/pillar-2.jpg",
         },
         {
             key: "compliance",
@@ -166,7 +166,7 @@ const data = {
                     desc: "Kepatuhan untuk Well Head, Drilling Units, Lifting Gear, dan Instalasi Kelistrikan pabrik."
                 },
             ],
-            image: "/article3.jpg",
+            image: "/our-services/energy-industry/pillar-3.jpg",
         },
         {
             key: "people",
@@ -187,7 +187,7 @@ const data = {
                     desc: "Penyediaan teknisi NDT tersertifikasi dan tenaga ahli teknis sesuai kebutuhan proyek."
                 },
             ],
-            image: "/available-opportunities-bg.jpg",
+            image: "/our-services/energy-industry/pillar-4.jpg",
         },
     ],
     cta: {
@@ -240,12 +240,13 @@ export default function EnergyIndustryTabContent({
                         </motion.div>
 
                         {/* Local video content */}
-                        <motion.div variants={fadeInUp} initial="hidden" animate="show" className="w-full">
+                        <motion.div variants={fadeInUp} initial="hidden" animate="show"
+                                    className="w-full h-[-webkit-fill-available]">
                             <div
-                                className="relative w-full aspect-video overflow-hidden shadow-lg border border-[#0A436A]/20">
+                                className="relative w-full h-[-webkit-fill-available] aspect-video overflow-hidden shadow-lg border border-[#0A436A]/20 rounded-sm">
                                 <video
-                                    className="absolute inset-0 w-full h-full object-cover"
-                                    src="/hero-banner-bki.mp4"
+                                    className="absolute inset-0 w-full h-[-webkit-fill-available] object-cover"
+                                    src="/our-services/energy-industry/video.mp4"
                                     autoPlay
                                     muted
                                     loop

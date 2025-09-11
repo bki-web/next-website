@@ -88,19 +88,19 @@ export const MarineServicesSlides: Slide[] = [
 
 export const EnergyIndustrySlides: Slide[] = [
     {
-        image: "/our-services/classification/slider-1.jpg",
+        image: "/our-services/energy-industry/1.jpg",
         title: "",
         headline: "Strategic Assurance for Energy & Industry",
         body: "Empowering Indonesia's Oil & Gas, Power, Mining, and Manufacturing sectors with unparalleled technical expertise and regulatory foresight.",
     },
     {
-        image: "/our-services/classification/slider-2.jpg",
+        image: "/our-services/energy-industry/2.jpg",
         title: "",
         headline: "End-to-End Integrity for Critical Assets",
         body: "From initial design certification (SKPI, SKKP) to cutting-edge NDT and advanced Remaining Life Assessment (RLA), we guarantee total project reliability.",
     },
     {
-        image: "/our-services/classification/slider-3.jpg",
+        image: "/our-services/energy-industry/3.jpg",
         title: "",
         headline: "Ensuring Compliance, Cultivating Competency",
         body: "Achieve full compliance with national (SLO DJK, DISNAKER) and international standards, strengthened by our certified training and skilled labor services.",
