@@ -77,8 +77,18 @@ const NAV: Navigation[] = [
             type: "",
           },
           {
+            label: "Material and Component",
+            href: "/our-services/classification/material-component",
+            type: "",
+          },
+          {
             label: "Plan Approval",
             href: "/our-services/classification/plan-approval",
+            type: "",
+          },
+          {
+            label: "Ship Recycling",
+            href: "/our-services/classification/ship-recycling",
             type: "",
           },
         ],
