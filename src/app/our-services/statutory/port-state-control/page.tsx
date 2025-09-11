@@ -19,7 +19,7 @@ const item: Variants = {
 
 export default function PortStateControlPage() {
     return (
-        <div className="relative min-h-screen w-full overflow-hidden">
+        <div className="relative min-h-screen w-full overflow-hidden text-white">
             <PageTransition/>
 
             {/* Hero Section */}

@@ -55,7 +55,7 @@ function Card({icon: Icon, title, children}: { icon: React.ElementType; title: s
 
 export default function StatutoryFlagStateServicesPage() {
     return (
-        <div className="relative min-h-screen w-full overflow-hidden">
+        <div className="relative min-h-screen w-full overflow-hidden text-white">
             <PageTransition/>
 
             {/* Hero Section */}
@@ -74,11 +74,11 @@ export default function StatutoryFlagStateServicesPage() {
                         href: "/our-services#statutory",
                     },
                     {
-                        text: "Statutory Flag State Services",
+                        text: "Statutory & Flag State Services",
                     },
                 ]}
                 backgroundClass="bg-[url('/classification-bg.jpg')]"
-                title={"Statutory Flag State Services"}
+                title={"Statutory & Flag State Services"}
             />
 
             <section id="statutory" className="relative py-16 md:py-24 bg-[#0A436A]">
