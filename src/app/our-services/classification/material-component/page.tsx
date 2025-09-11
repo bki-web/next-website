@@ -7,6 +7,7 @@ import Hero from "@/components/Hero";
 import DigitalPlatform from "../../components/DigitalPlatform";
 import {Factory, Newspaper, Settings, Wrench} from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const cardVariants: Variants = {
     hidden: {opacity: 0, y: 40},
@@ -92,7 +93,7 @@ export default function MaterialAndComponentPage() {
                         {/*    engineers whose expertise can help with your approval and certification needs.*/}
                         {/*</p>*/}
                         <p className="mt-2 text-gray-600 max-w-3xl mx-auto">
-                            Join us to spread your company's products and services in our BKI approved database for
+                            Join us to spread your company&#39;s products and services in our BKI approved database for
                             global market.
                         </p>
                     </motion.div>
@@ -110,10 +111,12 @@ export default function MaterialAndComponentPage() {
                                 className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
                             >
                                 <div className="h-40 w-full overflow-hidden">
-                                    <img
+                                    <Image
                                         src={item.image}
                                         alt={item.title}
                                         className="h-full w-full object-cover"
+                                        width={500}
+                                        height={500}
                                     />
                                 </div>
                                 <div className="p-6 flex flex-col gap-3">
