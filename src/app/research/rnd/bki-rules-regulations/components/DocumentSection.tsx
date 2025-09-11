@@ -1801,6 +1801,7 @@ export default function DocumentSection() {
                                                         <Link
                                                             key={doc.id}
                                                             href={doc.href ?? "#"}
+                                                            target={"_blank"}
                                                             className="group flex items-center justify-between rounded-lg border border-gray-200 bg-white px-4 py-3 shadow-sm transition hover:border-[#0A436A] hover:shadow-md"
                                                         >
                               <span className="flex items-center gap-3">
