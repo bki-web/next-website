@@ -6,7 +6,7 @@ import { STRAPI_URL } from "@/utils/strapi";
 export const fetchArticles = async (page: number, pageSize: number) => {
   const response = await fetch(
     STRAPI_URL +
-      `/articles?populate=cover&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
+      `/articles?populate=cover&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort[0]=publishedAt:desc`
   );
 
   if (!response.ok) {
