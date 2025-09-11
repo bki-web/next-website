@@ -76,7 +76,7 @@ export default function ContactUsSection() {
                   />
                 </div>
                 <p className="text-white 2xl:text-xl md:text-lg font-semibold">
-                  +62 21-350 5665
+                  +62 21 430 10 17
                 </p>
               </div>
               <div className="flex items-center 2xl:gap-2 md:gap-1.5 gap-1">
@@ -110,7 +110,7 @@ export default function ContactUsSection() {
                 DKI Jakarta 14320
               </p>
             </div>
-            <div className="flex items-center 2xl:gap-6 md:gap-5 gap-4 z-1">
+            <div className="flex items-center 2xl:gap-6 md:gap-5 gap-4 z-1 text-white">
               <Link
                 href="https://x.com/BKI_1964"
                 target="_blank"
