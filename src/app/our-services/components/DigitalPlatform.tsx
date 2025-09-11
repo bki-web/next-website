@@ -28,7 +28,7 @@ export default function DigitalPlatform() {
                     <div
                         className="absolute left-0 right-0 bottom-0 bg-gradient-to-b from-transparent to-[#E2E7F0] h-1/3"/>
                     <div
-                        className="flex flex-col justify-center items-center xl:pt-4 pt-3 xl:pb-8 pb-6 xl:gap-6 gap-4 bg-white rounded-lg border-2 border-[#0A436A]/30 absolute right-[20px] left-[20px] lg:right-[80px] lg:left-[80px] -bottom-1/3 px-8">
+                        className="flex flex-col justify-center items-center xl:pt-4 pt-3 xl:pb-8 pb-6 xl:gap-6 gap-4 bg-white rounded-lg border-2 border-[#0A436A]/30 absolute right-[20px] left-[20px] lg:right-[80px] lg:left-[80px] -bottom-1/3 px-8 h-[400px]">
                         <Image
                             src={"/bki-armada-logo.png"}
                             alt={"BKI Armada"}
@@ -37,8 +37,7 @@ export default function DigitalPlatform() {
                             className="object-contain h-[102px]"
                         />
                         <p className="xl:text-2xl text-lg text-black text-center">
-                            We provide independent and reliable ship classification services
-                            to ensure your vessels comply with international safety.
+                            Information for Owner or Ship Management Under BKI Class.
                         </p>
                         <div
                             className="xl:text-2xl text-lg text-[#0A436A]/75 text-center hover:text-[#0A436A] transition-colors duration-500 border-b-2 border-[#0A436A]/75 hover:border-[#0A436A]">
@@ -47,7 +46,7 @@ export default function DigitalPlatform() {
                     </div>
                 </Link>
                 <Link
-                    href={"https://my.bki.co.id/user/login"}
+                    href={"https://new-my.bki.co.id/"}
                     rel="noopener noreferrer"
                     target="_blank"
                     className="w-full xl:w-1/2 h-[400px] cursor-pointer flex flex-col justify-end relative bg-[url('/my-bki.jpg')] bg-cover bg-bottom rounded-lg"
