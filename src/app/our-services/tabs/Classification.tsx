@@ -9,6 +9,7 @@ type ProgramItem = {
     title: string;
     image: string;
     href?: string;
+    target?: string;
 };
 const programItems: ProgramItem[] = [
     {
@@ -34,7 +35,8 @@ const programItems: ProgramItem[] = [
     {
         title: "Material and Component",
         image: "/our-services/classification/material-components.jpg",
-        href: "/our-services/classification/material-component",
+        href: (process.env.NEXT_PUBLIC_OLD_WEBSITE_URL || "https://www.bkinusantara.co.id") + "/material_and_component.html",
+        target: "_blank"
     },
     {
         title: "Plan Approval",
@@ -126,6 +128,7 @@ export default function ClassificationTabContent({
                             title={item.title}
                             key={index}
                             isProgramPage
+                            target={item.target}
                         />
                     ))}
                 </div>

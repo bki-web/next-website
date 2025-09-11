@@ -78,8 +78,8 @@ const NAV: Navigation[] = [
           },
           {
             label: "Material and Component",
-            href: "/our-services/classification/material-component",
-            type: "",
+            href: (process.env.NEXT_PUBLIC_OLD_WEBSITE_URL || "https://www.bkinusantara.co.id") + "/material_and_component.html",
+            type: "_blank",
           },
           {
             label: "Plan Approval",
