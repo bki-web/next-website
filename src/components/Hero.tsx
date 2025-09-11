@@ -37,30 +37,32 @@ export default function Hero(props: Props) {
             />
             <div
                 className="w-full relative flex flex-col justify-center items-center py-24 xl:pt-32 2xl:pt-40 text-center text-white text-shadow-lg text-shadow-black/30">
-                <div className="flex flex-row w-full justify-center items-center gap-2 relative">
+                <div className="flex flex-row w-full justify-center md:items-center gap-2 relative">
                     {routes.length > 1 ?
-                        <button className="absolute lg:left-28 group cursor-pointer flex items-center gap-2"
+                        <button className="absolute md:left-28 group cursor-pointer flex md:items-center gap-2"
                                 onClick={router.back}>
                             <ArrowLeft className="group-hover:scale-125 transition-transform duration-500"/>
                             <p className="text-base text-white group-hover:scale-110">Back</p>
                         </button> : null}
                     {routes.map((route, index) => (
-                        <Fragment key={route.text + '-' + index}>
-                            {index > 0 && (
-                                <span className="md:text-xl 2xl:text-3xl">
+                        <div key={route.text + '-' + index} className={"pt-10 md:pt-0"}>
+                            <Fragment>
+                                {index > 0 && (
+                                    <span className="md:text-xl 2xl:text-3xl">
                                     /
                                 </span>
-                            )}
-                            {route.href ? (
-                                <Link href={route.href} className="md:text-xl 2xl:text-3xl">
-                                    {route.text}
-                                </Link>
-                            ) : (
-                                <span className="md:text-xl 2xl:text-3xl text-[#ffffff75]">
+                                )}
+                                {route.href ? (
+                                    <Link href={route.href} className="md:text-xl 2xl:text-3xl">
+                                        {route.text}
+                                    </Link>
+                                ) : (
+                                    <span className="md:text-xl 2xl:text-3xl text-[#ffffff75]">
                                     {route.text}
                                 </span>
-                            )}
-                        </Fragment>
+                                )}
+                            </Fragment>
+                        </div>
                     ))}
                 </div>
                 <p className="mt-4 text-lg md:text-4xl 2xl:text-5xl font-semibold">
