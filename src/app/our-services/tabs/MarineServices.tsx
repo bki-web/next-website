@@ -140,7 +140,7 @@ export default function MarineServicesTabContent({
             >
                 <video
                     className="lg:w-1/2 w-full h-[-webkit-fill-available] object-cover rounded-lg"
-                    src="/hero-banner-bki.mp4"
+                    src="/our-services/marine-services/video.mp4"
                     autoPlay
                     loop
                     muted
