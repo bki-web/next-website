@@ -37,6 +37,24 @@ export function TRPCProvider(props: PropsWithChildren) {
         httpBatchLink({
           transformer: superjson,
           url: getUrl(),
+          headers() {
+            // Check if we are in a browser environment
+            if (typeof window !== 'undefined') {
+              return {
+                // Mimic common browser headers
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
+                'Accept': '*/*',
+                'Accept-Encoding': 'gzip, deflate, br, zstd',
+                'Accept-Language': 'en-US,en;q=0.9,de;q=0.8,de-DE;q=0.7',
+                'Sec-Fetch-Dest': 'empty',
+                'Sec-Fetch-Mode': 'cors',
+                'Sec-Fetch-Site': 'same-origin',
+                'X-Requested-With': 'XMLHttpRequest',
+              };
+            }
+            // For server-side rendering, return an empty object or a minimal set
+            return {};
+          },
         }),
       ],
     })
