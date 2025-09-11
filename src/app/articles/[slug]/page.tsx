@@ -7,6 +7,7 @@ import {format} from "date-fns";
 import {Skeleton} from "@/components/ui/skeleton";
 import Link from "next/link";
 import PageTransition from "@/components/page-transition";
+import { getCoverUrl } from "@/utils/strapiCover";
 
 export default function Article({
                                     params,
@@ -36,6 +37,8 @@ export default function Article({
     //     link: "/articles/new-research-vessel-for-marine-science-in-sa",
     //   },
     // ]
+
+    const coverUrl = getCoverUrl(data?.data.cover.formats)
 
     return (
         <div
@@ -96,7 +99,7 @@ export default function Article({
                         {/* Large Thumbnail */}
                         <div className="bg-white/10 p-2 rounded-md backdrop-filter-[blur(10px)]">
                             <Image
-                                src={data?.data.cover.formats.large?.url || data?.data.cover.formats.medium?.url || "/our-services-bki-others.jpg"}
+                                src={coverUrl}
                                 alt="Large Thumbnail"
                                 width={1259}
                                 height={719}

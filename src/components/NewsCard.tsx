@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {classes} from "@/utils/string";
 import {format} from 'date-fns';
+import { getCoverUrl } from "@/utils/strapiCover";
 
 interface Props {
     news: NewsStrapi;
@@ -16,7 +17,7 @@ export default function NewsCard({news, hasShadow, rounded}: Props) {
             classes("bg-white overflow-hidden text-black hover:-translate-y-1 transition duration-300 ease-in-out cursor-pointer", hasShadow ? "shadow-lg hover:shadow-lg" : "", rounded ? "rounded-lg" : "")
         }>
             <div className="relative h-48">
-                <Image src={news.cover.formats.medium.url} alt={news.title} fill className="object-cover"/>
+                <Image src={getCoverUrl(news.cover.formats)} alt={news.title} fill className="object-cover"/>
             </div>
             <div className="p-4">
                 <p className="text-xs">{format(news.publishedAt, 'dd/MM/yyyy HH:mm')}</p>

@@ -15,7 +15,7 @@ export const articleRouter = createTRPCRouter({
             const page = input.page || 1;
             const pageSize = input.limit || 10;
             const response = await fetch(
-                (process.env.STRAPI_API_URL || "https://unwavering-card-a95a991f83.strapiapp.com/api") +
+               process.env.NEXT_PUBLIC_STRAPI_API_URL +
                 `/articles?populate=cover&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
             );
 
@@ -33,7 +33,7 @@ export const articleRouter = createTRPCRouter({
     .query(async ({ input }) => {
       const { id } = input;
       const response = await fetch(
-        `${process.env.STRAPI_API_URL || "https://unwavering-card-a95a991f83.strapiapp.com/api" }/articles/${id}?populate=*`
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL }/articles/${id}?populate=*`
       );
 
             if (!response.ok) {

@@ -1,14 +1,16 @@
 import {Article} from "@/types/articles";
+import { getCoverUrl } from "@/utils/strapiCover";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function ArticleCardModern({article}: { article: Article }) {
+    const coverUrl = getCoverUrl(article.cover.formats)
     return (
         <div
             className="bg-blue-900 bg-opacity-40 rounded-lg overflow-hidden shadow-lg hover:-translate-y-1 hover:shadow-lg transition duration-300 ease-in-out cursor-pointer text-white">
             <div className="relative h-96 ">
                 <Image
-                    src={article.cover.formats.medium.url}
+                    src={coverUrl}
                     alt={article.title}
                     fill
                     className="object-cover"

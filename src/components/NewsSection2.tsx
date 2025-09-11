@@ -10,8 +10,7 @@ export function NewsDivider() {
 
 export default async function NewsSection2() {
     const url =
-        (process.env.STRAPI_API_URL ||
-            "https://unwavering-card-a95a991f83.strapiapp.com/api") +
+        process.env.NEXT_PUBLIC_STRAPI_API_URL +
         "/newss?populate=cover&pagination[page]=1&pagination[pageSize]=3";
     const data = (await fetch(url).then((response) => response.json())) as {
         data: NewsStrapi[];

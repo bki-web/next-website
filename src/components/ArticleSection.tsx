@@ -4,7 +4,7 @@ import FancyTitle from "./FancyTitle";
 
 export default async function ArticleSection() {
     const data = (await fetch(
-        (process.env.STRAPI_API_URL || "https://unwavering-card-a95a991f83.strapiapp.com/api") +
+        process.env.NEXT_PUBLIC_STRAPI_API_URL +
         "/articles?populate=cover&pagination[page]=1&pagination[pageSize]=3"
     ).then((response) => response.json())) as { data: Article[] };
 

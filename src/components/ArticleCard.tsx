@@ -2,12 +2,13 @@ import { Article } from "@/types/articles";
 import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
+import { getCoverUrl } from "@/utils/strapiCover";
 export default function ArticleCard({ article }: { article: Article }) {
   return (
     <div className="bg-bki-blue border-white border-1 text-white rounded-lg overflow-hidden shadow-lg hover:-translate-y-1 hover:shadow-lg transition duration-300 ease-in-out cursor-pointer">
       <div className="relative h-48">
         <Image
-          src={article.cover.formats.medium.url}
+          src={getCoverUrl(article.cover.formats)}
           alt={article.title}
           fill
           className="object-cover"

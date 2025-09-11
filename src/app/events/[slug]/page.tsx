@@ -7,6 +7,7 @@ import {use} from "react";
 import {Skeleton} from "@/components/ui/skeleton";
 import {match} from "ts-pattern";
 import Link from "next/link";
+import { getCoverUrl } from "@/utils/strapiCover";
 
 export default function Event({
                                   params,
@@ -106,7 +107,7 @@ export default function Event({
                         <div className="flex flex-col gap-6 w-full order-2 md:order-1">
                             <div className="bg-white/10 p-2 rounded-md backdrop-filter-[blur(10px)]">
                                 <Image
-                                    src={data?.data.cover.formats.large.url || "/our-services-bki-others.jpg"}
+                                    src={getCoverUrl(data?.data.cover.formats)}
                                     alt="Large Thumbnail"
                                     width={1259}
                                     height={719}
