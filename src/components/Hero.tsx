@@ -49,7 +49,7 @@ export default function Hero(props: Props) {
                             <Fragment>
                                 {index > 0 && (
                                     <span className="md:text-xl 2xl:text-3xl">
-                                    /
+                                    /{" "}
                                 </span>
                                 )}
                                 {route.href ? (

@@ -35,8 +35,7 @@ const programItems: ProgramItem[] = [
     {
         title: "Material and Component",
         image: "/our-services/classification/material-components.jpg",
-        href: (process.env.NEXT_PUBLIC_OLD_WEBSITE_URL || "https://www.bkinusantara.co.id") + "/material_and_component.html",
-        target: "_blank"
+        href: "/our-services/classification/material-component",
     },
     {
         title: "Plan Approval",
