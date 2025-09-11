@@ -13,7 +13,11 @@ const boardOfDirectors = [
         name: "R. Benny Susanto",
         position: "President Director",
         image: "/directors/4-president-director.jpg",
-        description: "President director is",
+        description: `Mr. R. Benny Susanto is a visionary maritime executive with over 30 years of experience shaping Indonesia's energy and shipbuilding sectors. As the President Director of PT Biro Klasifikasi Indonesia (BKI), he is at the forefront of modernizing the nation's classification standards to align with global best practices and drive sustainable growth.
+
+Before his appointment at BKI in 2022, Mr. Benny held several strategic leadership roles at PT Surveyor Indonesia. As Sector Head for Oil & Gas and Power Systems, he led critical national inspection initiatives for the country's energy infrastructure. His expertise was further recognized in his role as a Senior Expert in Oil & Gas Petrochemicals, where he provided essential technical leadership for energy certification and safety. Throughout his career, Mr. Benny has been entrusted with over 10 leadership roles in high-stakes national projects for Indonesia's Ministry of Energy and major State-Owned Enterprises (SOEs).
+
+Mr. R. Benny Susanto holds a Bachelor of Science in Petroleum Engineering from Trisakti University and has completed advanced training in Business Management & Leadership from Prasetya Mulya. His profound expertise in global maritime policy, government relations, and clean energy solutions makes him an invaluable leader for BKI's future.`,
     },
     {
         name: "Arief Budi Permana",

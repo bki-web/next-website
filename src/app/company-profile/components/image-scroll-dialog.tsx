@@ -84,9 +84,12 @@ export default function ImageScrollDialog(props: { members: Member[] }) {
                     className={cn(
                         "text-white bg-bki-blue backdrop-blur-3xl border border-white/40 p-0  rounded-lg",
                         "lg:w-[70vw] lg:h-[70vh]",
-                        "sm:w-full sm:h-full",
+                        "sm:w-[90vw] sm:h-[80vh]",
                         "flex flex-col overflow-hidden",
-                        "max-w-lvw"
+                        "max-w-lvw",
+                        "max-h-[80vh]",
+                        "scroll-smooth",
+                        "overflow-scroll lg:overflow-hidden"
                     )}
                 >
                     <DialogTitle></DialogTitle>
@@ -111,14 +114,6 @@ export default function ImageScrollDialog(props: { members: Member[] }) {
                             </div>
                         </div>
                     )}
-
-                    {/* Close button */}
-                    {/* <button
-            onClick={handleClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors z-50"
-          >
-            <X className="h-6 w-6 text-white" />
-          </button> */}
                 </DialogContent>
             </Dialog>
         </div>

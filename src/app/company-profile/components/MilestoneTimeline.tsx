@@ -15,6 +15,14 @@ type Props = { milestones: Milestone[] };
 export default function MilestoneTimeline({milestones}: Props) {
     return (
         <section className="relative w-full bg-[#0A436A] text-white">
+            <div className="px-10 md:px-20 pt-4 lg:pt-6 xl:pt-10 2xl:pt-20 2xl:pb-20 md:pb-10">
+                <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">
+                        Our history
+                    </h2>
+                    <p className="2xl:text-2xl">
+                        BKI (PT Biro Klasifikasi Indonesia) is a classification bureau for marine services with a rich history of professional expertise. As Indonesia's only national classification body, BKI is entrusted by the government to uphold safety and quality standards for Indonesian-flagged vessels and foreign vessels operating in the country's waters. Our core mission involves applying rigorous technical standards for the design, construction, and operation of marine vessels, ensuring their seaworthiness and reliability.
+                    </p>
+            </div>
             {milestones.map((m, i) => {
                 const isLeft = i % 2 === 0;
                 return (
