@@ -2,7 +2,7 @@ import type {NextConfig} from "next";
 
 const nextConfig: NextConfig = {
     output: "standalone",
-    staticPageGenerationTimeout: 300,
+    staticPageGenerationTimeout: 60,
     images: {
         unoptimized: false,
         remotePatterns: [
