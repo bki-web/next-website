@@ -766,7 +766,7 @@ export default function SiteNavbar() {
                         }`}
                       >
                         <Image
-                          src="/indo.svg"
+                          src="/indo.png"
                           alt="Bahasa"
                           className="inline-block h-5 w-5"
                           width={20}
@@ -803,7 +803,7 @@ export default function SiteNavbar() {
                                   className="flex items-center gap-3 font-normal py-3 2xl:text-[16px] text-xs text-white hover:text-white/30 transition-colors duration-150"
                                 >
                                   <Image
-                                    src="/indo.svg"
+                                    src="/indo.png"
                                     alt="Bahasa"
                                     className="h-4 w-6"
                                     width={20}
@@ -818,7 +818,7 @@ export default function SiteNavbar() {
                                   className="flex items-center gap-3 font-normal py-3 2xl:text-[16px] text-xs text-white border-b border-white/30 hover:text-white/30 hover:border-white transition-colors duration-150"
                                 >
                                   <Image
-                                    src="/english.svg"
+                                    src="/english.png"
                                     alt="English"
                                     className="h-4 w-6"
                                     width={20}
@@ -1136,7 +1136,7 @@ export default function SiteNavbar() {
                             }}
                           />
                           <Image
-                            src="/english.svg"
+                            src="/english.png"
                             alt="English"
                             className="h-4 w-6"
                             width={24}
