@@ -1,74 +1,74 @@
-import {Prisma} from "@prisma/client";
-import {baseProcedure, createTRPCRouter} from "../init";
+import { Prisma } from "@prisma/client";
+import { baseProcedure, createTRPCRouter } from "../init";
 import z from "zod";
 import {
-    ShipRegister,
-    ShipRegisterDetail,
-    ShipRegisterHullData,
-    ShipRegisterMachine,
-    ShipRegisterOwner,
-    ShipRegisterSurvey,
+  ShipRegister,
+  ShipRegisterDetail,
+  ShipRegisterHullData,
+  ShipRegisterMachine,
+  ShipRegisterOwner,
+  ShipRegisterSurvey,
 } from "@/types/shipRegisterResult";
 
 export const shipRegisterRouter = createTRPCRouter({
-    search: baseProcedure
-        .input(
-            z.object({
-                nmkpl: z.string().optional(),
-                noreg: z.string().optional(),
-                noimo: z.string().optional(),
-                minGT: z.string().optional(),
-                maxGT: z.string().optional(),
-                page: z.number().min(0).optional(),
-                limit: z.number().min(1).max(100).optional(),
-                submitted: z.boolean(),
-            })
-        )
-        .query(async ({ctx, input}) => {
-            if (!input.submitted) {
-                return {
-                    data: [],
-                    pagination: {
-                        totalRecords: 0,
-                        pageCount: 1,
-                        pageSize: 1,
-                    },
-                };
-            }
-            const page = input.page ? input.page - 1 : 0;
-            const takeValue = input.limit || 10;
-            const skipValue = page * takeValue;
-            const noreg = input.noreg ? +input.noreg : undefined;
-            const noimo = input.noimo ? +input.noimo : undefined;
-            const nmkpl = input.nmkpl ? `%${input.nmkpl}%` : undefined;
-            const minGT = input.minGT ? +input.minGT : undefined;
-            const maxGT = input.maxGT ? +input.maxGT : undefined;
+  search: baseProcedure
+    .input(
+      z.object({
+        nmkpl: z.string().optional(),
+        noreg: z.string().optional(),
+        noimo: z.string().optional(),
+        minGT: z.string().optional(),
+        maxGT: z.string().optional(),
+        page: z.number().min(0).optional(),
+        limit: z.number().min(1).max(100).optional(),
+        submitted: z.boolean(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      if (!input.submitted) {
+        return {
+          data: [],
+          pagination: {
+            totalRecords: 0,
+            pageCount: 1,
+            pageSize: 1,
+          },
+        };
+      }
+      const page = input.page ? input.page - 1 : 0;
+      const takeValue = input.limit || 10;
+      const skipValue = page * takeValue;
+      const noreg = input.noreg ? +input.noreg : undefined;
+      const noimo = input.noimo ? +input.noimo : undefined;
+      const nmkpl = input.nmkpl ? `%${input.nmkpl}%` : undefined;
+      const minGT = input.minGT ? +input.minGT : undefined;
+      const maxGT = input.maxGT ? +input.maxGT : undefined;
 
-            // Build the WHERE clause dynamically
-            const whereClause = (() => {
-                const conditions: Prisma.Sql[] = [Prisma.sql`a.qscs = 'YES'`];
-                if (nmkpl && nmkpl !== "%%" && nmkpl !== "%*all*%") {
-                    conditions.push(Prisma.sql`a.nmkpl LIKE ${nmkpl}`);
-                }
-                if (noimo) {
-                    conditions.push(Prisma.sql`a.noimo = ${noimo}`);
-                }
-                if (noreg) {
-                    conditions.push(Prisma.sql`a.noreg = ${noreg}`);
-                }
-                if (minGT && maxGT) {
-                    conditions.push(
-                        Prisma.sql`
+      // Build the WHERE clause dynamically
+      const whereClause = (() => {
+        const conditions: Prisma.Sql[] = [Prisma.sql`a.qscs = 'YES'`];
+        if (nmkpl && nmkpl !== "%%" && nmkpl !== "%*all*%") {
+          conditions.push(Prisma.sql`a.nmkpl LIKE ${nmkpl}`);
+        }
+        if (noimo) {
+          conditions.push(Prisma.sql`a.noimo = ${noimo}`);
+        }
+        if (noreg) {
+          conditions.push(Prisma.sql`a.noreg = ${noreg}`);
+        }
+        if (minGT && maxGT) {
+          conditions.push(
+            Prisma.sql`
             AND (SELECT g.GRT FROM MFREG_STAT g WHERE g.NOREGBKI = a.NOREG) BETWEEN ${minGT} AND ${maxGT}
           `
-                    );
-                }
-                return Prisma.join(conditions, " AND ");
-            })();
+          );
+        }
+        return Prisma.join(conditions, " AND ");
+      })();
 
-            // Query for the paginated data
-            const resultPromise = ctx.prisma.$queryRaw(
-                Prisma.sql`
+      // Query for the paginated data
+      const resultPromise = ctx.prisma.$queryRaw(
+        Prisma.sql`
                     SELECT *
                     FROM (SELECT a.*,
                                  UPPER(b.NMFL1)                                              AS owner,
@@ -84,46 +84,40 @@ export const shipRegisterRouter = createTRPCRouter({
                     WHERE rn > ${skipValue}
                       AND rn <= ${skipValue + takeValue}
                 `
-            );
+      );
 
-            // Query for the total count of filtered records
-            const totalCountPromise = ctx.prisma.$queryRaw(
-                Prisma.sql`
+      // Query for the total count of filtered records
+      const totalCountPromise = ctx.prisma.$queryRaw(
+        Prisma.sql`
                     SELECT COUNT(*) as total
                     FROM mfreg01 a
                     WHERE ${whereClause}
                 `
-            );
+      );
 
-            // Run both queries in parallel to improve performance
-            const [result, totalCountResult] = await Promise.all([
-                resultPromise,
-                totalCountPromise,
-            ]);
+      // Run both queries in parallel to improve performance
+      const [result, totalCountResult] = await Promise.all([
+        resultPromise,
+        totalCountPromise,
+      ]);
 
-            const totalCount = (totalCountResult as { total: bigint }[])[0].total;
-            const totalRecords = Number(totalCount);
-            const totalPages = Math.ceil(totalRecords / takeValue);
+      const totalCount = (totalCountResult as { total: bigint }[])[0].total;
+      const totalRecords = Number(totalCount);
+      const totalPages = Math.ceil(totalRecords / takeValue);
 
-            return {
-                data: result as ShipRegister[],
-                pagination: {
-                    totalRecords,
-                    pageCount: totalPages,
-                    pageSize: takeValue,
-                },
-            };
-        }),
-    getDetail: baseProcedure
-        .input(
-            z.object({
-                noreg: z.string(),
-            })
-        )
-        .query(async ({ctx, input}) => {
-            const noreg = input.noreg ? +input.noreg : undefined;
-            const result = await ctx.prisma.$queryRaw(
-                Prisma.sql`
+      return {
+        data: result as ShipRegister[],
+        pagination: {
+          totalRecords,
+          pageCount: totalPages,
+          pageSize: takeValue,
+        },
+      };
+    }),
+  getDetail: baseProcedure.input(z.string()).query(async ({ ctx, input }) => {
+    const noreg = input ? +input : undefined;
+    const result = await ctx.prisma.$queryRaw(
+      Prisma.sql`
                     SELECT a.noreg,
                            a.noimo,
                            a.nmkpl,
@@ -184,23 +178,15 @@ export const shipRegisterRouter = createTRPCRouter({
                              LEFT JOIN mfreg_stat g ON g.NOREGBKI = a.NOREG
                     WHERE a.noreg = ${noreg}
                 `
-            );
+    );
 
-            return result as ShipRegisterDetail[];
-        }),
-    getHullData: baseProcedure
-        .input(
-            z.object({
-                noreg: z.string(),
-            })
-        )
-        .query(async ({ctx, input}) => {
-            await new Promise((resolve) =>
-                setTimeout(() => resolve(null), 10000)
-            );
-            const noreg = input.noreg ? +input.noreg : undefined;
-            const result = (await ctx.prisma.$queryRaw(
-                Prisma.sql`
+    return result as ShipRegisterDetail[];
+  }),
+  getHullData: baseProcedure.input(z.string()).query(async ({ ctx, input }) => {
+    await new Promise((resolve) => setTimeout(() => resolve(null), 10000));
+    const noreg = input ? +input : undefined;
+    const result = (await ctx.prisma.$queryRaw(
+      Prisma.sql`
                     Select brt,
                            nrt,
                            dwt,
@@ -257,46 +243,38 @@ export const shipRegisterRouter = createTRPCRouter({
                     FROM mfreg024
                     WHERE noreg = ${noreg};
                 `
-            )) as ShipRegisterHullData[];
+    )) as ShipRegisterHullData[];
 
-            if (result.length) {
-                return result[0];
-            }
+    if (result.length) {
+      return result[0];
+    }
 
-            return null;
-        }),
-    getOwnerData: baseProcedure
-        .input(
-            z.object({
-                noreg: z.string(),
-            })
-        )
-        .query(async ({ctx, input}) => {
-            const noreg = input.noreg ? +input.noreg : undefined;
-            const result = (await ctx.prisma.$queryRaw(
-                Prisma.sql`
+    return null;
+  }),
+  getOwnerData: baseProcedure
+    .input(z.string())
+    .query(async ({ ctx, input }) => {
+      const noreg = input ? +input : undefined;
+      const result = (await ctx.prisma.$queryRaw(
+        Prisma.sql`
                     SELECT nmfl1, nmfl2, almfl1, almfl2, kotafl
                     FROM vw_register
                     WHERE noreg = ${noreg}
                 `
-            )) as ShipRegisterOwner[];
+      )) as ShipRegisterOwner[];
 
-            if (result.length) {
-                return result[0];
-            }
+      if (result.length) {
+        return result[0];
+      }
 
-            return null;
-        }),
-    getMachineData: baseProcedure
-        .input(
-            z.object({
-                noreg: z.string(),
-            })
-        )
-        .query(async ({ctx, input}) => {
-            const noreg = input.noreg ? +input.noreg : undefined;
-            const result = (await ctx.prisma.$queryRaw(
-                Prisma.sql`
+      return null;
+    }),
+  getMachineData: baseProcedure
+    .input(z.string())
+    .query(async ({ ctx, input }) => {
+      const noreg = input ? +input : undefined;
+      const result = (await ctx.prisma.$queryRaw(
+        Prisma.sql`
                     SELECT jme,
                            jmprop,
                            jmb,
@@ -317,25 +295,19 @@ export const shipRegisterRouter = createTRPCRouter({
                     FROM mfreg03
                     WHERE noreg = ${noreg}
                 `
-            )) as ShipRegisterMachine[];
+      )) as ShipRegisterMachine[];
 
-            if (result.length) {
-                return result[0];
-            }
+      if (result.length) {
+        return result[0];
+      }
 
-            return null;
-        }),
-    getSurveyData: baseProcedure
-        .input(
-            z.object({
-                noreg: z.string(),
-            })
-        )
-        .query(async ({input}) => {
-            return await fetch(
-                process.env.OLD_API_BKI_URL +
-                "/api-cops/get_surveystatus_kapal.php?noreg=" +
-                input.noreg
-            ).then((response) => response.json()) as ShipRegisterSurvey[];
-        }),
+      return null;
+    }),
+  getSurveyData: baseProcedure.input(z.string()).query(async ({ input }) => {
+    return (await fetch(
+      process.env.OLD_API_BKI_URL +
+        "/api-cops/get_surveystatus_kapal.php?noreg=" +
+        input
+    ).then((response) => response.json())) as ShipRegisterSurvey[];
+  }),
 });

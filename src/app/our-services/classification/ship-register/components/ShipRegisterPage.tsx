@@ -78,16 +78,10 @@ export default function ShipRegisterPage() {
 
   const resultRef = useRef<HTMLDivElement>(null);
 
-  const { data, isLoading } = trpc.shipRegister.search.useQuery({
-    ...searchParamsData,
-    page: currentPage,
-    limit: 10,
-    submitted,
-  });
+  const { data, mutate, isPending: isLoading } = trpc.shipRegister.search.useMutation();
 
   useEffect(() => {
     if (data && data.data.length && resultRef.current && submitted) {
-      console.log("not calledd");
       resultRef.current.scrollIntoView({
         behavior: "smooth",
         block: "start",
@@ -98,6 +92,12 @@ export default function ShipRegisterPage() {
   function onSubmit(values: FormSchema) {
     setSearchParamsData(values);
     setSubmitted(true);
+    mutate({
+      ...values,
+      submitted: true,
+      page: currentPage,
+      limit: 10
+    })
   }
 
   const handlePageChange = (page: number) => {
