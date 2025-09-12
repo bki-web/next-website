@@ -47,7 +47,7 @@ export const shipRegisterRouter = createTRPCRouter({
             // Build the WHERE clause dynamically
             const whereClause = (() => {
                 const conditions: Prisma.Sql[] = [Prisma.sql`a.qscs = 'YES'`];
-                if (nmkpl && nmkpl !== "%%" && nmkpl !== "*all*") {
+                if (nmkpl && nmkpl !== "%%" && nmkpl !== "%*all*%") {
                     conditions.push(Prisma.sql`a.nmkpl LIKE ${nmkpl}`);
                 }
                 if (noimo) {
