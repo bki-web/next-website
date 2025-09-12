@@ -125,18 +125,17 @@ export default function VideoGallery({
                 className={`grid ${colClass} ${gap}`}
             >
                 {videos.map((v, i) => (
-                    <motion.button
-                        type="button"
-                        key={(v.thumb || v.src) + i}
+                    <motion.a
                         variants={itemVariants}
-                        // onClick={() => openAt(i)}
-                        onClick={() => window.open(v.src, '_blank')}
+                        key={(v.thumb || v.src) + i}
+                        href={v.src}
+                        target={"_blank"}
+                        whileHover={{scale: 1.05, rotate: 0.25}}
+                        whileTap={{scale: 0.98}}
                         className={classes(
-                            "group relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 focus:outline-none focus:ring-2 focus:ring-white/40 cursor-pointer",
+                            "group relative w-full overflow-hidden rounded-sm border border-white/10 bg-white/5 focus:outline-none focus:ring-2 focus:ring-white/40 cursor-pointer",
                             aspectClass,
                         )}
-                        whileHover={{scale: 1.02, rotate: 0.25}}
-                        whileTap={{scale: 0.98}}
                     >
                         {/* thumbnail */}
                         <Image
@@ -163,11 +162,11 @@ export default function VideoGallery({
                         {/* label di sudut kiri bawah */}
                         {v.label ? (
                             <div
-                                className="pointer-events-none absolute bottom-2 left-2 rounded-md bg-black/50 px-2 py-1 text-xs text-white opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                                className="pointer-events-none absolute bottom-2 left-2 rounded-sm bg-black/50 px-2 py-1 text-xs text-white opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
                                 {v.label}
                             </div>
                         ) : null}
-                    </motion.button>
+                    </motion.a>
                 ))}
             </motion.div>
 
@@ -200,7 +199,7 @@ export default function VideoGallery({
                             onClick={(e) => e.stopPropagation()}
                         >
                             <div
-                                className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden rounded-2xl bg-black">
+                                className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden rounded-sm bg-black">
                                 {videos[idx].src.includes("youtube.com") || videos[idx].src.includes("youtu.be") ? (
                                     <iframe
                                         key={idx}

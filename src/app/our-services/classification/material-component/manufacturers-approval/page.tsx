@@ -1,13 +1,10 @@
-"use client";
-
-import {motion, Variants} from "framer-motion";
-import ContactUsSection from "@/components/ContactUsSection";
+'use client';
 import PageTransition from "@/components/page-transition";
 import Hero from "@/components/Hero";
-import DigitalPlatform from "../../components/DigitalPlatform";
-import {Factory, Newspaper, Settings, Wrench} from "lucide-react";
-import Link from "next/link";
+import {motion, Variants} from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import {Eye, LayoutDashboard, ListTodo} from "lucide-react";
 
 const cardVariants: Variants = {
     hidden: {opacity: 0, y: 40},
@@ -24,36 +21,26 @@ const cardVariants: Variants = {
 
 const services = [
     {
-        icon: <Factory size={28}/>,
-        title: "Manufacturers Approval",
-        desc: "Manufacturer approval is to assess and approve a manufacturing works, to ensure the works have enough capability to maintain such quality of its products as required by Rules for the Classification and Construction of Seagoing Ships, and other rules of BKI.",
-        image: "/material/manufacturer.jpg",
-        href: "/our-services/classification/material-component/manufacturers-approval",
+        icon: <LayoutDashboard size={28}/>,
+        title: "Design Approval",
+        desc: "Design Approval (DA) is to certify for the manufacturers that the drawings and documents specifying the particulars, construction, dimensions and materials of equipment for marine.",
+        image: "/material/design-approval.jpg",
     },
     {
-        icon: <Settings size={28}/>,
-        title: "Service Suppliers Approval",
-        desc: "Service supplier approval is to assess and approve a service supplier, to ensure the supplier has enough capability to evaluate that the products have such quality as required by Rules for the Classification and Construction of Seagoing Ships and other rules of BKI.",
-        image: "/material/supplier.jpg",
-        href: "/our-services/classification/material-component/service-suppliers-approval",
+        icon: <ListTodo size={28}/>,
+        title: "Manufacturing Process Approval",
+        desc: "Manufacturing Process Approval (MPA) is, on condition that the uniform quality of the products can be assured, to certify for the manufacturers that the manufacturing process complies with the equirements in the Rules for Materials and/or the relevant standards.",
+        image: "/material/manufacturing-process-approval.jpg",
     },
     {
-        icon: <Wrench size={28}/>,
-        title: "Welding Approval",
-        desc: "BKI provides services Certification of weld procedure qualifications and welder qualification tests to companies needing a verification to BKI Rules or welding standards.",
-        image: "/material/welding.jpg",
-        href: "/our-services/classification/material-component/welding-approval",
-    },
-    {
-        icon: <Newspaper size={28}/>,
-        title: "Product Certification",
-        desc: "Product certification is required if it is stated in the BKI Regulations that the product to be installed must be certified (eg engine, shaft, propeller, steering gear, windlass, etc.) prior to installation.",
-        image: "/material/product.jpg",
-        href: "/our-services/classification/material-component/product-certification",
+        icon: <Eye size={28}/>,
+        title: "Type Approval",
+        desc: "Type Approval (TA) is to certify for the manufacturers of the materials and equipment for marine use that the materials and equipment comply with the provisions for the type approved products in the Guidance.",
+        image: "/material/type-approval.jpg",
     },
 ];
 
-export default function MaterialAndComponentPage() {
+export default function ManufacturersApproval() {
     return (
         <div className="relative min-h-screen w-full overflow-hidden">
             <PageTransition/>
@@ -72,11 +59,14 @@ export default function MaterialAndComponentPage() {
                     },
                     {
                         text: "Material & Component",
+                        href: "/our-services/classification/material-component",
                     },
+                    {
+                        text: "Manufacturers Approval",
+                    }
                 ]}
                 backgroundClass="bg-[url('/classification-bg.jpg')]"
-                title={"Material & Component"}
-                description={"We help with your approval and certification needs. Our team includes expert surveyors and engineers whose expertise can help with your approval and certification needs."}
+                title={"Manufacturers Approval"}
             />
 
             <section className="relative py-20 bg-gray-50">
@@ -89,16 +79,24 @@ export default function MaterialAndComponentPage() {
                         transition={{duration: 0.7, ease: "easeOut"}}
                         className="text-center mb-14"
                     >
+                        {/*<h2 className="text-3xl md:text-4xl font-bold text-gray-800">*/}
+                        {/*    MATERIAL <span className="text-teal-600">& COMPONENT</span>*/}
+                        {/*</h2>*/}
                         <p className="text-gray-600 max-w-3xl mx-auto">
-                            Join us to spread your company&#39;s products and services in our BKI approved database for
-                            global market.
+                            Manufacturer approval is to assess and approve a manufacturing works, to ensure the works
+                            have enough capability to maintain such quality of its products as required by Rules for the
+                            Classification and Construction of Seagoing Ships, and other rules of BKI.
+                            Some materials and products are required by Rules for the Classification and Construction of
+                            Seagoing Ships and other rules of BKI before they can be installed on ships must have a
+                            certificate of approval or are made by a manufacturer with an approval certificate.
+                            There are 3 types of approvals that can be given:
                         </p>
                     </motion.div>
 
                     {/* Cards */}
-                    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                         {services.map((item, i) => (
-                            <motion.a
+                            <motion.div
                                 key={i}
                                 custom={i}
                                 initial="hidden"
@@ -106,7 +104,6 @@ export default function MaterialAndComponentPage() {
                                 viewport={{once: true}}
                                 variants={cardVariants}
                                 className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
-                                href={item.href}
                             >
                                 <div className="h-40 w-full overflow-hidden">
                                     <Image
@@ -124,7 +121,7 @@ export default function MaterialAndComponentPage() {
                                     </h3>
                                     <p className="text-sm text-gray-600">{item.desc}</p>
                                 </div>
-                            </motion.a>
+                            </motion.div>
                         ))}
                     </div>
 
@@ -158,9 +155,6 @@ export default function MaterialAndComponentPage() {
                     </motion.div>
                 </div>
             </section>
-
-            <DigitalPlatform/>
-            <ContactUsSection/>
         </div>
     );
 }

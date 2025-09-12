@@ -80,11 +80,11 @@ export default function GridInfoSection() {
 
                 return (
                     <div key={`grid-${index + 1}`}
-                         className="w-full h-full bg-[#0A436A] border-2 border-[#0A436A] flex flex-col justify-center gap-6 xl:px-28 lg:px-20 px-4 2xl:py-14 lg:py-10 py-5 relative">
+                         className="group w-full h-full bg-[#0A436A] border-2 border-[#0A436A] flex flex-col justify-center gap-6 xl:px-28 lg:px-20 px-4 2xl:py-14 lg:py-10 py-5 relative overflow-hidden">
                         <div className={
                             classes(
                                 item.bgClass ?? "",
-                                "bg-cover bg-center bg-no-repeat z-0 absolute inset-0",
+                                "bg-cover bg-center bg-no-repeat z-0 absolute inset-0 group-hover:scale-110 transition-transform duration-500",
                             )
                         }/>
                         <div
