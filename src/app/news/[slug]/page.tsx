@@ -1,111 +1,112 @@
 "use client";
 
-import {use, useRef} from "react";
+import { use, useRef } from "react";
 import Image from "next/image";
-import {trpc} from "@/trpc/react";
-import {format} from "date-fns";
-import {Skeleton} from "@/components/ui/skeleton";
+import { trpc } from "@/trpc/react";
+import { format } from "date-fns";
+import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 import PageTransition from "@/components/page-transition";
 import { getCoverUrl } from "@/utils/strapi";
 import { useQuery } from "@tanstack/react-query";
 import { fetchNewsDetail } from "../actions";
+import MarkdownRenderer from "@/components/MarkdownRenderer";
 
 export default function Article({
-                                    params,
-                                }: {
-    params: Promise<{ slug: string }>;
+  params,
+}: {
+  params: Promise<{ slug: string }>;
 }) {
-    const {slug} = use(params);
-    // const {data, isLoading} = trpc.news.getDetail.useQuery({
-    //     id: slug,
-    // });
+  const { slug } = use(params);
+  // const {data, isLoading} = trpc.news.getDetail.useQuery({
+  //     id: slug,
+  // });
 
-     const { data, isLoading, error } = useQuery({
-        // The query key uniquely identifies this query's data
-        queryKey: ["news", slug],
-        // The query function that returns a Promise
-        queryFn: () => fetchNewsDetail(slug),
-    });
-    const newsRef = useRef<HTMLDivElement | null>(null);
+  const { data, isLoading, error } = useQuery({
+    // The query key uniquely identifies this query's data
+    queryKey: ["news", slug],
+    // The query function that returns a Promise
+    queryFn: () => fetchNewsDetail(slug),
+  });
+  const newsRef = useRef<HTMLDivElement | null>(null);
 
-    return (
-        <div
-            id="news"
-            ref={newsRef}
-            className="pb-12 w-full min-h-screen flex flex-col items-center justify-center relative bg-white"
-        >
-            {/* INTRO overlay (your multi-gradient) → fades out as before */}
-            <PageTransition/>
-            <div className="relative w-full h-[400px] lg:h-[550px]">
-                <Image
-                    src="/thumbnail-article.jpg"
-                    alt="thumbnail-article"
-                    fill
-                    className="object-cover"
-                />
-                <div
-                    className="absolute top-0 inset-0 h-[400px] lg:h-[550px] bg-gradient-to-t from-[#0A0C67] to-[#0a446a00] backdrop-filter-[blur(10px)]"></div>
+  const bodyText =
+    data?.data?.blocks.find((prop) => prop.__component === "shared.rich-text")
+      ?.body || "";
 
-                <div
-                    className="relative container mx-auto px-4 pt-8 lg:px-0 flex flex-col gap-2 text-white h-full w-full justify-center">
-                    {/* Breadcrumb */}
-                    <h3 className=" text-[4vw] md:text-4xl font-medium mb-2">
-                        <Link href={'/news'}>News</Link> /{" "}
-                        <span className="text-white/50 truncate">
+  return (
+    <div
+      id="news"
+      ref={newsRef}
+      className="pb-12 w-full min-h-screen flex flex-col items-center justify-center relative bg-white"
+    >
+      {/* INTRO overlay (your multi-gradient) → fades out as before */}
+      <PageTransition />
+      <div className="relative w-full h-[400px] lg:h-[550px]">
+        <Image
+          src="/thumbnail-article.jpg"
+          alt="thumbnail-article"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute top-0 inset-0 h-[400px] lg:h-[550px] bg-gradient-to-t from-[#0A0C67] to-[#0a446a00] backdrop-filter-[blur(10px)]"></div>
+
+        <div className="relative container mx-auto px-4 pt-8 lg:px-0 flex flex-col gap-2 text-white h-full w-full justify-center">
+          {/* Breadcrumb */}
+          <h3 className=" text-[4vw] md:text-4xl font-medium mb-2">
+            <Link href={"/news"}>News</Link> /{" "}
+            <span className="text-white/50 truncate">
               {data?.data.title.slice(0, 20)} ...
             </span>
-                    </h3>
-                    {/* Title */}
-                    <div className="text-xl md:text-2xl xl:text-4xl 2xl:text-5xl font-medium mb-4">
-                        {data?.data.title}
-                    </div>
+          </h3>
+          {/* Title */}
+          <div className="text-xl md:text-2xl xl:text-4xl 2xl:text-5xl font-medium mb-4">
+            {data?.data.title}
+          </div>
 
-                    {/* Author & Date */}
-                    <div
-                        className="flex flex-col md:flex-row items-start gap-4 text-white text-[3vw] md:text-[2.2vw] lg:text-[1.4vw] font-medium">
-                        {/* Author */}
-                        {/* <div className="flex justify-center items-center gap-2 font-medium">
+          {/* Author & Date */}
+          <div className="flex flex-col md:flex-row items-start gap-4 text-white text-[3vw] md:text-[2.2vw] lg:text-[1.4vw] font-medium">
+            {/* Author */}
+            {/* <div className="flex justify-center items-center gap-2 font-medium">
               <Image src="/avatar.png" alt="Author" width={32} height={32} />
               <span>Redaktur Ferry Napitupulu</span>
             </div> */}
-                        {/* Date */}
-                        <span className="ml-2 md:ml-0">
+            {/* Date */}
+            <span className="ml-2 md:ml-0">
               {format(
-                  data?.data.publishedAt || new Date(),
-                  "dd MMM yyyy, HH:mm"
+                data?.data.publishedAt || new Date(),
+                "dd MMM yyyy, HH:mm"
               )}
             </span>
-                    </div>
-                </div>
+          </div>
+        </div>
+      </div>
+
+      {isLoading && <Skeleton className="w-full h-96 bg-gray-200" />}
+
+      {!isLoading && (
+        <div className="relative mt-[-1.7rem] md:mt-[-3.4rem] lg:mt-[-5rem] w-full flex justify-center">
+          <div className="container mx-auto px-4 lg:px-0 flex flex-col gap-2 text-white items-center">
+            {/* Large Thumbnail */}
+            <div className="bg-white/10 p-2 rounded-md backdrop-filter-[blur(10px)]">
+              <Image
+                src={getCoverUrl(data?.data.cover.formats)}
+                alt="Large Thumbnail"
+                width={1259}
+                height={719}
+              />
             </div>
 
-            {isLoading && <Skeleton className="w-full h-96 bg-gray-200"/>}
-
-            {!isLoading && (
-                <div className="relative mt-[-1.7rem] md:mt-[-3.4rem] lg:mt-[-5rem] w-full flex justify-center">
-                    <div className="container mx-auto px-4 lg:px-0 flex flex-col gap-2 text-white items-center">
-                        {/* Large Thumbnail */}
-                        <div className="bg-white/10 p-2 rounded-md backdrop-filter-[blur(10px)]">
-                            <Image
-                                src={getCoverUrl(data?.data.cover.formats)}
-                                alt="Large Thumbnail"
-                                width={1259}
-                                height={719}
-                            />
-                        </div>
-
-                        {/* Article */}
-                        <div className="flex flex-col md:flex-row gap-8 p-4 items-start justify-center">
-                            {/* Article Text */}
-                            <div className="w-full md:w-[60vw] ">
-                                <p
-                                    dangerouslySetInnerHTML={{__html: data?.data?.blocks[0].body || ""}}
-                                    className="text-[4vw] md:text-[1.5vw] lg:text-[1.4vw] font-medium text-slate-800 whitespace-pre-wrap"
-                                />
-                            </div>
-                            {/* Keep Updated */}
-                            {/* <div className="sticky top-[105px] shadow-md rounded-md w-[350px] md:w-[450px] p-4 h-fit ">
+            {/* Article */}
+            <div className="flex flex-col md:flex-row gap-8 p-4 items-start justify-center">
+              {/* Article Text */}
+              <div className="w-full md:w-[60vw] ">
+                <div className="text-[4vw] md:text-[1.5vw] lg:text-[1.4vw] font-medium text-slate-800 whitespace-pre-wrap">
+                  <MarkdownRenderer content={bodyText} className="" />
+                </div>
+              </div>
+              {/* Keep Updated */}
+              {/* <div className="sticky top-[105px] shadow-md rounded-md w-[350px] md:w-[450px] p-4 h-fit ">
               <h3 className="mb-4 text-[6vw] md:text-[2.8vw] lg:text-[2.5vw] font-bold text-slate-800">BKI Updates</h3>
               <div className="flex flex-col gap-8 overflow-y-auto">
                 {keepUpdated.map((item, idx) => (
@@ -116,10 +117,10 @@ export default function Article({
                 ))}
               </div>
             </div> */}
-                        </div>
-                    </div>
-                </div>
-            )}
+            </div>
+          </div>
         </div>
-    );
+      )}
+    </div>
+  );
 }

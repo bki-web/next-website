@@ -22,7 +22,7 @@ const item: Variants = {
 
 function Bullet({children}: { children: React.ReactNode }) {
     return (
-        <li className="relative pl-7 leading-relaxed text-sm md:text-base text-zinc-700 dark:text-zinc-300">
+        <li className="relative pl-7 leading-relaxed text-sm md:text-base text-zinc-300">
             <CheckCircle2 className="absolute left-0 top-1.5 h-4 w-4 md:h-5 md:w-5 text-emerald-500" aria-hidden/>
             {children}
         </li>
@@ -41,7 +41,7 @@ function Card({icon: Icon, title, children}: { icon: React.ElementType; title: s
             </div>
             <div className="flex items-center gap-3">
                 <div
-                    className="h-10 w-10 grid place-items-center rounded-sm bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                    className="h-10 w-10 grid place-items-center rounded-sm bg-emerald-500/10 text-emerald-400">
                     <Icon className="h-5 w-5" aria-hidden/>
                 </div>
                 <h3 className="font-semibold text-zinc-100">{title}</h3>
@@ -226,7 +226,7 @@ export default function StatutoryFlagStateServicesPage() {
                     <motion.div variants={item} className="mt-10">
                         <div className="flex flex-wrap items-center gap-3">
                             <div
-                                className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
+                                className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
                                 <Anchor className="h-4 w-4" aria-hidden/>
                                 Single, reliable partner for all your statutory needs.
                             </div>

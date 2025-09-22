@@ -1,41 +1,54 @@
-import { initTRPC } from "@trpc/server";
-import { cache } from "react";
+// src/trpc/init.ts
+
+import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import prisma from "@/lib/prisma";
+import { parse } from "cookie";
+import { cookies } from 'next/headers'
+import { JwtPayload, verifyJwt } from "@/utils/auth";
 
-export const createTRPCContext = cache(async () => {
+interface AppContext {
+  user: JwtPayload | null;
+  prisma: typeof prisma;
+  resHeaders?: Headers; // Optional: only available in the API handler context
+}
+
+/**
+ * Creates the tRPC context. This is now "isomorphic" and works in two scenarios:
+ * 1. From an API handler (`/api/trpc/*`): `opts.req` is provided.
+ * 2. From a React Server Component: `opts.req` is undefined, so we use `cookies()`.
+ */
+export const createTRPCContext = async (opts?: { req?: Request; resHeaders?: Headers }): Promise<AppContext> => {
+  let token: string | undefined;
+
+  if (opts?.req) {
+    // API Handler context: Get cookies from the Request object
+    const cookieHeader = opts.req.headers.get("cookie") ?? "";
+    token = parse(cookieHeader).token;
+  } else {
+    // RSC context: Get cookies from `next/headers`
+     const cookieStore = await cookies()
+    token = cookieStore.get("token")?.value;
+  }
+
+  const user = token ? verifyJwt(token) : null;
+
   return {
+    user,
     prisma,
+    resHeaders: opts?.resHeaders,
   };
-});
+};
 
-const t = initTRPC.context<typeof createTRPCContext>().create({
+const t = initTRPC.context<AppContext>().create({
   transformer: superjson,
-  errorFormatter({ shape, error }) {
-    // Log the full error on the server for debugging
+  // ... your errorFormatter remains the same
+  errorFormatter: ({ shape, error }) => {
     console.error("Server-side error:", error);
-
-    // Check if the error is a Prisma/database error.
-    // The "code" property is often 'INTERNAL_SERVER_ERROR' for these types of issues.
-    // You can also check for specific error messages or `instanceof` checks if needed.
-    const isDatabaseError =
-      error.code === "INTERNAL_SERVER_ERROR" ||
-      error.message.includes("Raw query failed");
-
+    const isDatabaseError = error.code === "INTERNAL_SERVER_ERROR" || error.message.includes("Raw query failed");
     if (isDatabaseError) {
-      console.log({...shape.data}, 'test')
-      // Return a sanitized, generic error to the client.
-      return {
-        ...shape,
-        message: "Something went wrong.",
-        data: {
-          // ...shape.data,
-          code: "INTERNAL_SERVER_ERROR",
-        },
-      };
+      return { ...shape, message: "Something went wrong.", data: { code: "INTERNAL_SERVER_ERROR" } };
     }
-
-    // For other errors, such as Zod validation errors, return the original shape.
     return shape;
   },
 });
@@ -43,3 +56,11 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
 export const createTRPCRouter = t.router;
 export const createCallerFactory = t.createCallerFactory;
 export const baseProcedure = t.procedure;
+export const protectedProcedure = t.procedure.use(
+  t.middleware(({ ctx, next }) => {
+    if (!ctx.user) {
+      throw new TRPCError({ code: "UNAUTHORIZED" });
+    }
+    return next({ ctx: { user: ctx.user } });
+  })
+);

@@ -13,3 +13,6 @@ export const getCoverUrl = (formats: Cover["formats"] | undefined): string => {
   }
   return STRAPI_URL?.replace("/api", "") + selectedFormat.url;
 };
+
+
+export const COPS_URL = process.env.NEXT_PUBLIC_COPS_API || "https://cops.bki.co.id"

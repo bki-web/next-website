@@ -2,126 +2,190 @@
 
 import {use, useRef} from "react";
 import Image from "next/image";
-import {trpc} from "@/trpc/react";
-import {format} from "date-fns";
-import {Skeleton} from "@/components/ui/skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 import PageTransition from "@/components/page-transition";
-import { getCoverUrl } from "@/utils/strapi";
+import { getCoverUrl, STRAPI_URL } from "@/utils/strapi";
 import { useQuery } from "@tanstack/react-query";
 import { fetchArticleDetails } from "../actions";
+import MarkdownRenderer from "@/components/MarkdownRenderer";
+import ReadingProgress from "@/components/ReadingProgress";
+import {motion, useScroll, useTransform} from "framer-motion";
 
 export default function Article({
-                                    params,
-                                }: {
-    params: Promise<{ slug: string }>;
+  params,
+}: {
+  params: Promise<{ slug: string }>;
 }) {
-    const {slug} = use(params);
-    // const {data, isLoading} = trpc.article.getDetail.useQuery({
-    //     id: slug,
-    // });
-     const { data, isLoading, error } = useQuery({
-        // The query key uniquely identifies this query's data
-        queryKey: ["articles", slug],
-        // The query function that returns a Promise
-        queryFn: () => fetchArticleDetails(slug),
+  const { slug } = use(params);
+  // const {data, isLoading} = trpc.article.getDetail.useQuery({
+  //     id: slug,
+  // });
+  const { data, isLoading } = useQuery({
+    // The query key uniquely identifies this query's data
+    queryKey: ["articles", slug],
+    // The query function that returns a Promise
+    queryFn: () => fetchArticleDetails(slug),
+  });
+  const newsRef = useRef<HTMLDivElement | null>(null);
+
+    const {scrollYProgress} = useScroll({
+        target: newsRef,
+        offset: ["start start", "end start"], // 0 at top, 1 at bottom of hero
     });
-    const newsRef = useRef<HTMLDivElement | null>(null);
+    // video moves slower upward
+    const thumbnailY = useTransform(scrollYProgress, [0, 1], [0, 240]);
 
-    // const keepUpdated = [
-    //   {
-    //     title: "New Research Vessel For Marine Science In SA",
-    //     image: "/keep-update-1.png",
-    //     link: "/articles/new-research-vessel-for-marine-science-in-sa",
-    //   },
-    //   {
-    //     title: "New Research Vessel For Marine Science In SA",
-    //     image: "/keep-update-2.png",
-    //     link: "/articles/new-research-vessel-for-marine-science-in-sa",
-    //   },
-    //   {
-    //     title: "New Research Vessel For Marine Science In SA",
-    //     image: "/keep-update-3.png",
-    //     link: "/articles/new-research-vessel-for-marine-science-in-sa",
-    //   },
-    // ]
+  // const keepUpdated = [
+  //   {
+  //     title: "New Research Vessel For Marine Science In SA",
+  //     image: "/keep-update-1.png",
+  //     link: "/articles/new-research-vessel-for-marine-science-in-sa",
+  //   },
+  //   {
+  //     title: "New Research Vessel For Marine Science In SA",
+  //     image: "/keep-update-2.png",
+  //     link: "/articles/new-research-vessel-for-marine-science-in-sa",
+  //   },
+  //   {
+  //     title: "New Research Vessel For Marine Science In SA",
+  //     image: "/keep-update-3.png",
+  //     link: "/articles/new-research-vessel-for-marine-science-in-sa",
+  //   },
+  // ]
 
-    const coverUrl = getCoverUrl(data?.data.cover.formats)
+  const coverUrl = getCoverUrl(data?.data.cover.formats);
 
-    return (
+  const bodyText =
+    data?.data?.blocks.find((prop) => prop.__component === "shared.rich-text")
+      ?.body || "";
+
+  const downloadButton = () => {
+    const files = data?.files || [];
+    if (files.length < 1) {
+      alert("File not found");
+      return;
+    }
+    // const fileName = files[0].file.name;
+    // const fileUrl = files[0].file.url;
+    const link = document.createElement("a");
+    link.href = STRAPI_URL.replace("/api", "") + files[0].file.url;
+    link.target = "_blank"; // This is the key change
+
+    // Append the link to the body
+    document.body.appendChild(link);
+
+    // Programmatically click the link
+    link.click();
+
+    // Remove the link from the document
+    document.body.removeChild(link);
+  };
+
+  return (
+    <>
         <div
             id="news"
             ref={newsRef}
             className="pb-12 w-full min-h-screen flex flex-col items-center justify-center relative bg-white"
         >
             {/* INTRO overlay (your multi-gradient) → fades out as before */}
-            <PageTransition/>
-            <div className="relative w-full h-[400px] lg:h-[550px]">
-                <Image
-                    src="/thumbnail-article.jpg"
-                    alt="thumbnail-article"
-                    fill
-                    className="object-cover"
+            <PageTransition />
+
+            <section
+                className="w-full h-screen flex flex-col items-start justify-end 2xl:px-28 xl:px-24 lg:px-20 px-4 2xl:py-40 lg:py-32 py-12 relative">
+                <motion.div
+                    className="absolute inset-0"
+                    style={{y: thumbnailY, willChange: "transform"}}
+                >
+                    <Image
+                        src={coverUrl}
+                        alt="Large Thumbnail"
+                        width={1259}
+                        height={719}
+                        className={`w-full h-full object-cover transition-all duration-1000 blur-0 scale-100`}
+                    />
+                </motion.div>
+                <motion.div
+                    className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0),rgba(0,0,0,0)_40%,rgba(10,67,106,0.5)_65%,#0A436A)]"
+                    style={{y: thumbnailY, willChange: "transform"}}
                 />
-                <div
-                    className="absolute top-0 inset-0 h-[400px] lg:h-[550px] bg-gradient-to-t from-[#0A0C67] to-[#0a446a00] backdrop-filter-[blur(10px)]"></div>
-
-                <div
-                    className="relative container mx-auto px-4 pt-8 lg:px-0 flex flex-col gap-2 text-white h-full w-full justify-center">
-                    {/* Breadcrumb */}
-                    <h3 className=" text-[4vw] md:text-4xl font-medium mb-2">
-                        <Link href={'/articles'}>Article</Link> /{" "}
-                        <span className="text-white/50 truncate">
-              {data?.data.title.slice(0, 20)} ...
-            </span>
-                    </h3>
-                    {/* Title */}
-                    <div className="text-xl md:text-2xl xl:text-4xl 2xl:text-5xl font-medium mb-4">
+                <motion.div
+                    initial={{opacity: 0, y: 15}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{duration: 1, ease: "easeOut", delay: 0.1}}
+                    className="flex flex-row justify-center items-center gap-2 z-1"
+                >
+                    <Link href={'/articles'} className="md:text-lg 2xl:text-xl">
+                        Articles
+                    </Link>
+                    <span className="md:text-lg 2xl:text-xl">
+                                    /
+                                </span>
+                    <span className="md:text-lg 2xl:text-xl text-[#ffffff75] truncate">
+                                    {data?.data.title.slice(0, 30)} ...
+                                </span>
+                </motion.div>
+                <motion.div
+                    initial={{opacity: 0, y: 15}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{duration: 1, ease: "easeOut", delay: 0.5}}
+                    className="z-1"
+                >
+                    <p className="mt-6 text-xl md:text-2xl 2xl:text-3xl font-semibold">
                         {data?.data.title}
-                    </div>
+                    </p>
+                </motion.div>
+                <motion.div
+                    initial={{opacity: 0, y: 15}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{duration: 1, ease: "easeOut", delay: 1.0}}
+                    className="z-1"
+                >
+                    <p className="mt-9 text-md md:text-lg 2xl:text-xl max-w-4/5">
+                        {data?.data.description}
+                    </p>
+                </motion.div>
+                <motion.div
+                    initial={{opacity: 0, y: 15}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{duration: 1, ease: "easeOut", delay: 1.5}}
+                    className="mt-9 z-1"
+                >
+                    <button
+                        onClick={downloadButton}
+                        className="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 text-base sm:text-lg md:text-xl xl:text-3xl font-light text-white bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 cursor-pointer"
+                    >
+                        Download full publication [PDF]
+                        <span className="ml-2">→</span>
+                    </button>
+                </motion.div>
+            </section>
 
-                    {/* Author & Date */}
-                    <div
-                        className="flex flex-col md:flex-row items-start gap-4 text-white text-[3vw] md:text-[2.2vw] lg:text-[1.4vw] font-medium">
-                        {/* Author */}
-                        {/* <div className="flex justify-center items-center gap-2 font-medium">
-              <Image src="/avatar.png" alt="Author" width={32} height={32} />
-              <span>Redaktur Ferry Napitupulu</span>
-            </div> */}
-                        {/* Date */}
-                        <span className="ml-2 md:ml-0">
-              {format(
-                  data?.data.publishedAt || new Date(),
-                  "dd MMM yyyy, HH:mm"
-              )}
-            </span>
-                    </div>
-                </div>
-            </div>
-
-            {isLoading && <Skeleton className="w-full h-96 bg-gray-200"/>}
+            {isLoading && <Skeleton className="w-full h-96 bg-gray-200" />}
 
             {!isLoading && (
-                <div className="relative mt-[-1.7rem] md:mt-[-3.4rem] lg:mt-[-5rem] w-full flex justify-center">
-                    <div className="container mx-auto px-4 lg:px-0 flex flex-col gap-2 text-white items-center">
+                <div className="relative w-full flex justify-center">
+                    <div className="container mx-auto px-4 lg:px-0 py-12 lg:py-28 flex flex-col gap-2 bg-white items-center rounded-sm">
                         {/* Large Thumbnail */}
-                        <div className="bg-white/10 p-2 rounded-md backdrop-filter-[blur(10px)]">
-                            <Image
-                                src={coverUrl}
-                                alt="Large Thumbnail"
-                                width={1259}
-                                height={719}
-                            />
-                        </div>
+                        {/*<div className="bg-white/10 p-2 rounded-md backdrop-filter-[blur(10px)]">*/}
+                        {/*    <Image*/}
+                        {/*        src={coverUrl}*/}
+                        {/*        alt="Large Thumbnail"*/}
+                        {/*        width={1259}*/}
+                        {/*        height={719}*/}
+                        {/*    />*/}
+                        {/*</div>*/}
 
                         {/* Article */}
                         <div className="flex flex-col md:flex-row gap-8 p-4 items-start justify-center">
                             {/* Article Text */}
-                            <div className="w-full md:w-[60vw] ">
-                                <p
-                                    dangerouslySetInnerHTML={{__html: data?.data?.blocks[0].body || ""}}
-                                    className="text-[4vw] md:text-[1.5vw] lg:text-[1.4vw] font-medium text-slate-800 whitespace-pre-wrap"
-                                />
+                            <div className="w-full px-12 xl:px-28 lg:px-24">
+                                <div
+                                    className="text-base lg:text-lg font-medium text-slate-800 whitespace-pre-wrap"
+                                >
+                                    <MarkdownRenderer content={bodyText} className="" />
+                                </div>
                             </div>
                             {/* Keep Updated */}
                             {/* <div className="sticky top-[105px] shadow-md rounded-md w-[350px] md:w-[450px] p-4 h-fit ">
@@ -140,5 +204,7 @@ export default function Article({
                 </div>
             )}
         </div>
-    );
+        <ReadingProgress targetRef={newsRef} />
+    </>
+  );
 }

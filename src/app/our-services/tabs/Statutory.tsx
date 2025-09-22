@@ -12,6 +12,7 @@ type ProgramItem = {
     href?: string;
 };
 const programItems: ProgramItem[] = [
+
     {
         title: "International Safety Management",
         image: "/our-services/program/plan-approval.jpg",
@@ -19,7 +20,7 @@ const programItems: ProgramItem[] = [
     },
     {
         title: "International Ship & Port Facility Security",
-        image: "/our-services/program/floating-offshore.png",
+        image: "/our-services/program/international-ship-port.jpg",
         href: "/our-services/statutory/international-ship-port-facility-security",
     },
     {
@@ -34,7 +35,7 @@ const programItems: ProgramItem[] = [
     },
     {
         title: "Load Line",
-        image: "/classification-plan-approval.jpg",
+        image: "/our-services/program/load-line.jpg",
         href: "/our-services/statutory/load-line",
     },
     {
@@ -44,12 +45,12 @@ const programItems: ProgramItem[] = [
     },
     {
         title: "Port State Control",
-        image: "/our-services/program/floating-offshore.png",
+        image: "/our-services/program/port-state-control.jpg",
         href: "/our-services/statutory/port-state-control",
     },
     {
         title: "Energy Efficiency for Ships",
-        image: "/our-services/program/floating-offshore.png",
+        image: "/our-services/program/energy-efficiency-for-ships.jpeg",
         href: "/our-services/statutory/energy-efficiency-for-ships",
     },
     {
@@ -59,17 +60,17 @@ const programItems: ProgramItem[] = [
     },
     {
         title: "Authorization",
-        image: "/our-services/program/floating-offshore.png",
+        image: "/our-services/program/authorization.jpg",
         href: "/our-services/statutory/authorization",
     },
     {
         title: "MARPOL",
-        image: "/our-services/program/floating-offshore.png",
+        image: "/our-services/program/marpol.jpg",
         href: "/our-services/statutory/marpol",
     },
     {
         title: "SOLAS",
-        image: "/our-services/program/floating-offshore.png",
+        image: "/our-services/program/solas.jpg",
         href: "/our-services/statutory/solas",
     },
 ];
@@ -96,13 +97,13 @@ export default function StatutoryTabContent({
             <WhyTrustSection/>
 
             <section
-                className="w-full h-full 2xl:p-28 xl:p-24 lg:p-20 p-8 flex flex-col justify-center items-center bg-[#E2E7F0] gap-8 2xl:gap-24">
-                <div className="w-full flex lg:flex-row flex-col justify-center items-center gap-3 lg:gap-6">
+                className="w-full h-full 2xl:p-28 xl:p-24 lg:p-20 p-8 flex flex-col justify-center items-center bg-[#E2E7F0] gap-8">
+                <div className="w-full flex lg:flex-row flex-col justify-center lg:justify-between items-center gap-3 lg:gap-6">
                     <div className="flex flex-col gap-3 lg:gap-6 flex-[1]">
                         <p className="lg:text-4xl text-2xl font-semibold text-[#0A436A]">
                             A Partnership in Global Maritime Compliance
                         </p>
-                        <p className="lg:text-xl text-base text-[#0A436A]">
+                        <p className="lg:text-xl text-base text-[#0A436A] text-justify">
                             In the complex world of international shipping, maintaining compliance is the foundation of
                             safe, efficient, and lawful operation. As a trusted <span className="font-bold">Recognized Organization (RO)</span> ,
                             Biro
@@ -113,11 +114,11 @@ export default function StatutoryTabContent({
                             and the marine environment.
                         </p>
                     </div>
-                    <div className="w-full flex-[1] [perspective:1000px]">
+                    <div className="w-full h-[-webkit-fill-available] flex-[1] lg:flex lg:justify-end">
                         <motion.div
-                            className="[transform-style:preserve-3d] inline-block"
+                            className="h-[-webkit-fill-available] inline-block"
                             initial={{rotateY: 15, opacity: 0, scale: 0.75}}
-                            whileInView={{rotateY: -15, opacity: 1, scale: 1}}
+                            whileInView={{rotateY: 0, opacity: 1, scale: 1}}
                             viewport={{once: true, amount: 0.6}}
                             transition={{type: "spring", stiffness: 120, damping: 18, mass: 0.6}}
                         >
@@ -127,17 +128,18 @@ export default function StatutoryTabContent({
                                 width={600}
                                 height={400}
                                 priority={false}
-                                className="object-cover rounded-lg shadow-lg will-change-transform"
+                                className="object-cover h-[-webkit-fill-available] rounded-lg shadow-lg will-change-transform"
                             />
                         </motion.div>
                     </div>
                 </div>
+                <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-[#0A436A]/50 to-transparent rounded-full my-8"/>
                 <div className="w-full flex lg:flex-row flex-col justify-center items-center gap-3 lg:gap-6">
-                    <div className="w-full flex-[1] [perspective:1000px]">
+                    <div className="w-full h-[-webkit-fill-available] flex-[1]">
                         <motion.div
-                            className="[transform-style:preserve-3d] inline-block"
-                            initial={{rotateY: -15, opacity: 0, scale: 0.95}}
-                            whileInView={{rotateY: 15, opacity: 1, scale: 1}}
+                            className="h-[-webkit-fill-available] inline-block"
+                            initial={{rotateY: -15, opacity: 0, scale: 0.75}}
+                            whileInView={{rotateY: 0, opacity: 1, scale: 1}}
                             viewport={{once: true, amount: 0.6}}
                             transition={{type: "spring", stiffness: 120, damping: 18, mass: 0.6}}
                         >
@@ -147,7 +149,7 @@ export default function StatutoryTabContent({
                                 width={600}
                                 height={400}
                                 priority={false}
-                                className="object-cover rounded-lg shadow-lg will-change-transform"
+                                className="object-cover h-[-webkit-fill-available] rounded-lg shadow-lg will-change-transform"
                             />
                         </motion.div>
                     </div>
@@ -156,7 +158,7 @@ export default function StatutoryTabContent({
                             Our Authority as a Recognized Organization
                         </p>
                         <div className="flex flex-col gap-2">
-                            <p className="lg:text-xl text-base text-[#0A436A]">
+                            <p className="lg:text-xl text-base text-[#0A436A] text-justify">
                                 A Flag State is ultimately responsible for ensuring the vessels registered under its
                                 flag
                                 meet international standards. To achieve this on a global scale, Flag States delegate
@@ -164,106 +166,102 @@ export default function StatutoryTabContent({
                                 authority to conduct technical surveys and issue certificates to competent organizations
                                 like BKI. This delegation is a testament to our proven expertise and integrity.
                             </p>
-                            <p className="lg:text-xl text-base text-[#0A436A]">
-                                BKI&#39;s authority is formally granted by the Flag States of <span
-                                className="font-bold">Indonesia</span> and <span className="font-bold">Mongolia</span>,
-                                with
-                                all
-                                work conducted in full accordance with the IMO&#39;s RO Code and resolutions A.739(18)
-                                and
-                                A.789(19). Our extensive network of over 18 branch offices allows our qualified
-                                surveyors
-                                and auditors to provide reliable, expert services to shipowners wherever they operate.
+                            <p className="lg:text-xl text-base text-[#0A436A] text-justify">
+                                BKI&#39;s authority is formally granted by the Flag States of Indonesia, Timor Leste,
+                                Mongolia and Nauru, with all work conducted in full accordance with the IMO&#39;s
+                                RO Code and resolutions A.739(18) and A.789(19). Our extensive network of over 18 branch
+                                offices allows our qualified surveyors and auditors to provide reliable, expert services
+                                to shipowners wherever they operate.
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section
-                className="w-full h-full 2xl:p-28 xl:p-24 lg:p-20 p-8 flex flex-col justify-center items-center bg-[#0A436A] gap-8 2xl:gap-12">
-                <p className="lg:text-5xl text-3xl font-bold text-white text-center">
-                    A Comprehensive Scope of Statutory Certification
-                </p>
-                <p className="lg:text-xl text-base font-medium text-white text-center">
-                    Our statutory services are comprehensive, addressing every critical aspect of vessel operation
-                    through a suite of surveys, audits, and certifications. Our global team of experienced marine
-                    engineers, naval architects, and master mariners provides on-the-ground verification for key
-                    international conventions.
-                </p>
+            {/*<section*/}
+            {/*    className="w-full h-full 2xl:p-28 xl:p-24 lg:p-20 p-8 flex flex-col justify-center items-center bg-[#0A436A] gap-8 2xl:gap-12">*/}
+            {/*    <p className="lg:text-5xl text-3xl font-bold text-white text-center">*/}
+            {/*        A Comprehensive Scope of Statutory Certification*/}
+            {/*    </p>*/}
+            {/*    <p className="lg:text-xl text-base font-medium text-white text-center">*/}
+            {/*        Our statutory services are comprehensive, addressing every critical aspect of vessel operation*/}
+            {/*        through a suite of surveys, audits, and certifications. Our global team of experienced marine*/}
+            {/*        engineers, naval architects, and master mariners provides on-the-ground verification for key*/}
+            {/*        international conventions.*/}
+            {/*    </p>*/}
 
-                <div className="flex flex-col gap-1">
-                    <div className="lg:w-1/2 w-full border-t border-white border-opacity-20 lg:py-3 py-1.5">
-                        <div className="flex gap-3">
-                            <p className="lg:text-2xl text-lg font-semibold text-white">
-                                01
-                            </p>
-                            <div className="flex flex-col gap-2">
-                                <p className="lg:text-2xl text-lg font-semibold text-white">
-                                    Vessel Safety and Integrity
-                                </p>
-                                <p className="lg:text-xl text-base text-white">
-                                    At the core of our work is the safety of the vessel and its crew. We conduct
-                                    rigorous
-                                    surveys under <span className="font-bold">SOLAS</span> (Safety of Life at Sea)
-                                    covering
-                                    everything from hull construction and
-                                    machinery to fire protection and life-saving appliances. We also ensure stability
-                                    and
-                                    prevent overloading through certification for the <span className="font-bold">International Convention on Load Lines
-                            (ICLL)</span>.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="lg:w-1/2 w-full border-t border-white border-opacity-20 lg:py-3 py-1.5 self-end">
-                        <div className="flex gap-3">
-                            <p className="lg:text-2xl text-lg font-semibold text-white">
-                                02
-                            </p>
-                            <div className="flex flex-col gap-2">
-                                <p className="lg:text-2xl text-lg font-semibold text-white">
-                                    Environmental Stewardship
-                                </p>
-                                <p className="lg:text-xl text-base text-white">
-                                    We are deeply committed to protecting the marine environment. Our services under
-                                    <span className="font-bold">MARPOL</span> help prevent pollution from oil,
-                                    chemicals, sewage, and air emissions. This
-                                    includes critical modern regulations such as the verification of <span
-                                    className="font-bold">Ballast Water
-                                    Management</span> systems to stop the spread of invasive species and certification
-                                    for
-                                    <span className="font-bold">Energy Efficiency</span> measures (EEXI/CII) to support
-                                    the industry&#39;s decarbonization
-                                    journey.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="lg:w-1/2 w-full border-t border-white border-opacity-20 lg:py-3 py-1.5">
-                        <div className="flex gap-3">
-                            <p className="lg:text-2xl text-lg font-semibold text-white">
-                                03
-                            </p>
-                            <div className="flex flex-col gap-2">
-                                <p className="lg:text-2xl text-lg font-semibold text-white">
-                                    The Human Element and Security
-                                </p>
-                                <p className="lg:text-xl text-base text-white">
-                                    A safe ship is operated by a secure and well-supported crew. We conduct audits to
-                                    ensure seafarers&#39; working and living conditions meet the standards of the <span
-                                    className="font-bold">Maritime
-                                    Labour Convention (MLC, 2006)</span>.
-                                    Furthermore, we certify the vital management systems
-                                    that underpin operational excellence through the <span className="font-bold">ISM Code</span> (for
-                                    safety management)
-                                    and the <span className="font-bold">ISPS Code</span> (for security management).
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            {/*    <div className="flex flex-col gap-1">*/}
+            {/*        <div className="lg:w-1/2 w-full border-t border-white border-opacity-20 lg:py-3 py-1.5">*/}
+            {/*            <div className="flex gap-3">*/}
+            {/*                <p className="lg:text-2xl text-lg font-semibold text-white">*/}
+            {/*                    01*/}
+            {/*                </p>*/}
+            {/*                <div className="flex flex-col gap-2">*/}
+            {/*                    <p className="lg:text-2xl text-lg font-semibold text-white">*/}
+            {/*                        Vessel Safety and Integrity*/}
+            {/*                    </p>*/}
+            {/*                    <p className="lg:text-xl text-base text-white">*/}
+            {/*                        At the core of our work is the safety of the vessel and its crew. We conduct*/}
+            {/*                        rigorous*/}
+            {/*                        surveys under <span className="font-bold">SOLAS</span> (Safety of Life at Sea)*/}
+            {/*                        covering*/}
+            {/*                        everything from hull construction and*/}
+            {/*                        machinery to fire protection and life-saving appliances. We also ensure stability*/}
+            {/*                        and*/}
+            {/*                        prevent overloading through certification for the <span className="font-bold">International Convention on Load Lines*/}
+            {/*                (ICLL)</span>.*/}
+            {/*                    </p>*/}
+            {/*                </div>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*        <div className="lg:w-1/2 w-full border-t border-white border-opacity-20 lg:py-3 py-1.5 self-end">*/}
+            {/*            <div className="flex gap-3">*/}
+            {/*                <p className="lg:text-2xl text-lg font-semibold text-white">*/}
+            {/*                    02*/}
+            {/*                </p>*/}
+            {/*                <div className="flex flex-col gap-2">*/}
+            {/*                    <p className="lg:text-2xl text-lg font-semibold text-white">*/}
+            {/*                        Environmental Stewardship*/}
+            {/*                    </p>*/}
+            {/*                    <p className="lg:text-xl text-base text-white">*/}
+            {/*                        We are deeply committed to protecting the marine environment. Our services under*/}
+            {/*                        <span className="font-bold">MARPOL</span> help prevent pollution from oil,*/}
+            {/*                        chemicals, sewage, and air emissions. This*/}
+            {/*                        includes critical modern regulations such as the verification of <span*/}
+            {/*                        className="font-bold">Ballast Water*/}
+            {/*                        Management</span> systems to stop the spread of invasive species and certification*/}
+            {/*                        for*/}
+            {/*                        <span className="font-bold">Energy Efficiency</span> measures (EEXI/CII) to support*/}
+            {/*                        the industry&#39;s decarbonization*/}
+            {/*                        journey.*/}
+            {/*                    </p>*/}
+            {/*                </div>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*        <div className="lg:w-1/2 w-full border-t border-white border-opacity-20 lg:py-3 py-1.5">*/}
+            {/*            <div className="flex gap-3">*/}
+            {/*                <p className="lg:text-2xl text-lg font-semibold text-white">*/}
+            {/*                    03*/}
+            {/*                </p>*/}
+            {/*                <div className="flex flex-col gap-2">*/}
+            {/*                    <p className="lg:text-2xl text-lg font-semibold text-white">*/}
+            {/*                        The Human Element and Security*/}
+            {/*                    </p>*/}
+            {/*                    <p className="lg:text-xl text-base text-white">*/}
+            {/*                        A safe ship is operated by a secure and well-supported crew. We conduct audits to*/}
+            {/*                        ensure seafarers&#39; working and living conditions meet the standards of the <span*/}
+            {/*                        className="font-bold">Maritime*/}
+            {/*                        Labour Convention (MLC, 2006)</span>.*/}
+            {/*                        Furthermore, we certify the vital management systems*/}
+            {/*                        that underpin operational excellence through the <span className="font-bold">ISM Code</span> (for*/}
+            {/*                        safety management)*/}
+            {/*                        and the <span className="font-bold">ISPS Code</span> (for security management).*/}
+            {/*                    </p>*/}
+            {/*                </div>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</section>*/}
 
             {/*Program Section*/}
             <section
@@ -310,10 +308,8 @@ export default function StatutoryTabContent({
                     A Commitment to Quality and Performance
                 </p>
                 <p className="2xl:text-2xl text-xl text-white w-full md:w-4/5 text-center drop-shadow-lg">
-                    BKI&#39;s dedication to high standards is reflected in the strong performance of our classed and
-                    certified fleet. Recent statistics from the Tokyo MOU Port State Control regime show a consistently
-                    positive trend, demonstrating our effectiveness in helping clients maintain quality and reduce
-                    detention risks.
+                    BKI&#39;s dedication to high standards is reflected in the strong performance of our classed and certified fleet.
+                    Our proven effectiveness helps clients maintain quality vessels, reduce detention risks, and ensure their assets are certified for unrestricted global trade.
                 </p>
             </section>
 

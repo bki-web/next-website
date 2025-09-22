@@ -82,7 +82,7 @@ export default function ProductCertification() {
                                             src={src}
                                             alt={`Slide ${idx}`}
                                             fill
-                                            className="object-cover rounded-xl"
+                                            className="object-cover rounded-sm"
                                         />
                                     </div>
                                 ))}
@@ -149,7 +149,7 @@ export default function ProductCertification() {
                         whileInView={{opacity: 1, y: 0}}
                         viewport={{once: true}}
                         transition={{duration: 0.7, ease: "easeOut", delay: 0.2}}
-                        className="mt-20 bg-gradient-to-r from-[#0A436A]/60 to-[#0A436A] text-white rounded-2xl p-12 text-center shadow-xl"
+                        className="mt-20 bg-gradient-to-r from-[#0A436A]/60 to-[#0A436A] text-white rounded-sm p-12 text-center shadow-xl"
                     >
                         <h3 className="text-xl md:text-2xl font-semibold mb-6">
                             Information for Company Approval and Product Certification
@@ -158,14 +158,14 @@ export default function ProductCertification() {
                             <Link
                                 href="https://www.bkinusantara.co.id/listrequireddocuments.php"
                                 target={"_blank"}
-                                className="px-6 py-3 rounded-full border border-white hover:bg-white hover:text-teal-700 transition-colors"
+                                className="px-6 py-3 rounded-sm border border-white hover:bg-white hover:text-teal-700 transition-colors"
                             >
                                 Find Product
                             </Link>
                             <Link
                                 href="https://www.bkinusantara.co.id/listapproved.php"
                                 target={"_blank"}
-                                className="px-6 py-3 rounded-full border border-white hover:bg-white hover:text-teal-700 transition-colors"
+                                className="px-6 py-3 rounded-sm border border-white hover:bg-white hover:text-teal-700 transition-colors"
                             >
                                 Search Database
                             </Link>

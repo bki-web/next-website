@@ -28,12 +28,12 @@ const ThreeItemSection: React.FC<ThreeItemSectionProps> = ({
     <section className="py-12 px-4 sm:px-6 md:px-24 bg-gray-50">
       {/* Header Section */}
       <div className="text-center md:text-left mb-10 md:mb-16 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="2xl:text-6xl md:text-5xl text-4xl font-bold text-bki-blue">
+        <div className="text-3xl font-bold text-bki-blue">
           {mainTitle}
         </div>
         <p
           className={cn(
-            "text-3xl text-black md:w-auto max-w-2xl mx-auto md:mx-0",
+            "text-xl text-black md:w-auto max-w-2xl mx-auto md:mx-0 text-right",
             subtitleClassName
           )}
         >

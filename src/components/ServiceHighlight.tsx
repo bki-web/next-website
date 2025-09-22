@@ -36,8 +36,8 @@ const ServiceHighlight = () => {
     },
     {
       icon: BookOpen,
-      title: 'Technical Journal',
-      description: 'Technical Journal BKI',
+      title: 'Technical Information',
+      description: 'Technical Information BKI',
       color: '#26476c',
       accentColor: '#ecb143',
       image: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=800'

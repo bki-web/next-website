@@ -24,28 +24,28 @@ const services = [
         title: "Marine Services",
         description: "End-to-end technical support, from asset inspection to advanced testing and analysis.",
         // icon: "/icon-service-marine-services.png",
-        image: "/our-services-bki-marine-services.jpg",
+        image: "/service-marine-services.jpg",
         href: "/our-services#marine-services",
     },
     {
         title: "Energy & Industry",
         description: "Extending our technical expertise to oil & gas, manufacturing, and critical infrastructure.",
         // icon: "/icon-service-energy-industry.png",
-        image: "/our-services-energy-industry.jpg",
+        image: "/service-energy-industry.jpg",
         href: "/our-services#energy-industry",
     },
     {
         title: "BKI Academy",
         description: "World class training and certification for industry professionals",
         // icon: "/icon-service-bki-academy.png",
-        image: "/our-services-bki-academy.jpg",
+        image: "/service-bki-academy.jpg",
         href: "https://www.bki.academy/id",
         type: "_blank",
     },
     {
         title: "Others",
         description: "Pioneering digital solutions, green initiatives, and other specialized services.",
-        image: "/our-services-bki-others.jpg",
+        image: "/service-others.jpg",
         href: "/our-services",
     },
 ];
@@ -84,16 +84,17 @@ const OurServicesSection = forwardRef((props, ref: Ref<HTMLDivElement | null>) =
 
             <div className="relative w-full">
                 {/*Top Gradient Overlay*/}
-                <div
-                    className="absolute top-0 left-0 right-0
-                  bg-[linear-gradient(to_bottom,rgb(11,63,101),rgba(11,63,101,0.75)_30%,rgba(11,63,101,0.5)_60%,transparent)] w-full h-[250px] z-1"
-                />
+                {/*<div*/}
+                {/*    className="absolute top-0 left-0 right-0*/}
+                {/*  bg-[linear-gradient(to_bottom,rgb(11,63,101),rgba(11,63,101,0.75)_30%,rgba(11,63,101,0.5)_60%,transparent)] w-full h-[250px] z-1"*/}
+                {/*/>*/}
 
                 {/* Background image */}
                 <Image
-                    src="/bg-our-services-2.jpg"
+                    src="/bg-our-services.jpg"
                     alt="Background"
-                    className="w-screen h-[300vh] sm:h-[275vh] md:h-[150vh] xl:h-[100vh] 2xl:h-[105vh] object-cover z-0 blur-[2px]"
+                    className="w-screen h-[300vh] sm:h-[275vh] md:h-[150vh] xl:h-[100vh] 2xl:h-[105vh] object-cover z-0"
+                    // className="w-screen h-[300vh] sm:h-[275vh] md:h-[150vh] xl:h-[100vh] 2xl:h-[105vh] object-cover z-0 blur-[2px]"
                     width={1920}
                     height={1080}
                     priority={true}
@@ -111,7 +112,7 @@ const OurServicesSection = forwardRef((props, ref: Ref<HTMLDivElement | null>) =
                                 whileInView={{opacity: 1, x: 0}}
                                 transition={{duration: 0.8, delay: 0.25}}
                                 viewport={{once: true}}>
-                        <p className="text-3xl md:text-4xl text-white font-bold text-center">
+                        <p className="text-3xl md:text-4xl text-bki-blue font-bold text-center">
                             <FancyTitle title="Our Services"/>
                         </p>
                     </motion.div>
@@ -119,7 +120,7 @@ const OurServicesSection = forwardRef((props, ref: Ref<HTMLDivElement | null>) =
                                 whileInView={{opacity: 1, x: 0}}
                                 transition={{duration: 0.8, delay: 0.5}}
                                 viewport={{once: true}}>
-                        <p className="text-lg md:text-xl text-white text-center">
+                        <p className="text-lg md:text-xl text-bki-blue text-center">
                             Discover our essential services built for safety, compliance, and
                             excellence.
                         </p>

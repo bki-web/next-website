@@ -1,3 +1,5 @@
+// FILE: app/our-services/classification/ship-register/components/ShipParticularContent.tsx
+
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -9,11 +11,15 @@ import HullDataTab from "../tabs/HullDataTab";
 import MachineryDataTab from "../tabs/MachineryDataTab";
 import OwnerTab from "../tabs/OwnerTab";
 import SurvetStatusTab from "../tabs/SurveyStatusTab";
-import { trpc } from "@/trpc/react";
-import { Skeleton } from "@/components/ui/skeleton";
 import NoResultsCard from "../../components/NoResultsCard";
 import { match } from "ts-pattern";
 import { cn } from "@/lib/utils";
+// --- 1. REMOVED: All tanstack-query and action imports ---
+
+// Import the data types, assuming they are exported from a types file
+import { ShipRegisterDetail, ShipRegisterHullData, ShipRegisterMachine, ShipRegisterOwner, ShipRegisterSurvey } from "@/types/shipRegisterResult";
+import PageTransition from "@/components/page-transition";
+
 
 const tabs = [
   { key: "general", label: "General Data" },
@@ -23,30 +29,27 @@ const tabs = [
   { key: "survey", label: "Survey Status" },
 ];
 
-export function ShipParticularContent({ noreg }: { noreg: string }) {
-  const { data, isLoading, isError } =
-    trpc.shipRegister.getDetail.useQuery(noreg);
+// 2. Define the new props interface for all the pre-fetched data
+interface ShipParticularContentProps {
+    shipDetail: ShipRegisterDetail | null;
+    hullData: ShipRegisterHullData | null;
+    machineData: ShipRegisterMachine | null;
+    ownerData: ShipRegisterOwner | null;
+    surveyData: ShipRegisterSurvey[] | null;
+    noreg: string
+}
 
-  const { data: dataHull, isLoading: isHullLoading } =
-    trpc.shipRegister.getHullData.useQuery(noreg);
-
-  const { data: dataOwner, isLoading: isOwnerDataLoading } =
-    trpc.shipRegister.getOwnerData.useQuery(noreg);
-
-  const { data: dataMachine, isLoading: isMachineDataLoading } =
-    trpc.shipRegister.getMachineData.useQuery(noreg);
-
-  const { data: dataSurvey, isLoading: isSurveyDataLoading } =
-    trpc.shipRegister.getSurveyData.useQuery(noreg);
-
+export function ShipParticularContent({
+  shipDetail,
+  hullData,
+  machineData,
+  ownerData,
+  surveyData,
+}: ShipParticularContentProps) {
   const [activeTab, setActiveTab] = useState("general");
   const activeIndex = tabs.findIndex((tab) => tab.key === activeTab);
 
-  if (isLoading && !isError) {
-    return <Skeleton className="w-full h-96 rounded-lg bg-gray-400" />;
-  }
-
-  if (!data?.length || isError) {
+  if (!shipDetail) {
     return (
       <NoResultsCard
         title="Ship with this register not found"
@@ -55,42 +58,41 @@ export function ShipParticularContent({ noreg }: { noreg: string }) {
     );
   }
 
-  const selectedData = data[0];
   return (
     <div className="w-full mx-auto bg-white rounded-xl shadow-md overflow-hidden p-3 lg:p-5">
+      <PageTransition />
       {/* Header */}
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between lg:pb-4 pb-2">
         <div className="flex items-center gap-3 lg:flex-row flex-col">
           <h2 className="text-lg md:text-xl font-bold text-slate-900">
-            {selectedData.nmkpl}
+            {shipDetail.nmkpl}
           </h2>
           <Badge>
-            Register No: <span className="ml-1">{selectedData.noreg}</span>
+            Register No: <span className="ml-1">{shipDetail.noreg}</span>
           </Badge>
         </div>
         <div className="flex lg:flex-row flex-col gap-2 shrink-0 self-start">
           <Pill>
             <span className="mr-1 opacity-70">IMO:</span>{" "}
-            {selectedData.noimo || "-"}
+            {shipDetail.noimo || "-"}
           </Pill>
-          <Pill>GT{selectedData.grt || "-"}</Pill>
+          <Pill>GT: {shipDetail.grt || "-"}</Pill>
           <Pill
             className={cn(
               "text-white",
-              selectedData.stat === "A" ? "!bg-green-500" : "!bg-red-500"
+              shipDetail.stat === "A" ? "!bg-green-500" : "!bg-red-500"
             )}
           >
-            {match(selectedData.stat)
+            {match(shipDetail.stat)
               .with("A", () => "Active")
               .otherwise(() => "Inactive")}
           </Pill>
         </div>
       </div>
 
-      {/* Tabs */}
+      {/* Tabs (No change here) */}
       <div className="border-y lg:py-3 py-2">
         <div className="flex bg-[#0A436A] text-white/50 px-1 rounded-full relative">
-          {/* Highlight geser */}
           <motion.div
             className="absolute inset-1 rounded-full bg-white"
             initial={false}
@@ -117,48 +119,13 @@ export function ShipParticularContent({ noreg }: { noreg: string }) {
         </div>
       </div>
 
-      {/* Content */}
+      {/* 5. Content: Simplified to just pass the props down. No more loading skeletons. */}
       <div className="p-6 text-sm">
-        {activeTab === "general" && !isLoading && (
-          <GeneralTab data={selectedData} />
-        )}
-        {activeTab === "general" && isLoading && (
-          <Skeleton className="w-full h-96 rounded-lg bg-gray-400" />
-        )}
-
-        {activeTab === "hull" && isLoading && (
-          <Skeleton className="w-full h-96 rounded-lg bg-gray-400" />
-        )}
-
-        {activeTab === "hull" && !isHullLoading && (
-          <HullDataTab data={dataHull} />
-        )}
-
-        {activeTab === "machinery" && !isMachineDataLoading && (
-          <MachineryDataTab data={dataMachine} />
-        )}
-
-        {activeTab === "machinery" && isMachineDataLoading && (
-          <Skeleton className="w-full h-96 rounded-lg bg-gray-400" />
-        )}
-        
-
-        {activeTab === "owner" && !isOwnerDataLoading && (
-          <OwnerTab data={dataOwner} />
-        )}
-
-        {activeTab === "owner" && isOwnerDataLoading && (
-          <Skeleton className="w-full h-96 rounded-lg bg-gray-400" />
-        )}
-        
-
-        {activeTab === "survey" && !isSurveyDataLoading && (
-          <SurvetStatusTab data={dataSurvey} />
-        )}
-
-        {activeTab === "survey" && isSurveyDataLoading && (
-          <Skeleton className="w-full h-96 rounded-lg bg-gray-400" />
-        )}
+        {activeTab === "general" && <GeneralTab data={shipDetail} />}
+        {activeTab === "hull" && <HullDataTab data={hullData} />}
+        {activeTab === "machinery" && <MachineryDataTab data={machineData} />}
+        {activeTab === "owner" && <OwnerTab data={ownerData} />}
+        {activeTab === "survey" && <SurvetStatusTab data={surveyData} />}
       </div>
     </div>
   );

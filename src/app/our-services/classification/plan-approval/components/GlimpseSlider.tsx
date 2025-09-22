@@ -101,7 +101,7 @@ export default function GlimpseSlider() {
         >
           ›
         </button>
-        <p className="text-white font-bold text-2xl sm:text-3xl md:text-4xl xl:text-6xl leading-tight z-1">
+        <p className="text-white font-bold text-5xl leading-tight z-1">
           Glimpse of Our Work
         </p>
 

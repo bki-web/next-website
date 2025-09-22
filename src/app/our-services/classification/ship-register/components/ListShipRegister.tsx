@@ -78,7 +78,7 @@ export default function ListShipRegister({
                               <span className="mr-1 opacity-70">IMO:</span>{" "}
                               {ship.NOIMO}
                             </Pill>
-                            <Pill>GT{ship.GRT}</Pill>
+                            <Pill>GT: {ship.GRT}</Pill>
                           </div>
                         </div>
 

@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {ChevronRight} from "lucide-react";
 import {classes} from "@/utils/string";
+import { SHIP_REGISTER_LINK_TARGET, SHIP_REGISTER_URL } from "@/utils/urlHelper";
 
 /* ---------- helpers ---------- */
 function useIsMobile(breakpoint = 768) {
@@ -58,8 +59,8 @@ const NAV: Navigation[] = [
                 submenu: [
                     {
                         label: "Ship Register",
-                        href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/register_of_ships.html",
-                        type: "_blank",
+                        href: SHIP_REGISTER_URL,
+                        type: SHIP_REGISTER_LINK_TARGET,
                     },
                     {
                         label: "Floating Offshore",
@@ -185,11 +186,27 @@ const NAV: Navigation[] = [
                 label: "Research & Development",
                 href: "/research/rnd",
                 type: "",
+                submenu: [
+                    {
+                        type: "",
+                        label: "BKI Rules & Regulations",
+                        href: "/research/rnd/bki-rules-regulations"
+                    },
+                    {
+                        type: "",
+                        label: "RnD Activities",
+                        href: "/research/rnd/activities"
+                    },
+                    {
+                        type: "",
+                        label: "Technical Publication",
+                        href: "/rnd/technical-publication"
+                    },
+                ]
             },
             {
-                label: "Technical Journal",
-                href:
-                    process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-119.html",
+                label: "Technical Information",
+                href:"/technical-information",
                 type: "",
             },
         ],

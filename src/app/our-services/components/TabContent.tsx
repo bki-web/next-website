@@ -63,7 +63,7 @@ export default function TabContent() {
                 icon: "/icons/energy-industry.png",
                 content: (
                     <EnergyIndustryTabContent
-                        keyContent={"classification"}
+                        keyContent={"energy-industry"}
                         activeIndex={activeIndex}
                         prevIndex={prevIndex}
                     />

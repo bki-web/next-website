@@ -10,7 +10,7 @@ const col = <K extends keyof ShipRegisterSurvey>(
     align?: "left" | "center" | "right"
 ): Column<ShipRegisterSurvey> => ({key, title, align});
 
-export default function SurvetStatusTab(props: { data: ShipRegisterSurvey[] | undefined }) {
+export default function SurvetStatusTab(props: { data: ShipRegisterSurvey[] | undefined | null }) {
     const data = props.data || []
     const classData = data.filter(prop => prop.jenis === "KLAS").map((prop, index) => ({
         ...prop,
@@ -27,7 +27,7 @@ export default function SurvetStatusTab(props: { data: ShipRegisterSurvey[] | un
             rows: classData
         },
         {
-            title: "Survey Status of Class",
+            title: "Survey Status of Statutory",
             rows: statutoryData
         },
     ];

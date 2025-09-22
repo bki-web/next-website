@@ -118,7 +118,7 @@ export type PaginationInfo = {
   totalRecords: number;
   pageCount: number;
   pageSize: number;
-}
+};
 
 export type ShipRegisterOwner = {
   nmfl1: string;
@@ -149,8 +149,8 @@ export type ShipRegisterMachine = {
 };
 
 export type ShipRegisterSurvey = {
-  jenis: "KLAS" | "STATUTORIA",
-   KOSUR: string;
+  jenis: "KLAS" | "STATUTORIA";
+  KOSUR: string;
   NOREG: string;
   NUP: string;
   STATUS_VER: string | null;
@@ -161,5 +161,41 @@ export type ShipRegisterSurvey = {
   lastdate: string;
   postponeddate: string | null;
   rangedate: string | null;
-  no?: number | string
+  no?: number | string;
+};
+
+export interface ShipRegisterSurveyResultSQL {
+  JSUR1: string;
+  id: string;
+  NOREG: string;
+  KOSUR: string;
+  TGPL: string;
+  BLPL: string;
+  THPL: string;
+  TGPN: string;
+  BLPN: string;
+  THPN: string;
+  TGPN1: string;
+  BLPN1: string;
+  THPN1: string;
+  NUP: string;
+  TGPO: string | null;
+  BLPO: string | null;
+  THPO: string | null;
+  NUPENTRY: string | null;
+  NAMAENTRY: string | null;
+  TGLENTRY: string | null;
+  CABENTRY: string | null;
+  STATUS_VER: string | null;
+  VISAL: string;
+  VISAM: string;
 }
+
+export type ShipSearchResult = {
+  data: ShipRegister[];
+  pagination: {
+    totalRecords: number;
+    pageCount: number;
+    pageSize: number;
+  };
+};
