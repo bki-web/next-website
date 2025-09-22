@@ -3,6 +3,10 @@ import Hero from "@/components/Hero";
 import DocumentSection from "@/app/research/rnd/bki-rules-regulations/components/DocumentSection";
 
 export default function BkiRulesRegulations() {
+
+    // return (
+    //     <iframe src={"https://www.bkinusantara.co.id/services/rules/index.html"} className={"w-full h-screen"} style={{border: "none"}} title={"BKI Rules & Regulations"} frameBorder={0} allowFullScreen={true} />
+    // )
     return (
         <div className="relative min-h-screen w-full overflow-hidden">
             <PageTransition/>

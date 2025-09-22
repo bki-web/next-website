@@ -43,9 +43,8 @@ export function TRPCProvider(props: PropsWithChildren) {
               credentials: "include",
               headers: {
                 ...options?.headers,
-                Accept: "application/json",
-                "Content-Type": "application/json",
-              },
+                "Accept": "application/json",
+              }
             });
           },
         }),

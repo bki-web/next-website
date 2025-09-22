@@ -172,8 +172,8 @@ export default function FooterSection() {
                                     href: "/research/rnd",
                                 },
                                 {
-                                    label: "Technical Journal",
-                                    href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/halamanstatis-119.html",
+                                    label: "Technical Information",
+                                    href: "/technical-information",
                                 },
                             ].map((item) => (
                                 <li key={item.label} className="py-1">

@@ -65,7 +65,7 @@ const milestones = [
   },
 ];
 
-export default function Page() {
+export default function FloatingOffshorePage() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       <PageTransition />
@@ -92,14 +92,14 @@ export default function Page() {
           alt={"Introduction"}
           width={800}
           height={570}
-          className="object-cover lg:h-[45vh] h-[300px] rounded-lg"
+          className="object-cover lg:h-[30vh] h-[200px] rounded-sm"
         />
         <div className="flex flex-col justify-center 2xl:gap-8 md:gap-6 gap-4">
-          <p className="2xl:text-6xl md:text-5xl text-4xl font-bold text-[#0A436A]">
+          <p className="text-3xl font-bold text-[#0A436A]">
             Floating Offshore
           </p>
           <div className="w-full flex flex-col justify-center items-center 2xl:gap-8 md:gap-4 gap-2">
-            <p className="2xl:text-3xl md:text-2xl text-xl text-[#0A436A] text-justify">
+            <p className="text-[#0A436A] text-justify text-xl">
               At Biro Klasifikasi Indonesia (BKI), we provide world-class
               classification services for the entire spectrum of floating
               offshore assets. Our dedicated Offshore Division is the center of
@@ -118,21 +118,21 @@ export default function Page() {
 
       <section className="w-full 2xl:py-20 md:py-16 py-12 2xl:px-28 md:px-24 px-8 bg-[#0A436A] text-white flex lg:flex-row flex-col justify-center items-center lg:gap-16 gap-8">
         <div className="flex flex-col justify-center 2xl:gap-12 md:gap-8 gap-4 w-full">
-          <p className="2xl:text-6xl md:text-5xl text-4xl font-bold text-white">
+          <p className="text-3xl font-bold text-white">
             <FancyTitle title="Our Evolution:" />
             <br />
-            <span className="2xl:text-3xl md:text-2xl text-xl font-semibold text-white">
+            <span className="text-xl font-semibold text-white">
               A Commitment to the Offshore Sector
             </span>
           </p>
           <div className="w-full flex flex-col justify-center items-center 2xl:gap-8 md:gap-4 gap-2">
-            <p className="2xl:text-2xl md:text-xl text-lg text-white">
+            <p className="text-white">
               BKI&apos;s commitment to the offshore industry is built on a
               foundation of responsiveness and strategic growth. We evolve in
               response to increasing client demand and stakeholder requests for
               specialized services.
             </p>
-            <p className="2xl:text-2xl md:text-xl text-lg text-white">
+            <p className="text-white">
               This progression reflects our dedication to developing deep
               expertise and providing focused support for this critical sector.
             </p>
@@ -142,12 +142,12 @@ export default function Page() {
           {milestones.map((milestone, index) => (
             <div
               key={index}
-              className="flex flex-row items-start relative mb-12 last:mb-0"
+              className="flex flex-row items-center relative mb-12 last:mb-0"
             >
               {/* Vertical Line and Circle */}
               <div className="relative">
                 {/* Circle Indicator */}
-                <div className="flex items-center justify-center w-24 h-24 rounded-full bg-bki-orange text-white text-lg md:text-2xl font-bold">
+                <div className="flex items-center justify-center w-24 h-24 rounded-full bg-bki-orange text-white text-lg md:text-xl font-bold">
                   {milestone.year}
                 </div>
                 {/* Vertical Line */}
@@ -158,7 +158,7 @@ export default function Page() {
 
               {/* Milestone Content */}
               <div className="ml-6 flex-1">
-                <p className="text-lg md:text-2xl">{milestone.description}</p>
+                <p className="text-white">{milestone.description}</p>
               </div>
             </div>
           ))}
@@ -174,11 +174,11 @@ export default function Page() {
 
       <section className="w-full 2xl:py-20 md:py-16 py-12 2xl:px-28 md:px-24 px-8 bg-[#0A436A] text-white flex lg:flex-row-reverse flex-col justify-center items-center lg:gap-16 gap-8">
         <div className="flex flex-col justify-center 2xl:gap-12 md:gap-8 gap-4">
-          <p className="2xl:text-6xl md:text-5xl text-4xl font-bold text-white">
+          <p className="text-3xl font-bold text-white">
             <FancyTitle title="Technology-Driven Solutions" />
           </p>
           <div className="w-full flex flex-col justify-center items-center 2xl:gap-8 md:gap-4 gap-2">
-            <p className="2xl:text-2xl md:text-xl text-lg text-white">
+            <p className="text-lg text-white text-justify">
               To support our rigorous engineering reviews and complex analyses, the BKI Offshore Division utilizes a suite of advanced technical software. This includes both proprietary, in-house developed applications and licensed, industry-leading software for structural analysis, hydrodynamics, and risk assessment. This technological capability ensures our reviews are accurate, efficient, and at the forefront of industry practice
             </p>
           </div>
@@ -188,21 +188,21 @@ export default function Page() {
           alt={"Introduction"}
           width={800}
           height={570}
-          className="object-cover lg:h-[65vh] h-[450px] rounded-lg"
+          className="object-cover lg:h-[35vh] h-[350px] rounded-sm"
         />
       </section>
 
       {/*Technology Section*/}
       <section className="w-full 2xl:py-20 md:py-16 py-12 2xl:px-28 md:px-24 px-8 bg-white flex lg:flex-row flex-col justify-center items-center lg:gap-16 gap-8">
         <div className="flex flex-col justify-center 2xl:gap-12 md:gap-8 gap-4">
-          <p className="2xl:text-5xl md:text-4xl text-3xl font-bold text-[#0A436A]">
+          <p className="text-3xl font-bold text-[#0A436A]">
             <FancyTitle title="Proven Experience and Global Collaboration" />
           </p>
           <div className="w-full flex flex-col justify-center items-center 2xl:gap-8 md:gap-4 gap-2">
-            <p className="2xl:text-2xl md:text-xl text-lg text-[#0A436A]">
+            <p className="text-lg text-[#0A436A] text-justify">
              BKI has an extensive track record in the classification of a diverse range of floating facilities, from newbuilds to complex conversion projects. Our experience encompasses both single-class and dual-class arrangements, demonstrating our capability to work seamlessly alongside other leading international classification societies such as ABS, LR, NK, DNV, and KR.
             </p>
-            <p className="2xl:text-2xl md:text-xl text-lg text-[#0A436A]">
+            <p className="text-lg text-[#0A436A] text-justify">
               Our technical expertise is recognized on a global scale. A prime example of our collaborative strength is BKI&apos;s participation in a consortium with ABS for the Front End Engineering Design (FEED) phase of the major INPEX Masela project. This involvement underscores our position as a trusted partner for even the most demanding and technologically advanced offshore projects operating in Indonesia and beyond.
             </p>
           </div>
@@ -212,7 +212,7 @@ export default function Page() {
           alt={"Introduction"}
           width={800}
           height={570}
-          className="object-cover lg:h-[65vh] h-[450px] rounded-lg"
+          className="object-cover lg:h-[55vh] h-[350px] rounded-sm"
         />
       </section>
 

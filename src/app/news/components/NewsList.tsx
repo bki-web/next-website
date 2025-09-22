@@ -25,7 +25,7 @@ export default function NewsList({
     //     limit,
     // });
 
-    const { data, isLoading, error } = useQuery({
+    const { data } = useQuery({
         // The query key uniquely identifies this query's data
         queryKey: ["news", currentPage, limit],
         // The query function that returns a Promise
@@ -62,7 +62,7 @@ export default function NewsList({
                 className
             )}
         >
-            <div className="grid relative grid-cols-1 md:grid-cols-3 gap-6 ">
+            <div className="grid relative grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
                 {data?.data.map((a, i) => (
                     <NewsCard key={i} news={a} hasShadow={true} rounded={true}/>
                 ))}

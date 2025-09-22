@@ -7,7 +7,7 @@ import {OctagonAlert} from "lucide-react";
 import Image from "next/image";
 import FeatureSection from "../../components/FeatureSection";
 
-export default function Page() {
+export default function ClassWithdrawalPage() {
     const reinstall = [
         {
             question: "Following Suspension",
@@ -119,14 +119,14 @@ export default function Page() {
                     alt={"Introduction"}
                     width={800}
                     height={570}
-                    className="object-cover lg:h-[45vh] h-[300px] rounded-lg"
+                    className="object-cover lg:h-[35vh] h-[200px] rounded-sm"
                 />
                 <div className="flex flex-col justify-center 2xl:gap-8 md:gap-6 gap-4">
-                    <p className="2xl:text-6xl md:text-5xl text-4xl font-bold text-[#0A436A]">
+                    <p className="text-3xl font-bold text-[#0A436A]">
                         Class Suspension and Withdrawal
                     </p>
                     <div className="w-full flex flex-col justify-center items-center 2xl:gap-8 md:gap-4 gap-2">
-                        <p className="2xl:text-3xl md:text-2xl text-xl text-[#0A436A] text-justify">
+                        <p className="text-lg text-[#0A436A] text-justify">
                             Maintaining a valid classification status with Biro Klasifikasi
                             Indonesia (BKI) is a shared responsibility that confirms a
                             vessel&apos;s compliance with established technical standards for

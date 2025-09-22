@@ -6,6 +6,7 @@ import PageTransition from "@/components/page-transition";
 import Hero from "@/components/Hero";
 import Button from "@/components/Button";
 import {useRouter} from "next/navigation";
+import React from "react";
 
 const fadeInUp: Variants = {
     hidden: {opacity: 0, y: 24},
@@ -20,7 +21,7 @@ const stagger: Variants = {
 export default function InternationalSafetyManagementPage() {
     const router = useRouter();
     return (
-        <div className="relative min-h-screen w-full overflow-hidden">
+        <div className="relative min-h-screen w-full overflow-hidden text-white">
             <PageTransition/>
 
             {/* Hero Section */}
@@ -52,7 +53,7 @@ export default function InternationalSafetyManagementPage() {
                 <div
                     className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(60%_60%_at_50%_10%,black,transparent)]">
                     <div
-                        className="absolute -top-32 left-1/2 h-64 w-[80rem] -translate-x-1/2 rounded-full bg-[conic-gradient(at_top_right,var(--tw-gradient-stops))] from-sky-200 via-cyan-100 to-slate-100 opacity-60 blur-2xl dark:from-sky-900/30 dark:via-cyan-900/20 dark:to-slate-800/20"/>
+                        className="absolute -top-32 left-1/2 h-64 w-[80rem] -translate-x-1/2 rounded-full bg-[conic-gradient(at_top_right,var(--tw-gradient-stops))] opacity-60 blur-2xl from-sky-900/30 via-cyan-900/20 to-slate-800/20"/>
                 </div>
 
                 <motion.div
@@ -65,14 +66,14 @@ export default function InternationalSafetyManagementPage() {
                     <motion.header variants={stagger} className="mb-12">
                         <motion.p
                             variants={fadeInUp}
-                            className="mb-3 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-wide text-sky-800/80 dark:text-sky-200/90"
+                            className="mb-3 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-wide text-sky-200/90"
                         >
                             <span className="h-1.5 w-1.5 rounded-full bg-sky-500"/>
                             International Maritime Compliance
                         </motion.p>
                         <motion.h1
                             variants={fadeInUp}
-                            className="text-balance text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl dark:text-white"
+                            className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl text-white"
                         >
                             International Safety Management (ISM) Code
                         </motion.h1>
@@ -83,8 +84,8 @@ export default function InternationalSafetyManagementPage() {
                     </motion.header>
 
                     {/* Intro */}
-                    <motion.div variants={fadeInUp} className="prose max-w-none prose-slate dark:prose-invert">
-                        <p>
+                    <motion.div variants={fadeInUp} className="prose max-w-none prose-slate">
+                        <p className="text-white">
                             Recognizing the critical role of the human factor in maritime safety, the IMO established
                             the
                             <strong> International Safety Management (ISM) Code</strong>. Consolidated within the SOLAS
@@ -129,14 +130,14 @@ export default function InternationalSafetyManagementPage() {
                     {/* Path to Certification */}
                     <motion.section variants={stagger} className="mt-20" aria-labelledby="path">
                         <motion.h2 variants={fadeInUp} id="path"
-                                   className="text-2xl font-semibold text-slate-900 dark:text-white">
+                                   className="text-2xl font-semibold text-white">
                             The Path to Certification
                         </motion.h2>
 
                         <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
                             {/* DOC Flow */}
                             <motion.div variants={fadeInUp}
-                                        className="rounded-sm border bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                                        className="rounded-sm border p-6 shadow-sm border-slate-800 bg-slate-900">
                                 <FlowHeader label="Procedure for Document of Compliance (DOC)"/>
                                 <ol className="mt-4 space-y-5">
                                     <StepItem step={1} title="Application"
@@ -152,7 +153,7 @@ export default function InternationalSafetyManagementPage() {
 
                             {/* SMC Flow */}
                             <motion.div variants={fadeInUp}
-                                        className="rounded-sm border bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                                        className="rounded-sm border p-6 shadow-sm border-slate-800 bg-slate-900">
                                 <FlowHeader label="Procedure for Safety Management Certificate (SMC)"/>
                                 <ol className="mt-4 space-y-5">
                                     <StepItem step={1} title="Prerequisite"
@@ -171,12 +172,12 @@ export default function InternationalSafetyManagementPage() {
                     {/* Maintenance Schedule */}
                     <motion.section variants={stagger} className="mt-20" aria-labelledby="maintenance">
                         <motion.h2 variants={fadeInUp} id="maintenance"
-                                   className="text-2xl font-semibold text-slate-900 dark:text-white">
+                                   className="text-2xl font-semibold text-white">
                             Maintaining Your Certification
                         </motion.h2>
                         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
                             <motion.div variants={fadeInUp}
-                                        className="rounded-sm border bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                                        className="rounded-sm border p-6 shadow-sm border-slate-800 bg-slate-900">
                                 <Badge>For the DOC (Company)</Badge>
                                 <ul className="mt-4 space-y-3">
                                     <CheckItem title="Annual Verification"
@@ -186,7 +187,7 @@ export default function InternationalSafetyManagementPage() {
                                 </ul>
                             </motion.div>
                             <motion.div variants={fadeInUp}
-                                        className="rounded-sm border bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                                        className="rounded-sm border p-6 shadow-sm border-slate-800 bg-slate-900">
                                 <Badge>For the SMC (Vessel)</Badge>
                                 <ul className="mt-4 space-y-3">
                                     <CheckItem title="Intermediate Verification"
@@ -201,10 +202,10 @@ export default function InternationalSafetyManagementPage() {
                     {/* Interim Certificates */}
                     <motion.section variants={stagger} className="mt-20" aria-labelledby="interim">
                         <motion.h2 variants={fadeInUp} id="interim"
-                                   className="text-2xl font-semibold text-slate-900 dark:text-white">
+                                   className="text-2xl font-semibold text-white">
                             Interim DOC & SMC Certification
                         </motion.h2>
-                        <motion.p variants={fadeInUp} className="mt-3 max-w-3xl text-slate-600 dark:text-slate-300">
+                        <motion.p variants={fadeInUp} className="mt-3 max-w-3xl text-slate-300">
                             BKI may issue Interim Certificates so companies or vessels can begin operations while
                             preparing for full verification.
                             Requirements: an SMS manual and a clear implementation plan. <strong>Interim DOC</strong> is
@@ -223,14 +224,14 @@ export default function InternationalSafetyManagementPage() {
                                 <motion.div
                                     key={txt}
                                     variants={fadeInUp}
-                                    className="group rounded-sm border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+                                    className="group rounded-sm border p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md border-slate-800 bg-slate-900"
                                 >
                                     <div className="flex items-start gap-3">
                   <span
-                      className="mt-1 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full border border-sky-400/60 text-[10px] font-bold text-sky-700 dark:border-sky-700 dark:text-sky-300">
+                      className="mt-1 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full border text-[10px] font-bold border-sky-700 text-sky-300">
                     ✓
                   </span>
-                                        <p className="text-sm text-slate-700 dark:text-slate-300">{txt}</p>
+                                        <p className="text-sm text-slate-300">{txt}</p>
                                     </div>
                                 </motion.div>
                             ))}
@@ -240,10 +241,10 @@ export default function InternationalSafetyManagementPage() {
                     {/* Indonesian National Requirements */}
                     <motion.section variants={stagger} className="mt-20" aria-labelledby="national">
                         <motion.h2 variants={fadeInUp} id="national"
-                                   className="text-2xl font-semibold text-slate-900 dark:text-white">
+                                   className="text-2xl font-semibold text-white">
                             Indonesian National Requirements (PM 45 of 2012)
                         </motion.h2>
-                        <motion.p variants={fadeInUp} className="mt-3 max-w-3xl text-slate-600 dark:text-slate-300">
+                        <motion.p variants={fadeInUp} className="mt-3 max-w-3xl text-slate-300">
                             Applicability for Indonesian-flagged vessels under the national Safety Management rules:
                         </motion.p>
 
@@ -281,15 +282,15 @@ function ServiceCard({
     return (
         <motion.article
             variants={fadeInUp}
-            className="relative overflow-hidden rounded-sm border bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+            className="relative overflow-hidden rounded-sm border p-6 shadow-sm border-slate-800 bg-slate-900"
         >
             <div
-                className="absolute right-0 top-0 -z-0 h-24 w-24 -translate-y-1/2 translate-x-1/3 rounded-full bg-sky-200/60 blur-2xl dark:bg-sky-900/30"/>
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{title}</h3>
-            <p className="mt-1 text-sm text-sky-800/80 dark:text-sky-300/90">{caption}</p>
+                className="absolute right-0 top-0 -z-0 h-24 w-24 -translate-y-1/2 translate-x-1/3 rounded-full blur-2xl bg-sky-900/30"/>
+            <h3 className="text-lg font-semibold text-white">{title}</h3>
+            <p className="mt-1 text-sm text-sky-300/90">{caption}</p>
             <ul className="mt-4 space-y-2">
                 {points.map((p) => (
-                    <li key={p} className="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-300">
+                    <li key={p} className="flex items-start gap-3 text-sm text-slate-300">
                         <span className="mt-1 h-2.5 w-2.5 flex-none rounded-full bg-sky-500"/>
                         <span>{p}</span>
                     </li>
@@ -303,7 +304,7 @@ function FlowHeader({label}: { label: string }) {
     return (
         <div className="flex items-center gap-2">
             <div className="h-5 w-1.5 rounded-full bg-sky-500"/>
-            <h3 className="text-base font-medium text-slate-900 dark:text-white">{label}</h3>
+            <h3 className="text-base font-medium text-white">{label}</h3>
         </div>
     );
 }
@@ -312,12 +313,12 @@ function StepItem({step, title, desc}: { step: number; title: string; desc: stri
     return (
         <li className="relative pl-10">
       <span
-          className="absolute left-0 top-0 inline-flex h-7 w-7 items-center justify-center rounded-full border border-sky-400 bg-white font-semibold text-sky-700 shadow-sm dark:border-sky-700 dark:bg-slate-900 dark:text-sky-300">
+          className="absolute left-0 top-0 inline-flex h-7 w-7 items-center justify-center rounded-full border font-semibold shadow-sm border-sky-700 bg-slate-900 text-sky-300">
         {step}
       </span>
             <div>
-                <p className="font-medium text-slate-900 dark:text-white">{title}</p>
-                <p className="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{desc}</p>
+                <p className="font-medium text-white">{title}</p>
+                <p className="mt-1 text-sm leading-relaxed text-slate-300">{desc}</p>
             </div>
         </li>
     );
@@ -326,7 +327,7 @@ function StepItem({step, title, desc}: { step: number; title: string; desc: stri
 function Badge({children}: { children: React.ReactNode }) {
     return (
         <span
-            className="inline-flex w-fit items-center gap-2 rounded-full border border-sky-300/70 bg-sky-50 px-3 py-1 text-xs font-medium tracking-wide text-sky-800 dark:border-sky-800 dark:bg-sky-900/30 dark:text-sky-200">
+            className="inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-wide border-sky-800 bg-sky-900/30 text-sky-200">
       <span className="h-1.5 w-1.5 rounded-full bg-sky-500"/>
             {children}
     </span>
@@ -336,7 +337,7 @@ function Badge({children}: { children: React.ReactNode }) {
 function CheckItem({title, desc}: { title: string; desc: string }) {
     return (
         <li className="flex items-start gap-3">
-            <svg viewBox="0 0 20 20" fill="currentColor" className="mt-0.5 h-5 w-5 text-sky-600 dark:text-sky-400">
+            <svg viewBox="0 0 20 20" fill="currentColor" className="mt-0.5 h-5 w-5 text-sky-400">
                 <path
                     fillRule="evenodd"
                     d="M16.704 5.29a1 1 0 0 1 .006 1.414l-6.9 6.95a1 1 0 0 1-1.43.01L3.29 9.58a1 1 0 1 1 1.42-1.41l3.04 3.06 6.18-6.22a1 1 0 0 1 1.414-.006Z"
@@ -344,8 +345,8 @@ function CheckItem({title, desc}: { title: string; desc: string }) {
                 />
             </svg>
             <div>
-                <p className="font-medium text-slate-900 dark:text-white">{title}</p>
-                <p className="text-sm text-slate-600 dark:text-slate-300">{desc}</p>
+                <p className="font-medium text-white">{title}</p>
+                <p className="text-sm text-slate-300">{desc}</p>
             </div>
         </li>
     );
@@ -355,10 +356,10 @@ function ApplicabilityCard({title, items}: { title: string; items: string[] }) {
     return (
         <motion.article
             variants={fadeInUp}
-            className="rounded-sm border bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+            className="rounded-sm border p-6 shadow-sm border-slate-800 bg-slate-900"
         >
-            <h3 className="text-base font-semibold text-slate-900 dark:text-white">{title}</h3>
-            <ul className="mt-3 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+            <h3 className="text-base font-semibold text-white">{title}</h3>
+            <ul className="mt-3 space-y-2 text-sm text-slate-300">
                 {items.map((it) => (
                     <li key={it} className="flex items-start gap-2">
                         <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-sky-500"/>

@@ -53,15 +53,15 @@ export default function PortStateControlPage() {
                         transition={{duration: 0.6, ease: "easeOut"}}
                         className="max-w-3xl"
                     >
-                        <h1 className="mt-4 text-3xl font-bold leading-tight text-[#0A436A] md:text-5xl dark:text-[#7ab7dd]">
+                        <h1 className="mt-4 text-3xl font-bold leading-tight md:text-5xl text-[#7ab7dd]">
                             Navigating Port State Control (PSC) with Confidence
                         </h1>
-                        <p className="mt-5 text-base leading-relaxed text-slate-700 md:text-lg dark:text-neutral-200">
+                        <p className="mt-5 text-base leading-relaxed md:text-lg text-neutral-200">
                             A Port State Control inspection is a critical event for any vessel. For the prepared, it is
                             a routine confirmation of excellence. For the unprepared, it can lead to costly delays,
                             financial penalties, and significant reputational damage.
                         </p>
-                        <p className="mt-3 text-base leading-relaxed text-slate-700 md:text-lg dark:text-neutral-200">
+                        <p className="mt-3 text-base leading-relaxed md:text-lg text-neutral-200">
                             At BKI, our goal is to turn this risk into readiness. We provide a comprehensive suite of
                             Port State Control services designed for one purpose: to keep your fleet compliant,
                             operational, and moving. Our approach is built on two pillars: proactive preparation to
@@ -136,7 +136,7 @@ export default function PortStateControlPage() {
                                     "And other mandatory international codes.",
                                 ].map((t) => (
                                     <li key={t}
-                                        className="group flex items-start gap-3 rounded-sm border border-slate-200/70 p-3 dark:border-white/10 dark:bg-white/5">
+                                        className="group flex items-start gap-3 rounded-sm border p-3 border-white/10 bg-white/5">
                                             <span
                                                 className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-[#0A436A] ring-2 ring-[#0A436A]/20"/>
                                         <span
@@ -170,7 +170,7 @@ export default function PortStateControlPage() {
                                     "Riyadh MoU (Persian Gulf)",
                                 ].map((t) => (
                                     <li key={t}
-                                        className="flex items-start gap-3 rounded-sm border border-slate-200/70 p-3 dark:border-white/10 dark:bg-white/5">
+                                        className="flex items-start gap-3 rounded-sm border p-3 border-white/10 bg-white/5">
                                             <span
                                                 className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-[#0A436A] ring-2 ring-[#0A436A]/20"/>
                                         <span
@@ -215,7 +215,7 @@ export default function PortStateControlPage() {
                                     },
                                 ].map(({title, desc}) => (
                                     <li key={title}
-                                        className="rounded-sm border border-slate-200/70 p-4 dark:border-white/10 dark:bg-white/5">
+                                        className="rounded-sm border p-4 border-white/10 bg-white/5">
                                         <div className="flex items-start gap-3">
                                             <div
                                                 className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-[#0A436A] ring-2 ring-[#0A436A]/20"/>

@@ -43,7 +43,7 @@ const DisclaimerSection: React.FC<DisclaimerSectionProps> = ({
                     <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">
                         {sectionSubtitle}
                     </h3>
-                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-bki-blue leading-tight">
+                    <h2 className="text-3xl font-extrabold text-bki-blue leading-tight">
                         {sectionTitle}
                     </h2>
                 </div>

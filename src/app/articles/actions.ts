@@ -20,12 +20,20 @@ export const fetchArticles = async (page: number, pageSize: number) => {
 };
 
 export const fetchArticleDetails = async (id: string) => {
-  const response = await fetch(`${STRAPI_URL}/articles/${id}?populate=*`);
+  const [response, filesResponse] = await Promise.all([
+    fetch(`${STRAPI_URL}/articles/${id}?populate=*`),
+    fetch(`${STRAPI_URL}/articles/${id}?populate[blocks][on][shared.media][populate]=file`)
+  ])
+
 
   if (!response.ok) {
     throw new Error(`Failed to fetch article with ID ${id}`);
   }
 
   const data = (await response.json()) as { data: Article };
-  return data;
+  const filesData = (await filesResponse.json()) as { data: Article };
+  return {
+    ...data,
+    files: filesData.data.blocks.filter(prop => prop.__component === "shared.media")
+  };
 };

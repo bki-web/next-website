@@ -1,7 +1,7 @@
 "use client";
 
 import PageTransition from "@/components/page-transition";
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,12 +16,17 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { trpc } from "@/trpc/react";
 import ListShipRegister from "./ListShipRegister";
 import LoadingFallback from "./LoadingFallback";
 import { ArrowLeft } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Pagination from "@/components/pagination";
+import { ShipSearchResult } from "@/types/shipRegisterResult"; // Import the type
+
+// Props definition for receiving SSR data
+interface ShipRegisterPageProps {
+  initialData: ShipSearchResult | null;
+}
 
 interface RouteItem {
   text: string;
@@ -45,7 +50,6 @@ const routes: RouteItem[] = [
     text: "Ship Register",
   },
 ];
-
 const formSchema = z.object({
   nmkpl: z.string().optional(),
   noreg: z.string().optional(),
@@ -53,53 +57,59 @@ const formSchema = z.object({
   minGT: z.string().optional(),
   maxGT: z.string().optional(),
 });
-
 type FormSchema = z.infer<typeof formSchema>;
 
-export default function ShipRegisterPage() {
+// The component now accepts the initialData prop
+export default function ShipRegisterPage({
+  initialData,
+}: ShipRegisterPageProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
-  const defaultValue = {
-    nmkpl: "",
-    noreg: "",
-    noimo: "",
-    minGT: "",
-    maxGT: "",
-  };
-  const [submitted, setSubmitted] = React.useState(false);
-  const [searchParamsData, setSearchParamsData] =
-    useState<FormSchema>(defaultValue);
-
-  const form = useForm<FormSchema>({
-    resolver: zodResolver(formSchema),
-    defaultValues: defaultValue,
-  });
-
   const resultRef = useRef<HTMLDivElement>(null);
 
-  const { data, mutate, isPending: isLoading } = trpc.shipRegister.search.useMutation();
+  // REMOVED: useMutation hook is no longer needed.
+  // REMOVED: 'submitted' and 'searchParamsData' states.
 
+  // Initialize form with values from the URL search parameters
+  const form = useForm<FormSchema>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      nmkpl: searchParams.get("nmkpl") || "",
+      noreg: searchParams.get("noreg") || "",
+      noimo: searchParams.get("noimo") || "",
+      minGT: searchParams.get("minGT") || "",
+      maxGT: searchParams.get("maxGT") || "",
+    },
+  });
+
+  // Scroll to results if data is present on load
   useEffect(() => {
-    if (data && data.data.length && resultRef.current && submitted) {
+    if (initialData && resultRef.current) {
       resultRef.current.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
     }
-  }, [submitted, data]);
+  }, [initialData]);
 
+  // This function now builds a URL and navigates, triggering an SSR fetch
   function onSubmit(values: FormSchema) {
-    setSearchParamsData(values);
-    setSubmitted(true);
-    mutate({
-      ...values,
-      submitted: true,
-      page: currentPage,
-      limit: 10
-    })
+    const params = new URLSearchParams();
+    params.set("submitted", "true"); // Flag to tell the server to search
+    if (values.nmkpl) params.set("nmkpl", values.nmkpl);
+    if (values.noreg) params.set("noreg", values.noreg);
+    if (values.noimo) params.set("noimo", values.noimo);
+    if (values.minGT) params.set("minGT", values.minGT);
+    if (values.maxGT) params.set("maxGT", values.maxGT);
+    params.set("page", "1"); // Reset to first page on new search
+
+    router.push(
+      `/our-services/classification/ship-register?${params.toString()}`
+    );
   }
 
+  // This function works as before, triggering an SSR fetch for a new page
   const handlePageChange = (page: number) => {
     const newParams = new URLSearchParams(searchParams.toString());
     newParams.set("page", String(page));
@@ -108,13 +118,19 @@ export default function ShipRegisterPage() {
     );
   };
 
+  const data = initialData; // Use the prop for data
   const dataNumber = data ? data.data.length * (currentPage - 1) + 1 : 0;
   const dataNumberTo = data ? dataNumber - 1 + data.pagination.pageSize : 0;
 
+  // A simple check to see if a search was attempted
+  const searchAttempted = searchParams.get("submitted") === "true";
+  console.log("test versi 1.1.3");
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       <PageTransition />
       <section className="w-full relative overflow-hidden min-h-screen">
+        {/* ... (Your entire Hero and Form JSX remains the same) ... */}
+        {/* No changes needed for the Form JSX itself, only its handler */}
         <div className="absolute inset-0 bg-[url('/our-services/classification/ship-register-background.jpg')] bg-cover bg-center" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A436A]/60 to-black/60" />
         <div className="w-full relative flex flex-col justify-center items-center py-24 2xl:pt-40 text-center text-white text-shadow-lg text-shadow-black/30 gap-y-7 lg:gap-y-14 px-4">
@@ -284,11 +300,13 @@ export default function ShipRegisterPage() {
           </div>
         </div>
       </section>
+
+      {/* Updated conditional rendering logic */}
       <div id="ship-register-result" ref={resultRef}>
-        {isLoading && submitted && <LoadingFallback />}
-        {!isLoading && submitted && data && (
+        {searchAttempted && !data && <LoadingFallback />}
+        {data && data.data && (
           <>
-            <ListShipRegister data={data?.data} pagination={data?.pagination} />
+            <ListShipRegister data={data.data} pagination={data.pagination} />
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 bg-[#E2E7F0] lg:px-24 px-4 pt-4 pb-10">
               <p className="text-bki-blue">
                 Showing <b>{dataNumber}</b> to <b>{dataNumberTo}</b> of{" "}

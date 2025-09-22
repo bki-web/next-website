@@ -168,10 +168,10 @@ export default function CompanyProfile() {
                 </div>
                 <div className="flex flex-col justify-between">
                     <div>
-                        <h3 className="text-2xl 2xl:text-[64px] font-bold mb-4 text-[#0A436A]">
+                        <h3 className="text-3xl font-bold mb-4 text-[#0A436A]">
                             Our Vision
                         </h3>
-                        <ul className="2xl:text-2xl font-semibold list-disc list-inside text-[#0A436A] space-y-2">
+                        <ul className="font-semibold list-disc list-inside text-[#0A436A] space-y-2">
                             <li>
                                 To be a global and world class Indonesian integrated assurance
                                 group that is innovative, trusted and value creating to
@@ -180,10 +180,10 @@ export default function CompanyProfile() {
                         </ul>
                     </div>
                     <div>
-                        <h3 className="text-2xl 2xl:text-[64px] font-bold mt-8 mb-4 text-[#0A436A]">
+                        <h3 className="text-3xl font-bold mt-8 mb-4 text-[#0A436A]">
                             Our Mission
                         </h3>
-                        <ul className="2xl:text-xl font-semibold list-disc list-inside text-[#0A436A] space-y-4 text-justify">
+                        <ul className="font-semibold list-disc list-inside text-[#0A436A] space-y-4 text-justify">
                             <li>
                                 Providing added value to stakeholders through assuring
                                 compliance to quality standard as well as increasing efficiency,
@@ -212,18 +212,18 @@ export default function CompanyProfile() {
                 className="bg-gradient-to-b from-[#0A436A] to-[#000] pt-16 2xl:pt-[135px] text-white"
             >
                 <div className="flex flex-col gap-7 px-10 2xl:px-[105px]">
-                    <h2 className="text-3xl 2xl:text-[64px] font-bold text-white">
+                    <h2 className="text-3xl font-bold text-white">
                         Meet Our Board of Directors
                     </h2>
-                    <p className="2xl:text-2xl">
+                    <p className="text-xl">
                         Meet the strategic minds actively guiding the strategic growth of
                         BKI, driving innovation and positioning our organization to lead in
                         an era of profound industrial transformation.
                     </p>
                 </div>
-                <div className="flex flex-col pl-10 2xl:pl-[105px] py-3 2xl:py-[21px]">
+                <div className="flex flex-col px-10 2xl:px-[105px] py-3 2xl:py-[21px]">
                     <div className="flex flex-row items-center gap-4">
-                        <p className="text-lg 2xl:text-2xl font-bold text-[#FFFFFF75]">
+                        <p className="text-lg font-bold text-[#FFFFFF75]">
                             The Faces of Innovation
                         </p>
                         <div className="bg-gradient-to-r from-[#FFFFFF75] to-[#FFFFFF00] h-[1px] w-2/3 2xl:w-5/6"/>

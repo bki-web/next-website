@@ -1,13 +1,22 @@
-import {Article} from "@/types/articles";
+"use client";
 import ArticleCardModern from "./ArticleCardModern";
 import FancyTitle from "./FancyTitle";
-import { STRAPI_URL } from "@/utils/strapi";
+import { useQuery } from "@tanstack/react-query";
+import { fetchArticles } from "@/app/articles/actions";
+import { Skeleton } from "./ui/skeleton";
 
-export default async function ArticleSection() {
-    const data = (await fetch(
-        STRAPI_URL +
-        "/articles?populate=cover&pagination[page]=1&pagination[pageSize]=3"
-    ).then((response) => response.json())) as { data: Article[] };
+export default function ArticleSection() {
+    // const data = (await fetch(
+    //     STRAPI_URL +
+    //     "/articles?populate=cover&pagination[page]=1&pagination[pageSize]=3"
+    // ).then((response) => response.json())) as { data: Article[] };
+    const currentPage = 1
+    const { data, isLoading } = useQuery({
+        // The query key uniquely identifies this query's data
+        queryKey: ["articles", currentPage, 3],
+        // The query function that returns a Promise
+        queryFn: () => fetchArticles(currentPage, 3),
+    });
 
     return (
         <section
@@ -31,17 +40,19 @@ export default async function ArticleSection() {
                     zIndex: 1,
                 }}
             />
-            <h1 className="text-white text-3xl md:text-5xl font-bold mb-2">
+            <h1 className="text-white text-3xl md:text-5xl font-bold mb-8">
                 <FancyTitle title="Knowledge Hub"/>
             </h1>
-            <div className="text-white text-xl md:text-3xl font-medium mb-8">
-                Articles
-            </div>
 
             <div className="grid relative z-10 grid-cols-1 md:grid-cols-3 gap-6">
-                {data?.data?.map((article, i) => (
+                {!isLoading && data?.data?.map((article, i) => (
                     <ArticleCardModern key={i} article={article}/>
                 ))}
+                {isLoading && [1,2,3].map((article, i) => {
+                    return (
+                        <Skeleton className="w-full h-96 bg-gray-300" key={i}/>
+                    )
+                })}
             </div>
         </section>
     );

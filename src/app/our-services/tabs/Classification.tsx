@@ -4,6 +4,7 @@ import SliderSection from "@/app/our-services/components/SliderSection";
 import ServiceCard from "@/components/ServiceCard";
 import FancyTitle from "@/components/FancyTitle";
 import DigitalPlatform from "../components/DigitalPlatform";
+import { SHIP_REGISTER_LINK_TARGET, SHIP_REGISTER_URL } from "@/utils/urlHelper";
 
 type ProgramItem = {
     title: string;
@@ -15,8 +16,8 @@ const programItems: ProgramItem[] = [
     {
         title: "Ship Register",
         image: "/our-services/classification/ship-register.jpg",
-        href: process.env.NEXT_PUBLIC_OLD_WEBSITE_URL + "/register_of_ships.html",
-        target: "_blank"
+        href: SHIP_REGISTER_URL,
+        target: SHIP_REGISTER_LINK_TARGET
     },
     {
         title: "Class Suspend / Withdrawn",

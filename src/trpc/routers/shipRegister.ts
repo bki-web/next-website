@@ -21,20 +21,9 @@ export const shipRegisterRouter = createTRPCRouter({
         maxGT: z.string().optional(),
         page: z.number().min(0).optional(),
         limit: z.number().min(1).max(100).optional(),
-        submitted: z.boolean(),
       })
     )
     .mutation(async ({ ctx, input }) => {
-      if (!input.submitted) {
-        return {
-          data: [],
-          pagination: {
-            totalRecords: 0,
-            pageCount: 1,
-            pageSize: 1,
-          },
-        };
-      }
       const page = input.page ? input.page - 1 : 0;
       const takeValue = input.limit || 10;
       const skipValue = page * takeValue;
@@ -59,7 +48,7 @@ export const shipRegisterRouter = createTRPCRouter({
         if (minGT && maxGT) {
           conditions.push(
             Prisma.sql`
-            AND (SELECT g.GRT FROM MFREG_STAT g WHERE g.NOREGBKI = a.NOREG) BETWEEN ${minGT} AND ${maxGT}
+            (SELECT g.GRT FROM MFREG_STAT g WHERE g.NOREGBKI = a.NOREG) BETWEEN ${minGT} AND ${maxGT}
           `
           );
         }
@@ -116,7 +105,7 @@ export const shipRegisterRouter = createTRPCRouter({
     }),
   getDetail: baseProcedure.input(z.string()).query(async ({ ctx, input }) => {
     const noreg = input ? +input : undefined;
-    const result = await ctx.prisma.$queryRaw(
+    const result = (await ctx.prisma.$queryRaw(
       Prisma.sql`
                     SELECT a.noreg,
                            a.noimo,
@@ -178,9 +167,13 @@ export const shipRegisterRouter = createTRPCRouter({
                              LEFT JOIN mfreg_stat g ON g.NOREGBKI = a.NOREG
                     WHERE a.noreg = ${noreg}
                 `
-    );
+    )) as ShipRegisterDetail[];
 
-    return result as ShipRegisterDetail[];
+    if (result.length) {
+      return result[0];
+    }
+
+    return null;
   }),
   getHullData: baseProcedure.input(z.string()).query(async ({ ctx, input }) => {
     await new Promise((resolve) => setTimeout(() => resolve(null), 10000));
@@ -304,10 +297,11 @@ export const shipRegisterRouter = createTRPCRouter({
       return null;
     }),
   getSurveyData: baseProcedure.input(z.string()).query(async ({ input }) => {
-    return (await fetch(
-      process.env.OLD_API_BKI_URL +
-        "/api-cops/get_surveystatus_kapal.php?noreg=" +
-        input
-    ).then((response) => response.json())) as ShipRegisterSurvey[];
+    // return (await fetch(
+    //   process.env.OLD_API_BKI_URL +
+    //     "/api-cops/get_surveystatus_kapal.php?noreg=" +
+    //     input
+    // ).then((response) => response.json())) as ShipRegisterSurvey[];
+    return [] as ShipRegisterSurvey[];
   }),
 });

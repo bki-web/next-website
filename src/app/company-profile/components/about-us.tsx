@@ -32,9 +32,9 @@ export default function AboutUs() {
 
                 {/* Right Column (Text) - Visible on desktop, at the bottom on mobile */}
                 <div className="flex-1 space-y-6">
-                    <h2 className="text-2xl md:text-3xl font-bold text-shadow-lg shadow-black xl:text-4xl ">Get to Know Us</h2>
+                    <h2 className="text-3xl font-bold text-shadow-lg shadow-black">Get to Know Us</h2>
                     {/* Paragraph 1 */}
-                    <p className="text-sm md:text-xs leading-relaxed xl:text-sm 2xl:text-lg">
+                    <p className="leading-relaxed">
                         Biro Klasifikasi Indonesia (BKI) is the national classification society of Indonesia,
                         established in 1964 to strengthen the country&apos;s maritime independence. For more than six
                         decades, BKI has been trusted for its independence, integrity, and expertise in safeguarding
@@ -45,7 +45,7 @@ export default function AboutUs() {
                         international safety and quality benchmarks.
                     </p>
                     {/* Paragraph 2 */}
-                    <p className="text-sm md:text-xs leading-relaxed xl:text-sm 2xl:text-lg">
+                    <p className="leading-relaxed">
                         BKI also carries out statutory survey and certification services on behalf of the Government of
                         Indonesia and foreign flag states. These include Load Line, ISM Code, and ISPS Code
                         certification, ensuring compliance with IMO conventions and global maritime regulations. Over

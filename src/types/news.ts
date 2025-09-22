@@ -1,4 +1,4 @@
-import { Cover } from "./articles";
+import { BlockType, Cover } from "./articles";
 
 export type News = {
     id: string;
@@ -15,7 +15,5 @@ export type NewsStrapi = {
   description: string;
   cover: Cover;
   publishedAt: string;
-  blocks: [{
-    body: string
-  }]
+  blocks: BlockType[]
 };

@@ -91,7 +91,7 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({
                 {/* <h3 className="text-sm font-semibold text-black uppercase tracking-wider">
           {subTitle}
         </h3> */}
-                <h2 className={`mt-2 text-3xl leading-8 font-extrabold tracking-tight ${textColor[theme]} sm:text-4xl`}>
+                <h2 className={`mt-2 text-3xl leading-8 font-extrabold tracking-tight ${textColor[theme]}`}>
                     {mainTitle}
                 </h2>
                 <p className={`mt-4 text-lg w-full text-center ${textColor[theme]}`}>

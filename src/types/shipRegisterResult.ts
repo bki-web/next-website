@@ -118,7 +118,7 @@ export type PaginationInfo = {
   totalRecords: number;
   pageCount: number;
   pageSize: number;
-}
+};
 
 export type ShipRegisterOwner = {
   nmfl1: string;
@@ -149,8 +149,8 @@ export type ShipRegisterMachine = {
 };
 
 export type ShipRegisterSurvey = {
-  jenis: "KLAS" | "STATUTORIA",
-   KOSUR: string;
+  jenis: "KLAS" | "STATUTORIA";
+  KOSUR: string;
   NOREG: string;
   NUP: string;
   STATUS_VER: string | null;
@@ -161,5 +161,14 @@ export type ShipRegisterSurvey = {
   lastdate: string;
   postponeddate: string | null;
   rangedate: string | null;
-  no?: number | string
-}
+  no?: number | string;
+};
+
+export type ShipSearchResult = {
+  data: ShipRegister[];
+  pagination: {
+    totalRecords: number;
+    pageCount: number;
+    pageSize: number;
+  };
+};

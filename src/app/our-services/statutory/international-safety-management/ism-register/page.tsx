@@ -47,7 +47,7 @@ const defaultValue = {
     companyName: '',
 };
 
-export default function InternationalSafetyManagementPage() {
+export default function InternationalSafetyManagementRegisterPage() {
     const router = useRouter();
     const form = useForm<FormSchema>({
         resolver: zodResolver(formSchema),
@@ -59,7 +59,7 @@ export default function InternationalSafetyManagementPage() {
     }
 
     return (
-        <div className="relative min-h-screen w-full overflow-hidden text-white">
+        <div className="relative min-h-screen w-full overflow-hidden">
             <PageTransition/>
 
             {/* Hero Section */}

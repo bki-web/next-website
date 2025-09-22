@@ -96,7 +96,7 @@ const AnimatedHeroSection = () => {
         {
             title: 'Publication',
             children: [
-                {title: 'Technical Journal', href: '#'},
+                {title: 'Technical Information', href: '#'},
                 {title: 'Annual Report', href: '#'},
                 {title: 'News & Updates', href: '#'},
                 {title: 'Press Release', href: '#'}
